@@ -1,0 +1,18 @@
+#!/bin/sh
+# Author:        a6dg2uv
+# Created Time:  2025-04-16 14:58
+
+sudo systemctl stop dae
+
+echo "stop dae..."
+
+sudo systemctl disable dae
+
+#sudo systemctl status dae
+echo "check if alive"
+systemctl is-active dae
+
+sudo rm /etc/sysctl.conf  && echo "remove /etc/sysctl.conf"
+sudo rm -r /etc/dae && echo "remove /etc/dae"
+sudo rm -r /usr/local/share/dae && echo "remove /usr/local/share/dae"
+

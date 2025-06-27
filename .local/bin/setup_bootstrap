@@ -1,0 +1,193 @@
+#!/bin/sh
+
+# 健壮 Bash 脚本的黄金三件套，常作为脚本头部标准
+set -euo pipefail
+# -e：一旦出错就停止
+# -u：使用未定义变量报错
+# -o pipefail：防止管道里某命令悄悄失败
+
+# 配置项（请根据你的情况修改）
+DOTFILES_REPO="git@github.com:fajknli/.dotfiles.git"
+DOTFILES_DIR="$HOME/.dotfiles"
+GIT_BIN=$(command -v git)
+
+# echo "==> 更新系统并安装基础软件包..."
+# sudo pacman -Syu --noconfirm
+# sudo pacman -S --needed --noconfirm \
+#   git curl zsh neovim wget unzip zip \
+#   base-devel openssh tree htop man-db
+
+#---------------------------------------------------------------------
+
+echo "[*] 正在同步系统软件包..."
+
+# ----------------------------------------
+# 字体与本地化支持
+# ----------------------------------------
+fonts_and_locale=(
+    adobe-source-han-sans-cn-fonts
+    ttf-font-awesome
+    ttf-0xproto-nerd
+    ttf-opensans
+    ttf-liberation
+    noto-fonts-emoji
+)
+
+# ----------------------------------------
+# 网络与系统工具
+# ----------------------------------------
+network_and_sys=(
+    networkmanager iwd ntp bind
+    socat lsb-release pot-translation
+    vsftpd drill nmap inetutils
+)
+
+# ----------------------------------------
+# CLI 工具
+# ----------------------------------------
+cli_tools=(
+    fzf git-crypt ripgrep sysstat
+    git-filter-repo bash-completion
+    jq man-db most htop fastfetch
+    unzip zip 7zip exfat-utils tree
+    make shellcheck rustup gcc tealdeer
+    aria2 wget curl rsync yt-dlp
+    unrar wl-mirror firejail
+    lemurs zoxide wev neomutt
+    zoxide imagemagick chafa fd ripgrep poppler
+)
+
+# ----------------------------------------
+# GUI 应用与桌面增强
+# librewolf
+# mc
+# ----------------------------------------
+gui_apps=(
+    alacritty mako glfw gimp remmina
+    waybar mpv netease-cloud-music-gtk4
+    obs-studio newsflash element-desktop
+    virt-manager irssi hwinfo asciinema
+    thunar figlet fuse2fs docker thunar-archive-plugin
+    gthumb foliate zathura zathura-pdf-poppler
+    qutebrowser
+)
+
+#
+# ----------------------------------------
+# Dirves install
+# ----------------------------------------
+#
+dirves=(
+    intel-media-driver libva-utils
+)
+
+
+# ----------------------------------------
+# Wayland / Hyprland / Sway 系统组件
+# ----------------------------------------
+#wayland_hyprland=(
+#  hyprland hyprlock hypridle hyprpaper hyprpicker xdg-desktop-portal-hyprland
+#)
+
+wayland_sway=(
+    sway swaylock swaybg swayidle sway-contrib
+)
+
+wayland_niri=(
+    niri swaylock swaybg swayidle sway-contrib
+)
+
+wayland_common=(
+    mako wofi fuzzel grim slurp wl-clipboard brightnessctl cliphist swayimg
+    fcitx5 fcitx5-chinese-addons fcitx5-configtool fcitx5-gtk
+    xdg-desktop-portal-wlr xdg-desktop-portal-gtk xdg-desktop-portal-gnome
+)
+
+
+audio_and_bt=(
+    pipewire wireplumber pipewire-pulse bluez bluez-utils pavucontrol helvum
+    ffmpeg
+)
+
+# ----------------------------------------
+# Qt 支持
+# ----------------------------------------
+qt_support=(
+    qt5-declarative layer-shell-qt layer-shell-qt5
+)
+
+personal=(
+    yazi ydotool zenity
+)
+
+### ------------------------
+### 安装命令组装
+### ------------------------
+pkgs=(
+    "${fonts_and_locale[@]}"
+    "${network_and_sys[@]}"
+    "${cli_tools[@]}"
+    "${audio_and_bt[@]}"
+    "${qt_support[@]}"
+    "${wayland_common[@]}"
+    "${wayland_niri[@]}"
+    "${gui_apps[@]}"
+    "${personal[@]}"
+    "${dirves[@]}"
+)
+
+echo "[+] 正在安装软件包..."
+sudo pacman -Syu --noconfirm "${pkgs[@]}"
+echo "[+] 安装完成。"
+
+
+# ----------------------------------------
+# ✅ 可选：增强现代终端工具（你可以按需关闭）
+# ----------------------------------------
+INSTALL_EXTRAS=false
+extra_packages=(
+    bat fd procs duf btop dust dog
+    eza zoxide yazi atuin starship
+    zsh zsh-autosuggestions zsh-syntax-highlighting
+    tmux direnv thefuck cliphist tofi
+    viu imv swayimg avizo swappy
+    lazygit lazydocker bottom just
+)
+
+if [ "$INSTALL_EXTRAS" = true ]; then
+    echo "[+] 启用增强模块，安装现代工具..."
+    sudo pacman -S --noconfirm "${extra_packages[@]}"
+fi
+
+echo "[✓] 安装完成，可进行 dotfiles 链接与环境配置。"
+
+#---------------------------------------------------------------------
+
+#echo "==> 克隆 dotfiles 裸仓库到 $DOTFILES_DIR..."
+#$GIT_BIN clone --bare "$DOTFILES_REPO" "$DOTFILES_DIR"
+#
+#echo "==> 创建 dotfiles 管理 alias（后续可以写入 .bashrc/.zshrc）..."
+#alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+#
+#echo "==> 检出 dotfiles 到 $HOME..."
+#/usr/bin/git --git-dir="$DOTFILES_DIR" --work-tree="$HOME" checkout
+#
+#echo "==> 设置忽略 .dotfiles 仓库文件..."
+#/usr/bin/git --git-dir="$DOTFILES_DIR" --work-tree="$HOME" config --local status.showUntrackedFiles no
+#
+#echo "==> 设置 Git 全局配置..."
+#git config --global user.name "fajknli"
+#git config --global user.email "fajknli@gmail.com"
+#git config --global init.defaultBranch main
+#
+#echo "==> 完成 dotfiles 安装！"
+#echo "   使用 'dotfiles status' 查看 dotfiles 状态。"
+
+# 可选后续操作
+# echo "==> 更换默认 shell 为 zsh（如需）"
+# if [[ "$SHELL" != *zsh ]]; then
+#   chsh -s "$(which zsh)"
+# fi
+
+echo "✅ 初始化完成，请重启终端！"
+

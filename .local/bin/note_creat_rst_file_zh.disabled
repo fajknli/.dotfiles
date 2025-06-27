@@ -1,0 +1,187 @@
+#!/bin/sh
+
+source_dir="/home/a6dg2uv/a6dg2uv/mydocs/note/source"
+
+directories=()
+while IFS= read -r -d '' dir; do
+    dirlist+=("$dir")
+done < <(find /home/a6dg2uv/a6dg2uv/mydocs/note/source* -type d -print0)
+# done < <(find ./* -type d -print0)
+# dirlist+=($(find ./* -type d -print0))
+for base in "${dirlist[@]}"; do
+    basedirlist+=($(basename $base))
+done
+
+# printf '%s\n' "${basedirlist[@]}"
+
+
+while true; do
+    read -p "请选择'yes/y'来创建一个目录或者'no/n'(默认选择)来选择最近的目录: " choice
+    choice=${choice:-n}
+
+    if [[ $choice =~ ^(yes|y)$ ]]; then
+        read -p "好的，输入新目录名: " new_dir
+
+        new_dir=${new_dir:-Ujd$73k*k9^##@$Bk$#bj34j$}
+
+        if [[ "$new_dir" == "Ujd$73k*k9^##@$Bk$#bj34j$" ]]; then
+            echo "你不能输入个空的名字，程序退出"
+
+            for i in "${!basedirlist[@]}"; do
+                echo "$i. ${basedirlist[$i]}"
+            done
+
+            read -p "请输入数字来进入你想进入的目录[默认:跳过]: " choice_num
+
+            choice_num=${choice_num:-dub38$*&#Jh43874g$&*#TG$U#jgh3478k}
+            if [[ $choice_num =~ ^[0-9]+$ ]] && ((choice >= 0)) && ((choice_num < ${#basedirlist[@]})); then
+                chose_dir="${basedirlist[$choice_num]}"
+                if [[ "$chose_dir" == "source" ]]; then
+                    cd "$source_dir"
+                else
+                    cd "$source_dir/$chose_dir"
+                fi
+                break
+            # elif [[ "$chose_dir" == "dub38$*&#Jh43874g$&*#TG$U#jgh3478k" ]]; then
+            #     echo "Empty Number, Skipping Now!"
+            #     break
+            else
+                echo "无效名字"
+                break
+            fi
+
+            break
+        else
+            mkdir "$source_dir/$new_dir" && cd "$source_dir/$new_dir"
+            break
+        fi
+    elif [[ $choice =~ ^(no|n)$ ]]; then
+
+        for i in "${!basedirlist[@]}"; do
+            echo "$i. ${basedirlist[$i]}"
+        done
+
+        read -p "请输入数字来进入你想进入的目录[默认:跳过]: " choice_num
+
+        choice_num=${choice_num:-dub38$*&Jh43874g$&*TG$Ujgh3478k}
+        if [[ $choice_num =~ ^[0-9]+$ ]] && ((choice >= 0)) && ((choice_num < ${#basedirlist[@]})); then
+            chose_dir="${basedirlist[$choice_num]}"
+            echo "$chose_dir: "
+            if [[ "$chose_dir" == "source" ]]; then
+                cd "$source_dir"
+                echo "==============目录 列表=============="
+                ls -p "$source_dir" | grep -v /$
+                echo "=============================================="
+            else
+                cd "$source_dir/$chose_dir"
+                echo "==============目录 列表=============="
+                ls -p "$source_dir/$chose_dir" | grep -v /$
+                echo "=============================================="
+            fi
+
+            while true; do
+                read -p "输入 'yes/y' 来创建文件(文件名不要有空格,不要加.rst后缀) 或者 'no/n'(默认选择) 来跳过: " create_file
+                # default choice
+                create_file=${create_file:-n}
+                if [[ $create_file =~ ^(yes|y)$ ]]; then
+                    read -p "输入文件名来创建一个文件: " file_name
+                    touch "$file_name.rst"
+                    # echo "   $chose_dir/$file_name" >> index.rst
+                    if [[ "$chose_dir" == "source" ]]; then
+                        echo "   $file_name" >> $source_dir/index.rst
+                    elif [[ "$chose_dir" == "Tools" ]]; then
+                        line_num=$(grep -n "   Tools/Vim" $source_dir/index.rst | cut -d ":" -f1)
+                        if [ ! -z "$line_num" ]; then
+                            sed -i "${line_num}a\\   $chose_dir/$file_name" $source_dir/index.rst
+                            echo "创建新内容 $line_num, 它属于 $chose_dir"
+                        else
+                            echo "无法在文件里找到内置标记"
+                        fi
+                    elif [[ "$chose_dir" == "Programing_Language" ]]; then
+                        line_num=$(grep -n "   Programing_Language/Rust" $source_dir/index.rst | cut -d ":" -f1)
+                        if [ ! -z "$line_num" ]; then
+                            sed -i "${line_num}a\\   $chose_dir/$file_name" $source_dir/index.rst
+                            echo "加入新内容 $line_num, 它属于 $chose_dir"
+                        else
+                            echo "无法在文件里找到内置标记"
+                        fi
+                        echo "   $chose_dir/$file_name" >> $source_dir/index.rst
+                    elif [[ "$chose_dir" == "Linux_Distributions" ]]; then
+                        line_num=$(grep -n "   Linux_Distributions/VoidLinux-Setup-Configurate" $source_dir/index.rst | cut -d ":" -f1)
+                        if [ ! -z "$line_num" ]; then
+                            sed -i "${line_num}a\\   $chose_dir/$file_name" $source_dir/index.rst
+                            echo "Added new content after line $line_num, and it belong $chose_dir"
+                        else
+                            echo "Could not find the insert marker in the file."
+                        fi
+                        echo "   $chose_dir/$file_name" >> $source_dir/index.rst
+                    elif [[ "$chose_dir" == "Linux_Learn" ]]; then
+                        line_num=$(grep -n "   Linux_Learn/Linux_Tricks" $source_dir/index.rst | cut -d ":" -f1)
+                        if [ ! -z "$line_num" ]; then
+                            sed -i "${line_num}a\\   $chose_dir/$file_name" $source_dir/index.rst
+                            echo "Added new content after line $line_num, and it belong $chose_dir"
+                        else
+                            echo "Could not find the insert marker in the file."
+                        fi
+                    # elif [[ "$chose_dir" == "Tools" ]]; then
+                    #     echo "   $chose_dir/$file_name" >> $source_dir/index.rst
+                    # elif [[ "$chose_dir" == "Tools" ]]; then
+                    #     echo "   $chose_dir/$file_name" >> $source_dir/index.rst
+                    # elif [[ "$chose_dir" == "Tools" ]]; then
+                    #     echo "   $chose_dir/$file_name" >> $source_dir/index.rst
+                    # elif [[ "$chose_dir" == "Tools" ]]; then
+                    #     echo "   $chose_dir/$file_name" >> $source_dir/index.rst
+                    # elif [[ "$chose_dir" == "Tools" ]]; then
+                    #     echo "   $chose_dir/$file_name" >> $source_dir/index.rst
+                    else
+                        echo "No Such Directory Marks In Index.rst,Please add the marks in index.rst"
+                    fi
+
+                    # echo "$file_name.rst"
+                    echo "Note File Create File Successfully"
+                    break
+                elif [[ $create_file =~ ^(no|n)$ ]]; then
+                    echo "Skipping File Creation."
+                    break
+                else
+                    echo "Invalid Choice. Please enter 'yes/y' or 'no/n'."
+                fi
+            done
+
+            break
+        elif [[ "$choice_num" == "dub38$*&Jh43874g$&*TG$Ujgh3478k" ]]; then
+            echo "Empty Number, Skipping Now!"
+            break
+        else
+            echo "Invalid Number, Skipping Now!"
+            break
+        fi
+    else
+        echo "Invalid Choice! Please enter 'yes/y' or 'no/n'."
+    fi
+done
+
+# while true; do
+#     read -p "Enter 'yes/y' to create a file(NO SPACE IN THE NAME) or 'no/n'(DEFAULT CHOICE) to skip: " create_file
+#     # default choice
+#     create_file=${create_file:-n}
+#     if [[ $create_file =~ ^(yes|y)$ ]]; then
+#         read -p "Enter the name of the note file you want to create: " file_name
+#         touch "$file_name.rst"
+#         # echo "$file_name.rst"
+#         echo "Note File Create File Successfully"
+#         break
+#     elif [[ $create_file =~ ^(no|n)$ ]]; then
+#         echo "Skipping File Creation."
+#         break
+#     else
+#         echo "Invalid Choice. Please enter 'yes/y' or 'no/n'."
+#     fi
+# done
+
+
+# read -p "告诉我你想创建的文章名字(请不要带有空格):" name
+#
+# touch ${name}.rst
+#
+# echo "   ${name}" >> index.rst

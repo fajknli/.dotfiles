@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# pause the mpv music
+echo '{ "command": ["set_property", "pause", true], "request_id": 1 }' | socat - /tmp/mpv-socket

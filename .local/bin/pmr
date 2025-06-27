@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# resume mpv music
+
+echo '{ "command": ["set_property", "pause", false], "request_id": 1 }' | socat - /tmp/mpv-socket

@@ -1,0 +1,62 @@
+#!/bin/sh
+# Author:        a6dg2uv
+# Created Time:  2025-04-12
+# Modified 27/6/2025
+
+# 定义 PID 文件路径（用于存储当前 mpv 的进程 ID）
+PID_FILE="/tmp/mpv_music.pid"
+
+# Stop music mpv player
+if [ -s "$PID_FILE" ]; then
+    mpv_pid="$(cat "$PID_FILE")"
+#    kill -- -"$(ps -o pgid= "$mpv_pid" | grep -o '[0-9]*')"
+    kill -- -"$(ps -o pgid= $mpv_pid | tr -d ' ')"
+#  grep -o 保留关键数字
+#  子进程的，不是进程组,使用无效   kill -- -"$(pgrep -P "$mpv_pid" | head -n 1)"
+    rm -f "$PID_FILE"
+fi
+
+
+# 读取Music目录下的子目录
+target_dir=$(find "$HOME/Music" -mindepth 1 -maxdepth 1 -type d | awk -F/ '{print $NF}' | \
+    wmenu -i -l 5 -f "0xProto Nerd Font Regular 12" -N "#1f2032" -n "#a9b5d5" -S "#a0d0a0" -s "#151622"
+)
+
+# 检查是否选择了目录
+if [ -z "$target_dir" ]; then
+#    echo "No directory selected. Exiting." >&2
+    exit 1
+fi
+
+# 完整路径
+full_dir="$HOME/Music/$target_dir"
+
+
+# 启动 mpv 并记录 PID
+#(
+#    find "$full_dir" -type f \( -name "*.mp3" -o -name "*.flac" -o -name "*.wav" -o -name "*.m4a" \) | \
+#        shuf | while read -r song; do
+#        mpv --input-ipc-server=/tmp/mpv-socket --no-video --term-osd-bar=yes "$song"
+#        sleep_time=$(awk 'BEGIN { srand(); print int(20 + rand() * 40) }')
+#        sleep "$sleep_time"
+#    done
+#) &
+#
+## 存储 PID 到文件
+#echo $! > "$PID_FILE"
+(
+    # 使用 setsid 让子进程独立运行
+    setsid sh -c '
+        find "$0" -type f \( -name "*.mp3" -o -name "*.flac" -o -name "*.wav" -o -name "*.m4a" \) | shuf | while read -r song; do
+            mpv --input-ipc-server=/tmp/mpv-socket --no-video --term-osd-bar=yes "$song"
+            sleep $(shuf -i 20-59 -n 1)
+            # 检查父进程是否还在，如果脚本被终止则退出
+            if ! kill -0 "$PPID" 2>/dev/null; then
+                break
+            fi
+        done
+    ' "$full_dir" &
+    # 存储 sh 进程的 PID（由于 setsid，mpv 会是它的子进程）
+    echo $! > "$PID_FILE"
+)
+

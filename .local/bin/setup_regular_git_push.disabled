@@ -1,0 +1,10 @@
+#!/bin/sh
+# !!! DEPRECATED !!!
+# 此脚本已弃用，仅作历史参考。
+# 最后维护日期：2025-4-26
+exit 1  # 防止误执行
+
+git add .
+git commit -m "update"
+# git push
+git push --set-upstream origin main
