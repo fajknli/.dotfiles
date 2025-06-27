@@ -39,20 +39,22 @@ alias mkcd='mkdir $1 && cd $1'
 # alias c="tr -d '\n' | wl-copy"
 alias ckalias='vim ~/.bash_aliases'
 
-# 设置时间
-alias szsj='$HOME/scripts/scripts_setup/ntp_time.sh'
+# 设置时间 废弃于2025625920
+#alias szsj='$HOME/scripts/scripts_setup/ntp_time.sh'
 
-# 播放音乐
-alias pm='bash $HOME/scripts/scripts_tools/fzfpm.sh'
-alias cm='bash $HOME/scripts/scripts_tools/music-name-shift.sh'
+# 播放音乐 废弃于2025625920
+# alias pm='bash $HOME/scripts/scripts_tools/fzfpm.sh'
+# alias cm='bash $HOME/scripts/scripts_tools/music-name-shift.sh'
 
-# 写文档
-alias bjwd='bash $HOME/scripts/scripts_notes/edit_rst_file.sh'
-alias gxwd='bash $HOME/scripts/scripts_notes/gxwd.sh'
-alias gjwd='bash $HOME/scripts/scripts_notes/gjwd.sh'
+# 写文档 废弃于2025625920
+#alias bjwd='bash $HOME/scripts/scripts_notes/edit_rst_file.sh'
+#alias gxwd='bash $HOME/scripts/scripts_notes/gxwd.sh'
+#alias gjwd='bash $HOME/scripts/scripts_notes/gjwd.sh'
+alias bjwd='bash $HOME/.local/bin/note_edit_rst_file'
 
-alias vA='bash $HOME/scripts/scripts_proxy_dae/daeConfigSetup.sh'
-alias novA='bash $HOME/scripts/scripts_proxy_dae/stopDaeProxy.sh'
+# proxy 废弃于2025625920
+#alias vA='bash $HOME/scripts/scripts_proxy_dae/daeConfigSetup.sh'
+#alias novA='bash $HOME/scripts/scripts_proxy_dae/stopDaeProxy.sh'
 alias vAstatus='systemctl status dae'
 
 # 系统管理
@@ -75,9 +77,9 @@ alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 alias rsyncfast='rsync -avz --info=progress2'
 
 
-# file quick leap
-alias vimbootstrap='vim scripts/scripts_setup/bootstrap.sh'
-alias bootstrap='./scripts/scripts_setup/bootstrap.sh'
+# file quick leap 废弃于2025625920
+#alias vimbootstrap='vim scripts/scripts_setup/bootstrap.sh'
+#alias bootstrap='./scripts/scripts_setup/bootstrap.sh'
 
-# File Manager
-alias ffm='./scripts/scripts_tools/fm.sh'
+# File Manager 废弃于2025625920
+#alias ffm='./scripts/scripts_tools/fm.sh'

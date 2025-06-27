@@ -24,3 +24,52 @@ Shell_Simple_Usage
 
     -f：忽略大小写排序
 
+2. 随机数生成
+
+::
+
+    shuf -i 20-59 -n 1
+
+    awk 'BEGIN { srand(); print int(20 + rand() * 40) }'
+
+3. 独立进程
+
+setsid 守护进程，比nohup, disown 更彻底
+
+::
+
+    (
+        setsid sh -c '
+            <commands>...
+            <commands>...
+        ' "$variet" &
+    ) &
+
+    echo $! > /tmp/PID_FILE
+
+setsid command & 的 $! 返回的是 setsid 的子 shell PID，而非 command 的 PID。
+
+4. </dev/null
+
+- 写入 /dev/null 的数据会被直接丢弃（像黑洞一样）
+
+- 从 /dev/null 读取数据会立即返回 EOF（文件结束符）
+
+2. 为什么 </dev/null 能让进程立即返回 EOF？
+
+(1) 标准输入（stdin）的工作原理 标准输入就是 < , 标准输出就是 >
+
+当进程尝试从 stdin 读取输入时（比如 read 或 scanf）：
+
+- 如果 stdin 是终端（TTY），进程会阻塞，等待用户输入。
+ 
+- 如果 stdin 是普通文件，进程会读取文件内容，读完时返回 EOF。
+ 
+- 如果 stdin 是 /dev/null，内核会直接返回 EOF，而不是等待/堵塞(程序有读取动作时跳过)。
+
+/dev/null 读取时立即返回 EOF，而不是阻塞。
+
+</dev/null 是关闭 stdin 的标准方法，比单纯 & 更可靠。
+
+
+

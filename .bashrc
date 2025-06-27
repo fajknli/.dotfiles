@@ -23,7 +23,7 @@ fi
 # 自动启动 Zellij
 # eval "$(zellij setup --generate-auto-start bash)"
 # 自动启动 zoxide,智能化现代cd
-eval "$(zoxide init --cmd cd bash)"
+# eval "$(zoxide init --cmd cd bash)"
 
 # Bash 模式
 set -o emacs
@@ -31,11 +31,6 @@ set -o emacs
 # 绑定快捷键
 # bind '"\ew":"fzfcd\n"'
 # bind '"\ee":"mcc\n"'
-
-# mc 默认终端编辑器
-export EDITOR='nvim' yazi
-#export VISUAL=nvim
-export VISUAL=nvim
 
 # Java Home
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
@@ -49,5 +44,3 @@ export HISTSIZE=100000
 export HISTFILESIZE=100000
 # 确保历史记录立即写入，而不是生成临时文件
 PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-source /home/fajknli/.config/broot/launcher/bash/br

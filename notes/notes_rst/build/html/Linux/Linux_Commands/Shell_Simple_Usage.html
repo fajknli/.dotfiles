@@ -338,6 +338,50 @@ find . -maxdepth 1 -type d -printf &quot;%f\n&quot;  # 仅目录（不包括当�
 -f：忽略大小写排序
 </pre></div>
 </div>
+<ol class="arabic simple" start="2">
+<li><p>随机数生成</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shuf</span> <span class="o">-</span><span class="n">i</span> <span class="mi">20</span><span class="o">-</span><span class="mi">59</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span>
+
+<span class="n">awk</span> <span class="s1">&#39;BEGIN { srand(); print int(20 + rand() * 40) }&#39;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>独立进程</p></li>
+</ol>
+<p>setsid 守护进程，比nohup, disown 更彻底</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(
+    setsid sh -c &#39;
+        &lt;commands&gt;...
+        &lt;commands&gt;...
+    &#39; &quot;$variet&quot; &amp;
+) &amp;
+
+echo $! &gt; /tmp/PID_FILE
+</pre></div>
+</div>
+<p>setsid command &amp; 的 $! 返回的是 setsid 的子 shell PID，而非 command 的 PID。</p>
+<ol class="arabic simple" start="4">
+<li><p>&lt;/dev/null</p></li>
+</ol>
+<ul class="simple">
+<li><p>写入 /dev/null 的数据会被直接丢弃（像黑洞一样）</p></li>
+<li><p>从 /dev/null 读取数据会立即返回 EOF（文件结束符）</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>为什么 &lt;/dev/null 能让进程立即返回 EOF？</p></li>
+</ol>
+<ol class="arabic simple">
+<li><p>标准输入（stdin）的工作原理 标准输入就是 &lt; , 标准输出就是 &gt;</p></li>
+</ol>
+<p>当进程尝试从 stdin 读取输入时（比如 read 或 scanf）：</p>
+<ul class="simple">
+<li><p>如果 stdin 是终端（TTY），进程会阻塞，等待用户输入。</p></li>
+<li><p>如果 stdin 是普通文件，进程会读取文件内容，读完时返回 EOF。</p></li>
+<li><p>如果 stdin 是 /dev/null，内核会直接返回 EOF，而不是等待/堵塞(程序有读取动作时跳过)。</p></li>
+</ul>
+<p>/dev/null 读取时立即返回 EOF，而不是阻塞。</p>
+<p>&lt;/dev/null 是关闭 stdin 的标准方法，比单纯 &amp; 更可靠。</p>
 </section>
 
         </article>
