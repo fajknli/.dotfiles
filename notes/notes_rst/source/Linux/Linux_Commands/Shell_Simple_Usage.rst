@@ -233,3 +233,29 @@ ps -ef                 # 查看所有进程（标准UNIX风格）
         rm -f "$PID_FILE"
     fi
  
+
+Interesting Field Codes
+=======================================================
+
+1. 需要 先尝试推送，失败后重试
+
+::
+
+    max_retries=3
+    count=0
+
+    while [ $count -lt $max_retries ]; do
+        if git push origin main; then
+            echo "推送成功"
+            break
+        else
+            ((count++))
+            echo "尝试第 $count 次重试..."
+            sleep 2
+        fi
+    done
+
+    if [ $count -eq $max_retries ]; then
+        echo "推送失败，已达最大重试次数"
+        exit 1
+    fi

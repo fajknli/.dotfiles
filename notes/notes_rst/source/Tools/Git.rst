@@ -21,6 +21,23 @@ Git 日常使用
     git branch -M main
     git push -u origin main
 
+.. note::
+
+    git add -u      # for remove file push to remote repository
+
+Common Commands
+-------------------------------------------------------
+
+--force-with-lease	            安全强制推送，避免覆盖他人提交(比--force安全)。
+
+git diff --quiet --cached	    检测暂存区是否有变动，用于脚本判断(--quiet不输出变动信息,而是输出0/1)。
+
+${1:-main}	                    Shell 参数默认值，未提供 $1 参数时使用 main。
+
+-u in git push	                首次推送时建立追踪关系(git push origin main 选择main,适合脚本使用)-u 只是建立分支追踪。
+
+--all vs -u in git add --all    包含新增文件，-u 仅限已跟踪文件的修改和删除。
+
 1. .dotfile 初始设置步骤
 ===========================
 
