@@ -1,0 +1,30 @@
+#! /usr/bin/env bash
+# !!! DEPRECATED !!! 
+# 此脚本已弃用，仅作历史参考。
+# 最后维护日期：2025-4-26
+exit 1  # 防止误执行
+
+
+
+if [[ -e .git ]] ; then
+
+$(exit 0)
+
+echo "This Folder alraded initialization,Nothing to do"
+
+else
+
+git init -b "main"
+
+git add .
+
+git commit -m "first commit"
+
+read -p "Give your repository NAME: " repoName
+
+git remote add origin https://gitea.com/zwron/${repoName}.git
+
+git push -f -u origin "main"
+
+fi
+

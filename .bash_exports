@@ -1,0 +1,13 @@
+# GTK / Flatpak
+export GTK_THEME=Adwaita:dark
+#export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/home/a6dg2uv/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
+
+# Rust 镜像
+export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
+export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+
+# 输入与补全行为配置
+export INPUTRC="$HOME/.inputrc"
+
+# obs
+export QT_QPA_PLATFORM=wayland

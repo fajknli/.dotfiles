@@ -1,0 +1,58 @@
+[filemanager]
+Quit = ctrl-q
+Find = shift-?
+View = alt-w
+Edit = alt-e
+History = alt-shift-h
+MakeDir = f7; alt-f
+Copy = f5; ctrl-c
+Move = f6; ctrl-x
+Delete = f8; delete; alt-d
+
+[panel]
+MarkUp = shift-up; shift-k
+MarkDown = shift-down; shift-j
+Down = down; ctrl-n; j
+Up = up; ctrl-p; k
+Left = left; h
+Right = right; l
+MiddleOnScreen = alt-m
+PanelOtherSync = alt-i
+SelectCodepage = alt-0
+
+[listbox]
+Up = up; ctrl-p; k
+Down = down; ctrl-n; j
+
+[radio]
+Up = up; ctrl-p; k
+Down = down; ctrl-n; j
+
+[editor]
+Up = up; ctrl-p; k
+Down = down; ctrl-n; j
+
+[diffviewer]
+Up = up; ctrl-p; k
+Down = down; ctrl-n; j
+
+[dialog]
+Up = up; ctrl-p; k
+Down = down; ctrl-n; j
+
+[menu]
+Up = up; ctrl-p; k
+Down = down; ctrl-n; j
+
+[tree]
+Up = up; ctrl-p; k
+Down = down; ctrl-n; j
+
+[help]
+Up = up; ctrl-p; k
+Down = down; ctrl-n; j
+
+[chattr]
+Up = up; ctrl-p; k
+Down = down; ctrl-n; j
+

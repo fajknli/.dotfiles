@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+# Author:        zwron
+# Created Time:  2025-04-04
+
+file=$(find $HOME/notes/notes_rst/source -type f -name "*.rst" 2>/dev/null | fzf --delimiter="/" --nth=-1 --with-nth=-1 --reverse --border --preview 'cat {}') && nvim "$file"
+
+

@@ -1,0 +1,107 @@
+---- 文件类型专属配置
+---- 建议配合 init.lua 中的 require("config.filetypes") 使用
+--
+--local api = vim.api
+--
+---- Rust 文件配置
+--api.nvim_create_autocmd("FileType", {
+--  pattern = "rust",
+--  callback = function()
+--    vim.bo.expandtab = true
+--    vim.bo.tabstop = 4
+--    vim.bo.shiftwidth = 4
+--    vim.bo.smartindent = true
+--    vim.bo.commentstring = "// %s"
+--  end,
+--})
+--
+---- Python 文件配置
+--api.nvim_create_autocmd("FileType", {
+--  pattern = "python",
+--  callback = function()
+--    vim.bo.expandtab = true
+--    vim.bo.tabstop = 4
+--    vim.bo.shiftwidth = 4
+--    vim.bo.smartindent = true
+--    vim.bo.textwidth = 88
+--    vim.bo.commentstring = "# %s"
+--  end,
+--})
+--
+---- Lua 文件配置
+--api.nvim_create_autocmd("FileType", {
+--  pattern = "lua",
+--  callback = function()
+--    vim.bo.expandtab = true
+--    vim.bo.tabstop = 2
+--    vim.bo.shiftwidth = 2
+--    vim.bo.smartindent = true
+--    vim.bo.commentstring = "-- %s"
+--  end,
+--})
+--
+---- Markdown 文件配置
+--api.nvim_create_autocmd("FileType", {
+--  pattern = "markdown",
+--  callback = function()
+--    vim.wo.wrap = true
+--    vim.bo.spell = true
+--    vim.bo.textwidth = 80
+--    vim.bo.commentstring = "<!-- %s -->"
+--  end,
+--})
+--
+---- reStructuredText 文件配置
+---- api.nvim_create_autocmd("FileType", {
+----   pattern = "rst",
+----   callback = function()
+----     vim.wo.wrap = true
+----     vim.bo.spell = true
+----     vim.bo.textwidth = 80
+----     vim.bo.commentstring = ".. %s"
+----   end,
+---- })
+--
+---- HTML 文件配置
+--api.nvim_create_autocmd("FileType", {
+--  pattern = "html",
+--  callback = function()
+--    vim.bo.tabstop = 2
+--    vim.bo.shiftwidth = 2
+--    vim.bo.expandtab = true
+--    vim.bo.commentstring = "<!-- %s -->"
+--  end,
+--})
+--
+---- CSS 文件配置
+--api.nvim_create_autocmd("FileType", {
+--  pattern = "css",
+--  callback = function()
+--    vim.bo.tabstop = 2
+--    vim.bo.shiftwidth = 2
+--    vim.bo.expandtab = true
+--    vim.bo.commentstring = "/* %s */"
+--  end,
+--})
+--
+---- JavaScript/TypeScript 文件配置
+--api.nvim_create_autocmd("FileType", {
+--  pattern = { "javascript", "typescript" },
+--  callback = function()
+--    vim.bo.tabstop = 2
+--    vim.bo.shiftwidth = 2
+--    vim.bo.expandtab = true
+--    vim.bo.commentstring = "// %s"
+--  end,
+--})
+--
+---- Markdown 文件配置
+--vim.api.nvim_create_autocmd("FileType", {
+--  pattern = "markdown",
+--  callback = function()
+--    vim.wo.wrap = true             -- 自动换行，便于阅读
+--    vim.bo.spell = true            -- 启用拼写检查（需设置语言：:set spelllang=en_us 或 zh）
+--    vim.bo.textwidth = 80         -- 限制每行字符数为 80，符合常规 Markdown 风格
+--    vim.bo.commentstring = "<!-- %s -->"  -- 设置注释风格
+--  end,
+--})

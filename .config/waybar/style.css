@@ -1,0 +1,121 @@
+/* 原始颜色 */
+@define-color bg-color #151622;       /* 基础背景 - 深蓝灰 */
+@define-color text-color #a9b5d5;     /* 主文本 - 奶白色 */
+@define-color accent #607bc3;         /* 强调色 - 浅蓝色 */
+@define-color warning #F08080;        /* 警告色 - 粉红色 */
+@define-color sky #89b4fa;            /* 蓝绿色 */
+@define-color mauve #b280be;          /* 紫色 */
+
+/* 新增扩展颜色 */
+@define-color rosewater #f5e0dc;      /* 玫瑰水色 - 非常浅的粉 */
+@define-color flamingo #f2cdcd;       /* 火烈鸟粉 */
+@define-color green #a0d0a0;          /* 薄荷绿 */
+@define-color yellow #f9e2af;         /* 香草黄 */
+@define-color peach #fab387;          /* 桃子橙 */
+@define-color teal #94e2d5;           /* 水鸭蓝绿 */
+@define-color sapphire #89dceb;       /* 蓝宝石蓝 */
+@define-color lavender #b4befe;       /* 薰衣草紫 */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: '0xProto Nerd Font';
+    font-size : 12px;
+    font-weight: 500;
+}
+
+window#waybar {
+    color: @text-color;
+}
+
+#custom-arch
+{
+    font-size: 20px;
+    color: @accent;
+    font-weight: normal;
+}
+
+window#waybar {
+    background: rgba(21, 22, 34, 1);
+    color: @bg-color;
+}
+
+
+#workspaces button {
+    padding: 2px 4px;
+    color: @text-color;
+    border-bottom: 2px solid transparent;
+}
+#workspaces button.focused {
+    color: @green;
+    border-bottom: 2px solid @green;
+}
+#workspaces button:hover {
+    color : @accent;
+    border-bottom: 2px solid @accent;
+}
+
+
+/* Each module */
+
+/* 时钟 */
+#clock {
+    color: @text-color; /* 强制使用默认文本色 */
+    border-bottom: 2px solid rgba(169, 181, 213, 1); /* 分隔线 */
+}
+
+/* 网络 */
+#network {
+    color: @text-color; /* 强制使用默认文本色 */
+    border-bottom: 2px solid rgba(169, 181, 213, 1); /* 分隔线 */
+}
+
+#custom-touchpad.disabled {
+    color: @green;  /* 禁用时显示绿色 */
+    border-bottom: 2px solid rgba(160, 208, 160, 1); /* 分隔线 */
+}
+#custom-touchpad.enabled {
+    color: @warning;  /* 启用时显示红色 */
+    border-bottom: 2px solid rgba(240, 128, 128, 1); /* 分隔线 */
+}
+
+/* 音频 */
+#pulseaudio {
+    color: @text-color; /* 强制使用默认文本色 */
+    border-bottom: 2px solid rgba(169, 181, 213, 1); /* 分隔线 */
+}
+#pulseaudio.muted {
+    color: @warning;
+    border-bottom: 2px solid rgba(169, 181, 213, 1); /* 分隔线 */
+}
+
+/* 背光 */
+#backlight {
+    color: @text-color; /* 强制使用默认文本色 */
+    border-bottom: 2px solid rgba(169, 181, 213, 1); /* 分隔线 */
+}
+
+/* 电池 */
+#battery {
+    color: @text-color; /* 强制使用默认文本色 */
+    border-bottom: 2px solid rgba(169, 181, 213, 1); /* 分隔线 */
+}
+#battery.good {
+    color: @green; /* green */
+    border-bottom: 2px solid rgba(160, 208, 160, 1); /* 分隔线 */
+}
+#battery.warning {
+    color: @peach; /* peach */
+    border-bottom: 2px solid rgba(250, 179, 135, 1); /* 分隔线 */
+}
+#battery.critical {
+    color: @warning;
+    border-bottom: 2px solid rgba(240, 128, 128, 1); /* 分隔线 */
+}
+
+#tray {
+    padding-right: 2px;
+    padding-left: 2px;
+    border-bottom: 2px solid rgba(169, 181, 213, 1); /* 分隔线 */
+}
+

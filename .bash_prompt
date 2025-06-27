@@ -1,0 +1,122 @@
+# 自定义提示符样式
+
+#PS1="${YELLOW}╔${RED}[\h]${YELLOW}═${GREEN}[\w]\n${YELLOW}╚${GREEN}\$${RESET} "
+
+# 确保脚本在 Git 工作树中运行
+#git rev-parse --is-inside-work-tree &>/dev/null || { echo "Not inside a Git repository!"; exit 1; }
+
+# 定义一个函数 prompt_git，用于显示 Git 仓库的状态信息
+prompt_git() {
+
+    # 首先检查是否在Git仓库中（包括裸仓库）
+    if ! git rev-parse --is-inside-work-tree &>/dev/null && 
+       ! git rev-parse --is-bare-repository &>/dev/null; then
+        return;
+    fi
+
+    local branchName;
+    local repoStatus="";
+
+    ## 检查是否是裸仓库
+    #if git rev-parse --is-bare-repository &>/dev/null; then
+    #    echo -e "(bare)";
+    #    return;
+    #fi
+
+
+    # 普通仓库的处理逻辑
+    branchName="$(git symbolic-ref --quiet --short HEAD 2>/dev/null || \
+                 git describe --all --exact-match HEAD 2>/dev/null || \
+                 git rev-parse --short HEAD 2>/dev/null || \
+                 echo '(unknown)')";
+
+
+    #裸
+   # bare_branchName="$(git symbolic-ref --quiet --short HEAD 2>/dev/null || \
+   #     git rev-parse --short HEAD 2>/dev/null || \
+   #     echo '(unknown)')";
+
+    # 如果是裸仓库，尝试获取分支名，失败则显示 (bare)
+    bareOrNot=$(git rev-parse --is-bare-repository);
+
+    # 格式化输出
+    [ -n "$repoStatus" ] && repoStatus=" [$repoStatus]";
+    
+    case "$bareOrNot" in
+        "true")
+            printf "(bare)"
+            sep=" ";
+            printf "%s%s" "${branchName}" "${repoStatus}";
+            ;;
+        "false")
+            # 特殊处理 Chromium/Blink 仓库
+            repoUrl="$(git config --get remote.origin.url)";
+
+            if grep -q 'chromium/src.git' <<< "${repoUrl}"; then
+                repoStatus+='*';
+            else
+                # 检查暂存区改动（兼容旧版 Git）
+                if ! git diff --cached --quiet --ignore-submodules 2>/dev/null; then
+                    repoStatus+='+';
+                fi;
+                # 检查工作区改动
+                if ! git diff-files --quiet --ignore-submodules 2>/dev/null; then
+                    repoStatus+='!';
+                fi;
+                # 检查未跟踪文件
+                if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+                    repoStatus+='?';
+                fi;
+                # 检查 stash
+                if git rev-parse --verify refs/stash &>/dev/null; then
+                    repoStatus+='$';
+                fi;
+            fi;
+            #echo -e "${1}${branchName}${2}"
+            sep=" ";
+            printf "%s%s" "${branchName}" "${repoStatus}";
+            ;;
+    esac
+
+}
+
+    YELLOW="\[\033[0;33m\]"
+    BLUE="\[\033[0;34m\]"
+    PURPLE="\[\033[0;35m\]"
+    CYAN="\[\033[0;36m\]"
+    WHITE="\[\033[0;37m\]"
+    RED="\[\033[0;31m\]"
+    GREEN="\[\033[0;32m\]"
+    RESET="\[\033[0m\]"
+
+# 根据用户身份高亮显示用户名
+if [[ "${USER}" == "root" ]]; then
+    userStyle="${RED}"; # root 用户显示为红色
+else
+    userStyle="${BLUE}"; # 普通用户显示为橙色
+fi;
+
+# 根据 SSH 连接状态高亮显示主机名
+if [[ "${SSH_TTY}" ]]; then
+    hostStyle="${bold}${RED}"; # SSH 连接时显示为加粗红色
+else
+    hostStyle="${YELLOW}"; # 本地终端显示为黄色
+fi;
+
+PS1='';
+PS1+="${YELLOW}╔";
+PS1+="${RED}[\h]";
+PS1+="${YELLOW}═";
+PS1+="${GREEN}[\w]";
+PS1+="${YELLOW}-${YELLOW}${RED}[${BLUE}\$(prompt_git)${RED}]${RESET}"; # 调用 prompt_git 函数显示 Git 状态
+PS1+="\n"; # 换行
+PS1+="${YELLOW}╚";
+PS1+="${GREEN}\$";
+PS1+="${RESET}";
+#PS1+="";
+export PS1; # 导出 PS1 变量
+
+# 设置次级提示符（用于多行命令）
+PS2="\[${yellow}\]→ \[${reset}\]"; # 显示箭头符号（黄色）并重置颜色
+export PS2; # 导出 PS2 变量
+

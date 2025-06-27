@@ -1,0 +1,117 @@
+[window]
+#opacity = 0.7
+opacity = 1
+blur = true
+
+[keyboard]
+bindings = [
+{ key = "j", mods = "Control", action = "ScrollLineDown" },
+{ key = "k", mods = "Control", action = "ScrollLineUp" },
+{ key = "j", mods = "Alt", action = "ScrollHalfPageDown" },
+{ key = "k", mods = "Alt", action = "ScrollHalfPageUp" },
+{ key = "g", mods = "Alt", action = "ScrollToBottom" },
+{ key = "g", mods = "Control", action = "ScrollToTop" },
+{ key = "c", mods = "Alt", action = "Copy" },
+{ key = "v", mods = "Alt", action = "Paste" },
+{ key = "h", mods = "Control", action = "ClearSelection" },
+{ key = ".", mods = "Alt", action = "SearchForward" },
+{ key = ",", mods = "Alt", action = "SearchBackward" },
+]
+
+[colors.primary]
+background = "#151622"
+foreground = "#cdd6f4"
+dim_foreground = "#7f849c"
+bright_foreground = "#cdd6f4"
+
+[colors.cursor]
+text = "#151622"
+cursor = "#f5e0dc"
+
+[colors.selection]
+text = "#151622"
+background = "#f5e0dc"
+
+[colors.normal]
+black   = "#151622"
+red     = "#F08080"       
+green   = "#a0d0a0"       
+yellow  = "#dbd07f"       
+blue    = "#607bc3"       
+magenta = "#b280be"       
+cyan    = "#89b4fa"       
+white   = "#a9b5d5"       
+
+[colors.bright]
+black   = "#585e8f"       
+red     = "#F08080"       
+green   = "#a0d0a0"       
+yellow  = "#dbd07f"       
+blue    = "#607bc3"       
+magenta = "#b280be"       
+cyan    = "#89b4fa"       
+white   = "#b6c0db"
+
+[colors.search.matches]
+foreground = "#1d1e27"
+background = "#a9b5d5"
+
+[colors.search.focused_match]
+foreground = "#1d1e27"
+background = "#a9b5d5"
+
+[colors.footer_bar]
+foreground = "#1d1e27"
+background = "#a9b5d5"
+
+[colors.hints.start]
+foreground = "#1d1e27"
+background = "#faed87"
+
+[colors.hints.end]
+foreground = "#1d1e27"
+background = "#a9b5d5"
+
+[[colors.indexed_colors]]
+index = 16
+color = "#faed87"
+
+[[colors.indexed_colors]]
+index = 17
+color = "#fa9bc1"
+
+
+[cursor]
+blink_timeout = 3
+
+[cursor.style]
+blinking = "Always"
+
+[font]
+size = 12.0
+
+[font.bold]
+family = "0xProto Nerd Font"
+#family = "Hack"
+#family = "Hack Nerd Font"
+#family = "IntoneMono Nerd Font"
+
+[font.bold_italic]
+family = "0xProto Nerd Font"
+#family = "Hack"
+#family = "Hack Nerd Font"
+#family = "IntoneMono Nerd Font"
+
+[font.italic]
+family = "0xProto Nerd Font"
+#family = "Hack"
+#family = "Hack Nerd Font"
+# family = "IntoneMono Nerd Font"
+
+[font.normal]
+family = "0xProto Nerd Font"
+#family = "Hack"
+#family = "Hack Nerd Font"
+# family = "IntoneMono Nerd Font"
+
+

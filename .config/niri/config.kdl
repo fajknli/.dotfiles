@@ -1,0 +1,415 @@
+spawn-at-startup "waybar"
+spawn-at-startup "qutebrowser"
+spawn-at-startup "prismlauncher"
+spawn-at-startup "alacritty"
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+environment {
+    QT_QPA_PLATFORM "wayland"
+    DISPLAY null
+}
+
+cursor {
+    xcursor-theme "breeze_cursors"
+    xcursor-size 48
+
+    hide-when-typing
+    hide-after-inactive-ms 1000
+}
+
+overview {
+    zoom 0.5
+    backdrop-color "#151622"
+
+    workspace-shadow {
+        // off
+        softness 40
+        spread 10
+        offset x=0 y=10
+        color "#00000090"
+    }
+}
+
+clipboard {
+    disable-primary
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+
+
+
+
+
+workspace "Terminal"
+workspace "Browser"
+workspace "Minecraft"
+
+window-rule {
+    match app-id=r#"Alacritty$"#
+    open-on-workspace "Terminal"
+    open-maximized true
+}
+window-rule {
+    match app-id=r#"^org\.qutebrowser\.qutebrowser$"#
+    open-on-workspace "Browser"
+    open-maximized true
+}
+window-rule {
+    match app-id=r#"^org\.prismlauncher\.PrismLauncher$"#
+    open-on-workspace "Minecraft"
+}
+window-rule {
+    match title="^Minecraft"
+    open-maximized true
+    block-out-from "screencast"
+    open-on-workspace "Minecraft"
+}
+
+// Block out password managers from screencasts.
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screencast"
+}
+
+// Indicate screencasted windows with red colors.
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    border {
+        inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        color "#7d0d2d70"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+}
+
+
+//------------------------------------------------------------------
+
+
+// Open the Firefox picture-in-picture player as floating by default.
+//window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    // match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    // open-floating true
+//}
+
+//------------------------------------------------------------------
+
+
+// Example: block out two password managers from screen capture.
+// (This example rule is commented out with a "/-" in front.)
+///-window-rule {
+//    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+//    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+//
+//    block-out-from "screen-capture"
+
+    // Use this instead if you want them visible on third-party screenshot tools.
+    // block-out-from "screencast"
+//}
+
+//------------------------------------------------------------------
+
+
+// Example: enable rounded corners for all windows.
+// (This example rule is commented out with a "/-" in front.)
+///-window-rule {
+//    geometry-corner-radius 12
+//    clip-to-geometry true
+//}
+
+// Input device configuration.
+// Find the full list of options on the wiki:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+input {
+    keyboard {
+        xkb {
+        }
+        numlock
+    }
+
+    touchpad {
+        //off
+    }
+
+    mouse {
+    }
+
+    trackpoint {
+    }
+}
+
+//------------------------------------------------------------------
+
+
+output "eDP-1" {
+    mode "2560x1600@240.000"
+    // 屏幕缩放You can use integer or fractional scale, for example use 1.5 for 150% scale.
+    scale 1.5
+    // 屏幕转向normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
+    transform "normal"
+
+//    position x=1280 y=0
+    // 工作区背景
+    background-color "#151622"
+}
+//------------------------------------------------------------------
+
+layout {
+    gaps 2
+    center-focused-column "always"
+    //default-column-display "tabbed"
+    //tab-indicator {
+    //    hide-when-single-tab
+    //}
+
+    // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
+    preset-column-widths {
+        proportion 0.5
+        proportion 0.6
+        proportion 0.8
+    }
+
+    // You can also customize the heights that "switch-preset-window-height" (Mod+Shift+R) toggles between.
+    // preset-window-heights { }
+
+    // You can change the default width of the new windows.
+    // If you leave the brackets empty, the windows themselves will decide their initial width.
+    default-column-width {
+        proportion 0.8;
+    }
+
+
+    focus-ring {
+        width 2
+        active-color "#a9b5d5"
+        inactive-color "#151622"
+    }
+
+    border {
+        off
+        width 2
+        active-color "#a9b5d5"
+        inactive-color "#151622"
+        urgent-color "#607bc3"
+    }
+
+    shadow {
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+
+    // 留空
+    struts {
+        // left 64
+        // right 64
+        // top 64
+        // bottom 64
+    }
+}
+
+//------------------------------------------------------------------
+
+//------------------------------------------------------------------
+
+
+animations {
+    // off
+    slowdown 2.0
+}
+
+//------------------------------------------------------------------
+
+
+
+//------------------------------------------------------------------
+
+
+binds {
+    // Mod-Shift-/, which is usually the same as Mod-?,
+    // shows a list of important hotkeys.
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    // Suggested binds for running programs: terminal, app launcher, screen locker.
+    // Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    //Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    //Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+D hotkey-overlay-title="Run an Application: wmenu" { spawn "wmenu-run"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    // You can also use a shell. Do this if you need pipes, multiple commands, etc.
+    // Note: the entire command goes as a single argument in the end.
+    // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
+
+    // Example volume keys mappings for PipeWire & WirePlumber.
+    // The allow-when-locked=true property makes them work even when the session is locked.
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+    Ctrl+Alt+0 allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+    Ctrl+Alt+9 allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    Ctrl+Alt+8        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    // 背光调节
+    XF86MonBrightnessUp  allow-when-locked=true { spawn "brightnessctl" "s" "5+"; }
+    Ctrl+Alt+Shift+0  allow-when-locked=true { spawn "brightnessctl" "s" "5+"; }
+    XF86MonBrightnessDown  allow-when-locked=true { spawn "brightnessctl" "s" "5-"; }
+    Ctrl+Alt+Shift+9  allow-when-locked=true { spawn "brightnessctl" "s" "5-"; }
+
+    // Pot 翻译
+    //Ctrl+Alt+t { spawn "curl" "127.0.0.1:60828/selection_translate"; }
+
+    Mod+o repeat=false { toggle-overview; }
+
+    // Make the backdrop light.
+//    overview {
+//        backdrop-color "#777777"
+//    }
+
+    Mod+Shift+Q { close-window; }
+    Mod+H     { focus-column-left; }
+    Mod+q     { focus-column-left; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
+    Mod+e     { focus-column-right; }
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+    Mod+Alt+j          { focus-workspace-down; }
+    Mod+Alt+k          { focus-workspace-up; }
+    Mod+U              { focus-workspace-down; }
+    Mod+I              { focus-workspace-up; }
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    //Move columns around
+    Mod+Shift+J         { move-column-to-workspace-down; }
+    Mod+Shift+K         { move-column-to-workspace-up; }
+
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    // Usually scrolling up and down with Shift in applications results in
+    // horizontal scrolling; these binds replicate that.
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    // full screen
+    Mod+f { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+
+    Mod+Ctrl+F { expand-column-to-available-width; }
+
+    Mod+C { center-column; }
+
+    // Center all fully visible columns on screen.
+    Mod+Ctrl+C { center-visible-columns; }
+
+    Mod+Minus { set-column-width "-5%"; }
+    Mod+Equal { set-column-width "+5%"; }
+
+    // Finer height adjustments when in column with other windows.
+    Mod+Shift+Minus { set-window-height "-5%"; }
+    Mod+Shift+Equal { set-window-height "+5%"; }
+
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+W { toggle-column-tabbed-display; }
+
+
+    Ctrl+Alt+Shift+P { screenshot; }
+    Ctrl+Alt+Shift+S { screenshot-screen; }
+    Ctrl+Alt+s { screenshot-window; }
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    Mod+Shift+P { power-off-monitors; }
+
+    Shift+Return {
+        spawn "sh" "-c" "
+        if ! pgrep ydotoold >/dev/null; then
+            sudo ydotoold &
+            sleep 1
+        fi
+
+        # 使用 coproc 让 zenity 在后台运行，并读取其输出
+        coproc ZENITY {
+            zenity --entry 2>/dev/null
+        }
+        sleep 0.5
+        fcitx5-remote -t
+
+        # 等待用户输入并关闭 zenity
+        read -u \"${ZENITY[0]}\" INPUT
+
+        # 如果有输入，则用 ydotool 粘贴
+        if [ -n \"$INPUT\" ]; then
+            echo \"$INPUT\" | wl-copy
+            sudo ydotool key 29:1 47:1 47:0 29:0 14:1 14:0
+        fi
+
+    "
+}
+    //Mod+t { spawn "~/scripts/scripts_tools/mcinput.sh"; }
+}

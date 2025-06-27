@@ -1,0 +1,130 @@
+{
+  "layer": "top",
+  "position": "top",
+  "exclusive": true,
+  "height": 20,
+  "spacing": 8,
+
+  "modules-left": ["custom/arch", "niri/workspaces"],
+  //"modules-left": ["custom/arch", "sway/workspaces"],
+  //"modules-left": ["custom/arch", "hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["tray", "network", "custom/touchpad", "pulseaudio", "backlight", "battery"],
+
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+      "locked": " ",
+      "unlocked": " "
+    }
+  },
+
+  // 工作区模块
+  "niri/workspaces": {
+    "format": "{icon} {name}",
+    "format-icons": {
+      "focused": "",
+      "urgent": "",
+      "default": ""
+    },
+    "disable-scroll": false
+  },
+
+  "tray": {
+    "icon-size": 15,
+    "spacing": 3
+  },
+
+  "custom/arch": {
+    "format": " 󰣇 ",
+    "tooltip": false
+  },
+
+  "clock": {
+    "format": "{:%F-%H:%M [%V/53]}",
+    "format-alt": "{:  %Y %B %d, %A [%R]}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#89b4fa'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'><b>{}</b></span>",
+        "weeks": "<span color='#74c7ec'><b>W{}</b></span>",
+        "weekdays": "<span color='#cba6f7'><b>{}</b></span>",
+        "today": "<span color='#f38ba8'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+
+  "cpu": {
+    "format": "{usage}% ",
+    "tooltip": false
+  },
+
+  "memory": {
+    "format": "{}% "
+  },
+
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰫃", "󰫄", "󰫅", "󰫆", "󰫇", "󰫈"]
+  },
+
+  "battery": {
+    "bat": "BAT0",
+    "interval": 60,
+    "states": {
+      "good": 101,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰉁{icon}{capacity}%",
+    "format-discharging": "{icon} {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["󰁺","󰁼","󰁾","󰂀","󰁹"]
+  },
+
+  "custom/touchpad": {
+    "exec": "~/.config/waybar/scripts/touchpad-status.sh",
+    "interval": 1,
+    "return-type": "json",
+    "on-click": "swaymsg 'input type:touchpad events toggle'",
+    "format": "{text}",
+    "tooltip": false
+  },
+
+  "network": {
+    "interval": 5,
+    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-ethernet": " {ipaddr}/{cidr}",
+    "format-disconnected": "⚠ Offline",
+    "tooltip-format": "󰀂 {ifname}\n󰩟 {gwaddr}\n󱘖 {bandwidthDownBits} ↓{bandwidthUpBits} ↑\n󰢼 {frequency} GHz",
+    "format-alt": " {signalStrength}% ({essid})",
+    "max-length": 30,
+    //"smooth-transition": true
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+  }
+}
+

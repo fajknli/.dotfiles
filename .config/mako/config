@@ -1,0 +1,10 @@
+anchor=top-right
+background-color=#1c1c1ccc
+border-color=#e3e3e3
+border-radius=8
+border-size=2
+ignore-timeout=1
+default-timeout=5000
+font=Hack 14
+text-color=#e3e3e3
+width=400
