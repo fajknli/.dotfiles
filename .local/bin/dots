@@ -1,0 +1,84 @@
+#!/bin/sh
+
+# Bash feature 'pipefail'
+# set -euo pipefail
+set -eu
+
+# 出现参数解析问题,使用eval(硬编码避免风险)
+DOTFILES_CMD="/usr/bin/git --git-dir=\"$HOME/.dotfiles/\" --work-tree=\"$HOME\""
+
+if [ "$#" -gt 0 ] && [ "$1" = "-h" ]; then
+    echo "用法: $0 [提交信息]"
+    exit 0
+fi
+
+if [ ! -d "$HOME/.dotfiles" ]; then
+    echo "There are no .dotfiles here!!"
+    exit 1
+fi
+
+if ! command -v notify-send >/dev/null; then
+    echo "Command notify-send not found" >&2
+fi
+
+# 核心跟踪列表（按需修改）
+# positional arguments
+set -- \
+    "$HOME/.config/niri" \
+    "$HOME/.config/fcitx5" \
+    "$HOME/.config/foot" \
+    "$HOME/.config/fuzzel" \
+    "$HOME/.config/gtk-3.0" \
+    "$HOME/.config/hypr" \
+    "$HOME/.config/kitty" \
+    "$HOME/.config/lf" \
+    "$HOME/.config/mako" \
+    "$HOME/.config/mc" \
+    "$HOME/.config/nvim" \
+    "$HOME/.config/qutebrowser" \
+    "$HOME/.config/sway" \
+    "$HOME/.config/waybar" \
+    "$HOME/.config/zellij" \
+    "$HOME/.local/bin" \
+    "$HOME/notes" \
+    "$HOME/.alacritty.toml" \
+    "$HOME/.bash_aliases" \
+    "$HOME/.bash_exports" \
+    "$HOME/.bash_functions" \
+    "$HOME/.bash_profile" \
+    "$HOME/.bash_prompt" \
+    "$HOME/.bashrc" \
+    "$HOME/.curlrc" \
+    "$HOME/.wgetrc" \
+    "$HOME/README.md"
+
+safe_add() {
+    # Reset the stage
+    eval "$DOTFILES_CMD reset --quiet"
+
+    for item in "$@"; do
+        if [ -e "$item" ]; then
+            eval "$DOTFILES_CMD add \"$item\""
+        fi
+    done
+}
+
+safe_add "$@"
+#eval "$DOTFILES_CMD add --all"
+
+message="${1:-Update dotfiles at $(date +"%Y-%m-%d %H:%M:%S")}"
+
+if ! eval "$DOTFILES_CMD commit -m \"$message\""; then
+    echo "Commit failed!" >&2
+    exit 1
+fi
+
+
+if eval "$DOTFILES_CMD push origin main"; then
+    printf "\033[32m✓ .dotfiles 推送成功\033[0m\n"
+    notify-send -t 3000 ".dotfiles Sync" "✓ 推送成功"                    # mako notice
+else
+    printf "\033[31m✗ 推送失败，请检查网络或冲突\033[0m\n" >&2
+    notify-send -t 5000 ".dotfiles Sync" "✗ 推送失败！请检查终端"        # mako notice
+    exit 1
+fi
