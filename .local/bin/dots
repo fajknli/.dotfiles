@@ -14,11 +14,13 @@ fi
 
 if [ ! -d "$HOME/.dotfiles" ]; then
     echo "There are no .dotfiles here!!"
+    notify-send -u critical "There are no .dotfiles here!!"
     exit 1
 fi
 
 if ! command -v notify-send >/dev/null; then
     echo "Command notify-send not found" >&2
+    notify-send -u critical "Command notify-send not found"
 fi
 
 # 核心跟踪列表（按需修改）
@@ -48,8 +50,8 @@ set -- \
     "$HOME/.bash_profile" \
     "$HOME/.bash_prompt" \
     "$HOME/.bashrc" \
-    "$HOME/.wgetrc" \
     "$HOME/README.md"
+
 
 safe_add() {
     # Reset the stage
@@ -58,6 +60,7 @@ safe_add() {
     for item in "$@"; do
         if [ -e "$item" ]; then
             eval "$DOTFILES_CMD add \"$item\""
+            notify-send -u low "Added \"$item\""
         fi
     done
 }
@@ -69,15 +72,16 @@ message="${1:-Update dotfiles at $(date +"%Y-%m-%d %H:%M:%S")}"
 
 if ! eval "$DOTFILES_CMD commit -m \"$message\""; then
     echo "Commit failed!" >&2
+    notify-send -u critical "Commit failed!"
     exit 1
 fi
 
 
 if eval "$DOTFILES_CMD push origin main"; then
     printf "\033[32m✓ .dotfiles 推送成功\033[0m\n"
-    notify-send -t 3000 ".dotfiles Sync" "✓ 推送成功"                    # mako notice
+    notify-send -u low ".dotfiles Sync" "✓ 推送成功"                    # mako notice
 else
     printf "\033[31m✗ 推送失败，请检查网络或冲突\033[0m\n" >&2
-    notify-send -t 5000 ".dotfiles Sync" "✗ 推送失败！请检查终端"        # mako notice
+    notify-send -u low ".dotfiles Sync" "✗ 推送失败！请检查终端"        # mako notice
     exit 1
 fi
