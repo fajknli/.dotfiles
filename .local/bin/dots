@@ -48,7 +48,6 @@ set -- \
     "$HOME/.bash_profile" \
     "$HOME/.bash_prompt" \
     "$HOME/.bashrc" \
-    "$HOME/.curlrc" \
     "$HOME/.wgetrc" \
     "$HOME/README.md"
 
