@@ -1,0 +1,25 @@
+#!/bin/sh
+
+countries="${1:-长沙}"
+
+# 缓存文件路径
+cache_dir="$HOME/.cache/weather"
+cache_file="$cache_dir/wttr"
+
+# 确保缓存目录存在
+mkdir -p "$cache_dir"
+
+# 获取天气数据(无论缓存是否存在都获取新数据)
+weather="$(curl -s "wttr.in/$countries?format=%l:+%c+%C+%f++%w" 2>/dev/null)"
+
+if [ -n "$weather" ]; then
+    printf '%s' "$weather" > "$cache_file"
+    notify-send "$weather"
+else
+    if [ -f "$cache_file" ]; then
+        weather="$(cat "$cache_file")"
+        notify-send "[cache] $weather"
+    else
+        notify-send "Can not get the weather even in cache"
+    fi
+fi

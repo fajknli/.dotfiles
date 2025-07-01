@@ -1,0 +1,23 @@
+# Color Definitions (HEX Format)
+foreground="#a9b5d5"
+background="#151622"
+separator="#585e8f"
+
+# 16-color palette
+color0="#151622"   # Black
+color1="#f08080"   # Red
+color2="#a0d0a0"   # Green
+color3="#dbd07f"   # Yellow
+color4="#607bc3"   # Blue
+color5="#b280be"   # Magenta
+color6="#89b4fa"   # Cyan
+color7="#a9b5d5"   # White (Light Gray)
+
+color8="#585e8f"   # Bright Black (Dark Gray)
+color9="#f08080"   # Bright Red
+color10="#a0d0a0"  # Bright Green
+color11="#dbd07f"  # Bright Yellow
+color12="#607bc3"  # Bright Blue
+color13="#b280be"  # Bright Magenta
+color14="#89b4fa"  # Bright Cyan
+color15="#b6c0db"  # Bright White

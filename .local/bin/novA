@@ -1,18 +1,17 @@
 #!/bin/sh
-# Author:        a6dg2uv
-# Created Time:  2025-04-16 14:58
+# Author:        fajknli
+# Created Time:  2025-06-30 01:36
 
 sudo systemctl stop dae
 
-echo "stop dae..."
+echo "stop dae..."; notify-send -u low "stop dae..."
 
-sudo systemctl disable dae
+sudo systemctl disable dae && echo "disable dae..."; notify-send -u low "disable dae..."
 
 #sudo systemctl status dae
-echo "check if alive"
-systemctl is-active dae
+systemctl is-active dae && echo "dae is inactive..."; notify-send -u low "dae is inactive..."
 
-sudo rm /etc/sysctl.conf  && echo "remove /etc/sysctl.conf"
-sudo rm -r /etc/dae && echo "remove /etc/dae"
-sudo rm -r /usr/local/share/dae && echo "remove /usr/local/share/dae"
+sudo rm /etc/sysctl.conf  && echo "remove /etc/sysctl.conf"; notify-send -u low "remove /etc/sysctl.conf"
+sudo rm -r /etc/dae && echo "remove /etc/dae"; notify-send -u low "remove /etc/dae"
+sudo rm -r /usr/local/share/dae && echo "remove /usr/local/share/dae"; notify-send -u low "remove /usr/local/share/dae"
 

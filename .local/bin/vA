@@ -1,58 +1,62 @@
 #!/bin/sh
-# Author:        a6dg2uv
+# Author:        fajknli
 # Created Time:  2025-04-16 11:32
+# Modify Time:  2025-06-30 01:25
 
+if ! command -v notify-send; then
+    exit 1
+fi
 
 # mkdir命令 目录内的所有文件、子目录均不受影响,只有 rm、cp、mv 等命令才会修改或删除文件。
-
-cd $HOME/proxy
+mkdir -p "$HOME/proxy" && cd "$HOME/proxy" || exit 1
 
 if [ ! -f "/etc/sysctl.conf" ]; then
     echo "Try to copy sysctl.conf to /etc/"
+    notify-sent "Try to copy sysctl.conf to /etc/"
     sudo cp sysctl.conf /etc/ || { echo "Failed to copy sysctl.conf,mayby not in root"; exit 1; }
 fi
 
 # sudo sysctl -p
 
 if [ ! -d "/etc/dae" ]; then
-    echo "Try to make /etc/dae/ dir"
-    sudo mkdir -p /etc/dae/
-    echo " Try to copy config.dae tp /etc/dae/"
-    sudo cp config.dae /etc/dae/ || { echo "Failed to copy config.dae,sure in root?"; exit 1; }
+    echo "Try to make /etc/dae/ dir" && notify-send -u low "Try to make /etc/dae/ dir"
+    sudo mkdir -p /etc/dae/ || echo "Cant mkdir /etc/dae"; notify-send -u critical "Cant mkdir /etc/dae" && echo "Try to copy config.dae tp /etc/dae/"; notify-send -u low "Try to copy config.dae tp /etc/dae/"
+    sudo cp config.dae /etc/dae/ || { echo "Failed to copy config.dae,sure in root?"; notify-send -u critical "Failed to copy config.dae,sure in root?"; exit 1; }
 fi
 
-set_perm=$(stat -c "%a" /etc/dae/config.dae)
+# check if config.dae premision is 0640
+set_perm="$(stat -c "%a" /etc/dae/config.dae)"
 
-if [ ! "$set_perm" == "640" ]; then
-    echo "Change config.dae file mod"
-    sudo chmod 0640 /etc/dae/config.dae || { echo "Failed to change permissions"; exit 1; }
+if [ ! "$set_perm" -eq "640" ]; then
+    echo "Change config.dae file mod" && notify-send -u low "Change config.dae file mod"
+    sudo chmod 0640 /etc/dae/config.dae || { echo "Failed to change permissions"; notify-send -u critical "Failed to change permissions"; exit 1; }
 fi
 
 if [ ! -d "/usr/local/share/dae" ]; then
-    echo "Try to make a /usr/local/share/dae dir"
+    echo "Try to make a /usr/local/share/dae dir"; notify-send -u low "Try to make a /usr/local/share/dae dir"
     sudo mkdir -p /usr/local/share/dae/
-    sudo cp geoip.dat geosite.dat /usr/local/share/dae/ || { echo "Failed to copy files"; exit 1; }
+    sudo cp geoip.dat geosite.dat /usr/local/share/dae/ || { echo "Failed to copy files"; notify-send -u critical "Failed to copy files"; exit 1; }
 fi
 
 # 如果使用这个，会一直停留这个界面，不知道怎么处理,可能用cat什么的可以
 #systemctl status dae.service || { echo "Can not find dae.service"; exit 1; }
 
 echo "start dae..."
+notify-send -u low "start dae..."
 
 # 重载配置（修改配置后使用）
-sudo systemctl enable dae.service || { echo "Failed to reload service"; exit 1; }
+sudo systemctl enable dae.service || { echo "Failed to reload service"; notify-send -u critical "Failed to reload service"; exit 1; }
 
-sudo systemctl start dae.service || { echo "Failed to reload service"; exit 1; }
+sudo systemctl start dae.service || { echo "Failed to reload service"; notify-send -u critical "Failed to reload service"; exit 1; }
 
-sudo systemctl reload dae.service || { echo "Failed to reload service"; exit 1; }
-
-
+sudo systemctl reload dae.service || { echo "Failed to reload service"; notify-send -u critical "Failed to reload service"; exit 1; }
 
 #systemctl status dae.service
 #直接查询系统属性
 #systemctl show --property=ActiveState --property=SubState dae.service | cut -d= -f2
 #基础状态
-systemctl is-active dae.service
+state="$(systemctl is-active dae.service)"
 
-
-
+if [ "$state" = "active" ]; then
+    notify-send -u low " dae is active now..."
+fi
