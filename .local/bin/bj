@@ -1,0 +1,106 @@
+#!/bin/sh
+
+file_list="
+fcitx5      |.config/fcitx5/config
+fcitx5      |.config/fcitx5/profile
+fcitx5      |.config/fcitx5/conf/cached_layouts
+fcitx5      |.config/fcitx5/conf/chttrans.conf
+fcitx5      |.config/fcitx5/conf/claassicui.conf
+fcitx5      |.config/fcitx5/conf/notifications.conf
+fcitx5      |.config/fcitx5/conf/pinyin.conf
+fcitx5      |.config/fcitx5/conf/punctuation.conf
+fcitx5      |.config/fcitx5/conf/waylandim.conf
+fcitx5      |.config/fcitx5/conf/xim.conf
+foot        |.config/foot/foot.ini
+fuzzel      |.config/fuzzel/fuzzel.ini
+gtk         |.config/gtk-3.0/settings.ini
+htop        |.config/htop/htoprc
+hyprland    |.config/hypr/hyprland.conf
+kitty       |.config/kitty/kitty.conf
+lf          |.config/lf/lfrc
+lf          |.config/lf/colors
+lf          |.config/lf/icons
+mako        |.config/mako/config
+mc          |.config/mc/ini
+mc          |.config/mc/mc.default.keymap
+mc          |.config/mc/mc.keymap
+mc          |.config/mc/panels.ini
+niri        |.config/niri/config.kdl
+neovim      |.config/nvim/lua/colors/fajknli.lua
+neovim      |.config/nvim/lua/config/appearance.lua
+neovim      |.config/nvim/lua/config/autocmds.lua
+neovim      |.config/nvim/lua/config/filetypes.lua
+neovim      |.config/nvim/lua/config/init.lua
+neovim      |.config/nvim/lua/config/keymaps.lua
+neovim      |.config/nvim/lua/config/netrw.lua
+neovim      |.config/nvim/lua/config/options.lua
+neovim      |.config/nvim/lua/config/settings.lua
+neovim      |.config/nvim/lua/plugins/init.lua
+neovim      |.config/nvim/lua/utils/utils.lua
+neovim      |.config/nvim/init.lua
+neovim      |.config/nvim/lazy-lock.json
+qutebrowser |.config/qutebrowser/colorschemes/fajknli.py
+qutebrowser |.config/qutebrowser/config.py
+qutebrowser |.config/qutebrowser/keymaps.py
+qutebrowser |.config/qutebrowser/quickmarks.py
+river       |.config/river/init
+sway        |.config/sway/config
+waybar      |.config/waybar/scripts/powermenu.sh
+waybar      |.config/waybar/scripts/touchpad-status.sh
+waybar      |.config/waybar/config
+waybar      |.config/waybar/style.css
+zellij      |.config/zellij/config.kdl
+alacritty   |.alacritty.toml
+bash        |.bashrc
+bash        |.bash_aliases
+bash        |.bash_exports
+bash        |.bash_functions
+bash        |.bash_profile
+bash        |.bash_prompt
+curl        |.curlrc
+wget        |.wgetrc
+input       |.inputrc
+git         |.gitconfig
+bin         |.local/bin/bj
+bin         |.local/bin/colorschemes
+bin         |.local/bin/dots
+bin         |.local/bin/gjwd
+bin         |.local/bin/gxwd
+bin         |.local/bin/music_name-shift
+bin         |.local/bin/music_tans-space-to-slash
+bin         |.local/bin/note_edit-rst-file
+bin         |.local/bin/novA
+bin         |.local/bin/vA
+bin         |.local/bin/ntp-time
+bin         |.local/bin/pm
+bin         |.local/bin/pmp
+bin         |.local/bin/pmr
+bin         |.local/bin/search
+bin         |.local/bin/setup_bootstrap
+bin         |.local/bin/setup_dotfile-setup
+bin         |.local/bin/weather
+"
+
+choice_file="$(printf '%s' "$file_list" | grep -v '^$' | wmenu -i -l 15 -f "0xProto Nerd Font Regular 12" -N "#1f2032" -n "#a9b5d5" -S "#a0d0a0" -s "#151622")"
+
+if ! command -v foot; then
+    echo "There no command foot" >&2
+    notify-send "There no command foot"
+    exit 1
+fi
+
+
+if [ -n "$choice_file" ]; then
+    case "$choice_file" in
+        *"|"*)
+            file_path="$HOME/$(printf '%s' "$choice_file" | awk -F '|' '{print $2}')"
+            if [ -f "$file_path" ]; then
+                 foot nvim "$file_path"
+            fi
+            ;;
+        *)
+            echo "no such file"
+            notify-send "no such file"
+            ;;
+    esac
+fi

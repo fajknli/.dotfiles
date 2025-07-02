@@ -370,19 +370,6 @@ cpu_compare_versus              |https://versus.com/cn/cpu
 sphinx-themes                   |https://sphinx-themes.org/
 sphinx-reST-guide               |https://it.readthedocs.io/en/latest/usage/restructuredtext/index.html?highlight=restructuredtext
 sphinx-reST-syntax              |https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
-
-
-
-
-
-
-
-
-
-
-
-
-
 "
 
 if ! command -v wmenu >/dev/null 2>&1; then
