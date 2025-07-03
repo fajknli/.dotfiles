@@ -122,7 +122,6 @@ vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { desc = 'Previous buffer', 
 vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', { desc = 'Delete buffer', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>bl', ':buffers<CR>', { desc = 'List buffers', noremap = true, silent = true })
 
-
 -- 搜索
 --vim.api.nvim_set_keymap('n', '<silent> <leader><leader>', ':nohlsearch<CR>', { noremap = true, silent = true })
 --vim.api.nvim_set_keymap('v', '<silent> *', ':<C-u>call VisualSelection("", "")<CR>/<C-R>=@/<CR><CR>', { noremap = true, silent = true })
@@ -152,21 +151,6 @@ vim.keymap.set('n', 'L', '$', { desc = 'Move to end of line', noremap = true, si
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and keep selection', noremap = true, silent = true })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and keep selection', noremap = true, silent = true })
 
--- 复制行内链接
-function CopyUrlFromLine()
-  local line = vim.fn.getline('.')
-  -- 匹配 http:// 或 https:// 开头的URL
-  local url = line:match('https?://[%w-_%.%?%.:/%+=&]+')
-  
-  if url then
-    vim.fn.setreg('+', url)  -- 复制到系统剪贴板
-    print('已复制URL: ' .. url)
-  else
-    print('未找到URL')
-  end
-end
-
-vim.keymap.set('n', '<leader>cu', CopyUrlFromLine)
 -- endofline
 
 

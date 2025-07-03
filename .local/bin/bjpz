@@ -37,6 +37,7 @@ neovim      |.config/nvim/lua/config/options.lua
 neovim      |.config/nvim/lua/config/settings.lua
 neovim      |.config/nvim/lua/plugins/init.lua
 neovim      |.config/nvim/lua/utils/utils.lua
+neovim      |.config/nvim/lua/utils/autocomment.lua
 neovim      |.config/nvim/init.lua
 neovim      |.config/nvim/lazy-lock.json
 qutebrowser |.config/qutebrowser/colorschemes/fajknli.py
@@ -61,7 +62,7 @@ curl        |.curlrc
 wget        |.wgetrc
 input       |.inputrc
 git         |.gitconfig
-bin         |.local/bin/bj
+bin         |.local/bin/bjpz
 bin         |.local/bin/colorschemes
 bin         |.local/bin/dots
 bin         |.local/bin/gjwd
@@ -96,6 +97,9 @@ if [ -n "$choice_file" ]; then
             file_path="$HOME/$(printf '%s' "$choice_file" | awk -F '|' '{print $2}')"
             if [ -f "$file_path" ]; then
                  foot nvim "$file_path"
+             else
+                 echo "The path has changed, plz check if the path exist"
+                 notify-send "The path has changed, plz check if the path exist"
             fi
             ;;
         *)

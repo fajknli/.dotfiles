@@ -65,3 +65,28 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
     end
   end,
 })
+
+-- 取消注释延续
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt.formatoptions:remove({ "r", "o" })  -- 相当于 setlocal formatoptions-=ro
+  end,
+})
+
+-- 复制行内链接
+function CopyUrlFromLine()
+  local line = vim.fn.getline('.')
+  -- 匹配 http:// 或 https:// 开头的URL
+  local url = line:match('https?://[%w-_%.%?%.:/%+=&]+')
+  
+  if url then
+    vim.fn.setreg('+', url)  -- 复制到系统剪贴板
+    print('已复制URL: ' .. url)
+  else
+    print('未找到URL')
+  end
+end
+
+vim.keymap.set('n', '<leader>cu', CopyUrlFromLine)
+
