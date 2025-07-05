@@ -62,7 +62,9 @@ curl        |.curlrc
 wget        |.wgetrc
 input       |.inputrc
 git         |.gitconfig
-bin         |.local/bin/bjpz
+bin         |.local/bin/clip
+bin         |.local/bin/calcu
+bin         |.local/bin/pzwj
 bin         |.local/bin/colorschemes
 bin         |.local/bin/dots
 bin         |.local/bin/gjwd

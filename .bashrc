@@ -24,6 +24,7 @@ fi
 # eval "$(zellij setup --generate-auto-start bash)"
 # 自动启动 zoxide,智能化现代cd
 # eval "$(zoxide init --cmd cd bash)"
+wl-paste --watch cliphist store &
 
 # Bash 模式
 set -o emacs

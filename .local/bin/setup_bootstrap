@@ -55,6 +55,7 @@ cli_tools=(
     unrar wl-mirror firejail
     lemurs zoxide wev neomutt
     zoxide imagemagick chafa fd ripgrep poppler
+    bc
 )
 
 # ----------------------------------------

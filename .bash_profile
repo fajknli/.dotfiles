@@ -10,6 +10,10 @@ export LC_ALL=en_US.UTF-8
 # export LANG=zh_CN.UTF-8
 # export LC_ALL=zh_CN.UTF-8
 
+# 启动剪切板历史记录
+wl-paste --watch cliphist store &
+
+
 export BROWSER="/usr/bin/firefox"
 
 # 启动一些后台程序（如果需要）
