@@ -1,22 +1,36 @@
+// ========== Autostart Applications ==========
 spawn-at-startup "waybar"
 spawn-at-startup "firefox"
 spawn-at-startup "prismlauncher"
 spawn-at-startup "foot"
 //spawn-at-startup "alacritty"
+
+// ========== General Settings ==========
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+// ========== Environment Variables ==========
 environment {
 //    QT_QPA_PLATFORM "wayland"
 //    DISPLAY null
+    QT_QPA_PLATFORM "wayland"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    GDK_BACKEND "wayland"
+    MOZ_ENABLE_WAYLAND "1"
+    DISPLAY null  // 明确禁用 X11
 }
+
+// ========== Cursor Settings ==========
 cursor {
     xcursor-theme "breeze_cursors"
     xcursor-size 20
     hide-when-typing
     hide-after-inactive-ms 1000
 }
+
+// ========== Overview Settings ==========
 overview {
-    zoom 0.5
+    zoom 0.4
     backdrop-color "#151622"
 
     workspace-shadow {
@@ -28,44 +42,63 @@ overview {
     }
 }
 
+// ========== Clipboard Settings ==========
 clipboard {
     disable-primary
 }
 
+// ========== Hotkey Overlay ==========
 hotkey-overlay {
     skip-at-startup
 }
+
+// ========== Workspace Definitions ==========
 workspace "Terminal"
 workspace "Browser"
 workspace "Minecraft"
+
+// ========== Window Rules ==========
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
 window-rule {
     match app-id=r#"foot$"#
     open-on-workspace "Terminal"
     //open-maximized true
 }
 window-rule {
+    match app-id="floatingfoot"
+    open-on-workspace "Terminal"
+    open-floating true
+}
+
+window-rule {
     match app-id=r#"firefox$"#
     open-on-workspace "Browser"
     open-maximized true
 }
+
 window-rule {
     match app-id=r#"^org\.prismlauncher\.PrismLauncher$"#
     open-on-workspace "Minecraft"
 }
+
 window-rule {
     match title="^Minecraft"
     open-maximized true
     block-out-from "screencast"
     open-on-workspace "Minecraft"
 }
-// Block out password managers from screencasts.
+
+// Block out password managers from screencasts
 window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
     block-out-from "screencast"
 }
-// Indicate screencasted windows with red colors.
+
+// Indicate screencasted windows with red colors
 window-rule {
     match is-window-cast-target=true
     focus-ring {
@@ -83,15 +116,23 @@ window-rule {
         inactive-color "#7d0d2d"
     }
 }
+
+// ========== Input Devices ==========
 input {
     keyboard {
         xkb {
+            layout "us"    // 明确键盘布局
+            //options "caps:escape"  // 将CapsLock映射为Esc
         }
         numlock
+        repeat-delay 250   // 更合理的按键重复延迟
+        repeat-rate 30     // 重复速率
     }
 
     touchpad {
         //off
+        tap
+        natural-scroll
     }
 
     mouse {
@@ -100,34 +141,38 @@ input {
     trackpoint {
     }
 }
+
+// ========== Output Configuration ==========
 output "eDP-1" {
     mode "2560x1600@240.000"
-    // 屏幕缩放You can use integer or fractional scale, for example use 1.5 for 150% scale.
+    // Screen scaling (1.5 = 150%)
     scale 1.5
-    // 屏幕转向normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
+    // Screen rotation (normal, 90, 180, 270, flipped, etc.)
     transform "normal"
-
-//    position x=1280 y=0
-    // 工作区背景
+    //position x=1280 y=0
     background-color "#151622"
 }
+
+// ========== Layout Settings ==========
 layout {
     gaps 2
-    //center-focused-column "always"
     center-focused-column "never"
-    always-center-single-column
-    default-column-display "tabbed"
-    tab-indicator {
-        hide-when-single-tab
-    }
+    //always-center-single-column
+    //default-column-display "tabbed"
+    default-column-display "normal"
     preset-column-widths {
+        proportion 0.49
+        proportion 0.61
+        proportion 0.73
+    }
+    preset-window-heights {
+        proportion 0.25
         proportion 0.5
-        proportion 0.6
-        proportion 0.8
+        proportion 1.0
     }
-    default-column-width {
-        proportion 0.8;
-    }
+
+    default-column-width { proportion 0.49; }       // 设置默认column宽度
+
     focus-ring {
         width 2
         active-color "#a9b5d5"
@@ -140,13 +185,27 @@ layout {
         inactive-color "#151622"
         urgent-color "#607bc3"
     }
+    tab-indicator {
+        // off
+        hide-when-single-tab
+        place-within-column
+        gap 5
+        width 4
+        length total-proportion=1.0
+        position "bottom"
+        gaps-between-tabs 2
+        corner-radius 8
+        active-color "#a0d0a0"
+        inactive-color "#585e8f"
+        urgent-color "#f08080"
+    }
     shadow {
         softness 30
         spread 5
         offset x=0 y=5
         color "#0007"
     }
-    // 留空
+    // Margins
     struts {
         // left 64
         // right 64
@@ -154,58 +213,37 @@ layout {
         // bottom 64
     }
 }
+
+// ========== Animations ==========
 animations {
     // off
     slowdown 1.5
 }
 
+// ========== Key Bindings ==========
 binds {
-    Mod+Shift+Slash { show-hotkey-overlay; }
-    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
-    Mod+D hotkey-overlay-title="Run an Application: wmenu" { spawn "wmenu-run" "-i" "-f" "0xProto Nerd Font Regular 12" "-N" "#1f2032" "-n" "#a9b5d5" "-S" "#a0d0a0" "-s" "#151622"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
-    Ctrl+Alt+0 allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
-    Ctrl+Alt+9 allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
-    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    Ctrl+Alt+8        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-    // 背光调节
-    XF86MonBrightnessUp  allow-when-locked=true { spawn "brightnessctl" "s" "5+"; }
-    Ctrl+Alt+Shift+0  allow-when-locked=true { spawn "brightnessctl" "s" "5+"; }
-    XF86MonBrightnessDown  allow-when-locked=true { spawn "brightnessctl" "s" "5-"; }
-    Ctrl+Alt+Shift+9  allow-when-locked=true { spawn "brightnessctl" "s" "5-"; }
-    // Pot 翻译
-    //Ctrl+Alt+t { spawn "curl" "127.0.0.1:60828/selection_translate"; }
-    Mod+o repeat=false { toggle-overview; }
-    Mod+H     { focus-column-left; }
-    Mod+L     { focus-column-right; }
-    Mod+q     { focus-column-left; }
-    Mod+e     { focus-column-right; }
-    Mod+j     { focus-workspace-down; }
-    Mod+k     { focus-workspace-up; }
-    Mod+Shift+Q         { close-window; }
-    Mod+Shift+J         { move-column-to-workspace-down; }
-    Mod+Shift+K         { move-column-to-workspace-up; }
-    Mod+Shift+l         { move-column-right; }
-    Mod+Shift+h         { move-column-left; }
-    Mod+Home { focus-column-first; }
-    Mod+End  { focus-column-last; }
-    Mod+Ctrl+Home { move-column-to-first; }
-    Mod+Ctrl+End  { move-column-to-last; }
-    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-    //Move columns around
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
-    Mod+WheelScrollRight      { focus-column-right; }
-    Mod+WheelScrollLeft       { focus-column-left; }
-    Mod+Ctrl+WheelScrollRight { move-column-right; }
-    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+    // Window Tab
+   Mod+w { toggle-column-tabbed-display; }    
+   Mod+i { consume-window-into-column; }
+   Mod+u { expel-window-from-column; }
+
+    // Window management
+    Mod+o repeat=false { toggle-overview; }         // 工作区全视图
+    Mod+q { focus-column-left; }                    // 切换到左边一个窗口
+    Mod+e { focus-column-right; }                   // 切换到右边一个窗口
+    Mod+h { focus-column-left; }                    // 切换到左边一个窗口
+    Mod+l { focus-column-right; }                   // 切换到右边一个窗口
+    Mod+Shift+q { close-window; }                   // 关闭窗口
+    Mod+Shift+l { move-column-right; }              // 移动窗口到左边一个
+    Mod+Shift+h { move-column-left; }               // 移动窗口到右边一个
+    Mod+Ctrl+h { focus-column-first; }              // 切换到第一个窗口
+    Mod+Ctrl+l { focus-column-last; }               // 切换到最后一个窗口
+    Mod+Ctrl+Shift+h { move-column-to-first; }      // 移动窗口到第一个窗口
+    Mod+Ctrl+Shift+l { move-column-to-last; }       // 移动窗口到最后一个窗口
+    Mod+Shift+j { move-column-to-workspace-down; }  // 移动窗口到下一个工作区
+    Mod+Shift+k { move-column-to-workspace-up; }    // 移动窗口到上一个工作区
     
+    // Workspace navigation
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
@@ -224,33 +262,63 @@ binds {
     Mod+Shift+7 { move-column-to-workspace 7; }
     Mod+Shift+8 { move-column-to-workspace 8; }
     Mod+Shift+9 { move-column-to-workspace 9; }
-    Mod+BracketLeft  { consume-or-expel-window-left; }
-    Mod+BracketRight { consume-or-expel-window-right; }
-    Mod+Comma  { consume-window-into-column; }
-    Mod+Period { expel-window-from-column; }
-    Mod+R { switch-preset-column-width; }
-    Mod+Shift+R { switch-preset-window-height; }
-    Mod+Ctrl+R { reset-window-height; }
-    // full screen
-    Mod+f { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
-    Mod+Ctrl+F { expand-column-to-available-width; }
-    Mod+C { center-column; }
-    // Center all fully visible columns on screen.
-    Mod+Ctrl+C { center-visible-columns; }
-    Mod+Minus { set-column-width "-5%"; }
-    Mod+Equal { set-column-width "+5%"; }
-    // Finer height adjustments when in column with other windows.
-    Mod+Shift+Minus { set-window-height "-5%"; }
-    Mod+Shift+Equal { set-window-height "+5%"; }
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
-    Mod+W { toggle-column-tabbed-display; }
+    
+    // Window sizing
+    Alt+f { maximize-column; }
+    Alt+Shift+f { fullscreen-window; }
+    //Mod+Ctrl+f { expand-column-to-available-width; }
+    //Mod+Ctrl+C { center-visible-columns; }
+    Mod+c { center-column; }
+    Alt+h { set-column-width "-10%"; }
+    Alt+l { set-column-width "+10%"; }
+    Alt+k { set-window-height "-10%"; }
+    Alt+j { set-window-height "+10%"; }
+    Alt+R { reset-window-height; }
+    Alt+Shift+p { switch-preset-window-height; }
+    Alt+p { switch-preset-column-width; }
+    
+    // Window floating
+    Mod+v   { toggle-window-floating; }
+    Mod+Shift+v { switch-focus-between-floating-and-tiling; }
+    
+    // Screenshots
     Ctrl+Alt+Shift+P { screenshot; }
-    Ctrl+Alt+Shift+S { screenshot-screen; }
-    Ctrl+Alt+s { screenshot-window; }
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Ctrl+Alt+Shift+S { screenshot-screen; } // 整个屏幕截图
+    Ctrl+Alt+s { screenshot-window; }       // 当前column 截图
+
+    // Application launchers
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+Return { spawn "foot"; }
+    Mod+Shift+Return { spawn "foot" "-a" "floatingfoot"; }
+    Mod+D { spawn "wmenu-run" "-i" "-f" "0xProto Nerd Font Regular 12" "-N" "#1f2032" "-n" "#a9b5d5" "-S" "#a0d0a0" "-s" "#151622"; }
+    
+    // System controls
+    Super+Alt+L { spawn "swaylock"; }
     Mod+Shift+P { power-off-monitors; }
+    
+    // Audio controls
+    XF86AudioRaiseVolume {
+    spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+    Ctrl+Alt+0 {
+    spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+    XF86AudioLowerVolume {
+    spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+    Ctrl+Alt+9 {
+    spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+    XF86AudioMute {
+    spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    Ctrl+Alt+8 {
+    spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute  {
+    spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    
+    // Brightness controls
+    XF86MonBrightnessUp { spawn "brightnessctl" "s" "5+"; }
+    Ctrl+Alt+Shift+0 { spawn "brightnessctl" "s" "5+"; }
+    XF86MonBrightnessDown  { spawn "brightnessctl" "s" "5-"; }
+    Ctrl+Alt+Shift+9 { spawn "brightnessctl" "s" "5-"; }
+    
+    // mc 游戏中文输入实现
     Shift+Return {
         spawn "sh" "-c" "
         if ! pgrep ydotoold >/dev/null; then
@@ -258,23 +326,19 @@ binds {
             sleep 1
         fi
 
-        # 使用 coproc 让 zenity 在后台运行，并读取其输出
         coproc ZENITY {
             zenity --entry 2>/dev/null
         }
         sleep 0.5
         fcitx5-remote -t
 
-        # 等待用户输入并关闭 zenity
         read -u \"${ZENITY[0]}\" INPUT
 
-        # 如果有输入，则用 ydotool 粘贴
         if [ -n \"$INPUT\" ]; then
             echo \"$INPUT\" | wl-copy
             sudo ydotool key 29:1 47:1 47:0 29:0 14:1 14:0
         fi
-
-    "
-}
+        "
+    }
     //Mod+t { spawn "~/scripts/scripts_tools/mcinput.sh"; }
 }

@@ -153,4 +153,11 @@ vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and keep selection', nore
 
 -- endofline
 
-
+-- 常用折叠快捷键
+vim.keymap.set('n', 'zc', 'zc', { desc = 'Fold current' })      -- 折叠当前
+vim.keymap.set('n', 'zo', 'zo', { desc = 'Unfold current' })    -- 展开当前
+vim.keymap.set('n', 'za', 'za', { desc = 'Toggle fold' })       -- 切换折叠
+vim.keymap.set('n', 'zR', 'zR', { desc = 'Unfold all' })        -- 展开所有
+vim.keymap.set('n', 'zM', 'zM', { desc = 'Fold all' })          -- 折叠所有
+vim.keymap.set('n', 'zj', 'zj', { desc = 'Next fold' })         -- 跳到下一个折叠
+vim.keymap.set('n', 'zk', 'zk', { desc = 'Prev fold' })         -- 跳到上一个折叠

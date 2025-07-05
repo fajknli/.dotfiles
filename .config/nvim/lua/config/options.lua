@@ -5,11 +5,18 @@ vim.opt.relativenumber = true      -- 等同于 vim.wo.relativenumber
 vim.opt.mouse = 'a'                -- 在所有模式下启用鼠标支持
 vim.opt.scrolloff = 8              -- 保持光标上下始终有 8 行上下文
 vim.opt.cmdheight = 1              -- 设置命令行的高度为 1
-vim.opt.foldcolumn = '1'           -- 启用代码折叠列
 vim.opt.showmatch = true           -- 启用匹配括号的高亮显示
 vim.opt.matchtime = 2              -- 修正：匹配括号的延时为 0.2 秒（注意原配置中的 'mat' 应为 'matchtime'）
 vim.opt.errorbells = false         -- 禁用错误铃声
 vim.opt.visualbell = false         -- 禁用视觉铃声
+
+-- 折叠设置
+vim.opt.foldenable = true          -- 启用折叠
+vim.opt.foldmethod = "indent"      -- 按缩进折叠（其他选项见下文）
+vim.opt.foldlevel = 99             -- 默认不折叠任何代码（99表示全部展开）
+vim.opt.foldlevelstart = 99        -- 打开文件时默认展开所有折叠
+vim.opt.foldcolumn = "1"           -- 左侧折叠指示列（0-12表示宽度）
+
 
 -- 注意：timeoutlen 通常使用 vim.o，但也可以用 vim.opt
 -- 性能相关设置
@@ -21,7 +28,7 @@ vim.opt.lazyredraw = true          -- 执行宏/寄存器时不重绘（提升�
 -- 显示相关
 vim.opt.wrap = false               -- 关闭自动换行
 vim.opt.cursorline = true          -- 高亮当前行
---vim.opt.cursorcolumn = true        -- 高亮当前列（可选，可能影响性能）
+vim.opt.cursorcolumn = true        -- 高亮当前列（可选，可能影响性能）
 vim.opt.number = true              -- 显示行号
 vim.opt.relativenumber = true      -- 相对行号
 
@@ -86,7 +93,7 @@ vim.opt.linebreak = true      -- 在单词边界换行（而非字符边界）
 vim.opt.breakindent = true    -- 建议添加：换行后保持缩进
 vim.opt.showbreak = "↳ "      -- 建议添加：换行标识符号
 vim.opt.textwidth = 0         -- 建议修改：禁用自动换行（用 wrap 控制）
-vim.opt.colorcolumn = "80"    -- 建议添加：80 列参考线
+vim.opt.colorcolumn = "80,100,120"   -- 建议添加：80 列参考线
 
 -- 命令行补全增强 (优化版)
 vim.opt.wildmenu = true              -- 启用图形化补全菜单

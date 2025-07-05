@@ -6,10 +6,11 @@ function M.setup()
   vim.cmd("syntax reset")
   vim.o.termguicolors = true
   vim.g.colors_name = "mytheme"
+    -- 设置 colorcolumn 高亮组
 
   local c = {
     bg        = "#151622",
-    fg        = "#cdd6f4",
+    fg        = "#a9b5d5",
     -- comment   = "#464a5f",
     comment   = "#585e8f",
     cursorln  = "#1e1f2e",
@@ -18,7 +19,7 @@ function M.setup()
     special   = "#b280be",
 
     black     = "#151622",
-    red       = "#F08080",
+    red       = "#f08080",
     green     = "#a0d0a0",
     yellow    = "#dbd07f",
     blue      = "#607bc3",
@@ -26,9 +27,12 @@ function M.setup()
     cyan      = "#89b4fa",
     white     = "#a9b5d5",
 
-    bright_black   = "#464a5f",
+    bright_black   = "#1f2032",
     bright_white   = "#a9b5d5",
   }
+  vim.api.nvim_set_hl(0, 'ColorColumn', {
+    bg = c.bright_black,  -- 使用你定义的 cursorln 颜色
+  })
 
   local set = vim.api.nvim_set_hl
 
