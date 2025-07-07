@@ -3,6 +3,7 @@ spawn-at-startup "waybar"
 spawn-at-startup "firefox"
 spawn-at-startup "prismlauncher"
 spawn-at-startup "foot"
+spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
 //spawn-at-startup "alacritty"
 
 // ========== General Settings ==========
@@ -223,25 +224,27 @@ animations {
 // ========== Key Bindings ==========
 binds {
     // Window Tab
-   Mod+w { toggle-column-tabbed-display; }    
-   Mod+i { consume-window-into-column; }
-   Mod+u { expel-window-from-column; }
+   Mod+W { toggle-column-tabbed-display; }    
+   Mod+I { consume-window-into-column; }
+   Mod+U { expel-window-from-column; }
 
     // Window management
-    Mod+o repeat=false { toggle-overview; }         // 工作区全视图
-    Mod+q { focus-column-left; }                    // 切换到左边一个窗口
-    Mod+e { focus-column-right; }                   // 切换到右边一个窗口
-    Mod+h { focus-column-left; }                    // 切换到左边一个窗口
-    Mod+l { focus-column-right; }                   // 切换到右边一个窗口
-    Mod+Shift+q { close-window; }                   // 关闭窗口
-    Mod+Shift+l { move-column-right; }              // 移动窗口到左边一个
-    Mod+Shift+h { move-column-left; }               // 移动窗口到右边一个
-    Mod+Ctrl+h { focus-column-first; }              // 切换到第一个窗口
-    Mod+Ctrl+l { focus-column-last; }               // 切换到最后一个窗口
-    Mod+Ctrl+Shift+h { move-column-to-first; }      // 移动窗口到第一个窗口
-    Mod+Ctrl+Shift+l { move-column-to-last; }       // 移动窗口到最后一个窗口
-    Mod+Shift+j { move-column-to-workspace-down; }  // 移动窗口到下一个工作区
-    Mod+Shift+k { move-column-to-workspace-up; }    // 移动窗口到上一个工作区
+    Mod+O repeat=false { toggle-overview; }         // 工作区全视图
+    Mod+Q { focus-column-left; }                    // 切换到左边一个窗口
+    Mod+H { focus-column-left; }                    // 切换到左边一个窗口
+    Mod+E { focus-column-right; }                   // 切换到右边一个窗口
+    Mod+L { focus-column-right; }                   // 切换到右边一个窗口
+    Mod+J { focus-window-down; }                   // 切换到下面一个窗口
+    Mod+K { focus-window-up; }                   // 切换到上面一个窗口
+    Mod+Shift+Q { close-window; }                   // 关闭窗口
+    Mod+Shift+L { move-column-right; }              // 移动窗口到左边一个
+    Mod+Shift+H { move-column-left; }               // 移动窗口到右边一个
+    Mod+Shift+J { move-column-to-workspace-down; }  // 移动窗口到下一个工作区
+    Mod+Shift+K { move-column-to-workspace-up; }    // 移动窗口到上一个工作区
+    Mod+Alt+H { focus-column-first; }              // 切换到第一个窗口
+    Mod+Alt+L { focus-column-last; }               // 切换到最后一个窗口
+    Mod+Ctrl+Shift+H { move-column-to-first; }      // 移动窗口到第一个窗口
+    Mod+Ctrl+Shift+L { move-column-to-last; }       // 移动窗口到最后一个窗口
     
     // Workspace navigation
     Mod+1 { focus-workspace 1; }
@@ -264,37 +267,37 @@ binds {
     Mod+Shift+9 { move-column-to-workspace 9; }
     
     // Window sizing
-    Alt+f { maximize-column; }
-    Alt+Shift+f { fullscreen-window; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
     //Mod+Ctrl+f { expand-column-to-available-width; }
     //Mod+Ctrl+C { center-visible-columns; }
-    Mod+c { center-column; }
-    Alt+h { set-column-width "-10%"; }
-    Alt+l { set-column-width "+10%"; }
-    Alt+k { set-window-height "-10%"; }
-    Alt+j { set-window-height "+10%"; }
-    Alt+R { reset-window-height; }
-    Alt+Shift+p { switch-preset-window-height; }
-    Alt+p { switch-preset-column-width; }
+    Mod+C { center-column; }
+    Mod+Ctrl+H { set-column-width "-10%"; }
+    Mod+Ctrl+L { set-column-width "+10%"; }
+    Mod+Ctrl+K { set-window-height "-10%"; }
+    Mod+Ctrl+J { set-window-height "+10%"; }
+    Mod+Alt+O { switch-preset-window-height; }
+    Mod+Alt+P { switch-preset-column-width; }
+    // Show shortcuts
+    Mod+Shift+Slash { show-hotkey-overlay; }
     
     // Window floating
-    Mod+v   { toggle-window-floating; }
-    Mod+Shift+v { switch-focus-between-floating-and-tiling; }
+    Mod+V   { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
     
     // Screenshots
     Ctrl+Alt+Shift+P { screenshot; }
     Ctrl+Alt+Shift+S { screenshot-screen; } // 整个屏幕截图
-    Ctrl+Alt+s { screenshot-window; }       // 当前column 截图
+    Ctrl+Alt+S { screenshot-window; }       // 当前column 截图
 
     // Application launchers
-    Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Return { spawn "foot"; }
     Mod+Shift+Return { spawn "foot" "-a" "floatingfoot"; }
     Mod+D { spawn "wmenu-run" "-i" "-f" "0xProto Nerd Font Regular 12" "-N" "#1f2032" "-n" "#a9b5d5" "-S" "#a0d0a0" "-s" "#151622"; }
     
     // System controls
-    Super+Alt+L { spawn "swaylock"; }
-    Mod+Shift+P { power-off-monitors; }
+    Mod+Ctrl+Shift+Space { spawn "swaylock" "-f" "-c" "151622"; }
+    //Mod+Shift+P { power-off-monitors; }
     
     // Audio controls
     XF86AudioRaiseVolume {

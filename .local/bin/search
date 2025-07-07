@@ -82,6 +82,7 @@ docs_libxkbcommon               |https://xkbcommon.org/doc/current/index.html
 docs_docker                     |https://docs.docker.com/reference/cli/docker/
 offical_sqlmap                  |https://sqlmap.org/
 offical_swaywm                  |https://swaywm.org/
+offical_niri-config              |https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 offical_hyprland                |https://hypr.land/
 offical_metasploit              |https://www.metasploit.com/
 offical_nmap                    |https://nmap.org/book/man.html

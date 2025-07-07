@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # 健壮 Bash 脚本的黄金三件套，常作为脚本头部标准
-set -euo pipefail
+#set -euo pipefail
 # -e：一旦出错就停止
 # -u：使用未定义变量报错
 # -o pipefail：防止管道里某命令悄悄失败
@@ -24,63 +24,128 @@ echo "[*] 正在同步系统软件包..."
 # ----------------------------------------
 # 字体与本地化支持
 # ----------------------------------------
-fonts_and_locale=(
-    adobe-source-han-sans-cn-fonts
-    ttf-font-awesome
-    ttf-0xproto-nerd
-    ttf-opensans
-    ttf-liberation
-    noto-fonts-emoji
-)
+fonts_and_locale="\
+adobe-source-han-sans-cn-fonts \
+ttf-font-awesome \
+ttf-0xproto-nerd \
+ttf-opensans \
+ttf-liberation \
+noto-fonts-emoji \
+"
 
 # ----------------------------------------
 # 网络与系统工具
 # ----------------------------------------
-network_and_sys=(
-    networkmanager iwd ntp bind
-    socat lsb-release pot-translation
-    vsftpd drill nmap inetutils
-)
+network_and_sys="\
+networkmanager \
+iwd \
+ntp \
+bind \
+socat \
+lsb-release \
+pot-translation \
+vsftpd \
+drill \
+nmap \
+inetutils \
+"
 
 # ----------------------------------------
 # CLI 工具
 # ----------------------------------------
-cli_tools=(
-    fzf git-crypt ripgrep sysstat
-    git-filter-repo bash-completion
-    jq man-db most htop fastfetch
-    unzip zip 7zip exfat-utils tree
-    make shellcheck rustup gcc tealdeer
-    aria2 wget curl rsync yt-dlp
-    unrar wl-mirror firejail
-    lemurs zoxide wev neomutt
-    zoxide imagemagick chafa fd ripgrep poppler
-    bc
-)
+cli_tools="\
+fzf \
+git-crypt \
+ripgrep \
+sysstat \
+git-filter-repo \
+bash-completion \
+jq \
+man-db \
+most \
+htop \
+fastfetch \
+unzip \
+zip \
+7zip \
+exfat-utils \
+tree \
+make \
+shellcheck \
+rustup \
+gcc \
+tealdeer \
+aria2 \
+wget \
+curl \
+rsync \
+yt-dlp \
+unrar \
+wl-mirror \
+firejail \
+lemurs \
+zoxide \
+wev \
+neomutt \
+zoxide \
+imagemagick \
+chafa \
+fd \
+ripgrep \
+poppler \
+bc \
+"
 
 # ----------------------------------------
 # GUI 应用与桌面增强
 # librewolf
 # mc
 # ----------------------------------------
-gui_apps=(
-    alacritty mako glfw gimp remmina
-    waybar mpv netease-cloud-music-gtk4
-    obs-studio newsflash element-desktop
-    virt-manager irssi hwinfo asciinema
-    thunar figlet fuse2fs docker thunar-archive-plugin
-    gthumb foliate zathura zathura-pdf-poppler
-    qutebrowser
-)
+gui_apps="\
+alacritty \
+mako \
+glfw \
+gimp \
+remmina \
+waybar \
+mpv \
+netease-cloud-music-gtk4 \
+obs-studio \
+newsflash \
+element-desktop \
+virt-manager \
+irssi \
+hwinfo \
+asciinema \
+thunar \
+figlet \
+fuse2fs \
+docker \
+thunar-archive-plugin \
+gthumb \
+foliate \
+zathura \
+zathura-pdf-poppler \
+qutebrowser \
+"
 
 #
 # ----------------------------------------
 # Dirves install
 # ----------------------------------------
 #
-dirves=(
-    intel-media-driver libva-utils
-)
+dirves="\
+intel-media-driver libva-utils \
+"
+
+#
+# ----------------------------------------
+# Python Library
+# ----------------------------------------
+#
+python_library="\
+pypinyin \
+"
 
 
 # ----------------------------------------
@@ -90,36 +155,67 @@ dirves=(
 #  hyprland hyprlock hypridle hyprpaper hyprpicker xdg-desktop-portal-hyprland
 #)
 
-wayland_sway=(
-    sway swaylock swaybg swayidle sway-contrib
-)
+wayland_sway="\
+sway \
+swaylock \
+swaybg \
+swayidle \
+sway-contrib \
+"
 
-wayland_niri=(
-    niri swaylock swaybg swayidle sway-contrib
-)
+wayland_niri="\
+niri \
+swaylock \
+swaybg \
+swayidle \
+sway-contrib \
+"
 
-wayland_common=(
-    mako wofi fuzzel grim slurp wl-clipboard brightnessctl cliphist swayimg
-    fcitx5 fcitx5-chinese-addons fcitx5-configtool fcitx5-gtk
-    xdg-desktop-portal-wlr xdg-desktop-portal-gtk xdg-desktop-portal-gnome
-)
+wayland_common="\
+mako \
+wofi \
+fuzzel \
+grim \
+slurp \
+wl-clipboard \
+brightnessctl \
+cliphist \
+swayimg \
+fcitx5 \
+fcitx5-chinese-addons \
+fcitx5-configtool \
+fcitx5-gtk \
+xdg-desktop-portal-wlr \
+xdg-desktop-portal-gtk \
+xdg-desktop-portal-gnome \
+"
 
 
-audio_and_bt=(
-    pipewire wireplumber pipewire-pulse bluez bluez-utils pavucontrol helvum
-    ffmpeg
-)
+audio_and_bt="\
+pipewire \
+wireplumber \
+pipewire-pulse \
+bluez \
+bluez-utils \
+pavucontrol \
+helvum \
+ffmpeg \
+"
 
 # ----------------------------------------
 # Qt 支持
 # ----------------------------------------
-qt_support=(
-    qt5-declarative layer-shell-qt layer-shell-qt5
-)
+qt_support="\
+qt5-declarative \
+layer-shell-qt \
+layer-shell-qt5 \
+"
 
-personal=(
-    yazi ydotool zenity
-)
+personal="\
+yazi \
+ydotool \
+zenity \
+"
 
 ### ------------------------
 ### 安装命令组装
@@ -134,6 +230,7 @@ pkgs=(
     "${wayland_niri[@]}"
     "${gui_apps[@]}"
     "${personal[@]}"
+    "${python_library[@]}"
     "${dirves[@]}"
 )
 
