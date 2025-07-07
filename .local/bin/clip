@@ -5,6 +5,6 @@
 # Created Time: 2025-07-05 23:01
 # Filename:     wlclip.sh
 
-cliphist list | wmenu -p "Clipboard" -M "#a0d0a0" -m "#151622" -i -l 10 -f \
+cliphist list | wmenu -p "Clipboard" -M "#a0d0a0" -m "#151622" -i -l 20 -f \
 "0xProto Nerd Font Regular 12" -N "#1f2032" \
 -n "#a9b5d5" -S "#a0d0a0" -s "#151622" | cliphist decode | wl-copy
