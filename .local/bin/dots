@@ -41,6 +41,7 @@ set -- \
     "$HOME/.config/sway" \
     "$HOME/.config/waybar" \
     "$HOME/.config/zellij" \
+    "$HOME/.config/zathura" \
     "$HOME/.local/bin" \
     "$HOME/notes" \
     "$HOME/.alacritty.toml" \
@@ -50,6 +51,9 @@ set -- \
     "$HOME/.bash_profile" \
     "$HOME/.bash_prompt" \
     "$HOME/.bashrc" \
+    "$HOME/.curlrc" \
+    "$HOME/.wgetrc" \
+    "$HOME/.inputrc" \
     "$HOME/README.md"
 
 

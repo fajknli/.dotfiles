@@ -1,0 +1,33 @@
+set adjust-open width
+set selection-clipboard clipboard
+set recolor true
+set page-padding 2
+
+# 自动重载文件（适合编辑中的PDF）
+#set autoreload 2  # 2秒检测一次变更
+
+# 禁用滚动包装（避免循环翻页）
+set scroll-wrap false
+
+# 自定义字体（如支持中文）
+#set font ""  # 替换为你的系统字体
+
+# 布局颜色
+set recolor-lightcolor "#151622"
+set recolor-darkcolor "#a9b5d5"
+
+# 状态栏颜色
+set statusbar-bg "#333353"
+set statusbar-fg "#a9b5d5"
+
+# 输入栏颜色
+set inputbar-bg "#2b2b46"
+set inputbar-fg "#dbd07f"
+
+# 通知消息颜色
+set notification-bg "#151622"
+set notification-fg "#a0d0a0"
+
+# 禁用鼠标点击跳转（避免误触）
+set disable-overview false
+
