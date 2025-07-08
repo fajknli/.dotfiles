@@ -48,6 +48,7 @@ tool_ip_iplocation              |https://iplocation.com/
 tool_ip_iplark                  |https://iplark.com/myip
 tool_ip_ip.cn                   |https://ip.cn/
 tool_password_lesspass          |https://www.lesspass.com/
+tool_daily-hotpoint             |https://hot.imsyy.top/
 blog_tech_hacknoon              |https://hackernoon.com/
 blog_tech_inteltech             |https://inteltechniques.com/
 blog_tech_juejin                |https://juejin.cn/
@@ -82,7 +83,7 @@ docs_libxkbcommon               |https://xkbcommon.org/doc/current/index.html
 docs_docker                     |https://docs.docker.com/reference/cli/docker/
 offical_sqlmap                  |https://sqlmap.org/
 offical_swaywm                  |https://swaywm.org/
-offical_niri-config              |https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+offical_niri-config             |https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 offical_hyprland                |https://hypr.land/
 offical_metasploit              |https://www.metasploit.com/
 offical_nmap                    |https://nmap.org/book/man.html

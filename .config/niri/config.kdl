@@ -3,7 +3,7 @@ spawn-at-startup "waybar"
 spawn-at-startup "firefox"
 spawn-at-startup "prismlauncher"
 spawn-at-startup "foot"
-spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
+spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f -c 151622" "before-sleep" "swaylock -f -c 151622"
 //spawn-at-startup "alacritty"
 
 // ========== General Settings ==========
@@ -56,49 +56,57 @@ hotkey-overlay {
 // ========== Workspace Definitions ==========
 workspace "Terminal"
 workspace "Browser"
+workspace "Reading"
 workspace "Minecraft"
 
 // ========== Window Rules ==========
-window-rule {
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
-}
+// foot
 window-rule {
     match app-id=r#"foot$"#
     open-on-workspace "Terminal"
     //open-maximized true
 }
+// floating foot
 window-rule {
     match app-id="floatingfoot"
     open-on-workspace "Terminal"
     open-floating true
 }
-
+// zathura
+window-rule {
+    match app-id="org.pwmt.zathura"
+    open-on-workspace "Reading"
+    open-maximized true
+}
+// firefox
 window-rule {
     match app-id=r#"firefox$"#
     open-on-workspace "Browser"
     open-maximized true
 }
-
+// firefox picture
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+// prismlauncher
 window-rule {
     match app-id=r#"^org\.prismlauncher\.PrismLauncher$"#
     open-on-workspace "Minecraft"
 }
-
+// Minecraft game-window
 window-rule {
     match title="^Minecraft"
     open-maximized true
     block-out-from "screencast"
     open-on-workspace "Minecraft"
 }
-
 // Block out password managers from screencasts
 window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
     block-out-from "screencast"
 }
-
 // Indicate screencasted windows with red colors
 window-rule {
     match is-window-cast-target=true
@@ -229,7 +237,7 @@ binds {
    Mod+U { expel-window-from-column; }
 
     // Window management
-    Mod+O repeat=false { toggle-overview; }         // 工作区全视图
+    Win+O repeat=false { toggle-overview; }         // 工作区全视图
     Mod+Q { focus-column-left; }                    // 切换到左边一个窗口
     Mod+H { focus-column-left; }                    // 切换到左边一个窗口
     Mod+E { focus-column-right; }                   // 切换到右边一个窗口

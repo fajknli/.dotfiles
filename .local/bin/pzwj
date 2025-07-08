@@ -26,6 +26,7 @@ mc          |.config/mc/mc.default.keymap
 mc          |.config/mc/mc.keymap
 mc          |.config/mc/panels.ini
 niri        |.config/niri/config.kdl
+zathura     |.config/zathura/zathurarc
 neovim      |.config/nvim/lua/colors/fajknli.lua
 neovim      |.config/nvim/lua/config/appearance.lua
 neovim      |.config/nvim/lua/config/autocmds.lua
