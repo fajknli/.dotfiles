@@ -1,5 +1,0 @@
-#!/bin/sh
-
-
-#result=$(echo "" | fzf --print-query --disabled)
-fuzzel -d | wl-copy

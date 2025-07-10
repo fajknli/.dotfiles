@@ -1,30 +1,11 @@
 #!/bin/sh
 
-# 健壮 Bash 脚本的黄金三件套，常作为脚本头部标准
-#set -euo pipefail
-# -e：一旦出错就停止
-# -u：使用未定义变量报错
-# -o pipefail：防止管道里某命令悄悄失败
-
-# 配置项（请根据你的情况修改）
-DOTFILES_REPO="git@github.com:fajknli/.dotfiles.git"
-DOTFILES_DIR="$HOME/.dotfiles"
-GIT_BIN=$(command -v git)
-
-# echo "==> 更新系统并安装基础软件包..."
-# sudo pacman -Syu --noconfirm
-# sudo pacman -S --needed --noconfirm \
-#   git curl zsh neovim wget unzip zip \
-#   base-devel openssh tree htop man-db
-
-#---------------------------------------------------------------------
-
 echo "[*] 正在同步系统软件包..."
 
 # ----------------------------------------
 # 字体与本地化支持
 # ----------------------------------------
-fonts_and_locale="\
+FONTS_AND_LOCALE="\
 adobe-source-han-sans-cn-fonts \
 ttf-font-awesome \
 ttf-0xproto-nerd \
@@ -36,7 +17,7 @@ noto-fonts-emoji \
 # ----------------------------------------
 # 网络与系统工具
 # ----------------------------------------
-network_and_sys="\
+NETWORK_AND_SYS="\
 networkmanager \
 iwd \
 ntp \
@@ -53,7 +34,7 @@ inetutils \
 # ----------------------------------------
 # CLI 工具
 # ----------------------------------------
-cli_tools="\
+CLI_TOOLS="\
 fzf \
 git-crypt \
 ripgrep \
@@ -72,6 +53,7 @@ exfat-utils \
 tree \
 make \
 shellcheck \
+xh \
 rustup \
 gcc \
 tealdeer \
@@ -101,7 +83,7 @@ bc \
 # librewolf
 # mc
 # ----------------------------------------
-gui_apps="\
+GUI_APPS="\
 alacritty \
 mako \
 glfw \
@@ -134,8 +116,9 @@ qutebrowser \
 # Dirves install
 # ----------------------------------------
 #
-dirves="\
-intel-media-driver libva-utils \
+DIRVES="\
+intel-media-driver \
+libva-utils \
 "
 
 #
@@ -143,8 +126,19 @@ intel-media-driver libva-utils \
 # Python Library
 # ----------------------------------------
 #
-python_library="\
+PYTHON_LIBRARY="\
 pypinyin \
+python-polars \
+python-orjson \
+python-faker \
+scrapy \
+python-lxml \
+python-pyfiglet \
+python-rich \
+python-tqdm \
+python-click \
+python-emoji \
+python-pillow \
 "
 
 
@@ -155,7 +149,7 @@ pypinyin \
 #  hyprland hyprlock hypridle hyprpaper hyprpicker xdg-desktop-portal-hyprland
 #)
 
-wayland_sway="\
+WAYLAND_SWAY="\
 sway \
 swaylock \
 swaybg \
@@ -163,7 +157,7 @@ swayidle \
 sway-contrib \
 "
 
-wayland_niri="\
+WAYLAND_NIRI="\
 niri \
 swaylock \
 swaybg \
@@ -171,7 +165,7 @@ swayidle \
 sway-contrib \
 "
 
-wayland_common="\
+WAYLAND_COMMON="\
 mako \
 wofi \
 fuzzel \
@@ -191,7 +185,7 @@ xdg-desktop-portal-gnome \
 "
 
 
-audio_and_bt="\
+AUDIO_AND_BT="\
 pipewire \
 wireplumber \
 pipewire-pulse \
@@ -205,87 +199,48 @@ ffmpeg \
 # ----------------------------------------
 # Qt 支持
 # ----------------------------------------
-qt_support="\
+QT_SUPPORT="\
 qt5-declarative \
 layer-shell-qt \
 layer-shell-qt5 \
 "
 
-personal="\
-yazi \
+PERSONAL="\
 ydotool \
 zenity \
+"
+
+# ----------------------------------------
+# Server Tools
+# ----------------------------------------
+SERVER_TOOLS="\
+mysql \
+redis \
+nginx \
 "
 
 ### ------------------------
 ### 安装命令组装
 ### ------------------------
-pkgs=(
-    "${fonts_and_locale[@]}"
-    "${network_and_sys[@]}"
-    "${cli_tools[@]}"
-    "${audio_and_bt[@]}"
-    "${qt_support[@]}"
-    "${wayland_common[@]}"
-    "${wayland_niri[@]}"
-    "${gui_apps[@]}"
-    "${personal[@]}"
-    "${python_library[@]}"
-    "${dirves[@]}"
-)
+#ALL_PACKAGES="$SERVER_TOOLS $AUDIO_AND_BT"
 
 echo "[+] 正在安装软件包..."
-sudo pacman -Syu --noconfirm "${pkgs[@]}"
+#sudo pacman -Syu --noconfirm $ALL_PACKAGES
+sudo pacman -Syu --noconfirm \
+$FONTS_AND_LOCALE\
+$NETWORK_AND_SYS\
+$CLI_TOOLS\
+$GUI_APPS\
+$DIRVES\
+$PYTHON_LIBRARY\
+$WAYLAND_SWAY\
+$WAYLAND_NIRI\
+$WAYLAND_COMMON\
+$AUDIO_AND_BT\
+$QT_SUPPORT\
+$PERSONAL\
+$SERVER_TOOLS\
+
 echo "[+] 安装完成。"
-
-
-# ----------------------------------------
-# ✅ 可选：增强现代终端工具（你可以按需关闭）
-# ----------------------------------------
-INSTALL_EXTRAS=false
-extra_packages=(
-    bat fd procs duf btop dust dog
-    eza zoxide yazi atuin starship
-    zsh zsh-autosuggestions zsh-syntax-highlighting
-    tmux direnv thefuck cliphist tofi
-    viu imv swayimg avizo swappy
-    lazygit lazydocker bottom just
-)
-
-if [ "$INSTALL_EXTRAS" = true ]; then
-    echo "[+] 启用增强模块，安装现代工具..."
-    sudo pacman -S --noconfirm "${extra_packages[@]}"
-fi
-
-echo "[✓] 安装完成，可进行 dotfiles 链接与环境配置。"
-
-#---------------------------------------------------------------------
-
-#echo "==> 克隆 dotfiles 裸仓库到 $DOTFILES_DIR..."
-#$GIT_BIN clone --bare "$DOTFILES_REPO" "$DOTFILES_DIR"
-#
-#echo "==> 创建 dotfiles 管理 alias（后续可以写入 .bashrc/.zshrc）..."
-#alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-#
-#echo "==> 检出 dotfiles 到 $HOME..."
-#/usr/bin/git --git-dir="$DOTFILES_DIR" --work-tree="$HOME" checkout
-#
-#echo "==> 设置忽略 .dotfiles 仓库文件..."
-#/usr/bin/git --git-dir="$DOTFILES_DIR" --work-tree="$HOME" config --local status.showUntrackedFiles no
-#
-#echo "==> 设置 Git 全局配置..."
-#git config --global user.name "fajknli"
-#git config --global user.email "fajknli@gmail.com"
-#git config --global init.defaultBranch main
-#
-#echo "==> 完成 dotfiles 安装！"
-#echo "   使用 'dotfiles status' 查看 dotfiles 状态。"
-
-# 可选后续操作
-# echo "==> 更换默认 shell 为 zsh（如需）"
-# if [[ "$SHELL" != *zsh ]]; then
-#   chsh -s "$(which zsh)"
-# fi
-
-echo "✅ 初始化完成，请重启终端！"
+echo "[✓] 初始化完成，请重启终端！"
 

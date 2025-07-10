@@ -63,26 +63,27 @@ curl        |.curlrc
 wget        |.wgetrc
 input       |.inputrc
 git         |.gitconfig
-bin         |.local/bin/clip
-bin         |.local/bin/calcu
-bin         |.local/bin/pzwj
-bin         |.local/bin/colorschemes
+bin         |.local/bin/jsj
+bin         |.local/bin/cf
+bin         |.local/bin/ys
+bin         |.local/bin/jqb
 bin         |.local/bin/dots
+bin         |.local/bin/pdf
 bin         |.local/bin/gjwd
 bin         |.local/bin/gxwd
 bin         |.local/bin/music_name-shift
 bin         |.local/bin/music_tans-space-to-slash
 bin         |.local/bin/note_edit-rst-file
 bin         |.local/bin/novA
-bin         |.local/bin/vA
 bin         |.local/bin/ntp-time
 bin         |.local/bin/pm
 bin         |.local/bin/pmp
 bin         |.local/bin/pmr
-bin         |.local/bin/search
 bin         |.local/bin/setup_bootstrap
 bin         |.local/bin/setup_dotfile-setup
-bin         |.local/bin/weather
+bin         |.local/bin/wz
+bin         |.local/bin/vA
+bin         |.local/bin/tq
 "
 
 choice_file="$(printf '%s' "$file_list" | grep -v '^$' | wmenu -i -l 15 -f "0xProto Nerd Font Regular 12" -N "#1f2032" -n "#a9b5d5" -S "#a0d0a0" -s "#151622")"

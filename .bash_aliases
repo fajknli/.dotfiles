@@ -50,7 +50,9 @@ alias ckalias='vim ~/.bash_aliases'
 #alias bjwd='bash $HOME/scripts/scripts_notes/edit_rst_file.sh'
 #alias gxwd='bash $HOME/scripts/scripts_notes/gxwd.sh'
 #alias gjwd='bash $HOME/scripts/scripts_notes/gjwd.sh'
-alias bjwd='bash $HOME/.local/bin/note_edit-rst-file'
+
+# modify time: Thu 10 Jul 2025 12:33:05 AM CST
+#alias bjwd='bash $HOME/.local/bin/note_edit-rst-file'
 
 # proxy 废弃于2025625920
 #alias vA='bash $HOME/scripts/scripts_proxy_dae/daeConfigSetup.sh'

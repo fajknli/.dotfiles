@@ -16,7 +16,7 @@ if [ ! -d "$target_dir" ]; then
 fi
 
 # 递归处理文件和目录
-find "$target_dir" -depth -name "* *" | while read -r file; do
+find "$target_dir" -type f -depth -name "* *" | while read -r file; do
     # 获取文件所在目录和原始文件名
     dir=$(dirname "$file")
     name=$(basename "$file")
