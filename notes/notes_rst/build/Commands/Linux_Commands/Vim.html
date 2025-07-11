@@ -1,0 +1,2283 @@
+<!doctype html>
+<html class="no-js" lang="en-US" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>Vim - fajknli Note IDK documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">fajknli Note IDK documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">fajknli Note IDK documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Bookmarks:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Bookmarks/Games/bookmark_games_index.html">Bookmark Games Indes</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Bookmark Games Indes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Bookmarks/Games/bookmark_games.html">Bookmark_games</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programing:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Programing/Language_Library/Language_Library_index.html">Libraries</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Libraries</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language_Library/Python_Library.html">Python_Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language_Library/Python_std_Library.html">Python Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Programing/Language/Language_index.html">Programing Languages</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Programing Languages</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/AWK.html">AWK 程序设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Bash.html">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/C.html">C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Haskell.html">Haskell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/JavaScript.html">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Perl.html">Perl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Rust.html">Rust</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Programing/Frontend/Frontend_index.html">Frontend</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Frontend</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Frontend/CSS.html">CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Frontend/HTML.html">HTML</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Cook:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Cook/Cook.html">Cook</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../_sources/Commands/Linux_Commands/Vim.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="vim">
+<h1>Vim<a class="headerlink" href="#vim" title="Link to this heading">¶</a></h1>
+<section id="id1">
+<h2>1. 移动<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<section id="id2">
+<h3>1.1 光标移动<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p>hjkl ==&gt; 左下上右</p>
+</section>
+<section id="id3">
+<h3>1.2 页移动<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Ctrl + F<span class="colon">:</span></dt>
+<dd class="field-odd"><p>向前滚动一屏</p>
+</dd>
+<dt class="field-even">Ctrl + B<span class="colon">:</span></dt>
+<dd class="field-even"><p>向后滚动一屏</p>
+</dd>
+<dt class="field-odd">Ctrl + D<span class="colon">:</span></dt>
+<dd class="field-odd"><p>向前滚动半屏</p>
+</dd>
+<dt class="field-even">Ctrl + U<span class="colon">:</span></dt>
+<dd class="field-even"><p>向前滚动半屏</p>
+</dd>
+<dt class="field-odd">H<span class="colon">:</span></dt>
+<dd class="field-odd"><p>将光标置于屏幕顶部(High)</p>
+</dd>
+<dt class="field-even">M<span class="colon">:</span></dt>
+<dd class="field-even"><p>将光标置于屏幕中部(Middle)</p>
+</dd>
+<dt class="field-odd">L<span class="colon">:</span></dt>
+<dd class="field-odd"><p>将光标置于屏幕底部(Low)</p>
+</dd>
+<dt class="field-even">gg<span class="colon">:</span></dt>
+<dd class="field-even"><p>将光标置于文件开头</p>
+</dd>
+<dt class="field-odd">G<span class="colon">:</span></dt>
+<dd class="field-odd"><p>将光标置于文件末尾</p>
+</dd>
+<dt class="field-even">n<span class="colon">:</span></dt>
+<dd class="field-even"><p>将光标置于文件第n行</p>
+</dd>
+<dt class="field-odd">Ctrl + e<span class="colon">:</span></dt>
+<dd class="field-odd"><p>文件向下滚动一行</p>
+</dd>
+<dt class="field-even">Ctrl + y<span class="colon">:</span></dt>
+<dd class="field-even"><p>文件向上滚动一行</p>
+</dd>
+<dt class="field-odd">zt<span class="colon">:</span></dt>
+<dd class="field-odd"><p>将当前行移动到屏幕顶部</p>
+</dd>
+<dt class="field-even">zz<span class="colon">:</span></dt>
+<dd class="field-even"><p>将当前行移动到屏幕中间</p>
+</dd>
+<dt class="field-odd">zb<span class="colon">:</span></dt>
+<dd class="field-odd"><p>将当前行移动到屏幕底部</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h3>1.3 词移动<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">w<span class="colon">:</span></dt>
+<dd class="field-odd"><p>光标移动到下个单词的开头(“w” 命令将把你带到下一行的第一个单词,这比使用 “l” 要快得多。)</p>
+</dd>
+<dt class="field-even">W<span class="colon">:</span></dt>
+<dd class="field-even"><p>光标移动到下一段词的开头(就是包括标点符号，相当于以空格分隔的每一段词，下面的”B”同理)</p>
+</dd>
+<dt class="field-odd">b<span class="colon">:</span></dt>
+<dd class="field-odd"><p>光标移动到前一个单词的开头(“b” 则在反方向完成这个功能)</p>
+</dd>
+<dt class="field-even">B<span class="colon">:</span></dt>
+<dd class="field-even"><p>光标移动到上一段词的开头(包括这段词的标点符号)</p>
+</dd>
+<dt class="field-odd">e<span class="colon">:</span></dt>
+<dd class="field-odd"><p>移动到当前单词和下一个单词的末尾</p>
+</dd>
+<dt class="field-even">E<span class="colon">:</span></dt>
+<dd class="field-even"><p>移动到下一段词的末尾</p>
+</dd>
+<dt class="field-odd">ge<span class="colon">:</span></dt>
+<dd class="field-odd"><p>移动到上一个单词的末尾</p>
+</dd>
+<dt class="field-even">gE<span class="colon">:</span></dt>
+<dd class="field-even"><p>移动到上一个段词的末尾</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h3>1.4 行移动/查找并跳转<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>:gg/G : “gg”移动到文件开头,”G”移动到文件末尾(末行第一个字符)</p>
+<dl class="field-list simple">
+<dt class="field-odd">f/F<span class="colon">:</span></dt>
+<dd class="field-odd"><p>移动光标到查找的词上</p>
+</dd>
+<dt class="field-even">t/T<span class="colon">:</span></dt>
+<dd class="field-even"><p>移动光标到查找的词的前一个地方上</p>
+</dd>
+<dt class="field-odd">;/,<span class="colon">:</span></dt>
+<dd class="field-odd"><p>“;”可以重复操作，用在以上的条件下,也就是重复查找,”,”反向重复</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h3>1.5 括号匹配<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">%<span class="colon">:</span></dt>
+<dd class="field-odd"><p>百分号，可以在括号上跳转到与其匹配的另外的括号上，如果不在括号上使用，则会正向匹配临近的一个括号上</p>
+</dd>
+</dl>
+</section>
+<section id="id7">
+<h3>1.6 在文本中查找一个单词<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">/<span class="colon">:</span></dt>
+<dd class="field-odd"><p>“/”查找词，/&lt;hi&gt;,查找整个词，”&lt;”是匹配开头对应的词，”&gt;”就是匹配末尾匹配的词</p>
+</dd>
+<dt class="field-even">/^<span class="colon">:</span></dt>
+<dd class="field-even"><p>“/^”查找此行的第一个匹配的词</p>
+</dd>
+<dt class="field-odd">/xxx$<span class="colon">:</span></dt>
+<dd class="field-odd"><p>“/xxx$”查找此行的最后一个匹配的词, xxx</p>
+</dd>
+<dt class="field-even">/he.lo<span class="colon">:</span></dt>
+<dd class="field-even"><p>“.”,匹配任何单个字符</p>
+</dd>
+<dt class="field-odd">/hello.<span class="colon">:</span></dt>
+<dd class="field-odd"><p>“&quot;,如果你确实想匹配点字符，可以在前面加一个反斜杠去消除它的特殊含义。</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h3>1.7 标记来回跳转<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>当你用 “G” 命令跳到另一个地方，Vim 会记住你从什么地方跳过去的。这个位置成为一
+个标记，要回到原来的地方，使用如下命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>`` / &#39;&#39;
+</pre></div>
+</div>
+<p>` 是反引号，用单引号 ‘ 也可以。
+如果再次执行这个命令你会跳回去原来的地方，这是因为 “`” 命令本身是个跳转，
+它记住了自己跳转前的位置。</p>
+</section>
+<section id="id9">
+<h3>1.8 书签设置和跳转<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>命令 “ma” 用 a 标记当前的光标位置。你可以
+在文本中使用 26 个标记 (a 到 z)。这些标记是不可见的要跳到一个你定义的标记，可以使用命令`{mark}，这里 {mark} 是指定义标记的那
+个字母。所以，移到标记 a 的命令是:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>`a 跳转到标记处
+&#39;a 跳转到标记处的第一个字符
+</pre></div>
+</div>
+<p>如下命令取得所有的标记的列表:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">marks</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>不包括 “fx” 和 “tx” 这些行内查找命令或者 “w” 和 “e” 等词移动命令
+另外 “j” 和 “k” 不会被当做是一次 “跳转”，即使你在前面加上计数前缀使之移动
+到很远的地方也不例外</p>
+</div>
+</section>
+</section>
+<section id="id10">
+<h2>2. 修改<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">cc<span class="colon">:</span></dt>
+<dd class="field-odd"><p>删除此行内容并进入插入模式</p>
+</dd>
+<dt class="field-even">ciw<span class="colon">:</span></dt>
+<dd class="field-even"><p>修改光标所在的词</p>
+</dd>
+<dt class="field-odd">c2w<span class="colon">:</span></dt>
+<dd class="field-odd"><p>删除之后的两个词并进入插入模式</p>
+</dd>
+<dt class="field-even">x<span class="colon">:</span></dt>
+<dd class="field-even"><p>表示 dl (删除当前光标下的字符)</p>
+</dd>
+<dt class="field-odd">X<span class="colon">:</span></dt>
+<dd class="field-odd"><p>表示 dh (删除光标左边的字符)</p>
+</dd>
+<dt class="field-even">D<span class="colon">:</span></dt>
+<dd class="field-even"><p>表示 d$ (删除到行尾)</p>
+</dd>
+<dt class="field-odd">C<span class="colon">:</span></dt>
+<dd class="field-odd"><p>表示 c$ (修改到行尾)</p>
+</dd>
+<dt class="field-even">s<span class="colon">:</span></dt>
+<dd class="field-even"><p>表示 cl (修改一个字符</p>
+</dd>
+<dt class="field-odd">S<span class="colon">:</span></dt>
+<dd class="field-odd"><p>表示 cc (修改一整行)</p>
+</dd>
+<dt class="field-even">xp<span class="colon">:</span></dt>
+<dd class="field-even"><p>交换两个相邻的字符</p>
+</dd>
+<dt class="field-odd">cis<span class="colon">:</span></dt>
+<dd class="field-odd"><p>修改这句话</p>
+</dd>
+<dt class="field-even">r<span class="colon">:</span></dt>
+<dd class="field-even"><p>只替换光标处的一个词</p>
+</dd>
+<dt class="field-odd">R<span class="colon">:</span></dt>
+<dd class="field-odd"><p>从光标处开始向后进行替换，退格键进行删除替换，找回原来</p>
+</dd>
+</dl>
+<hr class="docutils" />
+<dl class="field-list simple">
+<dt class="field-odd">x<span class="colon">:</span></dt>
+<dd class="field-odd"><p>删除光标下的字符 (“dl” 的缩写)</p>
+</dd>
+<dt class="field-even">X<span class="colon">:</span></dt>
+<dd class="field-even"><p>删除光标前的字符 (“dh” 的缩写)</p>
+</dd>
+<dt class="field-odd">D<span class="colon">:</span></dt>
+<dd class="field-odd"><p>从当前位置删除到行尾: (“d$” 的缩写)</p>
+</dd>
+<dt class="field-even">dw<span class="colon">:</span></dt>
+<dd class="field-even"><p>从当前位置删除到下一个单词开头</p>
+</dd>
+<dt class="field-odd">db<span class="colon">:</span></dt>
+<dd class="field-odd"><p>从当前位置删除到前一个单词的开头</p>
+</dd>
+<dt class="field-even">diw<span class="colon">:</span></dt>
+<dd class="field-even"><p>删除光标上的单词 (不包括空白字符)</p>
+</dd>
+<dt class="field-odd">daw<span class="colon">:</span></dt>
+<dd class="field-odd"><p>删除光标上的单词 (包括空白字符)</p>
+</dd>
+<dt class="field-even">dG<span class="colon">:</span></dt>
+<dd class="field-even"><p>删除到文件末</p>
+</dd>
+<dt class="field-odd">dgg<span class="colon">:</span></dt>
+<dd class="field-odd"><p>删除到文件首</p>
+</dd>
+<dt class="field-even">~<span class="colon">:</span></dt>
+<dd class="field-even"><p>修改光标下字符的大小写，并移动到下一个字符。这不是一个操作符(除非设置了 ‘tildeop’)，所以你不能连接一个动作命令。这个命令在可视模式下也有效，它会改变被选中的所有文本的大小写</p>
+</dd>
+<dt class="field-odd">I<span class="colon">:</span></dt>
+<dd class="field-odd"><p>移到当前行的第一个非空字符并启动插入模式</p>
+</dd>
+<dt class="field-even">A<span class="colon">:</span></dt>
+<dd class="field-even"><p>移动到行尾并启动插入模式</p>
+</dd>
+</dl>
+<p>如果你用 “c” 代替 “d”，这会变成修改命令；而改用 “y”，则变成拷贝命令，等等.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>“cis” 包括 “c” (change，修改) 操作符和 “is” 文本对象。这表示 “Inner Sentence”
+(内含句子)。还有一个文本对象是 “as” (“A Sentence”)，区别是 “as” 包括句子后面的
+空白字符而 “is” 不包括。如果你要删除一个句子，而且你还想同时删除句子后面空白字
+符，就用 “das”；如果你想保留空白字符而替换一个句子，则使用 “cis”</p>
+<p>v模式,可视模式下也可以使用as,is这样的</p>
+</div>
+<section id="id11">
+<h3>1. 重复操作<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p>“.” 是 Vim 中一个非常简单而有用的命令。它重复最后一次的修改操作</p>
+<p>“.” 命令重复任何除 “u” (撤销)，CTRL‑R (重做) 和冒号命令外的修改</p>
+</section>
+<section id="id12">
+<h3>3. 记录与回放命令(宏)<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>“q{register}” 命令启动一次击键记录，结果保存到 {register} 指定的寄存器中。寄存器名可以用 a 到 z 中任一个字母表示。</p></li>
+<li><p>输入你的命令。</p></li>
+<li><p>键入 q (后面不用跟任何字符) 命令结束记录。</p></li>
+<li><p>现在，你可以用 “&#64;{register}” 命令执行这个宏。</p></li>
+</ol>
+<p>“&#64;a” 命令可以通过计数前缀修饰，使操作重复指定的次数。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>你可能有多个地方需要修改。只要把光标移动到相应的位置并输入 “&#64;a” 命令即可。如果
+你已经执行过一次，你可以用 “&#64;&#64;” 完成这个操作，这更容易输入一些。例如，你上次使
+用 “&#64;b” 命令引用了寄存器 b，下一个 “&#64;&#64;” 命令将使用寄存器 b。
+如果你对回放命令和 “.” 命令作一个比较，你会发现几个区别。首先，”.” 只能重
+复一次改动。而在上例中，”&#64;a” 可以重复多次改动，还能够执行移动操作。第二，”.”
+只能记住最后一次变更操作。而寄存器执行命令允许你记录任何操作并使用像 “&#64;a” 这样
+的命令回放这些被记录的操作。最后，你可以使用 26 个寄存器，因此，你可以记录多达
+26 个命令序列。</p>
+</div>
+</section>
+<section id="id13">
+<h3>3.1 寄存器<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>假设你在寄存器 a 中记录了一些命令。当你通过 “&#64;a” 执行这些命令时，你发现这
+些命令有些问题。这时你可以重新录一次，但这样你可能还会犯其它错误。其实，你可以
+使用如下窍门:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;ap     将 a 寄存器中的文本,粘贴出来</span>
+
+<span class="mi">0</span><span class="s2">&quot;ay$   修改好后，回到行首复制从行首到末尾的内容</span>
+
+<span class="n">dd</span>      <span class="n">删除这个临时行</span>
+</pre></div>
+</div>
+<p>追加寄存器内容</p>
+<p>要附加内容到一个寄存器中，可以使用大写的寄存器名</p>
+<p>这种方法在宏记录，拷贝和删除命令中都有效。例如，你需要把选择一些行到一个寄存器
+中，可以先这样拷贝第一行:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;aY     将此行复制到a寄存器,如果每次都对不同行使用这个，那么只会替换掉原来的内容，而不是追加</span>
+
+<span class="s2">&quot;AY     将此行追加到a寄存器,放在其他内容的后面</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id14">
+<h2>5. 分割窗口<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<section id="id15">
+<h3>1. 打开一个新窗口:<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">split</span>
+</pre></div>
+</div>
+<p>CTRL‑W w 命令可以用于在窗口间跳转</p>
+<p><strong>实际上，按住CTRL‑W,hjkl可以随便移动到想去的那个窗口</strong></p>
+</section>
+<section id="id16">
+<h3>2. 关 闭 窗 口<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">close</span>
+</pre></div>
+</div>
+<p>退出也可以退出那个窗口，只是最后一个窗口也可能会退出，:close不会退出最后一个窗口</p>
+</section>
+<section id="id17">
+<h3>3. 关 闭 所 有 其 它 窗 口<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p>关闭其他窗口，只留当前这一个</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">only</span>
+</pre></div>
+</div>
+</section>
+<section id="id18">
+<h3>4. 用另一个文件分割窗口<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">split</span> <span class="n">two</span><span class="o">.</span><span class="n">c</span>
+
+<span class="ow">or</span>
+
+<span class="p">:</span><span class="n">new</span> <span class="o">....</span>
+</pre></div>
+</div>
+<p>一样的</p>
+</section>
+<section id="id19">
+<h3>5. 窗口大小<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<p>扩大窗口:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CTRL‑W +
+</pre></div>
+</div>
+<p>缩小窗口:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CTRL‑W ‑
+</pre></div>
+</div>
+<p>“4 CTRL‑W +” 会使窗口增高4 行</p>
+<hr class="docutils" />
+<p>要把一个窗口设置为指定的高度，可以用这个命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{height}CTRL‑W _
+</pre></div>
+</div>
+<p>就是先输入一个数值，然后输入 CTRL‑W 和一个下划线 (在美式英语键盘中就是 Shift
+加上 “‑”)。</p>
+</section>
+<section id="id20">
+<h3>6. 垂直分割<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">vsplit</span> <span class="o">...</span>
+
+<span class="ow">or</span>
+
+<span class="p">:</span><span class="n">vnew</span> <span class="o">...</span>
+
+<span class="p">:</span><span class="n">vertical</span> <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="id21">
+<h3>7. 移动窗口<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CTRL‑W H    大写的H
+CTRL‑W J
+CTRL‑W K
+CTRL‑W L
+
+hjkl 你懂的
+</pre></div>
+</div>
+</section>
+<section id="id22">
+<h3>8. 对所有窗口执行命令<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:qall   quit all 关闭每一个窗口
+
+:wall   write all 全部保存
+
+:wqall  &quot;:qall&quot; 和 &quot;wall&quot; 的组合命令
+
+:qall!  退出 Vim 并放弃所有修改
+</pre></div>
+</div>
+</section>
+<section id="id23">
+<h3>9. 启动vim 时，多窗口文件启动<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<p>要让 Vim 为每个文件打开一个窗口，可以使用 “‑o” 参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vim ‑o one.txt two.txt three.txt    水平多窗口
+
+&quot;‑O&quot; 参数用于垂直分割窗口。
+
+vim ‑o one.txt two.txt three.txt    垂直多窗口
+</pre></div>
+</div>
+</section>
+<section id="vimdiff">
+<h3>10. 用 vimdiff 显示文件差异<a class="headerlink" href="#vimdiff" title="Link to this heading">¶</a></h3>
+<p>在终端中输入如下命令: (不是在 Vim 中)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vimdiff</span> <span class="n">main</span><span class="o">.</span><span class="n">c</span><span class="o">~</span> <span class="n">main</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id24">
+<h2>6. 查找<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h2>
+<section id="id25">
+<h3>3. 查找一个单词在一些文件里<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
+<p>举个例子，假设想编辑所有包括单词 “frame_counter” 的 C 源文件，你可以执行如
+下命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vim `grep ‑l frame_counter *.c`
+</pre></div>
+</div>
+<p>整个命令用反引号 (`) 包起来，这告诉 UNIX 的外壳使用该命令的输出作为命令行
+的一部分。于是，grep 命令产生一个文件列表，并作为 Vim 的命令参数。Vim 将编辑
+grep 列出来的所有文件。你可以通过 “:next” 和 “:first” 命令一个一个处理这些文
+件。</p>
+<p>上面的命令只是找到包括单词的那个文件。你还需要知道单词在该文件中出现的地方。
+Vim 有一个内置的命令用于在一组文件中找一个指定的字符串。例如，如果你想在所
+有的 C 文件中查找 “error_string”，可以使用如下命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:grep error_string *.c
+
+这会使 Vim 在所有指定的文件 (*.c) 中查找 &quot;error_string&quot;。Vim 会打开第一个匹配
+的文件并将光标定位在第一个匹配行。要到下一个匹配行 (无论在哪个文件)，可以执行
+&quot;cnext&quot; 命令。要回到上一个匹配行，可以用 &quot;:cprev&quot; 命令。使用 &quot;clist&quot; 可以看到
+所有的匹配点。
+&quot;:grep&quot; 命令会使用一个外部的程序。可能是 grep (在 Unix 上) 或者 findstr
+(在 Windows 上)。你可以通过 &#39;grepprg&#39; 选项修改这个设置。
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id26">
+<h2>7. 命令<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h2>
+<section id="global">
+<h3>1. global<a class="headerlink" href="#global" title="Link to this heading">¶</a></h3>
+<p>“:global” 命令是 Vim 中一个更强大的命令 (之一)。它允许你找到一个匹配点并且在那
+里执行一个命令。它的一般形式是:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:[range]global/{pattern}/{command}
+
+这有点像 &quot;:substitute&quot; 命令。只是它不替换文本，而是执行 {command} 指定的命令。
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>global 中执行的命令只能是冒号命令。普通模式命令不能在这里使用。如果需
+要，可以使用 :normal 命令</p>
+</div>
+<p>假设你要把 “foobar” 修改为 “barfoo”，但只需要修改 C++ 风格的注释中的内容。这种
+注释以 “//” 开头。所以可以使用如下命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:g+//+s/foobar/barfoo/g
+
+其中+号可以替换成,;-
+不能替换成\
+
+:g      代表:global
++       代表/
+//      代表着匹配着&quot;//&quot;
+s       代表着:s命令，也就是之前的替换操作
+
+i全局命令的默认范围是整个文件，所以这个例子中没有指定范围。这一点与
+&quot;:substitute&quot; 是不同的。后者只作用于一行。
+这个命令并非完美。因为 &quot;//&quot; 可能出现在一行的中间，但替换命令会把前后的匹配
+点都替换了。
+
+像 &quot;:substitute&quot; 一样，这里也可以使用各种各样的匹配模式。当你从后面的章节中学
+会更多的关于模式的知识，它们都可以用在这里。
+</pre></div>
+</div>
+<section id="id27">
+<h4>1. 反转行顺序(文章内容上下颠倒)<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h4>
+<dl class="field-list simple">
+<dt class="field-odd">global 命令可以和 :move 行反转了次序。命令是<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:global/^/move 0
+
+缩写：
+
+:g/^/m 0
+
+正则表达式 &quot;^&quot; 匹配行首 (即使该行是一个空行)
+
+:move 命令将匹配的行移动到那个想像中的第 0 行之后。这样匹配的行就成了文件中的第一行。由于 :global 命令不会
+被改变了的行号搞混，该命令继续匹配文件中剩余的行并将它们一一变为首行。
+</pre></div>
+</div>
+<p>i这对一个行范围同样有效。先移动到第一行上方并做标记 ‘t’ (mt)。然后移动到范围的
+最后一行并键入:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="s1">&#39;t+1,.g/^/m &#39;</span><span class="n">t</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="read">
+<h3>2. read<a class="headerlink" href="#read" title="Link to this heading">¶</a></h3>
+<section id="id28">
+<h4>1. read 读取文件<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h4>
+<p>读取文件并将其内容插入：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:[range]read {file name}
+
+其中[range]无论是多少，都取最后一值，比如0,3 这就会从第3行下面开始插入。所以0就可以在这里被使用，也就是在文件开头插入
+
+:$r ...     在文件末尾插入
+:0r ...     在文件开头插入
+:.r ...     在光标所在行插入
+</pre></div>
+</div>
+</section>
+<section id="id29">
+<h4>2. 保存部分行<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h4>
+<p>“:write” 命令。在没有指定范围的时候它写入全文，而指定范围的时候它只写入范围指定的行:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:.,$write {file name}       这个命令将当前光标所在行到文件末尾的内容保存到指定文件内
+</pre></div>
+</div>
+</section>
+<section id="id30">
+<h4>3 添加当前文件内容到之外文件的内容<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:.write {file in same CWD}     把当前行写入覆盖到{file}下，要是同一个CWD的文件
+
+:.write &gt;&gt;{file in same CWD}   把当前行追加写入到{file}下，要是同一个CWD下的文件
+</pre></div>
+</div>
+</section>
+<section id="id31">
+<h4>4. 排版文本<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h4>
+<p>先设置个自动换行:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="nb">set</span> <span class="n">textwidth</span><span class="o">=</span><span class="mi">72</span>
+</pre></div>
+</div>
+<p>Vim 排版当前的段落:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gqap</span>    <span class="n">排版光标所在段落或者光标以下最近的段落</span>
+
+<span class="n">gq</span>      <span class="n">表示编排段落</span>
+<span class="n">ap</span>      <span class="n">表示一个段落</span><span class="p">,</span><span class="n">光标所在段落或者光标以下最近的段落</span>
+</pre></div>
+</div>
+<p>这个命令用 “gq” 开始，作为操作符，然后跟着 “ap”，作为文本对象，该对象表示 “一 段” (a paragraph)。”一段” 与下一段的分割符是一个空行。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>只包括空白字符的空白行不能分割 “一段”。这很不容易分辨。</p>
+</div>
+<p>除了用 “ap”，你还可以使用其它 “动作” 或者 “文本对象”。如果你的段落分割正确，你
+可以用下面命令排版整个文档:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gggqG
+
+&quot;gg&quot; 跳转到第一行，&quot;gq&quot; 是排版操作符，而 &quot;G&quot; 是跳转到文尾的 &quot;动作&quot; 命令。
+</pre></div>
+</div>
+</section>
+<section id="id32">
+<h4>5. 改变大小写<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h4>
+<p>“gU” 操作符,改变到大写状态</p>
+<p>“gu” 操作符,改变到小写状态</p>
+<p>以上操作符号对一个单词执行后，要加个移动操作，才能显示出来，例如：”gUl”,”gUj”,因为”gu/U”操作符还未完整，一般都是”gUw”,整词大写</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>你还可以用 “g~” 来交换大小写。所有这些命令都是操作符，所以它们可以用于 “动作”
+命令，文本对象和可视模式。
+要让一个操作符作用于当前行，可以执行这个操作符两次。例如，”d” 是删除操作
+符，所以删除一行就是 “dd”。相似地，”gugu” 使整一行变成小写。这可以缩成 “guu”。
+“gUgU” 可以缩成 “gUU” 而 “g~g~” 则是 “g~~”。例如:</p>
+</div>
+</section>
+</section>
+<section id="id33">
+<h3>3. ! 调用外部命令<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h3>
+<section id="id34">
+<h4>1.对文本执行命令<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h4>
+<p>“!”用一个外部程序对一个文本块进行过滤:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:[range]!{program}
+</pre></div>
+</div>
+<p>“!!” 命令用于对当前行执行过滤命令。在 Unix 上，”date” 命令能打印当前的时间和日
+期，所以，”!!date&lt;Enter&gt;” 用 “date” 的输出代替当前行。这在为文件加入时间戳的时
+候非常有用。</p>
+<p>直接在普通模式下输入”!!”就会出来”:.!”,然后加上date命令，执行后就可以输出了,这将覆盖掉原来这行的内容</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:.!date
+
+这将覆盖掉原来这行的内容
+</pre></div>
+</div>
+</section>
+<section id="id35">
+<h4>2. 读取一个命令的输出<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h4>
+<p>读取并粘贴当前所在目录下的文件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:r !ls
+
+:r      :read 命令
+!ls     看上面那个内容,执行ls命令，&quot;!&quot;号就是在vim里的执行ls命令的。。。
+</pre></div>
+</div>
+<p>这些命令还可以带参数。而且前面还可以带一个范围用于告诉 Vim 把这行放在什么 地方:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:0r !date -u
+
+这将用 UTC 格式把当前的时间插入到文件开头。
+</pre></div>
+</div>
+</section>
+<section id="id36">
+<h4>3. 把文本用于命令的输出<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h4>
+<p>Unix 命令 “wc” 用于统计单词数目。要统计当前文件有多少个单词，可以这样:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:w !wc
+
+:w      :write,:0w,:$w,:nw 单行内容单词统计
+!wc     执行对全文本执行wc命令
+
+1   6  29
+
+&quot;wc&quot; 命令惜字如金。这表示你有 1 行，6 个单词和 29 个字符。
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>不要错写成:</p>
+<p>:write! wc</p>
+<p>这会强制把当前文件存到当前目录的 “wc” 文件中。在这里空格的位置是非常重要的！</p>
+</div>
+<p>Mon Jan 29 17:20:22 CST 2024</p>
+</section>
+</section>
+<section id="substitute">
+<h3>4. :substitute命令 替换<a class="headerlink" href="#substitute" title="Link to this heading">¶</a></h3>
+<section id="substitute-s">
+<h4>1. :substitute命令/:s<a class="headerlink" href="#substitute-s" title="Link to this heading">¶</a></h4>
+<p>“:substitute” 命令使你可以在连续的行中执行字符串替换。下面是这个命令的一般形
+式:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:[range]substitute/from/to/[flags]
+
+其中
+
+:substitute     命令太长，缩小为&quot;:s&quot;
+[range]         &quot;%&quot; 表示命令作用于全部行。如果不指定行范围，&quot;:s&quot; 命令只作用在当前行上
+/from/to/       把[range]指定范围内的&quot;from&quot;替换为&quot;to&quot;
+[flages]        &quot;g&quot; (global，全局) 标记,没有全局标记，只会匹配范围内行内第一个可匹配值
+                &quot;p&quot; (print，打印)，用于在命令执行的时候打印出最后一个被修改的行
+                &quot;c&quot; (confirm，确认) 标记会在每次替换前向你询问是否需要替换
+
+                    y          Yes，是；执行替换
+                    n          No，否；跳过
+                    a          Quit，退出；不再执行任何替换
+                    q          Last，最后；替换完当前匹配点后退出
+                    l          向上滚动一行
+                    CTRL‑E     向下滚动一行
+                    CTRL‑Y     All，全部；对剩下的匹配点全部执行替换，不需要再确认
+</pre></div>
+</div>
+</section>
+<section id="id37">
+<h4>2. 范围替换可使用匹配模式<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h4>
+<p>“:s” 命令中的 “from” 部分实际上是一个 “匹配模式”
+要替换行首的 “the” 可以这样写:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">s</span><span class="o">/^</span><span class="n">the</span><span class="o">/</span><span class="n">these</span><span class="o">/</span>
+</pre></div>
+</div>
+</section>
+<section id="id38">
+<h4>3. 匹配中使用正斜杠<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h4>
+<p>如果你要在 “from” 或者 “to” 中使用正斜杠，你需要在前面加上一个反斜杠。例如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fr/om t/o
+
+:%s/fr\/om/t\/o/
+
+执行上面的命令后，前面的fr/om t/o 变成了以下内容
+
+t/o t/o
+</pre></div>
+</div>
+<section id="id39">
+<h5>1 单词替换<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h5>
+<p>替换命令可以在全文中用一个单词替换另一个单词:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">%</span><span class="n">s</span><span class="o">/</span><span class="n">four</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="n">g</span>
+</pre></div>
+</div>
+<p>“%” 范围前缀表示在所有行中执行替换。最后的 “g” 标记表示替换行中的所有匹配点。
+如果你有一个像 “thirtyfour” 这样的单词，上面的命令会出错。这种情况下，这
+个单词会被替换成 “thirty4”。要解决这个问题，用 “&lt;” 来指定匹配单词开头:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">%</span><span class="n">s</span><span class="o">/</span>\<span class="o">&lt;</span><span class="n">four</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="n">g</span>
+</pre></div>
+</div>
+<p>显然，这样在处理 “fourteen” 的时候还是会出错。用 “&gt;” 来解决这个问题:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">%</span><span class="n">s</span><span class="o">/</span>\<span class="o">&lt;</span><span class="n">four</span>\<span class="o">&gt;/</span><span class="mi">4</span><span class="o">/</span><span class="n">g</span>
+</pre></div>
+</div>
+<p>如果你在编码，你可能只想替换注释中的 “four”，而保留代码中的。由于这很难指定，
+可以在替换命令中加一个 “c” 标记，这样，Vim 会在每次替换前提示你:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">%</span><span class="n">s</span><span class="o">/</span>\<span class="o">&lt;</span><span class="n">four</span>\<span class="o">&gt;/</span><span class="mi">4</span><span class="o">/</span><span class="n">gc</span>
+</pre></div>
+</div>
+</section>
+<section id="id40">
+<h5>2. 多文件里词替换<a class="headerlink" href="#id40" title="Link to this heading">¶</a></h5>
+<p>假设你需要替换多个文件中的单词。你的一个选择是打开每一个文件并手工修改。但是 使用记录和回放命令会快很多。 假设你有一个包括有 C++ 文件的目录，所有的文件都以 “.cpp” 结尾。有一个叫 “GetResp” 的函数，你需要把它改名为 “GetAnswer”。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vim *.cpp                       启动 Vim，用当前目录的所有 C++ 文件作为文件参
+                                数。启动后你会停在第一个文件上。
+qq                              用 q 作为寄存器启动一次记录。
+:%s/\&lt;GetResp\&gt;/GetAnswer/g     在第一个文件中执行替换。
+:wnext                          保存文件并移到下一个文件。
+q                               中止记录。
+@q                              回放 q 中的记录。这会执行又一次替换和&quot;:wnext&quot;。你现在可以检查一下记录有没有错。
+999@q                           对剩下的文件执行 q 中的命令
+</pre></div>
+</div>
+<p>Vim 会在最后一个文件上报错，因为 “:wnext” 无法移到下一个文件上。这时所有的文件
+中的操作都完成了。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>在回放记录的时候，任何错误都会中止回放的过程。所以，要 注意 保证记录中
+的命令不会产生错误。</p>
+</div>
+<p>这里有一个陷阱: 如果有一个文件不包含 “GetResp”，Vim 会报错，而整个过程会中止，
+要避免这个问题，可以在替换命令后面加一个标记:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:%s/\&lt;GetResp\&gt;/GetAnswer/ge
+
+&quot;e&quot; 标记通知 &quot;:substitute&quot; 命令找不到不是错误。
+</pre></div>
+</div>
+</section>
+<section id="last-first-first-last">
+<h5>3. 把 “Last, First” 改成 “First Last”<a class="headerlink" href="#last-first-first-last" title="Link to this heading">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">%</span><span class="n">s</span><span class="o">/</span>\<span class="p">([</span><span class="o">^</span><span class="p">,]</span><span class="o">*</span>\<span class="p">),</span> \<span class="p">(</span><span class="o">.*</span>\<span class="p">)</span><span class="o">/</span>\<span class="mi">2</span> \<span class="mi">1</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>我们把这个命令分解成几个部分。首先，很明显它是一个替换命令。”%” 是行范围，表示
+作用于全文。这样替换命令会作用于全文的每一行。
+替换命令的参数格式是 “from/to”，正斜杠区分 “from” 模式和 “to” 字符串。所
+以，”from” 部分是:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="p">([</span><span class="o">^</span><span class="p">,]</span><span class="o">*</span>\<span class="p">),</span> \<span class="p">(</span><span class="o">.*</span>\<span class="p">)</span>
+
+<span class="n">第一对</span> \<span class="p">(</span> <span class="n">和</span> \<span class="p">)</span> <span class="n">之间的部分匹配</span> <span class="s2">&quot;Last&quot;</span>           \<span class="p">(</span>  \<span class="p">)</span>
+<span class="n">匹配除逗号外的任何东西</span>                          <span class="p">[</span><span class="o">^</span><span class="p">,]</span>
+<span class="n">任意多次</span>                                        <span class="o">*</span>
+<span class="n">匹配逗号</span>                                        <span class="p">,</span>
+<span class="n">第二对</span> \<span class="p">(</span> <span class="n">和</span> \<span class="p">)</span> <span class="n">之间的部分匹配</span> <span class="s2">&quot;First&quot;</span>          \<span class="p">(</span>  \<span class="p">)</span>
+<span class="n">匹配任意字符</span>                                    <span class="o">.</span>
+<span class="n">任意多次</span>                                        <span class="o">*</span>
+</pre></div>
+</div>
+<p>在 “to” 部分，我们有 “2” 和 “1”。这些称为 “反向引用”。它们指向前面模式中的
+( 和 ) 间的部分。”2” 指向模式中的第二对 ( 和 ) 间的部分，也就是 “First”
+名 (译者注: 英文中 Last Name 表示姓，即家族名，后面的 First Name 表示名字)。
+“1” 指向第一对 ( )，即 “Last” 名。</p>
+<p>你可以在替换部分使用多达 9 个反向引用。”0” 表示整个匹配部分。还有一些特殊
+的项可以用在替换命令中。</p>
+</section>
+</section>
+<section id="id41">
+<h4>4. 命令范围<a class="headerlink" href="#id41" title="Link to this heading">¶</a></h4>
+<p>接着上面的例子，最简单的范围表达形式是 “{number},{number}”。例如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="n">s</span><span class="o">/</span><span class="n">this</span><span class="o">/</span><span class="n">that</span><span class="o">/</span><span class="n">g</span>
+
+<span class="n">其中</span><span class="s2">&quot;1,5&quot;</span> <span class="n">就是</span><span class="p">[</span><span class="nb">range</span><span class="p">],</span><span class="n">表示第一行到第五行的内容里</span>
+</pre></div>
+</div>
+<p>如果只用一个数值，表示某个指定的行:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="mi">54</span><span class="n">s</span><span class="o">/</span><span class="n">President</span><span class="o">/</span><span class="n">Fool</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>有些命令在不指定范围的时候作用于整个文件。要让它只作用于当前行可以用当前行范围
+标识 “.”。”:write” 命令就是这样: 不指定范围的时候，它写入整个文件，如果要仅写
+入当前行，可以这样:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">.</span><span class="n">write</span> <span class="n">otherfile</span>
+</pre></div>
+</div>
+<p>文件的第一行行号总是 1，最后一行又是多少呢？”$” 字符用于解决这个问题。例如，要
+修改当前行到文件末的全部内容，可以这样:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:.,$s/yes/no/
+
+我们前面使用的 &quot;%&quot; 就是 &quot;1,$&quot; 的缩写形式，表示从文件首到文件末。
+</pre></div>
+</div>
+<section id="id42">
+<h5>1. 使用匹配模式<a class="headerlink" href="#id42" title="Link to this heading">¶</a></h5>
+<p>假设你正在编辑一本书中的一章，并且想把所有的 “grey” 修改成 “gray”。但你只想修
+改这一章，不想影响其它的章节。另外，你知道每章的开头的标志是行首的单词为
+“Chapter”。下面的命令会对你有帮助:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:?^Chapter?,/^Chapter/s=grey=gray=g
+
+?....?      表示向后匹配，默认什么都不加就是向前匹配
+同样，&quot;/^Chapter/&quot; 用于向后查找下一章
+=           等于号表示&quot;/&quot;符号，就是代表那个意思，不行的话还是用&quot;/&quot;吧
+</pre></div>
+</div>
+</section>
+<section id="id43">
+<h5>2. 匹配偏移，使用+/-号<a class="headerlink" href="#id43" title="Link to this heading">¶</a></h5>
+<p>上面的方案其实还是有问题的: 如果下一章的标题行中包括 “grey”，这个 “grey” 也会
+被替换掉。如果你正好想这样就最好，可是正好你不想呢？这个时候你需要指定一个偏
+移。
+要查找一个模式，并且使用它的后一行，需要这样:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/Chapter/‑1
+</pre></div>
+</div>
+<p>你可以用任意数值代替命令中的 1。要定位匹配点下的第二行，要这样:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Chapter</span><span class="o">/+</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>偏移还可以用于其它范围指定符。看一下下面这个例子:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:.+3,$‑5
+
+1+1,$-4s/Blook/uuuuuuuuuuuuuuuuuu/
+
+这种偏移包含了最终偏移点内容,也就是说，1+1行的内容如果匹配，也会被修改
+</pre></div>
+</div>
+<p>这指定当前行下面第三行到文件末倒数第五行的范围。</p>
+</section>
+<section id="id44">
+<h5>3. 使用标记作为命令范围<a class="headerlink" href="#id44" title="Link to this heading">¶</a></h5>
+<p>例如，用 “mt” 标记开头，再用”mb” 标记结尾。然后你就可以用标记表示一个范围 (包括标记的那一行):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="s1">&#39;t,&#39;</span><span class="n">b</span>
+</pre></div>
+</div>
+</section>
+<section id="id45">
+<h5>4. 可视模式下作为范围<a class="headerlink" href="#id45" title="Link to this heading">¶</a></h5>
+<p>可以在可视模式中选中一些行。如果你现在输入 “:” 启动冒号命令模式，你会看到:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:&#39;&lt;,&#39;&gt;
+
+现在，你可以输入剩下的命令，这个命令的作用范围就是可视模式中指定的范围。
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果使用可视模式选中行的一部分，或者用 CTRL‑V 选中一个文本列块，然后执
+行冒号命令，命令仍作用于整行，而不只是选中的范围。这可能会在以后的版本
+中修正</p>
+<p>v9.1未修复</p>
+</div>
+<p>‘&lt; 和 ‘&gt; 实际上是标记，分别标识可视模式的开始和结尾,你还可以用标记跳转命令 “’&lt;” 跳转到选中文本的开始处</p>
+<p>还可以把这个标记和其它标记混合，例如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="s1">&#39;&gt;,$</span>
+
+<span class="n">这表示从选中部分的结尾到文件末</span>
+</pre></div>
+</div>
+</section>
+<section id="id46">
+<h5>5. 预先指定匹配行数<a class="headerlink" href="#id46" title="Link to this heading">¶</a></h5>
+<p>i如果你知道要修改多少行，你可以先输入一个数值再输入冒号。例如，如果你输入
+“5:”，你会得到:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:.,.+4
+
+其中从本行开始向下4行，一共是5行
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section id="id47">
+<h2>8. 选择<a class="headerlink" href="#id47" title="Link to this heading">¶</a></h2>
+<section id="id48">
+<h3>1. 可视列块模式<a class="headerlink" href="#id48" title="Link to this heading">¶</a></h3>
+<p>CTRL‑V 命令可以选中一个矩形文本块。有几个命令是专门用来处理这个文本块的。</p>
+<p>当最后一个移动命令是 “$” 时，整个可视列块
+将被扩展到每一行的行尾。这种状态在你使用垂直移动命令的时候一直被保持，直到你使
+用水平移动命令为止,就是说，用 “j” 命令会保持这种状态，而 “h” 会退出。</p>
+<p>这个有时候挺方便的，一直hjkl总是担心选区无法包含所有</p>
+<section id="id49">
+<h4>1. 插入文本<a class="headerlink" href="#id49" title="Link to this heading">¶</a></h4>
+<p>“I{string}&lt;Esc&gt;” 命令把 {string} 插到可视列块的每一行的左边。你用 CTRL‑V 进入
+可视列块模式，然后移动光标定义一个列块。接着输入 I 进入插入模式，并随后输入文
+本。这时，你输入的内容只出现在第一行。
+然后你输入 &lt;Esc&gt; 结束输入，刚才输入的字符串将神奇地出现在每一行的可视区的
+左边。</p>
+<p>如果选中的块经过一个短行，并且这行没有任何内容包括在可视列块中，则新的文本不会
+被插入到该行中</p>
+<hr class="docutils" />
+<p>“A” 命令的效果与 “I” 命令一样，只是把文字插入可视列块的右边，而且在短行中会插
+入文字。这样，你有在短行中插入文字与否的不同选择。</p>
+<p>“A” 在如下情况会有一些特别: 选中一个可视列块然后用 “$” 命令使可视列块扩展
+到行尾。然后用 “A” 命令插入文本，文件将被插入到 “每一行” 的行尾。</p>
+<p>挺有用的</p>
+</section>
+<section id="id50">
+<h4>2. 修改文本<a class="headerlink" href="#id50" title="Link to this heading">¶</a></h4>
+<p>可视列块中的 “c” 命令会删除整个可视列块并转入 “插入” 模式,然后输入内容，在&lt;Esc&gt;退出，就会给这可视化块里填充刚刚的内容
+与 “I” 命令一样，短行不会发生变化。而且在插入的过程中，你不能断行</p>
+<p>在可视化块下”C” 命令从块的左边界开始删除所有行的后半段，然后状态切换到 “插入” 模式让你输
+入文本。新的文本被插入到每一行的末尾</p>
+<p>调整可视化块里的字符的大小写</p>
+<dl class="field-list simple">
+<dt class="field-odd">~<span class="colon">:</span></dt>
+<dd class="field-odd"><p>交换大小写  (a ‑&gt; A 而 A ‑&gt; a)</p>
+</dd>
+<dt class="field-even">U<span class="colon">:</span></dt>
+<dd class="field-even"><p>转换成大写  (a ‑&gt; A 而 A ‑&gt; A)</p>
+</dd>
+<dt class="field-odd">u<span class="colon">:</span></dt>
+<dd class="field-odd"><p>转换成小写  (a ‑&gt; a 而 A ‑&gt; a)</p>
+</dd>
+</dl>
+</section>
+<section id="id51">
+<h4>3. 一个字符填充<a class="headerlink" href="#id51" title="Link to this heading">¶</a></h4>
+<p>在可视化块模式可以使用 “r” 命令。输入一个字符，那么这个块就被这个字符填充了</p>
+</section>
+<section id="id52">
+<h4>4. 字符平移<a class="headerlink" href="#id52" title="Link to this heading">¶</a></h4>
+<p>“&gt;” 命令把 <strong>选中</strong> 的文档向右移动一个 “平移单位”，中间用空白填充。平移的起始点是可
+视列块的左边界(就是可视化块的最左边的那一条)。每次平移后要是想继续平移的话可以使用”.”命令重复上一次的命令</p>
+<p>平移的距离由 ‘shiftwidth’ 选项定义。例如，要每次平移 4 个空格，可以用这个命
+令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="nb">set</span> <span class="n">shiftwidth</span><span class="o">=</span><span class="mi">4</span>
+</pre></div>
+</div>
+<p>“&lt;” 命令向左移动一个 “平移单位”，但能移动的距离是有限的，因为它左边的不是空白
+字符的字符会挡住它，这时它移到尽头就不再移动。</p>
+<p>个人测试”&lt;”命令好像无法使用</p>
+</section>
+<section id="id53">
+<h4>5. 连接若干行<a class="headerlink" href="#id53" title="Link to this heading">¶</a></h4>
+<p>就是把多行变成了一行，然后原来的每行在一行之后就用一个空格来分隔</p>
+<p>“J” 命令连接被选中的行。也就是删除所有的换行符。其实不只是换行符，行前后的多余
+空白字符会一起被删除而全部用一个空格取代。如果行尾刚好是句尾，就插入两个空格
+(参见 ‘joinspaces’ 选项)</p>
+<p>“J” 命令其实不关心选中了哪些字符，只关心块涉及到哪些行。所以可视列块的效果与
+“v” 和 “V” 的效果是完全一样的。</p>
+<p>如果你不想改变那些空白字符，可以使用 “gJ” 命令。 (不知道为什么，我这里”J”和”gJ”都一样的不删除空格)</p>
+</section>
+</section>
+</section>
+<section id="id54">
+<h2>9. 恢复<a class="headerlink" href="#id54" title="Link to this heading">¶</a></h2>
+<section id="id55">
+<h3>1. 基本恢复<a class="headerlink" href="#id55" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vim ‑r {file}
+</pre></div>
+</div>
+<p>如果你编辑的时候没有给定文件名，可以用一个空的字符串来表示文件名:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vim ‑r &quot;&quot;
+
+你需要进入原来的目录执行这个命令，否则 Vim 是找不到这个交换文件的
+</pre></div>
+</div>
+</section>
+<section id="id56">
+<h3>2. 交换文件在哪<a class="headerlink" href="#id56" title="Link to this heading">¶</a></h3>
+<p>Vim 会列出所有它能找到的交换文件。它还会从其它目录寻找本目录文件的交换文件，但
+它不会寻找其它目录里的交换文件，更不会遍及整个目录树</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vim ‑r
+</pre></div>
+</div>
+<section id="id57">
+<h4>2.1 使用指定的交换文件<a class="headerlink" href="#id57" title="Link to this heading">¶</a></h4>
+<p>如果你知道要用哪个文件，你可以指定交换文件的名字。Vim 会找出交换文件所对应的原
+始文件的名字。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Vim ‑r file.swo
+
+这个方法在交换文件在一个非预期的目录中时很有用。Vim 知道 *.s[uvw][a‑z] 模式的
+文件是交换文件。
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id58">
+<h2>10. 快速键入命令行命令<a class="headerlink" href="#id58" title="Link to this heading">¶</a></h2>
+<section id="id59">
+<h3>1. 命令行编辑<a class="headerlink" href="#id59" title="Link to this heading">¶</a></h3>
+<section id="id60">
+<h4>1. 移 动<a class="headerlink" href="#id60" title="Link to this heading">¶</a></h4>
+<p>命令行上移动光标时最常用的键:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;Left&gt;                      左移一个字符
+&lt;Right&gt;                     右移一个字符
+&lt;S‑Left&gt; 或 &lt;C‑Left&gt;        左移一个单词
+&lt;S‑Right&gt; 或 &lt;C‑Right&gt;      右移一个单词
+CTRL‑B 或 &lt;Home&gt;            命令行行首
+CTRL‑E 或 &lt;End&gt;             命令行行尾
+</pre></div>
+</div>
+</section>
+<section id="id61">
+<h4>2. 删 除<a class="headerlink" href="#id61" title="Link to this heading">¶</a></h4>
+<p>&lt;BS&gt;    键删除光标前一个字符
+CTRL‑W  删除光标前整个单词。
+CTRL‑U  删除命令行上全部文字，从而让你从头开始。</p>
+</section>
+<section id="id62">
+<h4>3. 替 换<a class="headerlink" href="#id62" title="Link to this heading">¶</a></h4>
+<p>插入键 &lt;Insert&gt; 让你在插入字符和替换字符两种方式之间切换。</p>
+<p>在命令模式切换到替换字符的方式后，光标在其他字符上输入的话会替换掉当前的字符，且光标会向后移动</p>
+</section>
+<section id="id63">
+<h4>4. 取 消<a class="headerlink" href="#id63" title="Link to this heading">¶</a></h4>
+<p>你本想执行一个 : 或 / 命令，但却改变了主意。要清除命令行上你已经键入的文字却不 执行该命令，按 CTRL‑C 或 &lt;Esc&gt;。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>&lt;Esc&gt; 是普遍采用的 “退出” 键。不幸的是，在过去美好的 Vi 版本里，在命令
+行上按 &lt;Esc&gt; 却是执行命令！由于那会被认为是程序 bug，Vim 采用 &lt;Esc&gt; 来
+取消命令。但其 ‘cpoptions’ 选项可以使 Vim 跟 Vi 兼容。而且，使用映射时
+(那可能是为 Vi 而写的)，&lt;Esc&gt; 键也总和 Vi 兼容。由此看来，采用 CTRL‑C
+倒不失为一种永远奏效的方法。</p>
+</div>
+</section>
+</section>
+<section id="id64">
+<h3>2. 命令行缩写<a class="headerlink" href="#id64" title="Link to this heading">¶</a></h3>
+<p>有些 “:” 命令确实很长。我们已经提及替代命令 “:substitute” 可以被缩写成 “:s”。
+这是一个基本机理，即所有 “:” 冒号命令都可以被缩写。</p>
+<p>一个一个地记</p>
+</section>
+<section id="id65">
+<h3>3. 命令行补全<a class="headerlink" href="#id65" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">&lt;Tab&gt;<span class="colon">:</span></dt>
+<dd class="field-odd"><p>制表键 &lt;Tab&gt; 会补全光标前的词</p>
+</dd>
+<dt class="field-even">Ctrl+P<span class="colon">:</span></dt>
+<dd class="field-even"><p>反方向循环匹配列表</p>
+</dd>
+</dl>
+</section>
+<section id="id66">
+<h3>4. 查看匹配总览<a class="headerlink" href="#id66" title="Link to this heading">¶</a></h3>
+<p>当你输入了一些命令，想补全的时候。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:CTRL‑D: 显示全部可以补全的命令
+</pre></div>
+</div>
+</section>
+<section id="id67">
+<h3>5. 显示历史命令<a class="headerlink" href="#id67" title="Link to this heading">¶</a></h3>
+<p>命令历史记录:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">history</span>
+
+<span class="s2">&quot;q&quot;</span><span class="n">键退出查看命令历史</span>
+</pre></div>
+</div>
+<p>搜索历史记录:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">history</span> <span class="o">/</span>
+</pre></div>
+</div>
+</section>
+<section id="id68">
+<h3>6. 命令行窗口<a class="headerlink" href="#id68" title="Link to this heading">¶</a></h3>
+<p>键盘上直接按”q:”,进入命令行窗口</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Vim 现在就在屏幕底部打开了一个 (很小的) 窗口。它存放着命令行历史记录</p>
+<p>可以像平常一样对那些命令进行更改，光标所在行按&lt;Enter&gt;执行命令,按 &lt;Enter&gt; 键执行光标下的那个命令。这跟 Vim 处于插入模式抑或普通模式无关。</p>
+</section>
+</section>
+<section id="id69">
+<h2>11. 离开和回来<a class="headerlink" href="#id69" title="Link to this heading">¶</a></h2>
+<section id="id70">
+<h3>1. 挂起和继续<a class="headerlink" href="#id70" title="Link to this heading">¶</a></h3>
+<p>::suspend: 后台挂起
+:CTRL‑Z: 后台挂起
+:fg: shell环境下将后台的vim唤起</p>
+<p>当你按 CTRL‑Z 行不通时，你还可以用命令 “:suspend”。别忘了把 Vim 引导回前
+台，否则你会失去你所有的修改！</p>
+</section>
+<section id="shell">
+<h3>2. 执行shell命令<a class="headerlink" href="#shell" title="Link to this heading">¶</a></h3>
+<p>从 Vim 内部执行单个外壳命令，用 “:!{command}”。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:!{command}
+
+:!{program}         执行 {program}
+:r !{program}       执行 {program} 并读取其输出
+:w !{program}       执行 {program} 传送文本至其输入
+:[range]!{program}  经由 {program} 过滤文本
+</pre></div>
+</div>
+</section>
+<section id="viminfo">
+<h3>3. 记忆有关信息；viminfo<a class="headerlink" href="#viminfo" title="Link to this heading">¶</a></h3>
+<p>信息文件 viminfo 设计用来储存状态信息:</p>
+<ul class="simple">
+<li><p>命令行和模式搜索的历史记录</p></li>
+<li><p>寄存器内文本</p></li>
+<li><p>各种文件的标记</p></li>
+<li><p>缓存器列表</p></li>
+<li><p>全局变量</p></li>
+</ul>
+</section>
+<section id="id71">
+<h3>4. 重返VIM中断处<a class="headerlink" href="#id71" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">‘0<span class="colon">:</span></dt>
+<dd class="field-odd"><p>每次退出 Vim，它都创建一个标记。最后那个是 ‘0。</p>
+</dd>
+</dl>
+<p>来那个 ‘0 所指的位置就
+成了 ‘1。而原来那个 ‘1 就成了 ‘2，依此类推。而原来的标记 ‘9 就没了。
+要发现标记 ‘0 至 ‘9 指向何处， :marks 命令很有用。</p>
+</section>
+<section id="id72">
+<h3>5. 重返某文件<a class="headerlink" href="#id72" title="Link to this heading">¶</a></h3>
+<p>如果你想回到最近曾经编辑过的文件:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">oldfiles</span>
+</pre></div>
+</div>
+<p>假如你要编辑第二个文件，也就是列表里 “2:” 开始的那个，输入:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">e</span> <span class="c1">#&lt;2</span>
+
+<span class="p">:</span><span class="n">e</span>      <span class="p">:</span><span class="n">edit</span>   <span class="n">编辑</span>
+<span class="c1">#&lt;2     oldfiles 命令里编号为2的文件，#号就是这样的，如果是%号，就是在本文件上修改，%&lt;2,也就是本文件名加上2,</span>
+        <span class="p">{</span><span class="n">file</span><span class="p">}</span><span class="mi">2</span><span class="p">,</span><span class="n">变成了新建文件了</span>
+</pre></div>
+</div>
+<p>也可以这样来分割窗口来编辑第三个文件:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">split</span> <span class="c1">#&lt;3</span>
+</pre></div>
+</div>
+<p>简单点的方法：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">browse</span> <span class="n">oldfiles</span>
+</pre></div>
+</div>
+<p>假如你想编辑oldfiles的第2个命令，先按 “q” 停止列表，然后会有提示:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Type</span> <span class="n">number</span> <span class="ow">and</span> <span class="o">&lt;</span><span class="n">Enter</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">empty</span> <span class="n">cancels</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>输入 “2” 并按 &lt;Enter&gt; 来编辑第二个文件。</p>
+</section>
+<section id="id73">
+<h3>6. 保存会话记录:<a class="headerlink" href="#id73" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:mksession ~/.vim/mine.vim
+
+现在你可以用这个布局启动 Vim:
+
+vim ‑S ~/.vim/mine.vim
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id74">
+<h2>12. 寻找要编辑的文件<a class="headerlink" href="#id74" title="Link to this heading">¶</a></h2>
+<section id="id75">
+<h3>1. 文件浏览器<a class="headerlink" href="#id75" title="Link to this heading">¶</a></h3>
+<p>进入当前目录,CWD</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">edit</span> <span class="o">.</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>按下 &lt;Enter&gt; 键。你就可以编辑那个文件了</p></li>
+<li><p>要回到浏览器，再用一次 “:edit .” 或”:Explore” 即可</p></li>
+<li><p>浏览文件文件时，进入一个目录后，除了”../”回到上一级之外，可以使用”-“号来实现</p></li>
+</ol>
+<p>&lt;F1&gt;键盘映射</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;F1&gt;   导致 Netrw 发出帮助
+&lt;cr&gt;   Netrw 将进入目录或读取文件
+&lt;del&gt;  Netrw 将尝试删除文件/目录
+&lt;c-h&gt;  编辑文件隐藏列表
+&lt;c-l&gt;  使 Netrw 刷新目录列表
+&lt;c-r&gt;  使用 gvim 服务器浏览
+&lt;c-tab&gt; 缩小/展开网络/探索窗口
+  -    使 Netrw 上升一个目录
+  a    在正常显示之间循环
+       隐藏（抑制显示匹配 g:netrw_list_hide 的文件）
+       和显示（只显示符合 g:netrw_list_hide 的文件）
+  cd   将浏览目录设为当前目录
+  C    设置编辑窗口
+  d    创建目录
+  D    尝试删除文件/目录
+  gb   转到上一个书签目录
+  gd   作为目录强制处理
+  gf   强制处理为文件
+  gh   快速隐藏/取消隐藏点文件
+  gn   将树的顶部设置为光标下方的目录
+  gp   更改仅限本地的文件权限
+  i    控制列表风格 (瘦、长、宽和树形)。长列表包含文件大小和日期信息。
+  I    切换横幅的显示方式
+  mb   收藏当前目录
+  mc   将标记文件复制到标记文件目标目录
+  md   将差异应用于标记的文件（最多 3 个）
+  me   将标记的文件放在参数列表中并对其进行编辑
+  mf   标记文件
+  mF   取消标记文件
+  mg   将 vimgrep 应用于标记的文件
+  mh   切换标记的文件足以出现在隐藏列表中
+  mm   将标记的文件移动到标记的文件目标目录
+  mp   打印标记文件
+  mr   使用 shell 样式正则表达式标记文件
+  mt   当前浏览目录成为标记文件目标
+  mT   将 ctags 应用于标记的文件
+  mu   取消标记所有标记的文件
+  mv   对标记文件应用任意 vim 命令
+  mx   将任意 shell 命令应用于标记的文件
+  mX   将任意 shell 命令应用于整体标记的文件
+  mz   压缩/解压缩标记文件
+  o    在新的浏览器窗口中输入光标下的文件/目录。  使用水平分割。
+  O    获取游标指定的文件
+  p    预览文件
+  P    在先前使用的窗口中浏览
+  qb   列出已添加书签的目录和历史记录
+  qf   显示文件信息
+  qF   使用快速修复列表标记文件
+  qL   使用位置列表标记文件
+  r    逆转排列顺序。
+  R    重命名指定文件/目录
+  s    反复按 s 会改变文件排序的方式；可以按照名字、修改日期或文件大小排序。
+  S    指定名称排序的后缀优先级
+  t    在新标签页中输入光标下的文件/目录
+  u    更改为最近访问过的目录
+  U    更改为后续访问的目录
+  v    在新的浏览器窗口中输入光标下的文件/目录。  使用垂直分割。
+  x    查看带有关联程序的文件
+  X    通过 system() 在光标下执行文件名
+  %    在 netrw 的当前目录下打开一个新文件
+</pre></div>
+</div>
+<p>netrw 浏览器不限于你的本地机器；也可使用 url，如下:
+(拖尾的 / 是必需的)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">Explore</span> <span class="n">ftp</span><span class="p">:</span><span class="o">//</span><span class="n">somehost</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="nb">dir</span><span class="o">/</span>
+<span class="p">:</span><span class="n">e</span> <span class="n">scp</span><span class="p">:</span><span class="o">//</span><span class="n">somehost</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="nb">dir</span><span class="o">/</span>
+</pre></div>
+</div>
+</section>
+<section id="id76">
+<h3>2. 当前目录<a class="headerlink" href="#id76" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>“:cd” 命令可以用来改变当前目录(CWD)。</p></li>
+<li><p>“:pwd” 命令来查看当前目录使什么</p></li>
+<li><p>Vim 记得最近访问过的那个目录。你可以用 “cd ‑” 命令回去那儿。</p></li>
+<li><p>双窗口不同当前目录</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>执行过 :lcd 命令的窗口记得它特有的当前目录。在其它窗口执行 :cd 或
+:lcd 命令对它毫无影响。
+
+在一个采用特有当前目录的窗口执行 :cd 命令以后，该窗口就回过头来又采用共享
+的当前目录了。
+
+也就是有两个窗口(:split),然后一个窗口使用了&quot;:lcd&quot;,切换到另外一个窗口上，对它使用&quot;:cd&quot;,然后这两个窗口就不同步一个当前目录(CWD)了，lcd,就是这样用的
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>标签页本地目录</p></li>
+</ol>
+<p>打开新的标签页时，使用打开时所在的之前标签页窗口的目录。可以用 :tcd 命令来改
+变当前标签页的目录。除了有局部于窗口的目录的窗口以外，同一标签页的所有窗口共享
+此目录。任何此标签页上打开的新窗口会使用此目录为当前工作目录。在标签页中使用
+:cd 命令不会改变有局部于标签页目录的标签页的工作目录。在标签页中使用 :cd
+命令改变全局目录后，也改变了当前标签页的工作目录。</p>
+</section>
+<section id="id77">
+<h3>3. 查找文件<a class="headerlink" href="#id77" title="Link to this heading">¶</a></h3>
+<p>假定现在你在编辑一个 C 程序，该程序有这样一行:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &quot;inits.h&quot;</span>
+</pre></div>
+</div>
+<p>你想要查看文件 “inits.h” 里有些什么。把光标移到该文件名上，并键入:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gf
+
+Vim 就会找到并打开这个文件。
+</pre></div>
+</div>
+<p>如果该文件不在当前目录里怎么办？Vim 将利用 ‘path’ 选项来寻找这个文
+件。该选项是一系列目录名，Vim 会在其中为你寻找文件</p>
+<p>假设你把你的头文件存放在目录 “/usr/include/” 里。下面这个命令把该目录加入
+‘path’ 选项:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">绝对路径</span>
+
+<span class="p">:</span><span class="nb">set</span> <span class="n">path</span><span class="o">+=/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span>
+
+<span class="n">相对路径</span><span class="p">(</span><span class="n">用于当前目录下的</span><span class="p">):</span>
+
+<span class="p">:</span><span class="nb">set</span> <span class="n">path</span><span class="o">+=./</span><span class="n">include</span>
+</pre></div>
+</div>
+<p>当你要找的文件名没出现在你编辑的文件里时，你可以键入这个文件名:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">find</span> <span class="n">inits</span><span class="o">.</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>要在新窗口内打开那个已经找到的文件，用 CTRL‑W f，而不是 “gf”，或用 “:sfind” 而
+不是 “:find”。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CTRL‑W f
+</pre></div>
+</div>
+</section>
+<section id="id78">
+<h3>4. 缓冲区列表<a class="headerlink" href="#id78" title="Link to this heading">¶</a></h3>
+<p>Vim 编辑器使用术语 “缓冲区” 来描述编辑当中的文件。实际上，缓冲区是你编辑的文件
+的副本。你修改完缓冲区，就把缓冲区的内容写进文件。缓冲区不仅存放文件内容，而且
+还存放着全部标记，设定，以及其它跟被编辑文件相关的东西。</p>
+<section id="id79">
+<h4>1. 隐藏缓冲区<a class="headerlink" href="#id79" title="Link to this heading">¶</a></h4>
+<p>当你编辑两个文件的时候，想切换到另外一个文件，但是又不能直接:edit 而且又不想直接存盘这个文件(有时候修改配置文件会实时生效),然后这样的话可以这样，隐藏掉缓冲区(还不如直接开个窗口):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">hide</span> <span class="n">edit</span> <span class="n">two</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>小心！当你的隐藏的缓冲区已经改动，千万不要在所有缓冲区存盘之前就退出 Vim。</p>
+</div>
+</section>
+<section id="id80">
+<h4>2. 非激活缓冲区<a class="headerlink" href="#id80" title="Link to this heading">¶</a></h4>
+<p>之前的都是激活的缓冲区,以及隐藏缓冲区。而非激活缓冲区，不输出文本，不显示在窗口内，它们更像是当你使用一些命令的时候，才显示的一些信息，比如之前的文本浏览历史记录什么的。</p>
+</section>
+<section id="id81">
+<h4>3. 缓冲区列表<a class="headerlink" href="#id81" title="Link to this heading">¶</a></h4>
+<p>可以用这个命令查看缓冲区列表:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">buffers</span>
+
+<span class="p">:</span><span class="n">ls</span>
+</pre></div>
+</div>
+<p>其输出可能像这样:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">%</span><span class="n">a</span> <span class="o">+</span> <span class="s2">&quot;_ccc/mydocs/note/source/Vim.rst&quot;</span> <span class="n">line</span> <span class="mi">1303</span>
+</pre></div>
+</div>
+<p>第一栏存放缓冲区号。你可以利用它来编辑文件，而不用键入文件名，参见下文。
+紧随缓冲区号的是些标志位。然后是文件名，以及光标最后一次停留的行号。
+可能出现的标志位有以下这些 (自左至右):</p>
+<dl class="field-list simple">
+<dt class="field-odd">u<span class="colon">:</span></dt>
+<dd class="field-odd"><p>列表外缓冲区 unlisted‑buffer 。</p>
+</dd>
+<dt class="field-even">%<span class="colon">:</span></dt>
+<dd class="field-even"><p>当前缓冲区。</p>
+</dd>
+<dt class="field-odd">#<span class="colon">:</span></dt>
+<dd class="field-odd"><p>轮换缓冲区。</p>
+</dd>
+<dt class="field-even">a<span class="colon">:</span></dt>
+<dd class="field-even"><p>激活缓冲区，缓冲区被加载且显示。</p>
+</dd>
+<dt class="field-odd">h<span class="colon">:</span></dt>
+<dd class="field-odd"><p>隐藏缓冲区，缓冲区被加载但不显示。</p>
+</dd>
+<dt class="field-even">=<span class="colon">:</span></dt>
+<dd class="field-even"><p>只读缓冲区。</p>
+</dd>
+<dt class="field-odd">‑<span class="colon">:</span></dt>
+<dd class="field-odd"><p>不可改缓冲区，’modifiable’ 选项不置位。</p>
+</dd>
+<dt class="field-even">+<span class="colon">:</span></dt>
+<dd class="field-even"><p>已修改缓冲区。</p>
+</dd>
+</dl>
+</section>
+<section id="id82">
+<h4>4. 编辑缓冲区<a class="headerlink" href="#id82" title="Link to this heading">¶</a></h4>
+<p>你可以通过指定其缓冲区号来编辑一个缓冲区，而不必键入文件名:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">buffer</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>但获知缓冲区号的唯一途径是查阅缓冲区列表。如果不用缓冲区号，你可以用文件名，或
+其部分。Vim 将为你键入的文件名找到最佳匹配。如果只有一个缓冲区与之匹配，该缓冲区就被选
+用。在这个例子中，被选中的就是 “help.txt”。</p>
+<p>要在新窗口中打开一个缓冲区(这方法也适用于文件名。):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">sbuffer</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</section>
+<section id="id83">
+<h4>5. 使用缓冲区列表<a class="headerlink" href="#id83" title="Link to this heading">¶</a></h4>
+<p>你可以用这些命令在缓冲区列表间移动:</p>
+<p>::bnext:          编辑下一个缓冲区
+::bprevious:      编辑前一个缓冲区
+::bfirst:         编辑第一个缓冲区
+::blast:          编辑最后一个缓冲区</p>
+<p>要从缓冲区列表上删除一个缓冲区，用这个命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:bdelete 3
+
+同样，这命令也适用文件名。
+</pre></div>
+</div>
+<p>如果你删除了一个激活的缓冲区 (显示在窗口中的缓冲区)，你也就关闭了该窗口。如
+果你删除了当前缓冲区，你也就关闭了当前窗口。如果它是最后一个窗口，Vim 将找一个
+缓冲区来编辑。你无法什么也不编辑！</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>即使用 “:bdelete” 命令删除了缓冲区以后，Vim 依然记得它。这个缓冲区实际
+上成了 “列表外” 缓冲区，它不再出现在 “:buffers” 命令所报告的列表中。不
+过 “:buffers!” 命令仍会列出 “列表外” 缓冲区 (没错，Vim 无所不能)。要让
+Vim 彻底忘记一个缓冲区，用 “:bwipe” 命令。另见 ‘buflisted’ 选项。</p>
+</div>
+</section>
+</section>
+</section>
+<section id="id84">
+<h2>13. 编辑特殊文件<a class="headerlink" href="#id84" title="Link to this heading">¶</a></h2>
+<section id="dosmac-unix">
+<h3>1. DOS、Mac 和 Unix 文件<a class="headerlink" href="#dosmac-unix" title="Link to this heading">¶</a></h3>
+<p>当计算机问世以后，存储器曾经非常昂贵。有些人就认定没必要用两个字符来表示行
+尾。</p>
+<p>UNIX 开发者决定他们可以用 &lt;New Line&gt; 或 &lt;NL&gt; 一个字符来表示行尾</p>
+<p>开发 Microsoft Windows 的那些家伙则决定沿用老式的 &lt;CR&gt;&lt;NL&gt;</p>
+<p>Apple 开发者规定了用 &lt;CR&gt;</p>
+<p>unix  &lt;NL&gt;      在 Unix 上，&lt;NL&gt; 用于分行</p>
+<p>dos   &lt;CR&gt;&lt;NL&gt;</p>
+<p>mac   &lt;CR&gt;</p>
+<p>显示你当前使用的文件格式:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:set fileformat?
+</pre></div>
+</div>
+<p>下面这个命令告诉 Vim 先尝试用 UNIX 格式，其次，尝试
+MS‑DOS 格式:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="nb">set</span> <span class="n">fileformats</span><span class="o">=</span><span class="n">unix</span><span class="p">,</span><span class="n">dos</span>
+</pre></div>
+</div>
+<section id="id85">
+<h4>1. 强制格式<a class="headerlink" href="#id85" title="Link to this heading">¶</a></h4>
+<p>强制 Vim 忽略文件格式而使用你指定的格式:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:edit ++ff=unix file.txt
+
+字符串 &quot;++&quot; 告诉 Vim 后面跟的是选项名，以取代其默认值。但仅作用于这一个命令。
+&quot;++ff&quot; 用于 &#39;fileformat&#39; 选项。你也可以用 &quot;++ff=mac&quot; 或 &quot;++ff=dos&quot;。
+这样用法并非适用于任意选项，目前 Vim 仅仅实现了 &quot;++ff&quot; 和 &quot;++enc&quot;。用全称
+&quot;++fileformat&quot; 和 &quot;++encoding&quot; 也行。
+</pre></div>
+</div>
+</section>
+<section id="id86">
+<h4>2. 转换<a class="headerlink" href="#id86" title="Link to this heading">¶</a></h4>
+<p>你可以用 ‘fileformat’ 选项把文件从一种格式转换为另一种。</p>
+<p>例如，假定你有个名为
+README.TXT 的 MS‑DOS 文件，你要把它转换成 UNIX 格式。首先编辑这个采用 MS‑DOS
+格式的文件:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vim</span> <span class="n">README</span><span class="o">.</span><span class="n">TXT</span>
+</pre></div>
+</div>
+<p>Vim 将识别出那是一个 dos 格式文件。现在把这个文件的格式改为 UNIX:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="nb">set</span> <span class="n">fileformat</span><span class="o">=</span><span class="n">unix</span>
+<span class="p">:</span><span class="n">write</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id87">
+<h3>2. 互联网上的文件<a class="headerlink" href="#id87" title="Link to this heading">¶</a></h3>
+<p>当有链接显示时:</p>
+<p>光标移到那个超链接里任何一个字符上，然后使用这个
+命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gf
+
+在另一个新窗口打开这个文件，则用 CTRL‑W f。
+</pre></div>
+</div>
+<p>访问因特网上的文件要安装插件 netrw 才行。目前，下面这些格式的超文本链接可被识
+别:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ftp</span><span class="p">:</span><span class="o">//</span>     <span class="n">使用</span> <span class="n">ftp</span>
+<span class="n">rcp</span><span class="p">:</span><span class="o">//</span>     <span class="n">使用</span> <span class="n">rcp</span>
+<span class="n">scp</span><span class="p">:</span><span class="o">//</span>     <span class="n">使用</span> <span class="n">scp</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span>    <span class="n">使用</span> <span class="n">wget</span> <span class="p">(</span><span class="n">只读</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id88">
+<h3>3. 加密<a class="headerlink" href="#id88" title="Link to this heading">¶</a></h3>
+<section id="id89">
+<h4>1. 加密文件<a class="headerlink" href="#id89" title="Link to this heading">¶</a></h4>
+<p>要开始编辑一个需要加密的新文件，可以用 “‑x” 参数来启动 Vim。例如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vim ‑x exam.txt
+
+小写x
+</pre></div>
+</div>
+<p>当你用 Vim 编辑这个文件时，它就会要求你再输入那同一个密码。</p>
+</section>
+<section id="id90">
+<h4>2. 开/关加密<a class="headerlink" href="#id90" title="Link to this heading">¶</a></h4>
+<p>要给一个文件撤除加密，设定 ‘key’ 选项为空字符串:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="nb">set</span> <span class="n">key</span><span class="o">=</span>
+</pre></div>
+</div>
+<p>你下次把这个文件存盘时，存盘的文件就是未经加密的。</p>
+<p>定 ‘key’ 选项来启用加密是个坏主意。因为密码会被清清楚楚地显示在屏幕上。任
+何人都可以偷看到你的密码。
+为了避免这样的问题，创造了 “:X” 命令。它会像 “‑x” 参数向你索取一个密码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">X</span>
+
+<span class="n">大写的X</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id91">
+<h3>4. 二进制文件<a class="headerlink" href="#id91" title="Link to this heading">¶</a></h3>
+<section id="id92">
+<h4>1. 编辑二进制文件<a class="headerlink" href="#id92" title="Link to this heading">¶</a></h4>
+<p>可以用 Vim 来编辑二进制文件。Vim 本非为此而设计的，因而有若干局限。但你能读
+取一个文件，改动一个字符，然后把它存盘。结果是你的文件就只有那一个字符给改了，
+其它的就跟原来那个一模一样。
+要保证 Vim 别把它那些聪明的窍门用错地方，启动 Vim 时加上 “‑b” 参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vim ‑b datafile
+</pre></div>
+</div>
+<p>这个参数设定了 ‘binary’ 选项。其作用是排除所有的意外副作用。例如，’textwidth’
+设为零，免得文本行给擅自排版了。并且，文件一律以 Unix 文件格式读取。</p>
+<p>二进制模式可以用来修改某程序的消息报文。小心别插入或删除任何字符，那会让程序运
+行出问题。用 “R” 命令进入替换模式。</p>
+<p>文件里的很多字符都是不可显示的。用 Hex 格式来显示它们的值:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="nb">set</span> <span class="n">display</span><span class="o">=</span><span class="n">uhex</span>
+</pre></div>
+</div>
+<p>另外，也可以用命令 “ga” 来显示光标下的字符值。当光标位于一个 &lt;Esc&gt; 字符上时，
+该命令的输出看起来就像这样:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;^[&gt; 27， Hex 1b, Octal 033
+</pre></div>
+</div>
+<p>文件中也许没那么多换行符。你可以关闭 ‘wrap’ 选项来获得总览的效果:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="nb">set</span> <span class="n">nowrap</span>
+</pre></div>
+</div>
+</section>
+<section id="id93">
+<h4>2. 字节位置<a class="headerlink" href="#id93" title="Link to this heading">¶</a></h4>
+<p>要发现你在文件中的当前字节位置，请用这个命令:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>g CTRL‑G
+</pre></div>
+</div>
+<p>其输出十分冗长:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Col 9‑16 of 9‑16; Line 277 of 330; Word 1806 of 2058; Byte 10580 of 12206
+</pre></div>
+</div>
+<p>最后两个数字就是文件中的当前字节位置和文件字节总数。这已经考虑了 ‘fileformat’
+选项导致换行符字节不同的影响。</p>
+<p>要移到文件中某个指定的字节，请用 “go” 命令。例如，要移到字节 2345:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2345</span><span class="n">go</span>
+</pre></div>
+</div>
+</section>
+<section id="xxd">
+<h4>3. 使用XXD<a class="headerlink" href="#xxd" title="Link to this heading">¶</a></h4>
+<p>一个真正的二进制编辑器用两种方式来显示文本: 二进制和十六进制格式。你可以在 Vim
+里通过转换程序 “xxd” 来达到这效果。该程序是随 Vim 一起发布的。</p>
+<p>首先以二进制方式编辑这个文件:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vim ‑b datafile
+</pre></div>
+</div>
+<p>现在用 xxd 把这个文件转换成十六进制:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:%!xxd
+</pre></div>
+</div>
+<p>现在你可以随心所欲地阅读和编辑这些文本了。 Vim 把这些信息当作普通文本来对待。
+修改了十六进制部分并不导致可显示字符部分的改变，反之亦然。
+最后，用下面的命令把它转换回来:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:%!xxd ‑r
+</pre></div>
+</div>
+<p>只有十六进制部分的修改才会被采用。右边可显示文本部分的修改忽略不计。</p>
+<p>欲知更多详情，参见 xxd 手册。</p>
+</section>
+</section>
+<section id="id94">
+<h3>4. 压缩文件<a class="headerlink" href="#id94" title="Link to this heading">¶</a></h3>
+<p>你可以像编辑任何其它文件一样，来编辑一个经过压缩的文件。插件 “gzip”
+负责在你编辑这个文件时把它解压缩，以及在你存盘时再把它压缩起来。
+目前支持的压缩方法有下面这些:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">Z</span>      <span class="n">compress</span>
+<span class="o">.</span><span class="n">gz</span>     <span class="n">gzip</span>
+<span class="o">.</span><span class="n">bz2</span>    <span class="n">bzip2</span>
+</pre></div>
+</div>
+<p>Vim 调用上面提到的程序来实际完成压缩和解压缩。你也许需要先安装这些程序。</p>
+</section>
+<section id="id95">
+<h3>5. 对齐文本<a class="headerlink" href="#id95" title="Link to this heading">¶</a></h3>
+<section id="id96">
+<h4>1. 行居中<a class="headerlink" href="#id96" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:{</span><span class="nb">range</span><span class="p">}</span><span class="n">center</span> <span class="p">[</span><span class="n">width</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>{range} 即是那些通常命令所能指定的范围。 [width] 是一个可选项，用来确定要居中
+的行的宽度。如果没有指定 [width]，则默认使用 ‘textwidth’ 的值。(如果
+‘textwidth’ 是 0，则默认为 80。)</p>
+</section>
+<section id="id97">
+<h4>2. 右对齐<a class="headerlink" href="#id97" title="Link to this heading">¶</a></h4>
+<p>“:right” 命令将使文本右对齐:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:{</span><span class="nb">range</span><span class="p">}</span><span class="n">right</span> <span class="p">[</span><span class="n">width</span><span class="p">]</span>
+
+<span class="n">这里的</span><span class="p">[</span><span class="n">width</span><span class="p">]</span><span class="n">表示的是距离最右边多少格</span>
+</pre></div>
+</div>
+</section>
+<section id="id98">
+<h4>3. 左对齐<a class="headerlink" href="#id98" title="Link to this heading">¶</a></h4>
+<p>“:left” 命令将文本左对齐</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:{</span><span class="nb">range</span><span class="p">}</span><span class="n">left</span> <span class="p">[</span><span class="n">width</span><span class="p">]</span>
+
+<span class="n">这里的</span><span class="p">[</span><span class="n">width</span><span class="p">]</span><span class="n">表示的是距离最左边多少格</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="tapbuffer">
+<h2>14. Tap区和buffer区<a class="headerlink" href="#tapbuffer" title="Link to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">let mapleader = “ “<span class="colon">:</span></dt>
+<dd class="field-odd"><p>设置leader键为空格</p>
+</dd>
+<dt class="field-even">nnoremap tr :Lex&lt;CR&gt;:vertical resize 30&lt;CR&gt;<span class="colon">:</span></dt>
+<dd class="field-even"><p>打开文件树，选择文件编辑时用</p>
+</dd>
+</dl>
+<section id="buffer">
+<h3>1. buffer 缓冲区<a class="headerlink" href="#buffer" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">nnoremap &lt;leader&gt;b :enew&lt;CR&gt;<span class="colon">:</span></dt>
+<dd class="field-odd"><p>新建一个buffer</p>
+</dd>
+<dt class="field-even">nnoremap &lt;leader&gt;bn :bnext&lt;CR&gt;<span class="colon">:</span></dt>
+<dd class="field-even"><p>切换到下一个buffer</p>
+</dd>
+<dt class="field-odd">nnoremap &lt;leader&gt;bd :bdelete&lt;CR&gt;<span class="colon">:</span></dt>
+<dd class="field-odd"><p>删除这个buffer</p>
+</dd>
+<dt class="field-even">map &lt;leader&gt;ba :bufdo bd&lt;cr&gt;<span class="colon">:</span></dt>
+<dd class="field-even"><p>关闭所有buffer</p>
+</dd>
+</dl>
+</section>
+<section id="tab">
+<h3>2. tab<a class="headerlink" href="#tab" title="Link to this heading">¶</a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">map &lt;leader&gt;tn :tabnew&lt;cr&gt;<span class="colon">:</span></dt>
+<dd class="field-odd"><p>新建一个tab</p>
+</dd>
+<dt class="field-even">map &lt;leader&gt;tm :tabmove<span class="colon">:</span></dt>
+<dd class="field-even"><p>移动这个tab</p>
+</dd>
+<dt class="field-odd">nnoremap &lt;leader&gt;l :tabnext&lt;CR&gt;<span class="colon">:</span></dt>
+<dd class="field-odd"><p>切换到下一个tab</p>
+</dd>
+<dt class="field-even">nnoremap &lt;leader&gt;h :tabprevious&lt;CR&gt;<span class="colon">:</span></dt>
+<dd class="field-even"><p>切换到上一个tab</p>
+</dd>
+<dt class="field-odd">map &lt;leader&gt;te :tabedit &lt;C-r&gt;=escape(expand(“%:p:h”), “ “)&lt;cr&gt;/<span class="colon">:</span></dt>
+<dd class="field-odd"><p>打开带有当前路径的新选项卡</p>
+</dd>
+<dt class="field-even">map &lt;leader&gt;tc :tabclose&lt;cr&gt;<span class="colon">:</span></dt>
+<dd class="field-even"><p>关闭这个tab</p>
+</dd>
+<dt class="field-odd">map &lt;leader&gt;to :tabonly&lt;cr&gt;<span class="colon">:</span></dt>
+<dd class="field-odd"><p>删除其他tab只留当前这个tab</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">g</span><span class="p">:</span><span class="n">lasttab</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">nmap</span> <span class="o">&lt;</span><span class="n">leader</span><span class="o">&gt;</span><span class="n">tl</span> <span class="p">:</span><span class="n">exe</span> <span class="s2">&quot;tabn &quot;</span><span class="o">.</span><span class="n">g</span><span class="p">:</span><span class="n">lasttab</span><span class="o">&lt;</span><span class="n">CR</span><span class="o">&gt;</span>
+<span class="n">au</span> <span class="n">TabLeave</span> <span class="o">*</span> <span class="n">let</span> <span class="n">g</span><span class="p">:</span><span class="n">lasttab</span> <span class="o">=</span> <span class="n">tabpagenr</span><span class="p">()</span>
+
+<span class="o">&lt;</span><span class="n">leader</span><span class="o">&gt;</span><span class="n">tl</span> <span class="n">切换到上一个标签</span><span class="p">,</span><span class="n">两个标签反复横跳</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id99">
+<h2>15. 有用的技巧<a class="headerlink" href="#id99" title="Link to this heading">¶</a></h2>
+<section id="id100">
+<h3>1.可视模式下按*或#搜索当前选择<a class="headerlink" href="#id100" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vnoremap</span> <span class="o">&lt;</span><span class="n">silent</span><span class="o">&gt;</span> <span class="o">*</span> <span class="p">:</span><span class="o">&lt;</span><span class="n">C</span><span class="o">-</span><span class="n">u</span><span class="o">&gt;</span><span class="n">call</span> <span class="n">VisualSelection</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">&lt;</span><span class="n">CR</span><span class="o">&gt;/&lt;</span><span class="n">C</span><span class="o">-</span><span class="n">R</span><span class="o">&gt;=@/&lt;</span><span class="n">CR</span><span class="o">&gt;&lt;</span><span class="n">CR</span><span class="o">&gt;</span>
+<span class="n">vnoremap</span> <span class="o">&lt;</span><span class="n">silent</span><span class="o">&gt;</span> <span class="c1"># :&lt;C-u&gt;call VisualSelection(&#39;&#39;, &#39;&#39;)&lt;CR&gt;?&lt;C-R&gt;=@/&lt;CR&gt;&lt;CR&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="leader">
+<h3>2. 按下&lt;leader&gt;键和&lt;回车键&gt;停止高亮显示搜索<a class="headerlink" href="#leader" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="o">&lt;</span><span class="n">silent</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">leader</span><span class="o">&gt;&lt;</span><span class="n">cr</span><span class="o">&gt;</span> <span class="p">:</span><span class="n">noh</span><span class="o">&lt;</span><span class="n">cr</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="id101">
+<h3>3. 打开文件时返回到最后编辑位置(您想要这个!)<a class="headerlink" href="#id101" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">au</span> <span class="n">BufReadPost</span> <span class="o">*</span> <span class="k">if</span> <span class="n">line</span><span class="p">(</span><span class="s2">&quot;&#39;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">line</span><span class="p">(</span><span class="s2">&quot;&#39;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">line</span><span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">exe</span> <span class="s2">&quot;normal! g&#39;</span><span class="se">\&quot;</span><span class="s2">&quot;</span> <span class="o">|</span> <span class="n">endif</span>
+</pre></div>
+</div>
+</section>
+<section id="id102">
+<h3>4. 启动/关闭粘贴模式<a class="headerlink" href="#id102" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>map &lt;leader&gt;pp :setlocal paste!&lt;cr&gt;
+</pre></div>
+</div>
+</section>
+<section id="man">
+<h3>5. 查阅 man 信息<a class="headerlink" href="#man" title="Link to this heading">¶</a></h3>
+<p>man 手册中查询某个命令或者函 数的用法先用一个简单的方法: 把鼠标移到对应的单词 上然后输入:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">K</span>
+</pre></div>
+</div>
+<p>这种方法的缺点是你不能同时查看手册和编辑文档。这里有一种办法可以把手册显示到一 个 Vim 的窗口中。首先，加载 man 文件类型的外挂:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:runtime! ftplugin/man.vim
+</pre></div>
+</div>
+<p>如果你经常用到这种方法，可以把这个命令加到你的 vimrc 文件中。现在你可以用
+“:Man” 命令打开一个显示 man 手册的窗口了:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">Man</span> <span class="n">vim</span>
+</pre></div>
+</div>
+<p>你可以在这个新的窗口中上下滚动，而手册的本文会用语法高亮的形式显示。这样，你可 以找到需要的地方，并用 CTRL‑W w 跳转到原来的窗口中继续工作。 要指定手册的章节，可以在手册名称前面指定。例如，要找第三章的 “waybar”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">Man</span> <span class="mi">5</span> <span class="n">waybar</span>
+</pre></div>
+</div>
+<p>要跳转到另一个由 “word(1)” 形式定义的手册，只要在上面敲 CTRL‑]。无论怎样，
+“:Man” 命令总使用同一个窗口。</p>
+<p>要显示当前光标下的单词的手册，这样:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\K
+
+(如果你重定义了 &lt;Leader&gt;，用那个字符代替上面命令的反斜杠)。
+对我来说，也就是空格键
+</pre></div>
+</div>
+</section>
+<section id="id103">
+<h3>6. 不退出文件，刷新文件<a class="headerlink" href="#id103" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">so</span> <span class="o">%</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id104">
+<h2>16. Vim 插件<a class="headerlink" href="#id104" title="Link to this heading">¶</a></h2>
+<section id="vundle">
+<h3>1. 下载Vundle<a class="headerlink" href="#vundle" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">VundleVim</span><span class="o">/</span><span class="n">Vundle</span><span class="o">.</span><span class="n">vim</span><span class="o">.</span><span class="n">git</span> <span class="o">~/.</span><span class="n">vim</span><span class="o">/</span><span class="n">bundle</span><span class="o">/</span><span class="n">Vundle</span><span class="o">.</span><span class="n">vim</span>
+</pre></div>
+</div>
+</section>
+<section id="vimrc-vundle">
+<h3>2. 配置.vimrc,使其使用Vundle<a class="headerlink" href="#vimrc-vundle" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">nocompatible</span>              <span class="s2">&quot; be iMproved, required</span>
+<span class="n">filetype</span> <span class="n">off</span>                  <span class="s2">&quot; required</span>
+
+<span class="s2">&quot; set the runtime path to include Vundle and initialize</span>
+<span class="nb">set</span> <span class="n">rtp</span><span class="o">+=~/.</span><span class="n">vim</span><span class="o">/</span><span class="n">bundle</span><span class="o">/</span><span class="n">Vundle</span><span class="o">.</span><span class="n">vim</span>
+<span class="n">call</span> <span class="n">vundle</span><span class="c1">#begin()</span>
+<span class="s2">&quot; alternatively, pass a path where Vundle should install plugins</span>
+<span class="s2">&quot;call vundle#begin(&#39;~/some/path/here&#39;)</span>
+
+<span class="s2">&quot; let Vundle manage Vundle, required</span>
+<span class="n">Plugin</span> <span class="s1">&#39;VundleVim/Vundle.vim&#39;</span>
+<span class="s2">&quot;Plugin &#39;tpope/vim-fugitive&#39; &quot;</span> <span class="n">plugin</span> <span class="n">on</span> <span class="n">GitHub</span> <span class="n">repo</span>
+<span class="s2">&quot;Plugin &#39;airblade/vim-gitgutter&#39;</span>
+<span class="n">Plugin</span> <span class="s1">&#39;preservim/nerdcommenter&#39;</span>
+<span class="n">Plugin</span> <span class="s1">&#39;preservim/nerdtree&#39;</span>
+<span class="n">Plugin</span> <span class="s1">&#39;tpope/vim-surround&#39;</span>
+<span class="n">Plugin</span> <span class="s1">&#39;jiangmiao/auto-pairs&#39;</span>
+<span class="s2">&quot;Plugin &#39;scrooloose/syntastic&#39;</span>
+<span class="s2">&quot;Plugin &#39;valloric/youcompleteme&#39;</span>
+<span class="s2">&quot;Plugin &#39;vimwiki/vimwiki&#39;</span>
+<span class="s2">&quot;Plugin &#39;frazrepo/vim-rainbow&#39;</span>
+<span class="s2">&quot;Plugin &#39;itchyny/lightline.vim&#39;</span>
+<span class="s2">&quot;Plugin &#39;flazz/vim-colorschemes&#39;</span>
+<span class="n">Plugin</span> <span class="s1">&#39;preservim/tagbar&#39;</span>
+<span class="s2">&quot; different version somewhere else.</span>
+<span class="s2">&quot; Plugin &#39;ascenator/L9&#39;, {&#39;name&#39;: &#39;newL9&#39;}</span>
+
+<span class="s2">&quot; All of your Plugins must be added before the following line</span>
+<span class="s2">&quot;</span>
+<span class="n">call</span> <span class="n">vundle</span><span class="c1">#end()            &quot; required</span>
+<span class="n">filetype</span> <span class="n">plugin</span> <span class="n">indent</span> <span class="n">on</span>    <span class="s2">&quot; required</span>
+</pre></div>
+</div>
+<p>启动 vim 并运行 :PluginInstall</p>
+<p>配置了：</p>
+<dl class="field-list simple">
+<dt class="field-odd">&lt;leader&gt;f<span class="colon">:</span></dt>
+<dd class="field-odd"><p>打开NERDtree</p>
+</dd>
+<dt class="field-even">&lt;leader&gt;g<span class="colon">:</span></dt>
+<dd class="field-even"><p>打开tagbar</p>
+</dd>
+<dt class="field-odd">&lt;leader&gt;cc<span class="colon">:</span></dt>
+<dd class="field-odd"><p>快捷行注释</p>
+</dd>
+<dt class="field-even">&lt;leader&gt;ci<span class="colon">:</span></dt>
+<dd class="field-even"><p>取消行注释</p>
+</dd>
+<dt class="field-odd">&lt;leader&gt;cy<span class="colon">:</span></dt>
+<dd class="field-odd"><p>快捷行注释,再加上复制原内容</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, fajknli
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Vim</a><ul>
+<li><a class="reference internal" href="#id1">1. 移动</a><ul>
+<li><a class="reference internal" href="#id2">1.1 光标移动</a></li>
+<li><a class="reference internal" href="#id3">1.2 页移动</a></li>
+<li><a class="reference internal" href="#id4">1.3 词移动</a></li>
+<li><a class="reference internal" href="#id5">1.4 行移动/查找并跳转</a></li>
+<li><a class="reference internal" href="#id6">1.5 括号匹配</a></li>
+<li><a class="reference internal" href="#id7">1.6 在文本中查找一个单词</a></li>
+<li><a class="reference internal" href="#id8">1.7 标记来回跳转</a></li>
+<li><a class="reference internal" href="#id9">1.8 书签设置和跳转</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">2. 修改</a><ul>
+<li><a class="reference internal" href="#id11">1. 重复操作</a></li>
+<li><a class="reference internal" href="#id12">3. 记录与回放命令(宏)</a></li>
+<li><a class="reference internal" href="#id13">3.1 寄存器</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">5. 分割窗口</a><ul>
+<li><a class="reference internal" href="#id15">1. 打开一个新窗口:</a></li>
+<li><a class="reference internal" href="#id16">2. 关 闭 窗 口</a></li>
+<li><a class="reference internal" href="#id17">3. 关 闭 所 有 其 它 窗 口</a></li>
+<li><a class="reference internal" href="#id18">4. 用另一个文件分割窗口</a></li>
+<li><a class="reference internal" href="#id19">5. 窗口大小</a></li>
+<li><a class="reference internal" href="#id20">6. 垂直分割</a></li>
+<li><a class="reference internal" href="#id21">7. 移动窗口</a></li>
+<li><a class="reference internal" href="#id22">8. 对所有窗口执行命令</a></li>
+<li><a class="reference internal" href="#id23">9. 启动vim 时，多窗口文件启动</a></li>
+<li><a class="reference internal" href="#vimdiff">10. 用 vimdiff 显示文件差异</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id24">6. 查找</a><ul>
+<li><a class="reference internal" href="#id25">3. 查找一个单词在一些文件里</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id26">7. 命令</a><ul>
+<li><a class="reference internal" href="#global">1. global</a><ul>
+<li><a class="reference internal" href="#id27">1. 反转行顺序(文章内容上下颠倒)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#read">2. read</a><ul>
+<li><a class="reference internal" href="#id28">1. read 读取文件</a></li>
+<li><a class="reference internal" href="#id29">2. 保存部分行</a></li>
+<li><a class="reference internal" href="#id30">3 添加当前文件内容到之外文件的内容</a></li>
+<li><a class="reference internal" href="#id31">4. 排版文本</a></li>
+<li><a class="reference internal" href="#id32">5. 改变大小写</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id33">3. ! 调用外部命令</a><ul>
+<li><a class="reference internal" href="#id34">1.对文本执行命令</a></li>
+<li><a class="reference internal" href="#id35">2. 读取一个命令的输出</a></li>
+<li><a class="reference internal" href="#id36">3. 把文本用于命令的输出</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#substitute">4. :substitute命令 替换</a><ul>
+<li><a class="reference internal" href="#substitute-s">1. :substitute命令/:s</a></li>
+<li><a class="reference internal" href="#id37">2. 范围替换可使用匹配模式</a></li>
+<li><a class="reference internal" href="#id38">3. 匹配中使用正斜杠</a><ul>
+<li><a class="reference internal" href="#id39">1 单词替换</a></li>
+<li><a class="reference internal" href="#id40">2. 多文件里词替换</a></li>
+<li><a class="reference internal" href="#last-first-first-last">3. 把 “Last, First” 改成 “First Last”</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id41">4. 命令范围</a><ul>
+<li><a class="reference internal" href="#id42">1. 使用匹配模式</a></li>
+<li><a class="reference internal" href="#id43">2. 匹配偏移，使用+/-号</a></li>
+<li><a class="reference internal" href="#id44">3. 使用标记作为命令范围</a></li>
+<li><a class="reference internal" href="#id45">4. 可视模式下作为范围</a></li>
+<li><a class="reference internal" href="#id46">5. 预先指定匹配行数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id47">8. 选择</a><ul>
+<li><a class="reference internal" href="#id48">1. 可视列块模式</a><ul>
+<li><a class="reference internal" href="#id49">1. 插入文本</a></li>
+<li><a class="reference internal" href="#id50">2. 修改文本</a></li>
+<li><a class="reference internal" href="#id51">3. 一个字符填充</a></li>
+<li><a class="reference internal" href="#id52">4. 字符平移</a></li>
+<li><a class="reference internal" href="#id53">5. 连接若干行</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id54">9. 恢复</a><ul>
+<li><a class="reference internal" href="#id55">1. 基本恢复</a></li>
+<li><a class="reference internal" href="#id56">2. 交换文件在哪</a><ul>
+<li><a class="reference internal" href="#id57">2.1 使用指定的交换文件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id58">10. 快速键入命令行命令</a><ul>
+<li><a class="reference internal" href="#id59">1. 命令行编辑</a><ul>
+<li><a class="reference internal" href="#id60">1. 移 动</a></li>
+<li><a class="reference internal" href="#id61">2. 删 除</a></li>
+<li><a class="reference internal" href="#id62">3. 替 换</a></li>
+<li><a class="reference internal" href="#id63">4. 取 消</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id64">2. 命令行缩写</a></li>
+<li><a class="reference internal" href="#id65">3. 命令行补全</a></li>
+<li><a class="reference internal" href="#id66">4. 查看匹配总览</a></li>
+<li><a class="reference internal" href="#id67">5. 显示历史命令</a></li>
+<li><a class="reference internal" href="#id68">6. 命令行窗口</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id69">11. 离开和回来</a><ul>
+<li><a class="reference internal" href="#id70">1. 挂起和继续</a></li>
+<li><a class="reference internal" href="#shell">2. 执行shell命令</a></li>
+<li><a class="reference internal" href="#viminfo">3. 记忆有关信息；viminfo</a></li>
+<li><a class="reference internal" href="#id71">4. 重返VIM中断处</a></li>
+<li><a class="reference internal" href="#id72">5. 重返某文件</a></li>
+<li><a class="reference internal" href="#id73">6. 保存会话记录:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id74">12. 寻找要编辑的文件</a><ul>
+<li><a class="reference internal" href="#id75">1. 文件浏览器</a></li>
+<li><a class="reference internal" href="#id76">2. 当前目录</a></li>
+<li><a class="reference internal" href="#id77">3. 查找文件</a></li>
+<li><a class="reference internal" href="#id78">4. 缓冲区列表</a><ul>
+<li><a class="reference internal" href="#id79">1. 隐藏缓冲区</a></li>
+<li><a class="reference internal" href="#id80">2. 非激活缓冲区</a></li>
+<li><a class="reference internal" href="#id81">3. 缓冲区列表</a></li>
+<li><a class="reference internal" href="#id82">4. 编辑缓冲区</a></li>
+<li><a class="reference internal" href="#id83">5. 使用缓冲区列表</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id84">13. 编辑特殊文件</a><ul>
+<li><a class="reference internal" href="#dosmac-unix">1. DOS、Mac 和 Unix 文件</a><ul>
+<li><a class="reference internal" href="#id85">1. 强制格式</a></li>
+<li><a class="reference internal" href="#id86">2. 转换</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id87">2. 互联网上的文件</a></li>
+<li><a class="reference internal" href="#id88">3. 加密</a><ul>
+<li><a class="reference internal" href="#id89">1. 加密文件</a></li>
+<li><a class="reference internal" href="#id90">2. 开/关加密</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id91">4. 二进制文件</a><ul>
+<li><a class="reference internal" href="#id92">1. 编辑二进制文件</a></li>
+<li><a class="reference internal" href="#id93">2. 字节位置</a></li>
+<li><a class="reference internal" href="#xxd">3. 使用XXD</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id94">4. 压缩文件</a></li>
+<li><a class="reference internal" href="#id95">5. 对齐文本</a><ul>
+<li><a class="reference internal" href="#id96">1. 行居中</a></li>
+<li><a class="reference internal" href="#id97">2. 右对齐</a></li>
+<li><a class="reference internal" href="#id98">3. 左对齐</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tapbuffer">14. Tap区和buffer区</a><ul>
+<li><a class="reference internal" href="#buffer">1. buffer 缓冲区</a></li>
+<li><a class="reference internal" href="#tab">2. tab</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id99">15. 有用的技巧</a><ul>
+<li><a class="reference internal" href="#id100">1.可视模式下按*或#搜索当前选择</a></li>
+<li><a class="reference internal" href="#leader">2. 按下&lt;leader&gt;键和&lt;回车键&gt;停止高亮显示搜索</a></li>
+<li><a class="reference internal" href="#id101">3. 打开文件时返回到最后编辑位置(您想要这个!)</a></li>
+<li><a class="reference internal" href="#id102">4. 启动/关闭粘贴模式</a></li>
+<li><a class="reference internal" href="#man">5. 查阅 man 信息</a></li>
+<li><a class="reference internal" href="#id103">6. 不退出文件，刷新文件</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id104">16. Vim 插件</a><ul>
+<li><a class="reference internal" href="#vundle">1. 下载Vundle</a></li>
+<li><a class="reference internal" href="#vimrc-vundle">2. 配置.vimrc,使其使用Vundle</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=46f6607b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>

@@ -1,0 +1,651 @@
+<!doctype html>
+<html class="no-js" lang="en-US" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>find - fajknli Note IDK documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">fajknli Note IDK documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">fajknli Note IDK documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Bookmarks:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Bookmarks/Games/bookmark_games_index.html">Bookmark Games Indes</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Bookmark Games Indes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Bookmarks/Games/bookmark_games.html">Bookmark_games</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programing:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Programing/Language_Library/Language_Library_index.html">Libraries</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Libraries</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language_Library/Python_Library.html">Python_Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language_Library/Python_std_Library.html">Python Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Programing/Language/Language_index.html">Programing Languages</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Programing Languages</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/AWK.html">AWK 程序设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Bash.html">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/C.html">C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Haskell.html">Haskell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/JavaScript.html">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Perl.html">Perl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Rust.html">Rust</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Programing/Frontend/Frontend_index.html">Frontend</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Frontend</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Frontend/CSS.html">CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Frontend/HTML.html">HTML</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tools/index.html">Tools</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/Docker.html">Docker For beginner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/Git.html">Git 日常使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/Midnight_Commander.html">Mindnight Commander</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/Softwares.html">Softwares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/Use_Of_Software.html">Use_of_Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/Vim.html">Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/Vim-SimpleUse.html">Vim SimpleUse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/niri.html">Niri manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/qutebrowser.html">qutebrowser Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/reST.html">学习 reST Simple-CheatSheet</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Linux:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Linux/Linux_Distributions/Linux_Distributions_index.html">Linux Distributions</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Linux Distributions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Distributions/ArchLinux-Setup-Configurate.html">Arch Linux 安装和配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Distributions/Debian-Setup-Configurate.html">Debian安装和配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Distributions/VoidLinux-Setup-Configurate.html">Void Linux 安装和配置</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Linux/Linux_Learn/Linux_Learn_index.html">Linux Tutorial</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Linux Tutorial</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Learn/Linux-Terminal-Shortcuts.html">Terminal_Shortcut</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Learn/Linux_Commands_Overview.html">Commands List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Learn/Linux_System_Commands.html">Linux系统命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Learn/Linux_Tricks.html">Linux-Tricks</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Cook:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Cook/Cook.html">Cook</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../_sources/Commands/Linux_Commands/find.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="find">
+<h1>find<a class="headerlink" href="#find" title="Link to this heading">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="p">[</span><span class="n">路径</span><span class="p">]</span> <span class="p">[</span><span class="n">选项</span><span class="p">]</span> <span class="p">[</span><span class="n">表达式</span><span class="p">]</span>
+</pre></div>
+</div>
+<section id="id1">
+<h2>基本查找<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">/</span><span class="n">home</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.txt&quot;</span>      <span class="c1"># 在/home目录下查找所有.txt文件</span>
+<span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;file*&quot;</span>          <span class="c1"># 当前目录下查找以&quot;file&quot;开头的文件</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;docs&quot;</span>   <span class="c1"># 查找所有名为&quot;docs&quot;的目录</span>
+</pre></div>
+</div>
+<section id="id2">
+<h3>基本选项<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>-name       “pattern”          按文件名匹配（支持通配符 *, ?, []）</p>
+<p>-iname      “pattern”          不区分大小写的 -name</p>
+<p>-path       “pattern”          按路径匹配（支持通配符）</p>
+<p>-ipath      “pattern”          不区分大小写的 -path</p>
+<p>-regex      “pattern”          使用正则表达式匹配完整路径</p>
+<p>-iregex     “pattern”          不区分大小写的 -regex</p>
+</div>
+</section>
+</section>
+<section id="id3">
+<h2>按类型查找<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span>                <span class="c1"># 查找所有普通文件</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span>                <span class="c1"># 查找所有目录</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="nb">type</span> <span class="n">l</span>                <span class="c1"># 查找所有符号链接</span>
+</pre></div>
+</div>
+<section id="id4">
+<h3>文件类型<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>-type f    查找普通文件</p>
+<p>-type d    查找目录</p>
+<p>-type l    查找符号链接</p>
+<p>-type b    查找块设备文件</p>
+<p>-type c    查找字符设备文件</p>
+<p>-type p    查找命名管道（FIFO）</p>
+<p>-type s    查找套接字文件</p>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2>按时间查找<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">mtime</span> <span class="o">-</span><span class="mi">7</span>             <span class="c1"># 查找7天内修改过的文件</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">mtime</span> <span class="o">+</span><span class="mi">30</span>            <span class="c1"># 查找30天前修改过的文件</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">atime</span> <span class="o">-</span><span class="mi">1</span>             <span class="c1"># 查找24小时内访问过的文件</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">newer</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>       <span class="c1"># 查找比file.txt更新的文件</span>
+</pre></div>
+</div>
+<section id="id6">
+<h3>时间相关<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>-mtime n   查找 n 天前修改的文件（+n=超过n天，-n=n天内）</p>
+<p>-atime n   查找 n 天前访问的文件</p>
+<p>-ctime n   查找 n 天前状态（权限/所有者）变化的文件</p>
+<p>-mmin n    查找 n 分钟前修改的文件</p>
+<p>-amin n    查找 n 分钟前访问的文件</p>
+<p>-cmin n    查找 n 分钟前状态变化的文件</p>
+<p>-newer file        查找比 file 更新的文件</p>
+<p>-anewer file       查找比 file 更晚访问的文件</p>
+<p>-cnewer file       查找比 file 更晚状态变化的文件</p>
+</div>
+</section>
+</section>
+<section id="id7">
+<h2>按大小查找<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">size</span> <span class="o">+</span><span class="mi">10</span><span class="n">M</span>            <span class="c1"># 查找大于10MB的文件</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">size</span> <span class="o">-</span><span class="mi">1</span><span class="n">G</span>             <span class="c1"># 查找小于1GB的文件</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">size</span> <span class="o">+</span><span class="mi">100</span><span class="n">k</span> <span class="o">-</span><span class="n">size</span> <span class="o">-</span><span class="mi">1</span><span class="n">M</span> <span class="c1"># 查找大于100KB小于1MB的文件</span>
+</pre></div>
+</div>
+<section id="id8">
+<h3>大小相关<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>-size n[cwbkMG]    查找大小为 n 的文件（c=字节，w=字，b=块，k=KB，M=MB，G=GB）</p>
+<p>-size +n   查找大于 n 的文件</p>
+<p>-size -n   查找小于 n 的文件</p>
+</div>
+</section>
+</section>
+<section id="id9">
+<h2>按权限查找<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">perm</span> <span class="mi">644</span>             <span class="c1"># 查找权限为644的文件</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">perm</span> <span class="o">-</span><span class="n">u</span><span class="o">=</span><span class="n">r</span>            <span class="c1"># 查找用户可读的文件</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">perm</span> <span class="o">/</span><span class="n">a</span><span class="o">+</span><span class="n">x</span>            <span class="c1"># 查找任何人有执行权限的文件</span>
+</pre></div>
+</div>
+<section id="id10">
+<h3>权限相关<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>-perm mode 查找权限 完全匹配 mode 的文件（如 -perm 644）</p>
+<p>-perm -mode        查找权限 包含所有 mode 位的文件（如 -perm -u=rw）</p>
+<p>-perm /mode        查找权限 包含任意 mode 位的文件（如 -perm /a+x）</p>
+<p>-user name 查找属于用户 name 的文件</p>
+<p>-group name        查找属于组 name 的文件</p>
+<p>-nouser    查找没有所属用户的文件（用户被删除）</p>
+<p>-nogroup   查找没有所属组的文件（组被删除）</p>
+</div>
+</section>
+</section>
+<section id="id11">
+<h2>组合条件<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>find / -name &quot;*.log&quot; -and -mtime +30  # 查找30天前的.log文件
+find / -name &quot;*.tmp&quot; -or -name &quot;*.temp&quot; # 查找.tmp或.temp文件
+find / ! -name &quot;*.txt&quot;                # 查找不是.txt结尾的文件
+</pre></div>
+</div>
+<section id="id12">
+<h3>逻辑操作<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>-a / -and  逻辑与（默认）</p>
+<p>-o / -or   逻辑或</p>
+<p>! / -not   逻辑非</p>
+</div>
+</section>
+</section>
+<section id="id13">
+<h2>对查找结果执行操作<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.bak&quot;</span> <span class="o">-</span><span class="n">delete</span>          <span class="c1"># 删除所有.bak文件</span>
+<span class="n">find</span> <span class="o">/</span><span class="n">tmp</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span> <span class="o">-</span><span class="n">exec</span> <span class="n">rm</span> <span class="p">{}</span> \<span class="p">;</span>      <span class="c1"># 删除/tmp下所有文件</span>
+<span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.jpg&quot;</span> <span class="o">-</span><span class="n">exec</span> <span class="n">chmod</span> <span class="mi">644</span> <span class="p">{}</span> \<span class="p">;</span> <span class="c1"># 修改权限</span>
+<span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.old&quot;</span> <span class="o">-</span><span class="n">ok</span> <span class="n">rm</span> <span class="p">{}</span> \<span class="p">;</span>     <span class="c1"># 交互式删除(询问确认)</span>
+</pre></div>
+</div>
+<section id="id14">
+<h3>执行操作<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>-exec command {} ;        对匹配的文件执行 command（{} 替换为文件名，; 结束）</p>
+<p>-exec command {} + 类似 -exec，但更高效（一次性传递多个文件）</p>
+<p>-ok command {} ;  交互式 -exec（每次执行前询问确认）</p>
+<p>-delete    删除匹配的文件</p>
+<p>-print     打印匹配的文件（默认）</p>
+<p>-print0    以 0 分隔文件名（适合处理含空格的文件）</p>
+</div>
+</section>
+</section>
+<section id="id15">
+<h2>其他有用选项<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">maxdepth</span> <span class="mi">3</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;file&quot;</span>      <span class="c1"># 最多搜索3层子目录</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">user</span> <span class="n">root</span>                    <span class="c1"># 查找root用户的文件</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">group</span> <span class="n">dev</span>                    <span class="c1"># 查找dev组的文件</span>
+<span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">empty</span>                        <span class="c1"># 查找空文件或目录</span>
+</pre></div>
+</div>
+<section id="id16">
+<h3>其他选项<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>-maxdepth n        最大搜索深度（目录层级）</p>
+<p>-mindepth n        最小搜索深度（目录层级）</p>
+<p>-follow    跟随符号链接（已弃用，推荐用 -L）</p>
+<p>-L 跟随符号链接（解析链接指向的真实文件）</p>
+<p>-P 不跟随符号链接（默认）</p>
+<p>-D debugopts       启用调试输出（如 -D tree 显示搜索树）</p>
+<p>-O n       优化级别（1=文件名优先，3=深度优先）</p>
+</div>
+<hr class="docutils" />
+<p>在 Linux/Unix 中，文件名可能包含空格或特殊字符（如换行符），直接使用 find + xargs 可能会导致错误解析。-print0 和 xargs -0 可以安全处理这类文件名</p>
+<section id="print0-xargs-0">
+<h4>为什么要用 -print0 和 xargs -0？<a class="headerlink" href="#print0-xargs-0" title="Link to this heading">¶</a></h4>
+<p>默认情况下：</p>
+<ul class="simple">
+<li><p>find 用 换行符 n 分隔文件名。</p></li>
+<li><p>xargs 用 空格/制表符/换行符 分隔输入。</p></li>
+<li><p>如果文件名包含空格或换行符，xargs 会错误地拆分成多个参数：</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ 错误示例：如果文件名是 &quot;hello world.txt&quot;，会被拆分成 &quot;hello&quot; 和 &quot;world.txt&quot;</span>
+<span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.txt&quot;</span> <span class="o">|</span> <span class="n">xargs</span> <span class="n">rm</span>
+</pre></div>
+</div>
+<p>解决方案：</p>
+<ul class="simple">
+<li><p>find -print0：用 0（NULL 字符） 分隔文件名（0 是唯一不能出现在文件名中的字符）。</p></li>
+<li><p>xargs -0：从输入中读取 0 分隔的内容。</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h4>使用方法<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="p">[</span><span class="n">路径</span><span class="p">]</span> <span class="p">[</span><span class="n">条件</span><span class="p">]</span> <span class="o">-</span><span class="n">print0</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="mi">0</span> <span class="p">[</span><span class="n">命令</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>示例</p>
+<p>删除所有 .txt 文件（安全处理空格）</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.txt&quot;</span> <span class="o">-</span><span class="n">print0</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="mi">0</span> <span class="n">rm</span> <span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>-print0：find 输出以 0 分隔的文件名。</p></li>
+<li><p>xargs -0：读取 0 分隔的输入并传递给 rm。</p></li>
+</ul>
+<p>查找并复制文件到目标目录</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">/</span><span class="n">source</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.pdf&quot;</span> <span class="o">-</span><span class="n">print0</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="mi">0</span> <span class="n">cp</span> <span class="o">-</span><span class="n">t</span> <span class="o">/</span><span class="n">target</span><span class="o">/</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>cp -t：指定目标目录（避免 xargs 参数位置问题）。</p></li>
+</ul>
+<p><strong>查找并统计文件行数</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.sh&quot;</span> <span class="o">-</span><span class="n">print0</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="mi">0</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+</div>
+<p><strong>结合 grep 搜索内容</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.conf&quot;</span> <span class="o">-</span><span class="n">print0</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="mi">0</span> <span class="n">grep</span> <span class="o">-</span><span class="n">l</span> <span class="s2">&quot;error&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>grep -l：只显示包含匹配内容的文件名。</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="exec">
+<h4>更安全的替代方案：-exec<a class="headerlink" href="#exec" title="Link to this heading">¶</a></h4>
+<p>如果不想用 xargs，可以直接用 find -exec，它原生支持 0 安全处理：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 删除所有 .tmp 文件（无需 xargs）</span>
+<span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.tmp&quot;</span> <span class="o">-</span><span class="n">exec</span> <span class="n">rm</span> <span class="p">{}</span> <span class="o">+</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>{} +：类似 xargs，高效传递多个参数。</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id18">
+<h4>特殊情况处理<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
+<p>文件名包含引号或特殊字符</p>
+<p>-print0 + xargs -0 仍然安全：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 文件名是 &quot;file&#39;name.txt&quot; 或 &quot;file\nname.txt&quot;</span>
+<span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.txt&quot;</span> <span class="o">-</span><span class="n">print0</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="mi">0</span> <span class="n">rm</span>
+</pre></div>
+</div>
+<p><strong>调试 xargs 命令</strong></p>
+<p>用 -t 显示实际执行的命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.log&quot;</span> <span class="o">-</span><span class="n">print0</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="mi">0</span> <span class="o">-</span><span class="n">t</span> <span class="n">rm</span>
+<span class="c1"># 输出：rm ./a.log ./b log.txt ...</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, fajknli
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">find</a><ul>
+<li><a class="reference internal" href="#id1">基本查找</a><ul>
+<li><a class="reference internal" href="#id2">基本选项</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">按类型查找</a><ul>
+<li><a class="reference internal" href="#id4">文件类型</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">按时间查找</a><ul>
+<li><a class="reference internal" href="#id6">时间相关</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">按大小查找</a><ul>
+<li><a class="reference internal" href="#id8">大小相关</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">按权限查找</a><ul>
+<li><a class="reference internal" href="#id10">权限相关</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">组合条件</a><ul>
+<li><a class="reference internal" href="#id12">逻辑操作</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13">对查找结果执行操作</a><ul>
+<li><a class="reference internal" href="#id14">执行操作</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15">其他有用选项</a><ul>
+<li><a class="reference internal" href="#id16">其他选项</a><ul>
+<li><a class="reference internal" href="#print0-xargs-0">为什么要用 -print0 和 xargs -0？</a></li>
+<li><a class="reference internal" href="#id17">使用方法</a></li>
+<li><a class="reference internal" href="#exec">更安全的替代方案：-exec</a></li>
+<li><a class="reference internal" href="#id18">特殊情况处理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=46f6607b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>

@@ -14,7 +14,8 @@ export LC_ALL=en_US.UTF-8
 wl-paste --watch cliphist store &
 
 
-export BROWSER="/usr/bin/firefox"
+#export BROWSER="/usr/bin/firefox"
+export BROWSER="/usr/bin/zen"
 
 # 启动一些后台程序（如果需要）
 # nohup some_program &

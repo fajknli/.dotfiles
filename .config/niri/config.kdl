@@ -164,7 +164,7 @@ output "eDP-1" {
 
 // ========== Layout Settings ==========
 layout {
-    gaps 2
+    gaps 4
     center-focused-column "never"
     //always-center-single-column
     //default-column-display "tabbed"
@@ -184,15 +184,15 @@ layout {
 
     focus-ring {
         width 2
-        active-color "#a9b5d5"
-        inactive-color "#151622"
+        active-color "#f08"
+        inactive-color "#a9b5d5"
     }
     border {
         off
-        width 2
-        active-color "#a9b5d5"
-        inactive-color "#151622"
-        urgent-color "#607bc3"
+        //width 2
+        //active-color "#a9b5d5"
+        //inactive-color "#151622"
+        //urgent-color "#607bc3"
     }
     tab-indicator {
         // off

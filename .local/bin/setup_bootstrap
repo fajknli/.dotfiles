@@ -217,6 +217,12 @@ SERVER_TOOLS="\
 mysql \
 redis \
 nginx \
+docker \
+kubectl \
+kubelet \
+kubeadm \
+cri-o \
+crictl \
 "
 
 ### ------------------------
@@ -225,6 +231,7 @@ nginx \
 #ALL_PACKAGES="$SERVER_TOOLS $AUDIO_AND_BT"
 
 echo "[+] 正在安装软件包..."
+notify-send "[+] 正在安装软件包..."
 #sudo pacman -Syu --noconfirm $ALL_PACKAGES
 sudo pacman -Syu --noconfirm \
 $FONTS_AND_LOCALE\
@@ -242,5 +249,7 @@ $PERSONAL\
 $SERVER_TOOLS\
 
 echo "[+] 安装完成。"
+notify-send "[+] 安装完成。"
 echo "[✓] 初始化完成，请重启终端！"
+notify-send "[✓] 初始化完成，请重启终端！"
 

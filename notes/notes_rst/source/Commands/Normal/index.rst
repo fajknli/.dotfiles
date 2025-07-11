@@ -1,0 +1,9 @@
+Commands
+##########################
+
+.. toctree::
+   :titlesonly:
+   :glob:
+
+   *
+

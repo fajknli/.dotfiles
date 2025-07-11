@@ -52,6 +52,7 @@ waybar      |.config/waybar/scripts/touchpad-status.sh
 waybar      |.config/waybar/config
 waybar      |.config/waybar/style.css
 zellij      |.config/zellij/config.kdl
+foot        |.config/foot/foot.ini
 alacritty   |.alacritty.toml
 bash        |.bashrc
 bash        |.bash_aliases
@@ -71,6 +72,7 @@ bin         |.local/bin/dots
 bin         |.local/bin/pdf
 bin         |.local/bin/gjwd
 bin         |.local/bin/gxwd
+bin         |.local/bin/bjwd
 bin         |.local/bin/music_name-shift
 bin         |.local/bin/music_tans-space-to-slash
 bin         |.local/bin/note_edit-rst-file

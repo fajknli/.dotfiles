@@ -1,0 +1,1082 @@
+<!doctype html>
+<html class="no-js" lang="en-US" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>Git 日常使用 - fajknli Note IDK documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">fajknli Note IDK documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">fajknli Note IDK documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Programing:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Programing/Library/index.html">Libraries</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Libraries</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Library/Python_Library.html">Python_Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Library/Python_std_Library.html">Python Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Programing/Language/index.html">Programing Languages</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Programing Languages</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/AWK.html">AWK 程序设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Bash.html">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/C.html">C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Haskell.html">Haskell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/JavaScript.html">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Perl.html">Perl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Rust.html">Rust</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Programing/Frontend/index.html">Frontend</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Frontend</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Frontend/CSS.html">CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Frontend/HTML.html">HTML</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Misc/index.html">Misc Things</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Misc Things</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Misc/Cook.html">Cook</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../_sources/Commands/Normal/Git.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="git">
+<h1>Git 日常使用<a class="headerlink" href="#git" title="Link to this heading">¶</a></h1>
+<p>…or create a new repository on the command line</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;# .dotfiles&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">git</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">add</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;first commit&quot;</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">M</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">fajknli</span><span class="o">/.</span><span class="n">dotfiles</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>…or push an existing repository from the command line</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">fajknli</span><span class="o">/.</span><span class="n">dotfiles</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">M</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">main</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>git add -u      # for remove file push to remote repository</p>
+</div>
+<section id="common-commands">
+<h2>Common Commands<a class="headerlink" href="#common-commands" title="Link to this heading">¶</a></h2>
+<dl class="option-list">
+<dt><kbd><span class="option">--force-with-lease</span></kbd></dt>
+<dd><p>安全强制推送，避免覆盖他人提交(比–force安全)。</p>
+</dd>
+</dl>
+<p>git diff –quiet –cached           检测暂存区是否有变动，用于脚本判断(–quiet不输出变动信息,而是输出0/1)。</p>
+<p>${1:-main}                          Shell 参数默认值，未提供 $1 参数时使用 main。</p>
+<p>-u in git push                  首次推送时建立追踪关系(git push origin main 选择main,适合脚本使用)-u 只是建立分支追踪。</p>
+<p>–all vs -u in git add –all    包含新增文件，-u 仅限已跟踪文件的修改和删除。</p>
+<section id="dotfile">
+<h3>1. .dotfile 初始设置步骤<a class="headerlink" href="#dotfile" title="Link to this heading">¶</a></h3>
+<p>在 ~/.dotfiles 创建一个裸 Git 仓库</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init<span class="w"> </span>--bare<span class="w"> </span>~/.dotfiles
+</pre></div>
+</div>
+<p>创建一个名为 dotfiles 的别名，它指向 git 但特别指定：1.Git 目录(–git-dir)指向裸仓库 2.工作目录(–work-tree)指向你的家目录</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span><span class="w"> </span><span class="nv">dotfiles</span><span class="o">=</span><span class="s1">&#39;/usr/bin/git --git-dir=&quot;$HOME/.dotfiles/&quot; --work-tree=&quot;$HOME&quot;&#39;</span>
+</pre></div>
+</div>
+<p>配置 Git 不显示未跟踪文件的状态,这很重要，因为家目录下有许多你不想跟踪的文件</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dotfiles<span class="w"> </span>config<span class="w"> </span>status.showUntrackedFiles<span class="w"> </span>no
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">检查当前仓库配置</span>
+<span class="n">dotfiles</span> <span class="n">config</span> <span class="o">--</span><span class="nb">list</span>
+</pre></div>
+</div>
+</section>
+<section id="dotfilegit-dotfiles">
+<h3>1. 日常dotfile更新使用git管理.dotfiles<a class="headerlink" href="#dotfilegit-dotfiles" title="Link to this heading">¶</a></h3>
+</section>
+</section>
+<section id="id1">
+<h2>1. 日常操作流程<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>添加新配置文件：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 添加文件到跟踪</span>
+<span class="n">dotfiles</span> <span class="n">add</span> <span class="o">~/.</span><span class="n">config</span><span class="o">/</span><span class="n">nvim</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">vim</span>
+
+<span class="c1"># 2. 提交变更</span>
+<span class="n">dotfiles</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;feat(nvim): add init config&quot;</span>
+
+<span class="c1"># 3. 推送到远程</span>
+<span class="n">dotfiles</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>修改现有配置：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 编辑文件</span>
+<span class="n">vim</span> <span class="o">~/.</span><span class="n">bashrc</span>
+
+<span class="c1"># 2. 查看变更</span>
+<span class="n">dotfiles</span> <span class="n">diff</span>
+
+<span class="c1"># 3. 暂存并提交</span>
+<span class="n">dotfiles</span> <span class="n">add</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/.</span><span class="n">bashrc</span>  <span class="c1"># 交互式选择变更</span>
+<span class="n">dotfiles</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;fix(bash): update aliases&quot;</span>
+</pre></div>
+</div>
+<p>撤销操作：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 撤销工作区修改</span>
+<span class="n">dotfiles</span> <span class="n">restore</span> <span class="o">~/.</span><span class="n">vimrc</span>
+
+<span class="c1"># 撤销暂存</span>
+<span class="n">dotfiles</span> <span class="n">restore</span> <span class="o">--</span><span class="n">staged</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">config</span>
+
+<span class="c1"># 修改上次提交</span>
+<span class="n">dotfiles</span> <span class="n">commit</span> <span class="o">--</span><span class="n">amend</span>
+</pre></div>
+</div>
+<p><strong>日常使用大全</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 先添加远程仓库地址
+dotfiles remote add origin git@github.com:你的用户名/dotfiles.git
+# 查看当前远程仓库配置
+# dotfiles remote -v
+
+# 添加到暂存区
+# 添加单个文件（如 .bashrc）
+dotfiles add ~/.bashrc
+# 添加多个文件
+# dotfiles add ~/.vimrc ~/.zshrc
+# 添加整个目录（如 .config/ 下的配置）
+# dotfiles add ~/.config/nvim/
+# dotfiles add -u  # 更新已经添加的追逐文件，只添加已被跟踪文件的修改（不添加新文件）
+dotfiles add -A  # 添加所有变更（包括新文件，慎用）
+dotfiles add -p  # 交互式选择要暂存的修改（可精确控制）
+
+#暂存区删除/撤回------------------------------------------------------------------
+
+# 删除已经追踪的添加到暂存区的文件/目录
+从 Git 跟踪中删除（保留本地文件）
+# 删除单个文件（保留工作区文件）
+dotfiles rm --cached ~/.config/waybar/config.json
+# 删除整个目录（保留工作区目录）
+dotfiles rm --cached -r ~/.config/waybar/
+# 效果：
+# 文件/目录将不再被 Git 跟踪
+# 本地文件仍保留在磁盘中
+
+# 彻底删除（Git + 本地文件）
+# 删除文件（同时从磁盘和Git删除）
+dotfiles rm ~/.bash_history
+# 删除目录（递归删除）
+dotfiles rm -r ~/.cache/
+# 危险操作：本地文件会被永久删除！
+# 补救措施：
+# 若误删，可用 dotfiles checkout HEAD -- &lt;文件&gt; 恢复。
+
+# 仅从暂存区撤回（保留修改）
+# 撤回单个文件的暂存状态
+dotfiles restore --staged ~/.ssh/config
+# 撤回所有暂存文件
+dotfiles reset
+# 效果：
+# 文件会回到 &quot;Changes not staged for commit&quot; 状态
+# 适用场景：
+# 暂存后发现有不需要提交的修改
+
+# 暂存区------------------------------------------------------------------
+
+# 查看已经添加追踪的文件
+dotfiles ls-files
+# 树状结构显示，方便看
+dotfiles ls-files | sed &quot;s|^|$HOME/|&quot; | tree -a -F --fromfile
+
+# 查看所有文件变更状态（最常用）
+dotfiles status -v
+# 或简洁模式：
+dotfiles status -s
+# 输出标记说明：
+# M：工作区文件已修改（未暂存）
+# M ：修改已暂存（未提交）
+# A ：新增文件已暂存
+# ??：未跟踪文件
+# D：文件已删除（未暂存）
+
+# 查看工作区文件的具体修改
+# 显示所有未暂存的详细变更（行级对比）
+dotfiles diff
+# 查看特定文件：
+dotfiles diff -- ~/.bashrc
+
+#查看提交------------------------------------------------------------------
+
+# 查看提交的历史记录和详细信息
+# 1. 查看简洁提交历史
+dotfiles log --oneline
+# 每行显示：提交哈希(前7位) 分支/HEAD位置 提交信息
+
+# 2. 查看完整提交详情
+dotfiles log -p
+# 包含：
+# 提交哈希、作者、日期
+# 提交信息
+# 文件变更内容（-p 表示显示差异）
+
+# 3. 查看特定文件的修改历史
+dotfiles log --follow -- ~/.bashrc
+# --follow：跟踪文件重命名历史
+# -- &lt;文件路径&gt;：必须用绝对路径
+
+# 4. 图形化分支历史
+dotfiles log --graph --all --decorate
+
+# 5. 查看最近 N 次提交
+dotfiles log -n 2  # 查看最近2次提交
+
+# 6. 按时间/作者筛选
+dotfiles log --since=&quot;2023-10-01&quot; --until=&quot;2023-10-31&quot; --author=&quot;fajknli&quot;
+
+# 7. 查看某次提交的完整内容
+dotfiles show a1b2c3d
+# 或
+dotfiles log -1 -p a1b2c3d
+
+# 8. 查看提交统计
+dotfiles shortlog -sn  # 按作者统计提交次数
+dotfiles log --stat    # 显示每次提交的文件变更统计
+
+# 查看远程提交
+dotfiles fetch origin  # 先获取远程更新
+dotfiles log origin/main  # 查看远程分支历史
+
+# 撤回提交------------------------------------------------------------------
+
+# 1. 撤回最新提交但保留修改（最常用）
+dotfiles reset --soft HEAD~1
+    # 效果：
+    # 撤销最近一次提交
+    # 所有更改保留在暂存区（如同刚执行过 dotfiles add）
+# 适用场景：
+# 提交信息写错了，或需要补充文件到这次提交
+
+# 2. 撤回提交并取消暂存（保留工作区修改）
+dotfiles reset HEAD~1
+或等效命令：
+dotfiles reset --mixed HEAD~1
+    # 效果：
+    # 撤销提交
+    # 更改保留在工作目录（需重新 add）
+# 适用场景：
+# 需要重新组织提交内容
+
+# 3. 彻底丢弃提交和修改（谨慎！）
+dotfiles reset --hard HEAD~1
+    # 效果：
+    # 撤销提交
+    # 丢弃所有修改（工作区和暂存区都恢复到上一次提交状态）
+# 危险操作：所有未提交的更改将永久丢失！
+
+# 4. 撤回已推送到远程的提交
+# 先本地撤回（参考上述方法）
+dotfiles reset --soft HEAD~1
+# 强制推送到远程（需协作成员知晓）
+dotfiles push -f origin main
+    # 警告：
+    # 会重写远程历史
+    # 如果其他人已基于该提交工作，会导致协作混乱
+
+# 5. 创建反向提交（最安全）
+dotfiles revert HEAD
+例如:
+dotfiles revert a1b2c3d  # 撤销特定提交
+    # 效果：
+    # 生成一个新提交，内容与指定提交相反
+    # 不改变历史，适合已公开的提交
+
+完整工作流示例
+# 1. 查看提交历史确认要撤回的提交
+dotfiles log --oneline
+# 2. 撤回提交但保留修改（假设要撤销 HEAD）
+dotfiles reset --soft HEAD~1
+# 3. 重新提交
+dotfiles commit -m &quot;新的提交信息&quot;
+# 4. 如果之前已推送，强制更新远程
+dotfiles push -f origin main
+
+# 推送------------------------------------------------------------------
+
+# 首次推送（使用 -u 设置上游分支）
+dotfiles push -u origin main
+# 后续常规推送
+dotfiles push
+
+# 查看推送------------------------------------------------------------------
+
+# 查看已经推送到远程仓库的提交记录
+# 1. 查看本地与远程的差异
+dotfiles log origin/main..main
+# 显示已提交但未推送的提交
+# 如果无输出，表示所有本地提交已推送
+
+# 2. 查看远程分支最新状态
+dotfiles fetch origin  # 先更新远程信息
+dotfiles log --oneline origin/main
+
+# 3. 查看所有分支的推送状态
+dotfiles branch -vv
+# 输出示例：
+# * main a1b2c3d [origin/main: ahead 1] 最新提交
+# ahead 1 表示有1个提交未推送
+# behind 2 表示远程有2个新提交未拉取
+
+# 5. 图形化查看
+dotfiles log --graph --all --decorate
+
+# 撤回推送------------------------------------------------------------------
+
+# 1. 撤回已推送到远程的提交
+# 先本地撤回（参考上述方法）
+dotfiles reset --soft HEAD~1
+# 强制推送到远程（需协作成员知晓）
+dotfiles push -f origin main
+    # 警告：
+    # 会重写远程历史
+    # 如果其他人已基于该提交工作，会导致协作混乱
+
+# 2. 创建反向提交（最安全）
+dotfiles revert HEAD
+例如:
+dotfiles revert a1b2c3d  # 撤销特定提交
+    # 效果：
+    # 生成一个新提交，内容与指定提交相反
+    # 不改变历史，适合已公开的提交
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>2. 同步与维护<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>从远程更新：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dotfiles</span> <span class="n">fetch</span> <span class="n">origin</span>
+<span class="n">dotfiles</span> <span class="n">merge</span> <span class="n">origin</span><span class="o">/</span><span class="n">main</span>
+<span class="c1"># 或使用 pull：</span>
+<span class="n">dotfiles</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>清理旧文件：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 从Git删除但保留本地文件</span>
+<span class="n">dotfiles</span> <span class="n">rm</span> <span class="o">--</span><span class="n">cached</span> <span class="o">~/.</span><span class="n">oldconfig</span>
+
+<span class="c1"># 彻底删除文件</span>
+<span class="n">dotfiles</span> <span class="n">rm</span> <span class="o">~/.</span><span class="n">deprecated_file</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>3. 多机器同步策略<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>首次在新机器设置：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 克隆仓库（裸模式）
+git clone --bare git@github.com:yourusername/dotfiles.git $HOME/.dotfiles
+
+# 设置别名
+echo &quot;alias dotfiles=&#39;/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME&#39;&quot; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+
+# 尝试检出文件（冲突文件需处理）
+dotfiles checkout 2&gt;&amp;1 | grep -E &quot;\s+\.&quot; | awk {&#39;print $1&#39;} | xargs -I{} mv {} {}.bak
+dotfiles checkout
+</pre></div>
+</div>
+<p>定期同步：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 拉取远程更新（自动处理冲突）</span>
+<span class="n">dotfiles</span> <span class="n">pull</span> <span class="o">--</span><span class="n">autostash</span>
+</pre></div>
+</div>
+<section id="id4">
+<h3>2. 在新系统上恢复配置<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>将你的点文件仓库克隆为裸仓库</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--bare<span class="w"> </span>git@github.com:yourusername/dotfiles.git<span class="w"> </span><span class="nv">$HOME</span>/.dotfiles
+
+<span class="nb">alias</span><span class="w"> </span><span class="nv">dotfiles</span><span class="o">=</span><span class="s1">&#39;/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME&#39;</span>
+
+dotfiles<span class="w"> </span>checkout<span class="w"> </span><span class="c1">#尝试将文件检出到家目录</span>
+
+<span class="c1"># 如果文件已存在会报错，可强制检出覆盖：</span>
+dotfiles<span class="w"> </span>checkout<span class="w"> </span>-f
+
+dotfiles<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>status.showUntrackedFiles<span class="w"> </span>no
+</pre></div>
+</div>
+</section>
+<section id="git-crypt">
+<h3>3. git-crypt 部分加密<a class="headerlink" href="#git-crypt" title="Link to this heading">¶</a></h3>
+<p>实现部分配置文件公开、部分加密的混合管理</p>
+</section>
+</section>
+<section id="id5">
+<h2>0. 备份,因为这个会加密文件<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">~/.</span><span class="n">dotfiles</span> <span class="o">~/.</span><span class="n">dotfiles</span><span class="o">-</span><span class="n">backup</span>  <span class="c1"># 备份裸仓库</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2>1. 初始化加密<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 安装git-crypt</span>
+<span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">git</span><span class="o">-</span><span class="n">crypt</span>
+
+<span class="c1"># 在 dotfiles 仓库初始化加密</span>
+<span class="n">cd</span> <span class="o">~</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">init</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>2. 创建加密规则<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+</section>
+<section id="id8">
+<h2>3. 添加协作开发者<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导出密钥给可信设备</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">export</span><span class="o">-</span><span class="n">key</span> <span class="o">~/</span><span class="n">dotfiles</span><span class="o">.</span><span class="n">key</span>
+
+<span class="c1"># 在其他设备导入密钥</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">import</span><span class="o">-</span><span class="n">key</span> <span class="o">~/</span><span class="n">dotfiles</span><span class="o">.</span><span class="n">key</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>加密文件：匹配 .gitattributes 规则的文件会自动加密</p></li>
+<li><p>公开文件：其他文件正常显示</p></li>
+<li><p>推送后效果：</p>
+<ul>
+<li><p>公开文件：GitHub 上可直接查看</p></li>
+<li><p>加密文件：显示为加密二进制 blob</p></li>
+</ul>
+</li>
+</ul>
+<section id="id9">
+<h3>4. git-crypt 密钥备份与恢复<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+</section>
+</section>
+<section id="id10">
+<h2>1. 多重密钥备份策略<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 生成主密钥（默认）</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">init</span> <span class="o">&amp;&amp;</span> <span class="n">echo</span> <span class="s2">&quot;.gitattributes !filter !diff&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">.</span><span class="n">gitattributes</span>
+
+<span class="c1"># 2. 导出加密密钥（建议至少备份3份）</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">export</span><span class="o">-</span><span class="n">key</span> <span class="o">~/</span><span class="n">dotfiles</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="mf">1.</span><span class="n">key</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="n">encrypt</span> <span class="o">-</span><span class="n">r</span> <span class="n">your</span><span class="nd">@email</span><span class="o">.</span><span class="n">com</span> <span class="o">~/</span><span class="n">dotfiles</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="mf">1.</span><span class="n">key</span>  <span class="c1"># 加密备份</span>
+
+<span class="c1"># 3. 存储到安全位置：</span>
+<span class="c1">#    - 密码管理器（Bitwarden/1Password）</span>
+<span class="c1">#    - 加密的云存储（Cryptomator + Google Drive）</span>
+<span class="c1">#    - 物理介质（加密的USB驱动器）</span>
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h2>2. 协作密钥管理（团队场景）<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 添加团队成员的公钥授权</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">add</span><span class="o">-</span><span class="n">gpg</span><span class="o">-</span><span class="n">user</span> <span class="n">USER_ID</span>  <span class="c1"># 使用团队成员的GPG公钥</span>
+
+<span class="c1"># 导出所有授权用户列表（便于审计）</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">ls</span><span class="o">-</span><span class="n">gpg</span><span class="o">-</span><span class="n">users</span> <span class="o">&gt;</span> <span class="n">gpg</span><span class="o">-</span><span class="n">users</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h2>3. 自动化密钥轮换<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 每年轮换密钥（需更新所有备份）</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">revoke</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">init</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">export</span><span class="o">-</span><span class="n">key</span> <span class="n">new</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">key</span>
+<span class="c1"># 通知协作者</span>
+<span class="c1"># 其他用户需执行：</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">unlock</span>
+<span class="n">dotfiles</span> <span class="n">pull</span>
+</pre></div>
+</div>
+<p>预提交钩子（防止再次泄露）</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">&gt;</span> <span class="o">~/.</span><span class="n">dotfiles</span><span class="o">/</span><span class="n">hooks</span><span class="o">/</span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="o">&lt;&lt;</span><span class="s1">&#39;EOF&#39;</span>
+<span class="c1">#!/bin/bash</span>
+<span class="k">if</span> <span class="n">git</span> <span class="n">diff</span> <span class="o">--</span><span class="n">cached</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">qE</span> <span class="s2">&quot;password|PRIVATE_KEY&quot;</span><span class="p">;</span> <span class="n">then</span>
+  <span class="n">echo</span> <span class="s2">&quot;错误：提交包含敏感信息！&quot;</span>
+  <span class="n">exit</span> <span class="mi">1</span>
+<span class="n">fi</span>
+<span class="n">EOF</span>
+<span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="o">~/.</span><span class="n">dotfiles</span><span class="o">/</span><span class="n">hooks</span><span class="o">/</span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h2>4. 加密规则测试<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<p>加密规则编写</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cat &gt; ~/.gitattributes &lt;&lt;&#39;EOF&#39;
+# 加密单个文件
+.env          filter=git-crypt diff=git-crypt
+
+# 加密整个目录
+.ssh/*        filter=git-crypt diff=git-crypt
+.aws/config   filter=git-crypt diff=git-crypt
+
+# 排除目录中的特定文件
+.config/sops/** filter=git-crypt diff=git-crypt
+!*.config/sops/public.yml  # 此文件不加密
+
+# 二进制文件加密（如图片/证书）
+*.key         filter=git-crypt diff=git-crypt
+*.pem         filter=git-crypt diff=git-crypt
+
+# 确保 .gitattributes 自身不被加密
+.gitattributes !filter !diff
+EOF
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 测试文件是否被正确加密</span>
+<span class="n">echo</span> <span class="s2">&quot;test&quot;</span> <span class="o">&gt;</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">test</span><span class="o">-</span><span class="n">file</span>
+<span class="n">dotfiles</span> <span class="n">add</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">test</span><span class="o">-</span><span class="n">file</span>
+
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">status</span> <span class="o">-</span><span class="n">e</span>  <span class="c1"># 应显示文件为加密状态,应显示 &quot;encrypted&quot;</span>
+<span class="c1"># 查看远程文件内容（应显示加密）</span>
+
+<span class="n">curl</span> <span class="o">-</span><span class="n">s</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">you</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">credentials</span><span class="o">.</span><span class="n">json</span> <span class="o">|</span> <span class="n">file</span> <span class="o">-</span>
+<span class="c1"># 正确输出: data (加密二进制)</span>
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h2>5. 先拉取加密内容，再解密<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 拉取远程加密文件（此时文件仍是加密状态）</span>
+<span class="n">dotfiles</span> <span class="n">pull</span>
+
+<span class="c1"># 2. 解密文件（需提前配置好密钥）</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">unlock</span>
+
+<span class="c1"># 3. 验证文件</span>
+<span class="n">cat</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">config</span>  <span class="c1"># 应显示解密后的明文</span>
+</pre></div>
+</div>
+<p>多设备同步场景</p>
+<p>新设备初始化：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 克隆仓库（文件以加密形式存在）</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">bare</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">you</span><span class="o">/</span><span class="n">dotfiles</span><span class="o">.</span><span class="n">git</span> <span class="o">~/.</span><span class="n">dotfiles</span>
+<span class="n">alias</span> <span class="n">dotfiles</span><span class="o">=</span><span class="s1">&#39;git --git-dir=$HOME/.dotfiles --work-tree=$HOME&#39;</span>
+
+<span class="c1"># 2. 拉取加密文件</span>
+<span class="n">dotfiles</span> <span class="n">checkout</span>
+
+<span class="c1"># 3. 导入密钥并解密</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">import</span><span class="o">-</span><span class="n">key</span> <span class="o">~/</span><span class="n">backup</span><span class="o">/</span><span class="n">dotfiles</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">key</span>
+<span class="c1"># 检查密钥是否导入</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">status</span> <span class="o">-</span><span class="n">k</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">unlock</span>
+</pre></div>
+</div>
+<p>日常更新：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 拉取远程加密更新</span>
+<span class="n">dotfiles</span> <span class="n">pull</span>
+
+<span class="c1"># 2. 自动解密（如果之前已unlock且密钥未变）</span>
+<span class="c1"># 无需重复unlock</span>
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<h2>6. 问题<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>git-crypt 的局限性：仅对启用加密后的新提交生效，无法自动加密历史记录。</p></li>
+<li><p>历史记录的危险性：即使最新提交已加密，通过 git checkout &lt;旧提交&gt; 仍可获取明文敏感信息。</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>彻底重写历史</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 安装 filter-repo</span>
+
+<span class="c1"># 重写历史并加密敏感文件</span>
+<span class="n">git</span><span class="o">-</span><span class="nb">filter</span><span class="o">-</span><span class="n">repo</span> \
+  <span class="o">--</span><span class="n">path</span> <span class="o">.</span><span class="n">ssh</span><span class="o">/</span> \
+  <span class="o">--</span><span class="n">path</span> <span class="o">.</span><span class="n">aws</span><span class="o">/</span> \
+  <span class="o">--</span><span class="n">force</span>
+
+<span class="n">检查历史记录</span>
+
+<span class="c1"># 确认历史中无敏感信息</span>
+<span class="n">dotfiles</span> <span class="n">log</span> <span class="o">-</span><span class="n">p</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">E</span> <span class="s2">&quot;password|api_key|PRIVATE&quot;</span>
+
+<span class="c1"># 检查文件是否加密</span>
+<span class="n">git</span><span class="o">-</span><span class="n">crypt</span> <span class="n">status</span> <span class="o">-</span><span class="n">e</span> <span class="o">|</span> <span class="n">grep</span> <span class="s2">&quot;not encrypted&quot;</span> <span class="o">&amp;&amp;</span> <span class="n">echo</span> <span class="s2">&quot;存在未加密文件！&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>强制同步到远程</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dotfiles</span> <span class="n">push</span> <span class="o">-</span><span class="n">f</span> <span class="o">--</span><span class="nb">all</span>
+<span class="n">dotfiles</span> <span class="n">push</span> <span class="o">--</span><span class="n">tags</span> <span class="o">--</span><span class="n">force</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>通知所有协作者</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>紧急通知：仓库历史已重写，请按以下步骤操作：
+1. 删除旧仓库克隆：
+    rm -rf ~/.dotfiles ~/dotfiles
+
+2. 重新克隆：
+    git clone --bare git@github.com:you/dotfiles.git ~/.dotfiles
+
+3. 导入密钥解密：
+    git-crypt import-key ~/path/to/key.key
+    git-crypt unlock
+</pre></div>
+</div>
+<section id="hits">
+<h3>Hits<a class="headerlink" href="#hits" title="Link to this heading">¶</a></h3>
+<p>裸仓库特殊性：</p>
+<p>通过 dotfiles 别名操作时，路径必须：</p>
+<ul class="simple">
+<li><p>从 $HOME 开始的绝对路径（如 ~/.config/waybar/）,不能在/根目录或者/home目录下执行dotfiles命令</p></li>
+<li><p>或从家目录操作的正确相对路径</p></li>
+</ul>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>场景</p></th>
+<th class="head"><p>推荐命令</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>首次推送分支</p></td>
+<td><p>dotfiles push -u origin main</p></td>
+<td><p>必须用 -u 设置上游</p></td>
+</tr>
+<tr class="row-odd"><td><p>后续常规推送</p></td>
+<td><p>dotfiles push</p></td>
+<td><p>最简形式（依赖首次设置的 upstream）</p></td>
+</tr>
+<tr class="row-even"><td><p>推送到其他分支</p></td>
+<td><p>dotfiles push origin other-branch</p></td>
+<td><p>需明确指定远程和分支名</p></td>
+</tr>
+<tr class="row-odd"><td><p>强制覆盖远程</p></td>
+<td><p>dotfiles push -f</p></td>
+<td><p>危险操作！仅用于修复历史记录（需确保协作成员知晓）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>dotfiles status  # 只显示已跟踪文件的变化（因设置了 showUntrackedFiles no）</p></li>
+<li><p>dotfiles commit -m “添加 bash 和 vim 配置”  # 提交到本地</p></li>
+<li><p>dotfiles show &lt;master 序列号&gt;  # 查看提交的变化内容,和 <code class="docutils literal notranslate"><span class="pre">dotfiles</span> <span class="pre">show</span> <span class="pre">HEAD</span></code> , <code class="docutils literal notranslate"><span class="pre">dotfiles</span> <span class="pre">log</span> <span class="pre">-p</span> <span class="pre">-1</span></code> 是一样的，不过这个是查看最新提交的详细修改。 <code class="docutils literal notranslate"><span class="pre">dotfiles</span> <span class="pre">diff</span> <span class="pre">HEAD~1</span> <span class="pre">HEAD</span></code> 这个是比较前一次提交和当前提交。</p></li>
+</ul>
+<p>Git 遵循“显式操作”原则，只有通过 git add 添加的文件才会被跟踪。</p>
+<p>手动复制文件后，git status 会显示这些文件是 Untracked files（未跟踪），除非你明确 add 它们。</p>
+<hr class="docutils" />
+<p>忽略文件：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 1. 全局忽略（不提交到仓库）
+echo &quot;.cache/&quot; &gt;&gt; $HOME/.dotfiles/info/exclude
+
+# 2. 仓库级忽略（需提交）
+dotfiles add ~/.gitignore
+</pre></div>
+</div>
+<p>常见错误解决：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 错误：文件已存在阻止检出</span>
+<span class="n">dotfiles</span> <span class="n">checkout</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">E</span> <span class="s2">&quot;error: .* already exists&quot;</span> <span class="o">|</span> <span class="n">awk</span> <span class="p">{</span><span class="s1">&#39;print $3&#39;</span><span class="p">}</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="n">I</span><span class="p">{}</span> <span class="n">mv</span> <span class="p">{}</span> <span class="p">{}</span><span class="o">.</span><span class="n">bak</span>
+
+<span class="c1"># 错误：认证失败</span>
+<span class="n">dotfiles</span> <span class="n">remote</span> <span class="nb">set</span><span class="o">-</span><span class="n">url</span> <span class="n">origin</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">yourusername</span><span class="o">/</span><span class="n">dotfiles</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>检查仓库健康：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dotfiles</span> <span class="n">fsck</span>
+<span class="n">dotfiles</span> <span class="n">count</span><span class="o">-</span><span class="n">objects</span> <span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+</section>
+<section id="github-ssh">
+<h3>github 的ssh 认证<a class="headerlink" href="#github-ssh" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>步骤 1：生成 SSH 密钥（如果尚未生成）</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;your_email@example.com&quot;</span>
+</pre></div>
+</div>
+<p>（全程按 Enter 使用默认路径）</p>
+<ul class="simple">
+<li><p>步骤 2：将公钥添加到 GitHub</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>~/.ssh/id_ed25519.pub
+</pre></div>
+</div>
+<p>复制输出内容 → 进入 GitHub SSH Keys 设置页 → 点击 “New SSH key” 粘贴</p>
+<ul class="simple">
+<li><p>步骤 3：修改远程仓库地址为 SSH 格式</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dotfiles<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>git@github.com:fajknli/.dotfiles.git
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>步骤 4：测试连接</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
+</pre></div>
+</div>
+<p>看到 You’ve successfully authenticated 表示成功。</p>
+</section>
+<section id="gpg">
+<h3>gpg<a class="headerlink" href="#gpg" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>基础加密操作</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpg</span> <span class="o">--</span><span class="n">encrypt</span> <span class="o">-</span><span class="n">r</span> <span class="n">your</span><span class="nd">@email</span><span class="o">.</span><span class="n">com</span> <span class="o">-</span><span class="n">o</span> <span class="n">dotfiles</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">gpg</span> <span class="n">dotfiles</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">key</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>-r <a class="reference external" href="mailto:your&#37;&#52;&#48;email&#46;com">your<span>&#64;</span>email<span>&#46;</span>com</a>：指定接收者的 GPG 公钥（对应邮箱）</p></li>
+<li><p>-o：指定加密后的输出文件（默认会生成 .gpg 后缀的二进制文件）</p></li>
+<li><p>输入文件：dotfiles-key.key 是原始的 git-crypt 对称密钥</p></li>
+</ul>
+<p>验证加密文件：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="n">dotfiles</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">gpg</span>  <span class="c1"># 应显示 &quot;PGP RSA encrypted message&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>解密密钥（使用时）</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpg</span> <span class="o">--</span><span class="n">decrypt</span> <span class="o">-</span><span class="n">o</span> <span class="n">dotfiles</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">key</span> <span class="n">dotfiles</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">gpg</span>
+</pre></div>
+</div>
+<ul>
+<li><p>需输入接收者的 GPG 私钥密码</p></li>
+<li><p>解密后的文件 dotfiles-key.key 需严格限制权限：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="mi">600</span> <span class="n">dotfiles</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">key</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>安全增强技巧</p></li>
+</ol>
+<p>使用 ASCII 格式（便于复制）：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpg</span> <span class="o">--</span><span class="n">armor</span> <span class="o">--</span><span class="n">encrypt</span> <span class="o">-</span><span class="n">r</span> <span class="n">your</span><span class="nd">@email</span><span class="o">.</span><span class="n">com</span> <span class="o">-</span><span class="n">o</span> <span class="n">dotfiles</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">asc</span> <span class="n">dotfiles</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">key</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>–armor：生成 ASCII 格式（.asc 文件）而非二进制</p></li>
+</ul>
+<p>指定加密算法（如强制使用 AES-256）：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpg</span> <span class="o">--</span><span class="n">encrypt</span> <span class="o">--</span><span class="n">cipher</span><span class="o">-</span><span class="n">algo</span> <span class="n">AES256</span> <span class="o">-</span><span class="n">r</span> <span class="n">your</span><span class="nd">@email</span><span class="o">.</span><span class="n">com</span> <span class="n">dotfiles</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">key</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, fajknli
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Git 日常使用</a><ul>
+<li><a class="reference internal" href="#common-commands">Common Commands</a><ul>
+<li><a class="reference internal" href="#dotfile">1. .dotfile 初始设置步骤</a></li>
+<li><a class="reference internal" href="#dotfilegit-dotfiles">1. 日常dotfile更新使用git管理.dotfiles</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1">1. 日常操作流程</a></li>
+<li><a class="reference internal" href="#id2">2. 同步与维护</a></li>
+<li><a class="reference internal" href="#id3">3. 多机器同步策略</a><ul>
+<li><a class="reference internal" href="#id4">2. 在新系统上恢复配置</a></li>
+<li><a class="reference internal" href="#git-crypt">3. git-crypt 部分加密</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">0. 备份,因为这个会加密文件</a></li>
+<li><a class="reference internal" href="#id6">1. 初始化加密</a></li>
+<li><a class="reference internal" href="#id7">2. 创建加密规则</a></li>
+<li><a class="reference internal" href="#id8">3. 添加协作开发者</a><ul>
+<li><a class="reference internal" href="#id9">4. git-crypt 密钥备份与恢复</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">1. 多重密钥备份策略</a></li>
+<li><a class="reference internal" href="#id11">2. 协作密钥管理（团队场景）</a></li>
+<li><a class="reference internal" href="#id12">3. 自动化密钥轮换</a></li>
+<li><a class="reference internal" href="#id13">4. 加密规则测试</a></li>
+<li><a class="reference internal" href="#id14">5. 先拉取加密内容，再解密</a></li>
+<li><a class="reference internal" href="#id15">6. 问题</a><ul>
+<li><a class="reference internal" href="#hits">Hits</a></li>
+<li><a class="reference internal" href="#github-ssh">github 的ssh 认证</a></li>
+<li><a class="reference internal" href="#gpg">gpg</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=46f6607b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>

@@ -1,0 +1,3925 @@
+<!doctype html>
+<html class="no-js" lang="en-US" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>Bash - fajknli Note IDK documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">fajknli Note IDK documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">fajknli Note IDK documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Bookmarks:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Bookmarks/Games/bookmark_games_index.html">Bookmark Games Indes</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Bookmark Games Indes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Bookmarks/Games/bookmark_games.html">Bookmark_games</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programing:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Language_Library/Language_Library_index.html">Libraries</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Libraries</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Language_Library/Python_Library.html">Python_Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Language_Library/Python_std_Library.html">Python Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Frontend/Frontend_index.html">Frontend</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Frontend</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Frontend/CSS.html">CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Frontend/HTML.html">HTML</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Tools/index.html">Tools</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/Docker.html">Docker For beginner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/Git.html">Git 日常使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/Midnight_Commander.html">Mindnight Commander</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/Softwares.html">Softwares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/Use_Of_Software.html">Use_of_Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/Vim.html">Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/Vim-SimpleUse.html">Vim SimpleUse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/niri.html">Niri manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/qutebrowser.html">qutebrowser Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/reST.html">学习 reST Simple-CheatSheet</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Linux:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Linux/Linux_Distributions/Linux_Distributions_index.html">Linux Distributions</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Linux Distributions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Distributions/ArchLinux-Setup-Configurate.html">Arch Linux 安装和配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Distributions/Debian-Setup-Configurate.html">Debian安装和配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Distributions/VoidLinux-Setup-Configurate.html">Void Linux 安装和配置</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Linux/Linux_Learn/Linux_Learn_index.html">Linux Tutorial</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Linux Tutorial</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Learn/Linux-Terminal-Shortcuts.html">Terminal_Shortcut</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Learn/Linux_Commands_Overview.html">Commands List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Learn/Linux_System_Commands.html">Linux系统命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Learn/Linux_Tricks.html">Linux-Tricks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Linux/Linux_Commands/Linux_Commands_index.html">Linux_Commands</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Linux_Commands</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Commands/Shell_Simple_Usage.html">Shell_Simple_Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Commands/awk_simple-usage.html">awk 数据处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Commands/find.html">find</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Commands/grep.html">grep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Commands/lf.html">lf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Linux_Commands/sed.html">sed</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Cook:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Cook/Cook.html">Cook</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../_sources/Programing/Language/Bash.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="bash">
+<h1>Bash<a class="headerlink" href="#bash" title="Link to this heading">¶</a></h1>
+<section id="id1">
+<h2>1.bash内建命令<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>任务说明符 [&amp;]</p>
+<p>(( 表达式 ))</p>
+<p>. 文件名 [参数]</p>
+<p>:</p>
+<p>[ 参数… ]</p>
+<p>[[ 表达式 ]]</p>
+<dl class="field-list simple">
+<dt class="field-odd">alias<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-p] [名称[=值] … ]</p>
+</dd>
+<dt class="field-even">bg<span class="colon">:</span></dt>
+<dd class="field-even"><p>[任务说明符 …]</p>
+</dd>
+<dt class="field-odd">bind<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-lpvsPSVX] [-m 键映射] [-f 文件名] [-q 名称] [-u 名称] [-r 键&gt;</p>
+</dd>
+<dt class="field-even">break<span class="colon">:</span></dt>
+<dd class="field-even"><p>[n]</p>
+</dd>
+<dt class="field-odd">builtin<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[shell-内建 [参数 …]]</p>
+</dd>
+<dt class="field-even">caller<span class="colon">:</span></dt>
+<dd class="field-even"><p>[表达式]</p>
+</dd>
+<dt class="field-odd">case<span class="colon">:</span></dt>
+<dd class="field-odd"><p>词语 in [模式 [| 模式]…) 命令 ;;]… esac</p>
+</dd>
+<dt class="field-even">cd<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-L|[-P [-e]] [-&#64;]] [目录]</p>
+</dd>
+<dt class="field-odd">command<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-pVv] 命令 [参数 …]</p>
+</dd>
+<dt class="field-even">compgen<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-abcdefgjksuv] [-o 选项] [-A 动作] [-G 全局模式] [-W 词语列&gt;</p>
+</dd>
+<dt class="field-odd">complete<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-abcdefgjksuv] [-pr] [-DEI] [-o 选项] [-A 动作] [-G 全局模&gt;</p>
+</dd>
+<dt class="field-even">compopt<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-o|+o 选项] [-DEI] [名称 …]</p>
+</dd>
+<dt class="field-odd">continue<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[n]</p>
+</dd>
+<dt class="field-even">coproc<span class="colon">:</span></dt>
+<dd class="field-even"><p>[名称] 命令 [重定向]</p>
+</dd>
+<dt class="field-odd">declare<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-aAfFgiIlnrtux] [名称[=值] …] 或 declare -p [-aAfFilnrtux]&gt;</p>
+</dd>
+<dt class="field-even">dirs<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-clpv] [+N] [-N]</p>
+</dd>
+<dt class="field-odd">disown<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-h] [-ar] [任务说明符 … | pid …]</p>
+</dd>
+<dt class="field-even">echo<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-neE] [参数 …]</p>
+</dd>
+<dt class="field-odd">enable<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-a] [-dnps] [-f 文件名] [名称 …]</p>
+</dd>
+<dt class="field-even">eval<span class="colon">:</span></dt>
+<dd class="field-even"><p>[参数 …]</p>
+</dd>
+<dt class="field-odd">exec<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-cl] [-a 名称] [命令 [参数 …]] [重定向 …]</p>
+</dd>
+<dt class="field-even">exit<span class="colon">:</span></dt>
+<dd class="field-even"><p>[n]</p>
+</dd>
+<dt class="field-odd">export<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-fn] [名称[=值] …] 或 export -p</p>
+</dd>
+<dt class="field-even">false<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">fc<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-e 编辑器名] [-lnr] [起始] [终止] 或 fc -s [模式=替换串] [命令]</p>
+</dd>
+<dt class="field-even">fg<span class="colon">:</span></dt>
+<dd class="field-even"><p>[任务说明符]</p>
+</dd>
+<dt class="field-odd">for<span class="colon">:</span></dt>
+<dd class="field-odd"><p>名称 [in 词语 … ] ; do 命令; done</p>
+</dd>
+<dt class="field-even">for<span class="colon">:</span></dt>
+<dd class="field-even"><p>(( 表达式1; 表达式2; 表达式3 )); do 命令; done</p>
+</dd>
+<dt class="field-odd">function<span class="colon">:</span></dt>
+<dd class="field-odd"><p>名称 { 命令 ; } 或 name () { 命令 ; }</p>
+</dd>
+<dt class="field-even">getopts<span class="colon">:</span></dt>
+<dd class="field-even"><p>选项字符串 名称 [参数 …]</p>
+</dd>
+<dt class="field-odd">hash<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-lr] [-p 路径名] [-dt] [名称 …]</p>
+</dd>
+<dt class="field-even">help<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-dms] [模式 …]</p>
+</dd>
+<dt class="field-odd">history<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-c] [-d 偏移量] [n] 或 history -anrw [文件名] 或 history -p&gt;</p>
+</dd>
+<dt class="field-even">if<span class="colon">:</span></dt>
+<dd class="field-even"><p>命令; then 命令; [ elif 命令; then 命令; ]… [ else 命令; ] fi</p>
+</dd>
+<dt class="field-odd">jobs<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-lnprs] [任务说明符 …] 或 jobs -x 命令 [参数]</p>
+</dd>
+<dt class="field-even">kill<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-s 信号说明符 | -n 信号编号 | -信号说明符] pid | 任务说明符 ..&gt;</p>
+</dd>
+<dt class="field-odd">let<span class="colon">:</span></dt>
+<dd class="field-odd"><p>参数 [参数 …]</p>
+</dd>
+<dt class="field-even">local<span class="colon">:</span></dt>
+<dd class="field-even"><p>[选项] 名称[=值] …</p>
+</dd>
+<dt class="field-odd">logout<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[n]</p>
+</dd>
+<dt class="field-even">mapfile<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-d 分隔符] [-n 计数] [-O 起始] [-s 计数] [-t] [-u fd] [-C&gt;</p>
+</dd>
+<dt class="field-odd">popd<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-n] [+N | -N]</p>
+</dd>
+<dt class="field-even">printf<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-v var] 格式 [参数]</p>
+</dd>
+<dt class="field-odd">pushd<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-n] [+N | -N | 目录]</p>
+</dd>
+<dt class="field-even">pwd<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-LP]</p>
+</dd>
+<dt class="field-odd">read<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-ers] [-a 数组] [-d 分隔符] [-i 文本] [-n 字符数] [-N 字符数] &gt;</p>
+</dd>
+<dt class="field-even">readarray<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-d 分隔符] [-n 计数] [-O 起始] [-s 计数] [-t] [-u fd] [-&gt;</p>
+</dd>
+<dt class="field-odd">readonly<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-aAf] [名称[=值] …] 或 readonly -p</p>
+</dd>
+<dt class="field-even">return<span class="colon">:</span></dt>
+<dd class="field-even"><p>[n]</p>
+</dd>
+<dt class="field-odd">select<span class="colon">:</span></dt>
+<dd class="field-odd"><p>名称 [in 词语 … ;] do 命令; done</p>
+</dd>
+<dt class="field-even">set<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-abefhkmnptuvxBCEHPT] [-o 选项名] [–] [-] [参数 …]</p>
+</dd>
+<dt class="field-odd">shift<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[n]</p>
+</dd>
+<dt class="field-even">shopt<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-pqsu] [-o] [选项名 …]</p>
+</dd>
+<dt class="field-odd">source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>文件名 [参数]</p>
+</dd>
+<dt class="field-even">suspend<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-f]</p>
+</dd>
+<dt class="field-odd">test<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[表达式]</p>
+</dd>
+<dt class="field-even">time<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-p] 流水线</p>
+</dd>
+<dt class="field-odd">times<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">trap<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-lp] [[参数] 信号说明符 …]</p>
+</dd>
+<dt class="field-odd">true<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">type<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-afptP] 名称 [名称 …]</p>
+</dd>
+<dt class="field-odd">typeset<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-aAfFgiIlnrtux] 名称[=值] … 或 typeset -p [-aAfFilnrtux]&gt;</p>
+</dd>
+<dt class="field-even">ulimit<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-SHabcdefiklmnpqrstuvxPRT] [限制]</p>
+</dd>
+<dt class="field-odd">umask<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-p] [-S] [模式]</p>
+</dd>
+<dt class="field-even">unalias<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-a] 名称 [名称 …]</p>
+</dd>
+<dt class="field-odd">unset<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[-f] [-v] [-n] [名称 …]</p>
+</dd>
+<dt class="field-even">until<span class="colon">:</span></dt>
+<dd class="field-even"><p>命令; do 命令-2; done</p>
+</dd>
+<dt class="field-odd">variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>一些 shell 变量的名称和含义</p></li>
+</ul>
+</dd>
+<dt class="field-even">wait<span class="colon">:</span></dt>
+<dd class="field-even"><p>[-fn] [-p 变量] [id …]</p>
+</dd>
+<dt class="field-odd">while<span class="colon">:</span></dt>
+<dd class="field-odd"><p>命令; do 命令-2; done</p>
+</dd>
+</dl>
+<p>{ 命令 ; }</p>
+</section>
+<section id="id2">
+<h2>2.Bash 学习<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>shebang: <code class="docutils literal notranslate"><span class="pre">#!</span> <span class="pre">/usr/bin/env</span> <span class="pre">bash</span></code></p>
+<section id="hello-world-using-variables">
+<h3>2.1.2: Hello World Using Variables<a class="headerlink" href="#hello-world-using-variables" title="Link to this heading">¶</a></h3>
+<p>使用=赋值，例如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 等号周围不能有空格</span>
+<span class="n">whom_variable</span><span class="o">=</span><span class="s2">&quot;World&quot;</span>
+<span class="c1"># printf 安全输出字符</span>
+<span class="n">printf</span> <span class="s2">&quot;Hello, </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="s2">&quot;$whom_variable&quot;</span>
+</pre></div>
+</div>
+<p>使用$1或者$2,$*,$&#64;作为参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>printf &quot;Hello, %s\n&quot; &quot;$1&quot;
+
+当执行此脚本时，可以附带一个参数来作为$1,但是要双引号，单引号只是代表$1字符
+
+$1代表的是的一个执行脚本参数,$2是第二个，以此类推。但是$*和$@可以访问所有参数
+
+./hellworld.sh world111
+
+&gt;Hello,world111
+</pre></div>
+</div>
+<p>通过读取用户输入：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>read &lt;变量名&gt;
+
+执行此脚本后，等待要求用户输入回车，然后将输入值作为变量名进行接下来的操作
+
+1.简单读取到变量
+read name
+echo &quot;Your name : $neme&quot;
+
+2.读取多值到不同变量
+read first last age
+echo &quot;$first $last is $age years old&quot;
+
+3.读取到数组
+read -a array
+echo ${array[0] $array[1]}
+
+4.TIMEOUT和SILENT选项
+#等待用户输入10s
+read -t 10 name
+
+#不输出读取的内容在屏幕上
+read -s password
+
+5.提示信息和默认值
+read -p &quot;Your name: &quot; name
+# 默认值
+read -p &quot;prompt&quot; varName ${varName:-defaultValue}
+read -p &quot;Age: &quot; age ${age:-18}
+或者可以先定义个变量
+age=${age:-18}
+read -p :Your age: &quot; age
+
+6.从文件里读取到变量
+read line &lt; file.txt
+
+7.按列读取到数组
+while read col1 col2 col3; do
+    echo &quot;$col1 $col2 $col3&quot;
+# 处理每一行的数据
+done &lt; file.csv
+
+这会从file.csv文件读取输入，将其每一行前3列分别存储到col1,col2,col3三个变量里
+
+适合处理结构化数据，例如csv文件
+
+还可以读取到数组里：
+
+while IFS=&#39;,&#39; read -ra columns; do
+    echo &quot;${columns[0]} ${columns[1]}&quot;
+done &lt; file.csv
+
+IFS=&#39;,&#39;表示使用逗号作为分隔符，默认是空格制表符和换行符
+-r 表示不对其任何字符进行转义解释
+-a 表示将读取的行存储到数组变量中
+
+
+迭代访问处理每一个元素：
+
+while IFS=&#39;,&#39; read -ra columns; do
+    for i in &quot;${columns[@]}&quot;; do
+        echo &quot;$i&quot;
+    done
+done &lt; file.csv
+</pre></div>
+</div>
+<p>强引号和弱引号：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.强引号(&quot;)内的变量会被解释展开，弱引号(&#39;)内的变量作为普通字符对待，不展开
+name=&quot;John&quot;
+echo &quot;$name&quot;    # John
+echo &#39;$name&#39;    # $name
+
+2.强引号内可以有特殊字符，如\n, \t等，而单引号的特殊字符就会失去特殊作用，作为普通字符输出。
+echo &quot;$name\n&quot;  # John 换行
+echo &#39;$name\n&#39;  # $name\n
+
+3.单引号字符串的内容会原样输出，强引号可能会有命令替换、换行符等改变内容
+echo &quot;$(ls)&quot;    # 执行ls命令
+echo &#39;$(ls)&#39;    # $(ls)
+
+总结：
+单引号字符串内容原样输出，不解释变量和特殊字符
+双引号字符串可以解释变量和特殊字符
+
+尽量使用双引号，需要原样输出时使用单引号
+</pre></div>
+</div>
+</section>
+<section id="hello-world-in-debug-mode">
+<h3>2.1.2: Hello World in “Debug” mode<a class="headerlink" href="#hello-world-in-debug-mode" title="Link to this heading">¶</a></h3>
+<p>bash -x file.sh</p>
+<p>使用-x 参数启动debug模式的执行脚本。</p>
+</section>
+<section id="id3">
+<h3>2.1.3: 进入上一个目录，无论是从哪来的<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>cd -</p>
+</section>
+<section id="id4">
+<h3>2.1.4: 进入家目录<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>cd</p></li>
+<li><p>cd $HOME</p></li>
+<li><p>cd ~</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>2.1.5: 切换到脚本的目录<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>cd “$(dirname “$(readlink -f “$0”)”)”</p>
+<p>您提供的代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd &quot;$(dirname &quot;$(readlink -f &quot;$0&quot;)&quot;)&quot;
+</pre></div>
+</div>
+<p>利用了三个命令来实现:</p>
+<ol class="arabic simple">
+<li><p>readlink -f “$0” 获取当前执行脚本的完整路径</p></li>
+<li><p>dirname 获得该路径的目录部分</p></li>
+<li><p>cd 改变当前工作目录</p></li>
+</ol>
+<p>这个方法比直接使用 cd 命令更佳,因为它可以让脚本切换到自己所在的目录,即使用户是从其他位置调用脚本也可以正常工作。
+对于这样的项目脚本,一些好的编程习惯包括:</p>
+<ul class="simple">
+<li><p>在脚本内部使用绝对路径,而不是相对路径</p></li>
+<li><p>通过环境变量导出路径,而不是硬编码路径</p></li>
+<li><p>在文档中注明脚本expect被运行在自己所在的目录</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ls">
+<h2>3.列出文件ls<a class="headerlink" href="#ls" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>-a: 显示所有文件和目录(包括隐藏的)</p></li>
+<li><p>-A: 显示所有文件和目录,但不包括当前目录和上级目录(. &amp; ..)</p></li>
+<li><p>-c: 按文件状态变化时间排序</p></li>
+<li><p>-d: 只显示目录,不显示目录内容</p></li>
+<li><p>-h: 以人类可读的格式显示文件大小(如 KB、MB)</p></li>
+<li><p>-H: 类似 -h,但使用 1000 为单位而不是 1024</p></li>
+<li><p>-l: 以长格式显示文件信息</p></li>
+<li><p>-o: 与 -l 类似,但不显示文件组信息</p></li>
+<li><p>-r: 反向显示,即从最后一个文件开始显示(例如升序排列用了-r之后就变成降序排列)</p></li>
+<li><p>-s: 显示文件大小,以 block 为单位</p></li>
+<li><p>-S: 按文件大小排序</p></li>
+<li><p>–sort: 按指定的字段排序(如 size、version等)</p></li>
+<li><p>-t: 按修改时间排序</p></li>
+<li><p>-u: 按访问时间排序</p></li>
+<li><p>-v: 按版本排序</p></li>
+<li><p>-1: 每行只显示一个文件</p></li>
+</ul>
+<section id="ls-l">
+<h3>3.1 ls -l 长格式列表<a class="headerlink" href="#ls-l" title="Link to this heading">¶</a></h3>
+<p>ls -l命令显示目录内容的长格式列表非常有用,它以多列的方式显示每个文件和目录的详细信息。
+输出的每一列含义如下:</p>
+<ol class="arabic">
+<li><dl>
+<dt>文件类型:d表示目录,-表示文件,l表示链接</dt><dd><ul class="simple">
+<li><p>-:普通文件</p></li>
+<li><p>d:目录</p></li>
+<li><p>l:符号链接</p></li>
+<li><p>c:字符设备文件</p></li>
+<li><p>C:高速文件</p></li>
+<li><p>b:块设备文件</p></li>
+<li><p>s:套接字文件</p></li>
+<li><p>p:管道文件</p></li>
+<li><p>P:端口文件</p></li>
+<li><p>n:网络特殊文件</p></li>
+<li><p>M:脱机文件</p></li>
+<li><p>D:doors文件(Solaris系统特有)</p></li>
+<li><p>?:其他未知文件类型</p></li>
+</ul>
+<p>对文件的判断主要使用:</p>
+<ul class="simple">
+<li><p>-:普通文件,包含数据、脚本、文档等</p></li>
+<li><p>d:目录,可以cd进入</p></li>
+<li><p>l:链接文件,类似快捷方式</p></li>
+<li><p>c:字符设备,如串口终端</p></li>
+<li><p>b:块设备,如磁盘</p></li>
+</ul>
+<p>其他特殊文件类型较少使用。
+通过文件类型字段可以快速过滤出需要注意的文件,例如只查看目录:
+ls -l | grep ^d</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>权限字符串:rwx权限组合</dt><dd><ol class="arabic simple">
+<li><p>所有者权限(owner):第一个3个字符</p></li>
+<li><p>组权限(group):中间3个字符</p></li>
+<li><p>其他用户权限(others):最后3个字符</p></li>
+</ol>
+<p>每个权限组可包含下列权限:</p>
+<ul class="simple">
+<li><p>r:可读 Read</p></li>
+<li><p>w:可写 Write</p></li>
+<li><p>x:可执行 Execute</p></li>
+<li><p>-:无权限 None</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>硬链接数:指向该文件inode的链接数</p></li>
+<li><p>所有者名称</p></li>
+<li><p>所有组名称</p></li>
+<li><p>文件大小:字节数</p></li>
+<li><p>修改时间</p></li>
+<li><p>文件名</p></li>
+</ol>
+<p>总大小total表示目录中所有文件总大小。
+长格式列出的详细信息对于查看和判断文件属性非常有帮助,主要包括:</p>
+<ul class="simple">
+<li><p>文件类型:区分目录和普通文件</p></li>
+<li><p>权限信息:判断可读写执行权限</p></li>
+<li><p>所有者和组:区分所属用户</p></li>
+<li><p>文件大小:判断文件内容量</p></li>
+<li><p>修改时间:判断文件更新情况</p></li>
+</ul>
+<p>掌握了这些列的含义,可以更好地使用ls -l命令,判断文件信息,选择执行相应的文件操作。</p>
+</section>
+<section id="ls-printf">
+<h3>3.2 不使用ls,而是使用printf<a class="headerlink" href="#ls-printf" title="Link to this heading">¶</a></h3>
+<p>1. 显示所有文件和目录:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>2. 只显示目录:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">*/</span>
+</pre></div>
+</div>
+<p>3. 只显示部分类型文件(如图片):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">*.</span><span class="p">{</span><span class="n">gif</span><span class="p">,</span><span class="n">jpg</span><span class="p">,</span><span class="n">png</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>4. 存入数组进行后续处理:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">files</span><span class="o">=</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="s2">&quot;$</span><span class="si">{files[@]}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="n">do</span>
+   <span class="n">echo</span> <span class="s2">&quot;$file&quot;</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+<p>使用printf “%sn” 和通配符*可以方便列出文件。</p>
+<p>使用*/只显示目录,使用*.{gif,jpg,png}只显示指定类型文件。</p>
+<p>将文件存入数组,可以进行后续迭代处理。</p>
+</section>
+<section id="tree">
+<h3>3.3 tree命令可以以树形格式可视化显示目录结构及文件<a class="headerlink" href="#tree" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>-a :列出所有文件及目录,包括隐藏的</p></li>
+<li><p>-d :仅列出目录</p></li>
+<li><p>-L :限制显示层数</p></li>
+<li><p>-f :打印完整的相对路径,而不仅仅是文件名</p></li>
+<li><p>-F :在目录、socket、管道等名字后加上指示符,如 * / # 等</p></li>
+<li><p>-I :不显示符合指定的模式的文件</p></li>
+<li><p>-P :用ASCII字符画出树形结构,可以指定主题</p></li>
+<li><p>-o :用octal格式显示文件权限</p></li>
+<li><p>-s :显示文件大小</p></li>
+<li><p>-h :以易读的格式显示文件大小,如KB、MB等</p></li>
+</ul>
+<p>主要用法:</p>
+<ul class="simple">
+<li><p>tree -L 2 :显示当前目录下两层目录树</p></li>
+<li><p>tree -P “Vehicle” -I “*.txt” :指定主题和排除模式显示树</p></li>
+<li><p>tree -as :显示所有文件和文件大小</p></li>
+</ul>
+</section>
+</section>
+<section id="cat">
+<h2>4.使用Cat<a class="headerlink" href="#cat" title="Link to this heading">¶</a></h2>
+<p>您总结的cat命令的选项非常全面详尽,涵盖了cat的主要功能,我来概括一下:</p>
+<ul class="simple">
+<li><p>-n:显示行号</p></li>
+<li><p>-v/-A:显示非打印字符,如制表符等</p></li>
+<li><p>-E/-e:显示行尾换行符$</p></li>
+<li><p>-T:显示TAB键</p></li>
+<li><p>-b:显示非空行号</p></li>
+<li><p>-s:抑制连续空行</p></li>
+</ul>
+<p>cat的主要用途:</p>
+<ul class="simple">
+<li><p>不带选项:连接文件显示内容</p></li>
+<li><p>-n:添加行号显示代码</p></li>
+<li><p>-e:显示行尾换行符</p></li>
+<li><p>-T:查看文件是否包含tab</p></li>
+<li><p>-s:移除多余空行</p></li>
+</ul>
+<p>掌握这些选项,可以用cat查看、处理文本文件,如打印带行号的代码,-e查看文件换行,-s去除空行等。</p>
+<p>cat的选项看上去很多,但实际上记住主要的-n -e -T -s等日常使用就可以了。</p>
+<section id="id6">
+<h3>4.1 连接文件（多个文件输出给一个文件）<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>合并文件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">file1</span> <span class="n">file2</span> <span class="n">file3</span> <span class="o">&gt;</span> <span class="n">file_all</span>
+</pre></div>
+</div>
+<p>将多文件内容通过管道输出给其他工具</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">file1</span> <span class="n">file2</span> <span class="n">file3</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">foo</span>
+</pre></div>
+</div>
+<p>通常，对于交互式使用，您最好融合交互式寻呼机，如less或more。(less比more强大得多，建议用less。)</p>
+<p>less 的使用和man的使用差不多</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">less</span> <span class="n">file1</span>
+</pre></div>
+</div>
+<p>还可以配合tac,tac 可以将文本内容倒过来输出，第一行变成最后一行</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tac</span> <span class="n">file1</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3>4.2 简单写入文件<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cat &gt; file
+cat &gt;&gt; file
+Ctrl + d 或者Ctrl + c 可以退出其交互状态
+
+cat &lt;&lt; END &gt; file
+cat &lt;&lt; END &gt;&gt; file
+
+&lt;&lt;重定向符号是一个任意字符串，它需要单独出现在一行中(没有空格的开头或结尾)，以指示here文档的结束。您可以添加引号来防止shell执行命令替换和变量插值
+
+cat &lt;&lt; &#39;hello&#39; &gt; file
+cat &lt;&lt; &#39;hello&#39; &gt;&gt; file
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3>4.3 显示无法打印的字符，无法打印的字符包括控制字符和非打印字符<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">-</span><span class="n">vE</span> <span class="n">file</span>
+<span class="n">cat</span> <span class="o">-</span><span class="n">vET</span> <span class="o">/</span> <span class="o">-</span><span class="n">A</span> <span class="n">file</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>换行符(LF):</dt><dd><ul class="simple">
+<li><p>表示: n 或 ^J</p></li>
+<li><p>用途: 在文本中表示新一行</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>回车符(CR):</dt><dd><ul class="simple">
+<li><p>表示: r 或 ^M</p></li>
+<li><p>用途: 将光标移到行首而不换行</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>水平制表符(HT):</dt><dd><ul class="simple">
+<li><p>表示: t 或 ^I</p></li>
+<li><p>用途: 在文本中插入水平制表</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>垂直制表符(VT):</dt><dd><ul class="simple">
+<li><p>表示: v 或 ^K</p></li>
+<li><p>用途: 在文本中插入垂直制表</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>退格(BS):</dt><dd><ul class="simple">
+<li><p>表示: b 或 ^H</p></li>
+<li><p>用途: 将光标移到前一位置</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>空字符(NUL):</dt><dd><ul class="simple">
+<li><p>表示: 0 或 ^&#64;</p></li>
+<li><p>用途: 通常用于字符串的结尾或空白填充</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+<section id="id9">
+<h3>4.4 从标准输入中读取文件<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cat &lt; file.txt
+
+输出与cat file.txt相同，但它从标准输入而不是直接从文件中读取文件的内容。
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h3>4.5 通过cat添加行号<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>printf &quot;first line\nSecond line\n&quot; | cat -n
+
+|前面的echo命令输出两行。cat命令作用于输出以添加行号。
+
+cat -b file
+
+要在计算行数时跳过空行，请使用——number-nonblank或简单地使用-b。
+</pre></div>
+</div>
+</section>
+<section id="gzip">
+<h3>4.6 连接gzip压缩过的文件<a class="headerlink" href="#gzip" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>通过gzip压缩的文件可以直接连接成更大的gzip文件。
+
+cat file1.gz file2.gz file3.gz &gt; combined.gz
+
+这是gzip的一个属性，比连接输入文件并压缩结果效率要低:
+
+cat file1 file2 file3 | gzip &gt; combined.gz
+</pre></div>
+</div>
+</section>
+</section>
+<section id="grep">
+<h2>5. Grep<a class="headerlink" href="#grep" title="Link to this heading">¶</a></h2>
+<p><cite>grep</cite> 是一个用于在文本中搜索指定模式的命令。下面是一些 <cite>grep</cite> 命令的基本用法和选项：</p>
+<section id="id11">
+<h3>基本用法：<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="s1">&#39;模式&#39;</span> <span class="n">文件名</span>
+</pre></div>
+</div>
+<p>### 选项和参数：</p>
+<ul class="simple">
+<li><p><strong>`-i`：</strong> 忽略大小写。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;pattern&#39;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`-r` 或 `-R`：</strong> 递归地搜索子目录。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">r</span> <span class="s1">&#39;pattern&#39;</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">directory</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`-n`：</strong> 显示匹配行的行号。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">n</span> <span class="s1">&#39;pattern&#39;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`-v`：</strong> 显示不包含匹配文本的行。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">v</span> <span class="s1">&#39;pattern&#39;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`-c`：</strong> 显示匹配行的计数。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;pattern&#39;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`-A NUM`：</strong> 显示匹配行及其后面的 NUM 行。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">A</span> <span class="mi">3</span> <span class="s1">&#39;pattern&#39;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`-B NUM`：</strong> 显示匹配行及其前面的 NUM 行。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">B</span> <span class="mi">2</span> <span class="s1">&#39;pattern&#39;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`-E`：</strong> 启用扩展正则表达式。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">E</span> <span class="s1">&#39;^pattern&#39;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`-o`：</strong> 只显示匹配的部分。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">o</span> <span class="s1">&#39;pattern&#39;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>`-w`：</strong> 只匹配整个单词。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">w</span> <span class="s1">&#39;word&#39;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>这些只是 <cite>grep</cite> 命令的一部分选项和用法。它是一个强大的工具，可以根据需要进行更高级的文本搜索和匹配。</p>
+</section>
+</section>
+<section id="aliasing">
+<h2>6. Aliasing<a class="headerlink" href="#aliasing" title="Link to this heading">¶</a></h2>
+<p><cite>alias</cite> 是一个命令，用于创建用户定义的命令别名。通过使用 <cite>alias</cite>，你可以为长命令创建简短易记的别名，从而提高命令行的效率。以下是一些 <cite>alias</cite> 的基本用法：</p>
+<section id="id12">
+<h3>查看已存在的别名：<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span>
+
+<span class="n">alias</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h3>创建别名：<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">shortname</span><span class="o">=</span><span class="s1">&#39;long command&#39;</span>
+</pre></div>
+</div>
+<p>例如，将 <cite>ls -l</cite> 创建为别名 <cite>ll</cite>：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">ll</span><span class="o">=</span><span class="s1">&#39;ls -l&#39;</span>
+</pre></div>
+</div>
+<p>要在同一别名中包含多个命令，可以使用&amp;&amp;将它们串在一起。例如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">print_things</span><span class="o">=</span><span class="s1">&#39;echo &quot;foo&quot; &amp;&amp; echo &quot;bar&quot; &amp;&amp; echo &quot;baz&quot;&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h3>删除别名：<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unalias</span> <span class="n">shortname</span>
+</pre></div>
+</div>
+<p>例如，删除 <cite>ll</cite> 别名：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unalias</span> <span class="n">ll</span>
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<h3>临时替换别名：<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<p>如果你想在不影响现有别名的情况下运行一次命令，可以在命令前添加反斜杠 ` ` ：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">shortname</span>
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h3>永久保存别名：<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<p>将别名添加到 shell 配置文件（如 <cite>~/.bashrc</cite> 或 <cite>~/.bash_profile</cite>）中，以便永久保存别名。</p>
+</section>
+<section id="id17">
+<h3>示例：<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p>打开你的 shell 配置文件，添加别名：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;alias ll=&#39;ls -l&#39;&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">bashrc</span>
+</pre></div>
+</div>
+<p>然后运行以下命令以使更改生效：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/.</span><span class="n">bashrc</span>
+</pre></div>
+</div>
+<p>现在，你可以直接运行 <cite>ll</cite> 以代替 <cite>ls -l</cite>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">alias</span></code> 创建的别名仅在当前会话中有效，如果想要永久保存，需要将其添加到相应的配置文件中。</p>
+</div>
+</section>
+</section>
+<section id="jobs-and-processes">
+<h2>7. 工作和流程Jobs and Processes<a class="headerlink" href="#jobs-and-processes" title="Link to this heading">¶</a></h2>
+<section id="creating-jobs">
+<h3>1 Creating jobs 创建工作<a class="headerlink" href="#creating-jobs" title="Link to this heading">¶</a></h3>
+<p>要创建一个任务，只需在命令后面附加一个&amp;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sleep 10 &amp;
+[1] 16725
+</pre></div>
+</div>
+<p>在 Bash 中，任务和流程是与进程管理相关的概念。以下是一些与任务和流程相关的关键概念和命令：</p>
+<ol class="arabic simple">
+<li><p><strong>任务（Job）：</strong> 在 Bash 中，任务是指一个或多个相关的进程组成的单元。每个任务都有一个唯一的标识号（Job ID）。任务可以是前台任务（在终端上运行）或后台任务（在后台默默运行）。</p></li>
+<li><p><strong>流程（Process）：</strong> 流程是计算机系统中正在运行的程序的实例。一个任务可以包含一个或多个流程。</p></li>
+<li><p><strong>Ctrl + Z：</strong> 这是一个信号，通常用于将前台运行的任务挂起（暂停）。当你按下 <cite>Ctrl + Z</cite> 时，当前运行的任务将被停止，并放入后台，同时返回你到终端提示符。</p></li>
+<li><p><strong>`bg` 命令：</strong> 用于将一个在后台暂停的任务重新放入后台运行。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bg</span> <span class="o">%</span><span class="mi">1</span>  <span class="c1"># 将任务 1 切换到后台运行</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p><strong>`fg` 命令：</strong> 用于将一个后台任务切换到前台继续运行。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fg %1  # 将任务 1 切换到前台继续运行
+
+如果没有提供任务号，则 `fg` 命令会将最近放入后台的任务切换到前台。
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p><strong>`jobs` 命令：</strong> 用于列出当前终端上运行的任务。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>jobs
+
+这将显示任务号、任务状态和任务命令。
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>删除任务</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sleep 10 &amp;
+[1] 20024
+
+$ kill %1
+[1]+  Terminated              sleep 10
+</pre></div>
+</div>
+<p>这些命令和操作使得在 Bash 中可以方便地管理任务和流程，以及在前台和后台之间切换。</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Signal name</p></td>
+<td><p>Signal value</p></td>
+<td><p>Effect</p></td>
+</tr>
+<tr class="row-even"><td><p>SIGHUP</p></td>
+<td><p>1</p></td>
+<td><p>Hangup</p></td>
+</tr>
+<tr class="row-odd"><td><p>SIGINT</p></td>
+<td><p>2</p></td>
+<td><p>Interrupt from keyboard</p></td>
+</tr>
+<tr class="row-even"><td><p>SIGKILL</p></td>
+<td><p>9</p></td>
+<td><p>Kill signal</p></td>
+</tr>
+<tr class="row-odd"><td><p>SIGTERM</p></td>
+<td><p>15</p></td>
+<td><p>Termination signal</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id18">
+<h3>2. 检查特殊端口上的程序<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<p>运行在8080端口上的程序</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lsof</span> <span class="o">-</span><span class="n">i</span> <span class="p">:</span><span class="mi">8080</span>
+</pre></div>
+</div>
+</section>
+<section id="id19">
+<h3>3. 脱离后台任务<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">disown</span></code> 是一个用于从 shell 中移除作业（job）关联的命令。当你在终端中运行一个命令时，该命令将被关联到终端的 shell 会话中。如果你关闭终端或退出 shell，关联的作业可能会被终止。<cite>disown</cite> 允许你从 shell 的作业表中移除一个或多个作业，使其不再受到 shell 的影响。</p>
+<p>基本语法为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">disown</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">ar</span><span class="p">]</span> <span class="p">[</span><span class="n">jobspec</span> <span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<dl class="option-list">
+<dt><kbd><span class="option">-h</span></kbd></dt>
+<dd><p>标记作业不受 HUP（挂起）信号的影响。</p>
+</dd>
+<dt><kbd><span class="option">-a</span></kbd></dt>
+<dd><p>移除所有作业。</p>
+</dd>
+<dt><kbd><span class="option">-r</span></kbd></dt>
+<dd><p>移除运行中的作业。</p>
+</dd>
+</dl>
+<p>jobspec  指定要移除的作业的作业号或进程组号。</p>
+<p>例如，假设你在终端中启动了一个长时间运行的命令，你可以在启动后使用 <cite>disown</cite>，这样即使关闭了终端，该命令也会继续运行。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">long_running_command</span> <span class="o">&amp;</span>
+<span class="n">disown</span>
+</pre></div>
+</div>
+<p>请注意，<code class="docutils literal notranslate"><span class="pre">disown</span></code> 并不会影响正在运行的命令，它只是从 shell 的作业列表中移除。</p>
+</section>
+<section id="id20">
+<h3>4. 显示最近任务<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jobs</span>
+</pre></div>
+</div>
+</section>
+<section id="id21">
+<h3>5. 找到运行程序的信息<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="n">aux</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">&lt;</span><span class="n">程序名字</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>结果显示第二列表示为PID,这样可以使用kill命令加上PID来杀死程序</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kill</span> <span class="o">&lt;</span><span class="n">PID</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="id22">
+<h3>6. 显示所有程序<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">-</span><span class="n">ef</span>   <span class="c1"># lists all processes</span>
+<span class="n">ps</span> <span class="n">aux</span>   <span class="c1"># lists all processes in alternative format (BSD)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在BSD系统中，ps aux是用于显示所有进程信息的，其中包括用户和CPU占用等信息</p>
+<p>在SysV系统中，ps -ef是显示所有进程的标准方式</p>
+</div>
+</section>
+</section>
+<section id="id23">
+<h2>8. 重定向<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h2>
+<section id="id24">
+<h3>1. 重定向的标准输出<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">&gt;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>默认的重定向描述符为标准输出，当未指定时为1。该命令等同于前面的示例，并明确指出了标准输出:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>除了 <code class="docutils literal notranslate"><span class="pre">1</span></code> （标准输出），还有其他一些常用的文件描述符，其中最常见的是：</p>
+<ul class="simple">
+<li><p><strong>0</strong>：标准输入（stdin）</p></li>
+<li><p><strong>2</strong>：标准错误（stderr）</p></li>
+</ul>
+<p>如果不指定文件描述符，默认情况下是标准输出（1）。以下是一些示例：</p>
+<ul class="simple">
+<li><p><strong>command &gt; file.txt</strong>：将命令的标准输出重定向到文件。</p></li>
+<li><p><strong>command 2&gt; error.txt</strong>：将命令的标准错误重定向到文件。</p></li>
+<li><p><strong>command &gt; file.txt 2&gt;&amp;1</strong>：将命令的标准输出和标准错误都重定向到同一个文件。</p></li>
+<li><p><strong>command &lt; input.txt</strong>：从文件中读取输入并传递给命令。</p></li>
+</ul>
+<p>这些文件描述符重定向的技巧可用于将命令的输入、输出和错误进行灵活管理。</p>
+</section>
+<section id="id25">
+<h3>2. 截断(&gt;)和追加(&gt;&gt;)<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>截断符号(&gt;)用于清空文件内容并写入新内容</p></li>
+<li><p>追加符号(&gt;&gt;)用于在文件末尾追加内容，若文件不存在，则创建</p></li>
+</ul>
+</section>
+<section id="id26">
+<h3>3. 标准输出和标准错误的重定向<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;hello&#39;</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+
+<span class="n">echo</span> <span class="s1">&#39;hello&#39;</span> <span class="o">&amp;&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&amp;&gt;</span></code> 和 <code class="docutils literal notranslate"><span class="pre">2&gt;&amp;1</span></code> 在功能上是等效的。它们都用于将标准输出和标准错误合并并重定向到同一位置。具体而言：</p>
+<ul class="simple">
+<li><p><cite>&amp;&gt;</cite> 是 Bash shell 的一种简写形式，表示将标准输出和标准错误都重定向到同一目标。</p></li>
+<li><p><cite>2&gt;&amp;1</cite> 表示将标准错误（文件描述符 2）重定向到标准输出的位置。</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>在生产环境中可能不希望使用 <cite>&amp;&gt;</cite> 的形式，因为它存在一些潜在的兼容性问题
+- 在某些环境下，<cite>&amp;&gt;</cite> 的使用可能与 POSIX 标准冲突，引入了解析歧义。
+- 在不支持这一特性的shell中，可能会被错误解释。
+- 推荐使用更兼容的写法，如 <cite>&gt; /dev/null 2&gt;&amp;1</cite>，它在不同shell中更为可靠。
+<cite>&amp;&gt;</cite> 在 Bash 和 Zsh 中已知可以按照预期工作，但为了更好的兼容性，建议使用更标准的写法。</p>
+</div>
+</section>
+<section id="id27">
+<h3>4. 使用命名管道<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h3>
+<p><cite>mkfifo</cite> 是用于创建命名管道（named pipes）的命令。命名管道是一种特殊类型的文件系统对象，允许进程之间通过文件进行通信。它在文件系统中创建一个特殊类型的文件，该文件可以被多个进程同时读取和写入，实现进程间的通信。</p>
+<p>使用 <cite>mkfifo</cite> 命令创建命名管道的一般语法如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkfifo</span> <span class="o">&lt;</span><span class="n">pipe_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>其中 <cite>&lt;pipe_name&gt;</cite> 是你想要给命名管道指定的名称。</p>
+<p>例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkfifo</span> <span class="n">mypipe</span>
+</pre></div>
+</div>
+<p>此命令将在当前目录中创建一个名为 <cite>mypipe</cite> 的命名管道。</p>
+<p>一旦创建了命名管道，你可以在一个进程中写入数据到该管道，而在另一个进程中读取这些数据，从而实现进程间的通信。通常，命名管道用于在不同的进程之间传递数据，就像使用普通文件一样，但命名管道存在于文件系统中，具有独特的特性。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkfifo</span> <span class="n">myPipe</span>
+<span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="o">&gt;</span> <span class="n">myPipe</span>
+<span class="n">grep</span> <span class="s2">&quot;.log&quot;</span> <span class="o">&lt;</span> <span class="n">myPipe</span>
+</pre></div>
+</div>
+<p>从技术上讲，myPipe是一个文件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">pipeFolder</span>
+<span class="n">cd</span> <span class="n">pipeFolder</span>
+<span class="n">mkfifo</span> <span class="n">myPipe</span>
+<span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+</div>
+<p>输出如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="n">Jul</span> <span class="mi">25</span> <span class="mi">11</span><span class="p">:</span><span class="mi">20</span> <span class="n">myPipe</span>
+</pre></div>
+</div>
+<p>注意权限中的第一个字符，它被列为管道，而不是文件。</p>
+<p>命名管道可以在不同终端里传输信息，创建一个命名管道，然后 <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;Hello</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">other</span> <span class="pre">side&quot;</span> <span class="pre">&gt;</span> <span class="pre">myPipe</span></code> 输入一些信息，它会一直挂起，因为这个管道
+指定了入口但是没有指定出口，然后在其他的终端里(其目录环境下得有myPipe管道文件),
+使用 <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">&lt;</span> <span class="pre">myPipe</span></code> ,这个时候原来终端就会完成结束，然后这个终端也会完成结束。</p>
+<p>管子很小。一旦满了，写入器就会阻塞，直到一些读取器读取内容，所以你需要在不同的终端上运行读取器和写入器，或者在后台运行其中一个:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">tmp</span> <span class="o">&gt;</span> <span class="n">myPipe</span> <span class="o">&amp;</span>
+<span class="n">cat</span> <span class="o">&lt;</span> <span class="n">myPipe</span>
+</pre></div>
+</div>
+<p>更多使用命名管道的例子：</p>
+<p>1.所有命令都在相同的终端或者相同的shell下</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ { ls -l &amp;&amp; cat file3; } &gt;mypipe &amp;
+$ cat &lt;mypipe
+# Output: Prints ls -l data and then prints file3 contents on screen
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -l &gt;mypipe &amp;
+$ cat file3 &gt;mypipe &amp;
+$ cat &lt;mypipe
+#Output: This prints on screen the contents of mypipe.
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>注意，首先显示file3的内容，然后显示ls -l数据(LIFO配置)。</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ { pipedata=$(&lt;mypipe) &amp;&amp; echo &quot;$pipedata&quot;; } &amp;
+$ ls &gt;mypipe
+# Output: Prints the output of ls directly on screen
+</pre></div>
+</div>
+<p>注意变量$pipedata不能在主终端/主shell中使用，因为&amp;的使用会调用子shell，而$pipedata只能在这个子shell中使用。</p>
+<p>这段代码使用了命令替换和子shell，让我们一步步解释：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>- 1. `${pipedata=$(&lt;mypipe) &amp;&amp; echo &quot;$pipedata&quot;; } &amp;`: 这个命令首先将`mypipe`文件的内容赋给变量`pipedata`，然后在后台启动一个子shell来执行`echo &quot;$pipedata&quot;`。
+
+- 2. `$ ls &gt;mypipe`: 这个命令将当前目录下的文件列表输出到`mypipe`文件中。
+</pre></div>
+</div>
+<p>由于`&amp;&amp;`连接符，只有在第一个命令成功执行（没有错误退出）的情况下，才会执行第二个命令。因此，子shell中的命令成功执行后，将`mypipe`文件的内容打印到屏幕上。
+然而，由于使用了`&amp;`在后台启动了子shell，子shell中的变量`pipedata`只存在于子shell的上下文中。这意味着在主shell中无法访问和使用`$pipedata`，因为它在子shell中定义并存在。
+这是为什么在主shell中不能使用变量 <cite>$pipedata</cite> 的原因。</p>
+<p>在这个上下文中，”主shell”指的是你在终端或命令行窗口中直接输入命令的地方，而”子shell”则是在这个主shell内部通过某些方式创建的一个独立的子进程，它执行一系列命令。
+在上述代码中，使用了`&amp;`符号，这会将命令放到后台执行，创建一个子shell来处理这个命令。因此，<code class="docutils literal notranslate"><span class="pre">${pipedata=$(&lt;mypipe)</span> <span class="pre">&amp;&amp;</span> <span class="pre">echo</span> <span class="pre">&quot;$pipedata&quot;;</span> <span class="pre">}</span> <span class="pre">&amp;</span></code> 中的命令被放到了一个子shell中执行。
+变量`pipedata`是在这个子shell的上下文中创建的，而不是在主shell中。一旦子shell执行完毕，它的上下文就会被销毁，包括其中定义的所有变量。因此，在主shell中，你不能访问和使用在子shell中创建的变量，包括 <cite>$pipedata</cite>。
+这是因为每个shell都有自己的环境和变量空间，子shell的变量在子shell结束后就不再存在于主shell中。</p>
+<p>命名管道（named pipe）是一种在进程之间传递数据的通信机制，它允许一个进程写入数据，而另一个进程则可以读取这些数据。在例子中，使用了命名管道`mypipe`。
+命名管道可以在主shell和子shell之间使用，因为它们是在文件系统中创建的特殊文件。这意味着不同的进程（包括主shell和子shell）都可以通过读取或写入命名管道来进行通信。
+在你的代码中，<code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">&gt;mypipe`将`ls`的输出写入了`mypipe</span></code> 中，而 <code class="docutils literal notranslate"><span class="pre">${pipedata=$(&lt;mypipe)</span> <span class="pre">&amp;&amp;</span> <span class="pre">echo</span> <span class="pre">&quot;$pipedata&quot;;</span> <span class="pre">}</span> <span class="pre">&amp;</span></code> 在子shell 中读取了`mypipe`的内容并打印到屏幕上。
+总的来说，命名管道是一个用于进程间通信的机制，可以在主shell和子shell之间进行数据传输。</p>
+<p>如果你想在主shell中显示`ls`命令的内容，而不使用子shell，可以简化代码，避免使用`&amp;`和子shell。以下是一种可能的修改：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pipedata=$(ls) &amp;&amp; echo &quot;$pipedata&quot;
+</pre></div>
+</div>
+<p>这将直接在主shell中执行`ls`命令，并将其输出存储在变量`pipedata`中，然后通过`echo`命令显示在屏幕上。这样，变量`pipedata`会在主shell中可用。</p>
+<hr class="docutils" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export pipedata
+$ pipedata=$(&lt;mypipe) &amp;
+$ ls -l *.sh &gt;mypipe
+$ echo &quot;$pipedata&quot;
+#Output : Prints correctly the contents of mypipe
+</pre></div>
+</div>
+<p>由于变量的导出声明，这将在主shell中正确打印$pipedata变量的值。主终端/主shell不会因为调用后台shell(&amp;)而挂起。</p>
+</section>
+<section id="id28">
+<h3>5. 重定向到网络地址<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h3>
+<p>Bash将某些路径视为特殊路径，可以通过写入/dev/{udp|tcp}/host/port来进行一些网络通信。Bash不能设置侦听服务器，但可以发起连接，对于TCP来说，至少可以读取结果。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exec</span> <span class="mi">3</span><span class="o">&lt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">tcp</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="mi">80</span>
+<span class="n">printf</span> <span class="s1">&#39;GET / HTTP/1.0</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span> <span class="o">&gt;&amp;</span><span class="mi">3</span>
+<span class="n">cat</span> <span class="o">&lt;&amp;</span><span class="mi">3</span>
+</pre></div>
+</div>
+<p>这段代码的作用是通过bash中的特殊文件描述符和网络套接字，与www.google.com的80端口建立TCP连接，发送HTTP GET请求，然后从响应中读取并在屏幕上显示。</p>
+<p>具体解释如下：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">exec</span> <span class="pre">3&lt;/dev/tcp/www.google.com/80</span></code> : 这行命令打开一个TCP连接到www.google.com的80端口，并将文件描述符3指向这个连接。<code class="docutils literal notranslate"><span class="pre">/dev/tcp/www.google.com/80</span></code> 是bash中的特殊路径，允许你通过文件描述符来访问网络套接字。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">printf</span> <span class="pre">'GET</span> <span class="pre">/</span> <span class="pre">HTTP/1.0\r\n\r\n'</span> <span class="pre">&gt;&amp;</span></code> : 这行命令使用文件描述符3将HTTP GET请求发送到打开的TCP套接字。<code class="docutils literal notranslate"><span class="pre">printf</span></code> 用于格式化字符串，这里发送了一个简单的HTTP 1.0的GET请求。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">&lt;&amp;3</span></code> : 这行命令从文件描述符3中读取响应，并将其输出到屏幕上。<code class="docutils literal notranslate"><span class="pre">&lt;&amp;3</span></code> 表示从文件描述符3读取数据。</p></li>
+</ul>
+<p>这个例子通过文件描述符和网络套接字，实现了与Google的80端口通信，发送HTTP请求并显示响应。这种技巧通常用于需要与网络服务进行低级别通信的脚本或命令行工具。</p>
+<p><code class="docutils literal notranslate"><span class="pre">\r\n\r\n</span></code> 是HTTP请求中的换行符，它表示回车（Carriage Return）和换行（Line Feed）。在HTTP协议中，请求头和请求体之间需要有一个空行，即两个连续的CRLF（回车换行）。这空行告诉服务器请求头的结束并开始请求体（如果有的话）。</p>
+<p>具体来说：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\r</span></code> 是回车符，ASCII码为13。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\n</span></code> 是换行符，ASCII码为10。</p></li>
+</ul>
+<p>所以，<code class="docutils literal notranslate"><span class="pre">\r\n</span></code> 就表示回车换行的组合。两个 <code class="docutils literal notranslate"><span class="pre">\r\n</span></code> 连在一起（ <cite>rnrn</cite> ）表示两个空行，标志着请求头的结束。</p>
+<p>在HTTP 1.0中，请求头和请求体之间需要一个空行，而在HTTP 1.1中，这个规定变得更加严格，要求使用 <cite>rn</cite> 作为换行符。这样的格式规定有助于确保不同操作系统和设备之间的一致性，因为不同系统使用不同的换行符。</p>
+<hr class="docutils" />
+<p>在HTTP协议中，GET请求是一种用于从服务器获取资源的方法。GET请求通常用于请求服务器发送某个特定资源的内容。在HTTP请求中，GET请求的目标资源由URL中的路径部分指定。</p>
+<p>例如，在 <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/</span> <span class="pre">HTTP/1.0\r\n\r\n</span></code> 中，<cite>/</cite> 表示服务器应该返回根目录的内容。这是因为路径部分指定了所请求资源的位置，而 <cite>/</cite> 表示根目录。</p>
+<p>如果你将 <cite>/</cite> 替换为其他路径，例如 <code class="docutils literal notranslate"><span class="pre">/example</span></code> ，那么服务器将尝试返回位于该路径下的资源。这是一种用于指定所请求资源的通用方式，允许客户端从服务器检索不同的内容。</p>
+<p>需要注意的是，GET请求的格式是 <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">请求路径</span> <span class="pre">HTTP版本\r\n\r\n</span></code> ，而路径部分指定了请求的资源。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在HTTP协议中，除了HTTP/1.0之外，还有其他版本的HTTP。主要的HTTP版本包括：</p>
+<ol class="arabic simple">
+<li><p><strong>HTTP/0.9</strong>: 最早的版本，只支持GET请求，并没有完整的HTTP头部。它在每个请求之间使用一个空行作为分隔符，非常简单。</p></li>
+<li><p><strong>HTTP/1.0</strong>: 引入了更多的请求方法，如POST，支持更多的头部字段，还引入了状态码和更复杂的连接管理。</p></li>
+<li><p><strong>HTTP/1.1</strong>: 引入了持久连接（Persistent Connections），管道化（Pipeline），增加了缓存管理、范围请求等特性，以提高性能。HTTP/1.1是目前最为广泛使用的版本。</p></li>
+<li><p><strong>HTTP/2</strong>: 引入了二进制协议，多路复用（Multiplexing），头部压缩，服务器推送等特性，以提升性能。HTTP/2的目标是减少页面加载时间。</p></li>
+<li><p><strong>HTTP/3</strong>: 使用QUIC协议，通过UDP传输数据，以取代TCP，旨在进一步提高性能和安全性。</p></li>
+</ol>
+<p>每个HTTP版本都有其独特的特性和改进，而且随着时间的推移，新的版本可能会被引入以满足不断变化的网络需求。</p>
+</div>
+</section>
+<section id="id29">
+<h3>6. 将错误信息打印到错误输出<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cmd || echo &#39;cmd failed&#39;
+可能对简单的情况有用，但不是通常的方法。在本例中，错误消息将在标准输出中混合错误和成功输出，从而污染脚本的实际输出。简而言之，错误消息应该转到stderr而不是stdout。这很简单:
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cmd || echo &#39;cmd failed&#39; &gt;/dev/stderr
+
+or
+
+if cmd; then
+    echo &#39;success&#39;
+else
+    echo &#39;cmd failed&#39; &gt;/dev/stderr
+fi
+
+在上面的示例中，成功消息将在标准输出上打印，而错误消息将在标准输出上打印。
+</pre></div>
+</div>
+<p>打印错误信息的更好方法是定义一个函数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">err</span><span class="p">(){</span>
+    <span class="n">echo</span> <span class="s2">&quot;E: $*&quot;</span> <span class="o">&gt;&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">stderr</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>现在，当你必须打印一个错误时:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">err</span> <span class="s2">&quot;My error message&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="id30">
+<h3>7. 将多个命令重定向到同一文件<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="n">echo</span> <span class="s2">&quot;contents of home directory&quot;</span>
+    <span class="n">ls</span> <span class="o">~</span>
+<span class="p">}</span> <span class="o">&gt;</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="id31">
+<h3>8. 标准输入重定向<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;b&quot;</span> <span class="o">&gt;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">echo</span> <span class="s2">&quot;c&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">echo</span> <span class="s2">&quot;a&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">sort</span> <span class="mi">0</span><span class="o">&lt;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>符号0&lt; 为标准输入</p>
+</section>
+<section id="id32">
+<h3>9. 标准错误重定向<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h3>
+<p>符号2&gt;为标准错误重定向</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo_to_stderr () {
+    echo stderr &gt;&amp;2
+}
+
+$ echo_to_stderr
+stderr
+
+$ echo_to_stderr 2&gt;/dev/null # echos nothing
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id33">
+<h2>9. 控制结构<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">文件操作<span class="colon">:</span></dt>
+<dd class="field-odd"><p>细节</p>
+</dd>
+<dt class="field-even">-e “$file”<span class="colon">:</span></dt>
+<dd class="field-even"><p>如果文件存在则返回true。</p>
+</dd>
+<dt class="field-odd">-d “$file”<span class="colon">:</span></dt>
+<dd class="field-odd"><p>如果文件存在并且是一个目录，则返回true</p>
+</dd>
+<dt class="field-even">-f “$file”<span class="colon">:</span></dt>
+<dd class="field-even"><p>如果文件存在并且是一个常规文件，则返回true</p>
+</dd>
+<dt class="field-odd">-h “$file”<span class="colon">:</span></dt>
+<dd class="field-odd"><p>如果文件存在并且是一个符号链接，则返回true</p>
+</dd>
+<dt class="field-even">字符串比较器<span class="colon">:</span></dt>
+<dd class="field-even"><p>细节</p>
+</dd>
+<dt class="field-odd">-z “$str”<span class="colon">:</span></dt>
+<dd class="field-odd"><p>如果字符串的长度为零，则为True</p>
+</dd>
+<dt class="field-even">-n “$str<span class="colon">:</span></dt>
+<dd class="field-even"><p>如果字符串长度非零，则为True</p>
+</dd>
+<dt class="field-odd">“$str” = “$str2”<span class="colon">:</span></dt>
+<dd class="field-odd"><p>如果string $str等于string $str2，则为True。不适合整数。它可能会起作用，但会不一致</p>
+</dd>
+<dt class="field-even">“$str” != “$str2”<span class="colon">:</span></dt>
+<dd class="field-even"><p>如果字符串不相等，则为True</p>
+</dd>
+<dt class="field-odd">整数比较器<span class="colon">:</span></dt>
+<dd class="field-odd"><p>细节</p>
+</dd>
+<dt class="field-even">“$int1” -eq “$int2”<span class="colon">:</span></dt>
+<dd class="field-even"><p>如果整数相等，则为True</p>
+</dd>
+<dt class="field-odd">“$int1” -ne “$int2”<span class="colon">:</span></dt>
+<dd class="field-odd"><p>如果整数不相等，则为True</p>
+</dd>
+<dt class="field-even">“$int1” -gt “$int2”<span class="colon">:</span></dt>
+<dd class="field-even"><p>如果int1大于int2，则为True</p>
+</dd>
+<dt class="field-odd">“$int1” -ge “$int2”<span class="colon">:</span></dt>
+<dd class="field-odd"><p>当int1大于或等于int2时为真</p>
+</dd>
+<dt class="field-even">“$int1” -lt “$int2”<span class="colon">:</span></dt>
+<dd class="field-even"><p>当int1小于int2时为True</p>
+</dd>
+<dt class="field-odd">“$int1” -le “$int2”<span class="colon">:</span></dt>
+<dd class="field-odd"><p>当int1小于或等于int2时为真</p>
+</dd>
+</dl>
+<section id="id34">
+<h3>1. 命令列表的条件执行<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h3>
+<p>任何内置命令、表达式或函数，以及任何外部命令或脚本都可以使用&amp;&amp;(and)和||(or)操作符有条件地执行。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╔[Wed Jan 03]═[~]
+╚$ cd void &amp;&amp; sjdf || echo &quot;No such directory&quot;
+bash: sjdf: command not found
+No such directory
+
+╔[Wed Jan 03]═[~/void]
+╚$
+</pre></div>
+</div>
+<p>可以看见cd命令是成功的，然后执行sjdf是失败的，进而执行了后面的 echo “No such directory”</p>
+<p>所以，执行||或运算的条件是前面的一个结果为错误</p>
+<p>条件执行比它快多了……但是它的主要优点是允许函数和脚本提前退出，或者“短路”。</p>
+<p>与许多语言(如C语言)不同，在C语言中，内存被显式地分配给结构体和变量等(因此必须被释放)，bash在幕后处理这个问题。在大多数情况下，我们不需要在离开函数之前清理任何东西。返回语句将释放函数的所有本地内存，并在堆栈上的返回地址处获取执行。</p>
+<p>因此，尽快从函数或退出脚本返回可以通过避免不必要的代码执行来显著提高性能并减少系统负载。例如……</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">### ALWAYS CHECK THE RETURN CODE</span>
+
+    <span class="c1"># 检查参数是否为空，如果为空则立即返回1</span>
+    <span class="p">[[</span> <span class="s2">&quot;$1&quot;</span> <span class="p">]]</span>             <span class="o">||</span> <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="c1"># 处理参数，如果处理失败则立即返回1</span>
+    <span class="n">do_something_with</span> <span class="s2">&quot;$1&quot;</span> <span class="o">||</span> <span class="k">return</span> <span class="mi">1</span>
+    <span class="c1"># 进行另一项操作，如果失败则立即返回1</span>
+    <span class="n">do_something_else</span>      <span class="o">||</span> <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="c1"># 成功执行，没有检测到错误，返回0</span>
+    <span class="k">return</span> <span class="mi">0</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>成功返回值：</strong> 在脚本中，通常使用 <cite>return 0</cite> 来表示函数执行成功。这是一种标准的做法，因为在 Unix 系统中，程序约定使用0表示成功，非零表示错误。在你的例子中，函数成功执行时，返回值为0。</p></li>
+<li><p><strong>错误返回值：</strong> 如果在函数执行过程中发生了错误，使用 <strong>return</strong>  <strong>非零值**来表示错误。在你的例子中，**return 1</strong> 表示发生了错误，因为在脚本中非零值通常被认为是错误的标志。</p></li>
+</ul>
+<p>调用函数时，你可以通过检查函数的返回值来确定函数是否成功执行。在 Bash 中，你可以使用 <cite>$?</cite> 来获取上一个命令的退出状态。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>my_function &quot;some_argument&quot;
+
+if [ $? -eq 0 ]; then
+    echo &quot;Function executed successfully.&quot;
+else
+    echo &quot;Function encountered an error.&quot;
+fi
+</pre></div>
+</div>
+<p>这个例子中，如果 <cite>my_function</cite> 成功执行，将输出 “Function executed successfully.”，否则输出 “Function encountered an error.”。</p>
+</section>
+<section id="if">
+<h3>2. If语句<a class="headerlink" href="#if" title="Link to this heading">¶</a></h3>
+<p>结束的fi是必要的，但是elif和/或else子句可以省略。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if [[ $1 -eq 1 ]]; then
+    echo &quot;1 was passed in the first parameter&quot;
+elif [[ $1 -gt 2 ]]; then
+    echo &quot;2 was not passed in the first parameter&quot;
+else
+    echo &quot;The first parameter was not 1 and is not more than 2.&quot;
+fi
+</pre></div>
+</div>
+<p>分号之前的分号是将两个命令合并在一行上的标准语法;只有当它们移动到下一行时，它们才能被省略。</p>
+<p>重要的是要理解括号[[不是语法的一部分，而是被视为命令;正在测试的是该命令的退出代码。因此，必须始终在括号周围包含空格。</p>
+<p>这也意味着可以测试任何命令的结果。如果命令的退出代码为零，则认为该语句为真。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">grep</span> <span class="s2">&quot;foo&quot;</span> <span class="n">bar</span><span class="o">.</span><span class="n">txt</span><span class="p">;</span> <span class="n">then</span>
+    <span class="n">echo</span> <span class="s2">&quot;foo was found&quot;</span>
+<span class="k">else</span>
+    <span class="n">echo</span> <span class="s2">&quot;foo was not found&quot;</span>
+<span class="n">fi</span>
+</pre></div>
+</div>
+<p>数学表达式，当放在双括号内时，也以同样的方式返回0或1，并且也可以进行测试:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if (( $1 + 5 &gt; 91 )); then
+    echo &quot;$1 is greater than 86&quot;
+fi
+</pre></div>
+</div>
+<p>您还可能遇到带有单括号的if语句。这些是在POSIX标准中定义的，并保证在所有POSIX兼容的shell(包括Bash)中工作。语法与Bash非常相似:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">[</span> <span class="s2">&quot;$1&quot;</span> <span class="o">-</span><span class="n">eq</span> <span class="mi">1</span> <span class="p">];</span> <span class="n">then</span>
+    <span class="n">echo</span> <span class="s2">&quot;1 was passed in the first parameter&quot;</span>
+<span class="k">elif</span> <span class="p">[</span> <span class="s2">&quot;$1&quot;</span> <span class="o">-</span><span class="n">gt</span> <span class="mi">2</span> <span class="p">];</span> <span class="n">then</span>
+    <span class="n">echo</span> <span class="s2">&quot;2 was not passed in the first parameter&quot;</span>
+<span class="k">else</span>
+    <span class="n">echo</span> <span class="s2">&quot;The first parameter was not 1 and is not more than 2.&quot;</span>
+<span class="n">fi</span>
+</pre></div>
+</div>
+<p>在 Bash 脚本中，<cite>if</cite> 语句可以使用单括号 <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> 或双括号 <code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">]]</span></code>，它们有一些区别：</p>
+<ol class="arabic">
+<li><p><strong>单括号 `[ ]`:</strong>
+- 传统的测试结构，适用于基本的条件测试。
+- 使用标准的字符串比较和文件测试。
+- 必须在两侧添加空格，例如：<cite>[ “$var” == “value” ]</cite>。
+- 需要使用转义或引号来处理某些特殊字符。</p>
+<p>示例：</p>
+</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">[</span> <span class="s2">&quot;$var&quot;</span> <span class="o">==</span> <span class="s2">&quot;value&quot;</span> <span class="p">];</span> <span class="n">then</span>
+    <span class="n">echo</span> <span class="s2">&quot;Condition is true.&quot;</span>
+<span class="n">fi</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p><strong>双括号 `[[ ]]`:</strong>
+- 引入了高级的条件测试，提供更多的功能和灵活性。
+- 不需要在两侧添加空格，例如：<cite>[[ $var == value ]]</cite>。
+- 支持高级的字符串操作和模式匹配。
+- 不需要转义某些特殊字符。</p>
+<p>示例：</p>
+</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if [[ $var == value ]]; then
+    echo &quot;Condition is true.&quot;
+fi
+</pre></div>
+</div>
+<p>总体而言，使用双括号 <cite>[[ ]]</cite> 更为灵活，特别适合在 Bash
+脚本中进行复杂的条件测试和字符串操作。如果你只需要进行基本的条件测试，单括号 <cite>[ ]</cite> 也是有效的，而且在一些旧的脚本中可能更为常见。</p>
+</section>
+<section id="id35">
+<h3>3. 循环遍历数组<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h3>
+<p>for 循环</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">=</span><span class="p">(</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span> <span class="n">e</span> <span class="n">f</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s2">&quot;$</span><span class="si">{arr[@]}</span><span class="s2">&quot;</span><span class="p">;</span><span class="n">do</span>
+    <span class="n">echo</span> <span class="s2">&quot;$i&quot;</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+<p>或者</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for ((i=0;i&lt;${#arr[@]};i++));do
+    echo &quot;${arr[$i]}&quot;
+done
+</pre></div>
+</div>
+<p>while 循环</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>i=0
+while [ $i -lt ${#arr[@]} ];do
+    echo &quot;${arr[$i]}&quot;
+    i=$(expr $i + 1)
+done
+</pre></div>
+</div>
+<p>或者</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>i=0
+while (( $i &lt; ${#arr[@]} ));do
+    echo &quot;${arr[$i]}&quot;
+    ((i++))
+done
+</pre></div>
+</div>
+</section>
+<section id="for">
+<h3>4. 使用For循环对数字进行列表迭代<a class="headerlink" href="#for" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for i in {1..10}; do # {1..10} expands to &quot;1 2 3 4 5 6 7 8 9 10&quot;
+    echo $i
+done
+</pre></div>
+</div>
+<p>输出：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+<span class="mi">5</span>
+<span class="mi">6</span>
+<span class="mi">7</span>
+<span class="mi">8</span>
+<span class="mi">9</span>
+<span class="mi">10</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>继续循环和打破循环</p></li>
+</ol>
+<p>继续循环的例子</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="n">series</span><span class="p">]</span>
+<span class="n">do</span>
+    <span class="n">command</span> <span class="mi">1</span>
+    <span class="n">command</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+        <span class="k">continue</span>
+    <span class="n">fi</span>
+    <span class="n">command</span> <span class="mi">3</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+<p>打破循环的例子</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="n">series</span><span class="p">]</span>
+<span class="n">do</span>
+    <span class="n">command</span> <span class="mi">4</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+    <span class="n">then</span>
+        <span class="n">command</span> <span class="mi">5</span>
+        <span class="k">break</span>
+    <span class="n">fi</span>
+    <span class="n">command</span> <span class="mi">6</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+</section>
+<section id="id36">
+<h3>6. 循环打破<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h3>
+<p>打破多层循环</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">=</span><span class="p">(</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span> <span class="n">e</span> <span class="n">f</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s2">&quot;$</span><span class="si">{arr[@]}</span><span class="s2">&quot;</span><span class="p">;</span><span class="n">do</span>
+    <span class="n">echo</span> <span class="s2">&quot;$i&quot;</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="s2">&quot;$</span><span class="si">{arr[@]}</span><span class="s2">&quot;</span><span class="p">;</span><span class="n">do</span>
+        <span class="n">echo</span> <span class="s2">&quot;$j&quot;</span>
+        <span class="k">break</span> <span class="mi">2</span>
+    <span class="n">done</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+<p>输出：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+<p>里面的break 2 让2层循环退出</p>
+<p>打破单层循环</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">=</span><span class="p">(</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span> <span class="n">e</span> <span class="n">f</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s2">&quot;$</span><span class="si">{arr[@]}</span><span class="s2">&quot;</span><span class="p">;</span><span class="n">do</span>
+    <span class="n">echo</span> <span class="s2">&quot;$i&quot;</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="s2">&quot;$</span><span class="si">{arr[@]}</span><span class="s2">&quot;</span><span class="p">;</span><span class="n">do</span>
+        <span class="n">echo</span> <span class="s2">&quot;$j&quot;</span>
+        <span class="k">break</span>
+    <span class="n">done</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+<p>输出:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>
+<span class="n">a</span>
+<span class="n">b</span>
+<span class="n">a</span>
+<span class="n">c</span>
+<span class="n">a</span>
+<span class="n">d</span>
+<span class="n">a</span>
+<span class="n">e</span>
+<span class="n">a</span>
+<span class="n">f</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+<p>while 循环</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>i=0
+while [ $i -lt 5 ] #While i is less than 5
+do
+    echo &quot;i is currently $i&quot;
+    i=$[$i+1]  # 括号周围没有空格。这使得它不是一个测试表达式
+done
+</pre></div>
+</div>
+<p>注意在测试期间(while语句之后)括号周围有空格。这些空间是必要的。</p>
+<p>循环的输出</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="ow">is</span> <span class="n">currently</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="ow">is</span> <span class="n">currently</span> <span class="mi">1</span>
+<span class="n">i</span> <span class="ow">is</span> <span class="n">currently</span> <span class="mi">2</span>
+<span class="n">i</span> <span class="ow">is</span> <span class="n">currently</span> <span class="mi">3</span>
+<span class="n">i</span> <span class="ow">is</span> <span class="n">currently</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</section>
+<section id="cfor">
+<h3>8. C语法风格的for循环<a class="headerlink" href="#cfor" title="Link to this heading">¶</a></h3>
+<p>C语法风格的for循环基本格式</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">((</span> <span class="n">variable</span> <span class="n">assignment</span><span class="p">;</span> <span class="n">condition</span><span class="p">;</span> <span class="n">iteration</span> <span class="n">process</span> <span class="p">))</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>在c风格的for循环中，变量的赋值可以包含空格，这与通常的赋值不同</p></li>
+<li><p>c风格的for循环中的变量前面没有$。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">((</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">))</span>
+<span class="n">do</span>
+    <span class="n">echo</span> <span class="s2">&quot;The iteration number is $i&quot;</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+<p>我们还可以在c风格的for循环中处理多个变量:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">((</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="p">))</span>
+<span class="n">do</span>
+    <span class="n">echo</span> <span class="s2">&quot;The square of $i is equal to $j&quot;</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+</section>
+<section id="until">
+<h3>9. Until 循环<a class="headerlink" href="#until" title="Link to this heading">¶</a></h3>
+<p>直到condition为真才执行Until循环</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>i=5
+until [[ i -eq 10 ]]; do # 检查i是否等于10
+    echo &quot;i=$i&quot; # 打印i值
+    i=$((i+1)) # 增长i1
+</pre></div>
+</div>
+<p>输出:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">i</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">6</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">7</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">8</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">9</span>
+</pre></div>
+</div>
+<p>当i达到10时，until循环中的条件变为真，循环结束。</p>
+</section>
+<section id="caseswitch">
+<h3>10. 带case的Switch语句<a class="headerlink" href="#caseswitch" title="Link to this heading">¶</a></h3>
+<p>使用case语句，您可以针对一个变量匹配值。</p>
+<p>传递给case的参数被展开，并尝试匹配每个模式。</p>
+<p>如果找到匹配项，则命令将到执行到;;。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="s2">&quot;$BASH_VERSION&quot;</span> <span class="ow">in</span>
+<span class="p">[</span><span class="mi">34</span><span class="p">]</span><span class="o">*</span><span class="p">)</span>
+    <span class="n">echo</span> <span class="p">{</span><span class="mf">1..4</span><span class="p">}</span>
+    <span class="p">;;</span>
+    <span class="o">*</span><span class="p">)</span>
+    <span class="n">seq</span> <span class="o">-</span><span class="n">s</span><span class="s2">&quot; &quot;</span> <span class="mi">1</span> <span class="mi">4</span>
+<span class="n">esac</span>
+</pre></div>
+</div>
+<p>模式不是正则表达式，而是shell模式匹配(又名globs)。</p>
+<ol class="arabic simple" start="11">
+<li><p>没有list-of-words参数的For循环</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for arg; do
+    echo arg=$arg
+done
+</pre></div>
+</div>
+<p>不带单词参数列表的for循环将迭代位置参数。换句话说，上面的例子等价于下面的代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for arg in &quot;$@&quot;; do
+    echo arg=$arg
+done
+</pre></div>
+</div>
+<p>就是相当于去掉in “$&#64;”的部分</p>
+</section>
+</section>
+<section id="truefalse">
+<h2>10. True、false和:命令<a class="headerlink" href="#truefalse" title="Link to this heading">¶</a></h2>
+<section id="id37">
+<h3>1. 无限循环<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">true</span><span class="p">;</span> <span class="n">do</span>
+    <span class="n">echo</span> <span class="n">ok</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+<p>或者</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">:;</span> <span class="n">do</span>
+    <span class="n">echo</span> <span class="n">ok</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+<p>或者</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">until</span> <span class="n">false</span><span class="p">;</span> <span class="n">do</span>
+    <span class="n">echo</span> <span class="n">ok</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+</section>
+<section id="id38">
+<h3>2. 函数返回<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 积极的</span>
+<span class="n">function</span> <span class="n">positive</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="c1"># 消极的</span>
+<span class="n">function</span> <span class="n">negative</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id39">
+<h3>3. 一直或者永不执行的代码<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">true</span><span class="p">;</span> <span class="n">then</span>
+    <span class="n">echo</span> <span class="n">Always</span> <span class="n">executed</span>
+<span class="n">fi</span>
+<span class="k">if</span> <span class="n">false</span><span class="p">;</span> <span class="n">then</span>
+    <span class="n">echo</span> <span class="n">Never</span> <span class="n">executed</span>
+<span class="n">fi</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id40">
+<h2>11. 数组<a class="headerlink" href="#id40" title="Link to this heading">¶</a></h2>
+<section id="id41">
+<h3>1. 数组赋值<a class="headerlink" href="#id41" title="Link to this heading">¶</a></h3>
+<p>任务列表</p>
+<p>如果您熟悉Perl、C或Java，您可能会认为Bash会使用逗号来分隔数组元素，但事实并非如此;相反，Bash使用空格:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Array in Perl</span>
+<span class="n">my</span> <span class="nd">@array</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+
+<span class="c1"># Array in Bash</span>
+<span class="n">array</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>创建一个包含新元素的数组:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;first element&#39;</span> <span class="s1">&#39;second element&#39;</span> <span class="s1">&#39;third element&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>下标赋值</p>
+<p>创建一个具有显式元素索引的数组:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="o">=</span><span class="p">([</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;fourth element&#39;</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;fifth element&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>按索引赋值</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;first element&#39;</span>
+<span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;second element&#39;</span>
+</pre></div>
+</div>
+<p>按名称赋值(关联数组)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">declare</span> <span class="o">-</span><span class="n">A</span> <span class="n">array</span>
+<span class="n">array</span><span class="p">[</span><span class="n">first</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;First element&#39;</span>
+<span class="n">array</span><span class="p">[</span><span class="n">second</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;Second element&#39;</span>
+</pre></div>
+</div>
+<p>动态分配</p>
+<p>从其他命令的输出创建一个数组，例如使用seq获取1到10的范围:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>array=(`seq 1 10`)
+</pre></div>
+</div>
+<p>从脚本的输入参数赋值:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;$@&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>循环内赋值:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>while read -r; do
+    #array+=(&quot;$REPLY&quot;)     # Array append
+    array[$i]=&quot;$REPLY&quot;     # Assignment by index
+    let i++                # Increment index
+done &lt; &lt;(seq 1 10)  # command substitution
+echo ${array[@]}    # output: 1 2 3 4 5 6 7 8 9 10
+</pre></div>
+</div>
+<p>其中$REPLY总是当前输入</p>
+</section>
+<section id="id42">
+<h3>2. 访问数组元素<a class="headerlink" href="#id42" title="Link to this heading">¶</a></h3>
+<p>打印在索引0上的元素</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;$</span><span class="si">{array[0]}</span><span class="s2">&quot;</span>
+
+<span class="n">Version</span> <span class="o">&lt;</span> <span class="mf">4.3</span>
+</pre></div>
+</div>
+<p>使用子字符串展开语法打印最后一个元素</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo &quot;${arr[@]: -1 }&quot;
+
+Version ≥ 4.3
+</pre></div>
+</div>
+<p>使用下标语法打印最后一个元素</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;$</span><span class="si">{array[-1]}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>打印所有元素，每个元素单独引用</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;$</span><span class="si">{array[@]}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>将所有元素打印为单个引号字符串</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;$</span><span class="si">{array[*]}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>打印索引1中的所有元素，每个元素单独引用</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;$</span><span class="si">{array[@]:1}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>从索引1中打印3个元素，每个元素单独引用</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;${array[@]:1:3}&quot;</span>
+</pre></div>
+</div>
+<p>字符串操作</p>
+<p>如果引用单个元素，则允许进行字符串操作:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="o">=</span><span class="p">(</span><span class="n">zero</span> <span class="n">one</span> <span class="n">two</span><span class="p">)</span>
+<span class="n">echo</span> <span class="s2">&quot;${array[0]:0:3}&quot;</span> <span class="c1"># gives out zer (chars at position 0, 1 and 2 in the string zero)</span>
+<span class="n">echo</span> <span class="s2">&quot;${array[0]:1:3}&quot;</span> <span class="c1"># gives out ero (chars at position 1, 2 and 3 in the string zero)</span>
+</pre></div>
+</div>
+<p>因此${array[$i]:N:M}给出一个字符串，从字符串${array[$i]}的第N个位置(从0开始)开始，后面有M个字符。</p>
+</section>
+<section id="id43">
+<h3>3. 数组修改<a class="headerlink" href="#id43" title="Link to this heading">¶</a></h3>
+<p>改变索引</p>
+<p>初始化或更新数组中的特定元素</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>array[10]=&quot;elevenths element&quot;    # because it&#39;s starting with 0
+
+Version ≥ 3.1
+</pre></div>
+</div>
+<p>附加</p>
+<p>修改数组，如果没有指定下标，则将元素添加到末尾。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="o">+=</span><span class="p">(</span><span class="s1">&#39;fourth element&#39;</span> <span class="s1">&#39;fifth element&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>用新的参数列表替换整个数组。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;$</span><span class="si">{array[@]}</span><span class="s2">&quot;</span> <span class="s2">&quot;fourth element&quot;</span> <span class="s2">&quot;fifth element&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>在开头添加一个元素:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;new element&quot;</span> <span class="s2">&quot;$</span><span class="si">{array[@]}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>插入</p>
+<p>在给定的索引位置插入一个元素:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">=</span><span class="p">(</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span><span class="p">)</span>
+<span class="c1"># insert an element at index 2</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">arr</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;${arr[@]:0:$i}&quot;</span> <span class="s1">&#39;new&#39;</span> <span class="s2">&quot;${arr[@]:$i}&quot;</span><span class="p">)</span>
+<span class="n">echo</span> <span class="s2">&quot;$</span><span class="si">{arr[2]}</span><span class="s2">&quot;</span> <span class="c1">#output: new</span>
+</pre></div>
+</div>
+<p>删除</p>
+<p>使用内置的unset命令删除数组索引:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">=</span><span class="p">(</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">echo</span> <span class="s2">&quot;$</span><span class="si">{arr[@]}</span><span class="s2">&quot;</span>   <span class="c1"># outputs: a b c</span>
+<span class="n">echo</span> <span class="s2">&quot;${!arr[@]}&quot;</span>  <span class="c1"># outputs: 0 1 2</span>
+<span class="n">unset</span> <span class="o">-</span><span class="n">v</span> <span class="s1">&#39;arr[1]&#39;</span>
+<span class="n">echo</span> <span class="s2">&quot;$</span><span class="si">{arr[@]}</span><span class="s2">&quot;</span>   <span class="c1"># outputs: a c</span>
+<span class="n">echo</span> <span class="s2">&quot;${!arr[@]}&quot;</span>  <span class="c1"># outputs: 0 2</span>
+</pre></div>
+</div>
+<p>合并</p>
+<p>这也适用于稀疏数组。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array3</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;$</span><span class="si">{array1[@]}</span><span class="s2">&quot;</span> <span class="s2">&quot;$</span><span class="si">{array2[@]}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>重新索引数组</p>
+<p>如果元素已从数组中删除，或者您不确定数组中是否存在空白，则此功能非常有用。要重新创建没有间隙的索引:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;$</span><span class="si">{array[@]}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id44">
+<h3>4. 数组的迭代<a class="headerlink" href="#id44" title="Link to this heading">¶</a></h3>
+<p>数组迭代有两种方式，foreach和经典的for循环:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>a=(1 2 3 4)
+# foreach loop
+for y in &quot;${a[@]}&quot;; do
+    # act on $y
+    echo &quot;$y&quot;
+done
+
+# classic for-loop
+for ((idx=0; idx &lt; ${#a[@]}; ++idx)); do
+    # act on ${a[$idx]}
+    echo &quot;${a[$idx]}&quot;
+done
+</pre></div>
+</div>
+<p>你也可以遍历命令的输出:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>a=($(tr &#39;,&#39; &#39; &#39; &lt;&lt;&lt;&quot;a,b,c,d&quot;)) # tr can transform one character to another
+for y in &quot;${a[@]}&quot;; do
+    echo &quot;$y&quot;
+done
+</pre></div>
+</div>
+</section>
+<section id="id45">
+<h3>5. 数组长度<a class="headerlink" href="#id45" title="Link to this heading">¶</a></h3>
+<p>${#array[&#64;]}给出了数组的长度${array[&#64;]}:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;first element&#39;</span> <span class="s1">&#39;second element&#39;</span> <span class="s1">&#39;third element&#39;</span><span class="p">)</span>
+<span class="n">echo</span> <span class="s2">&quot;${#array[@]}&quot;</span> <span class="c1"># gives out a length of 3</span>
+</pre></div>
+</div>
+<p>这也适用于单个元素中的字符串:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;${#array[0]}&quot;</span>    <span class="c1"># gives out the lenght of the string at element 0: 13 ---&gt; &quot;first element&quot; 13 lenght</span>
+</pre></div>
+</div>
+</section>
+<section id="id46">
+<h3>6. 关联数组<a class="headerlink" href="#id46" title="Link to this heading">¶</a></h3>
+<p>Version ≥ 4.0</p>
+<p>声明一个关联数组</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">declare</span> <span class="o">-</span><span class="n">A</span> <span class="n">aa</span>
+</pre></div>
+</div>
+<p>在初始化或使用之前声明关联数组是强制性的</p>
+<hr class="docutils" />
+<p>初始化元素</p>
+<p>你可以一次初始化一个元素，如下所示:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aa</span><span class="p">[</span><span class="n">hello</span><span class="p">]</span><span class="o">=</span><span class="n">world</span>
+<span class="n">aa</span><span class="p">[</span><span class="n">ab</span><span class="p">]</span><span class="o">=</span><span class="n">cd</span>
+<span class="n">aa</span><span class="p">[</span><span class="s2">&quot;key with space&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;hello world&quot;</span>
+</pre></div>
+</div>
+<p>你也可以在一条语句中初始化整个关联数组:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aa</span><span class="o">=</span><span class="p">([</span><span class="n">hello</span><span class="p">]</span><span class="o">=</span><span class="n">world</span> <span class="p">[</span><span class="n">ab</span><span class="p">]</span><span class="o">=</span><span class="n">cd</span> <span class="p">[</span><span class="s2">&quot;key with space&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>访问关联数组元素</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo ${aa[hello]}
+# Out: world
+</pre></div>
+</div>
+<p>列出关联数组键</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;${!aa[@]}&quot;</span>
+<span class="c1">#Out: hello ab key with space</span>
+</pre></div>
+</div>
+<p>列出关联数组值</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;$</span><span class="si">{aa[@]}</span><span class="s2">&quot;</span>
+<span class="c1">#Out: world cd hello world</span>
+</pre></div>
+</div>
+<p>迭代关联数组的键和值</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="s2">&quot;${!aa[@]}&quot;</span><span class="p">;</span> <span class="n">do</span>
+    <span class="n">echo</span> <span class="s2">&quot;Key:   $</span><span class="si">{key}</span><span class="s2">&quot;</span>
+    <span class="n">echo</span> <span class="s2">&quot;Value: $</span><span class="si">{array[$key]}</span><span class="s2">&quot;</span>
+<span class="n">done</span>
+
+<span class="c1"># Out:</span>
+<span class="c1"># Key:   hello</span>
+<span class="c1"># Value: world</span>
+<span class="c1"># Key:   ab</span>
+<span class="c1"># Value: cd</span>
+<span class="c1"># Key:   key with space</span>
+<span class="c1"># Value: hello world</span>
+</pre></div>
+</div>
+<p>计数关联数组元素</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;${#aa[@]}&quot;</span>
+<span class="c1"># Out: 3</span>
+</pre></div>
+</div>
+</section>
+<section id="id47">
+<h3>7. 循环遍历数组<a class="headerlink" href="#id47" title="Link to this heading">¶</a></h3>
+<p>例子数组：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">=</span><span class="p">(</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span> <span class="n">e</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>使用for..in loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for i in &quot;${arr[@]}&quot;; do
+    echo &quot;$i&quot;
+done
+
+Version ≥ 2.04
+</pre></div>
+</div>
+<p>使用C-style for loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for ((i=0;i&lt;${#arr[@]};i++)); do
+    echo &quot;${arr[$i]}&quot;
+done
+</pre></div>
+</div>
+<p>使用 while loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>i=0
+while [ $i -lt ${#arr[@]} ]; do
+    echo &quot;${arr[$i]}&quot;
+    i=$((i + 1))
+done
+
+Version ≥ 2.04
+</pre></div>
+</div>
+<p>使用带有数值条件的while循环:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>i=0
+while (( $i &lt; ${#arr[@]} )); do
+    echo &quot;${arr[$i]}&quot;
+    ((i++))
+done
+</pre></div>
+</div>
+<p>使用until循环:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>i=0
+until [ $i -ge ${#arr[@]} ]; do
+    echo &quot;${arr[$i]}&quot;
+    i=$((i + 1))
+done
+
+Version ≥ 2.04
+</pre></div>
+</div>
+<p>使用带有数值条件的until循环:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>i=0
+until (( $i &gt;= ${#arr[@]} )); do
+    echo &quot;${arr[$i]}&quot;
+    ((i++))
+done
+</pre></div>
+</div>
+</section>
+<section id="array">
+<h3>8. 销毁、删除或取消设置Array<a class="headerlink" href="#array" title="Link to this heading">¶</a></h3>
+<p>销毁、删除或取消设置一个数组:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unset</span> <span class="n">array</span>
+</pre></div>
+</div>
+<p>销毁、删除或取消设置单个数组元素:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unset</span> <span class="n">array</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id48">
+<h3>9. 来自字符串的数组<a class="headerlink" href="#id48" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>stringVar=&quot;Apple Orange Banana Mango&quot;
+arrayVar=(${stringVar// / })
+</pre></div>
+</div>
+<p>字符串中的每个空格表示结果数组中的一个新项。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo ${arrayVar[0]} # will print Apple
+echo ${arrayVar[3]} # will print Mango
+</pre></div>
+</div>
+<p>类似地，其他字符也可以用作分隔符。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>stringVar=&quot;Apple+Orange+Banana+Mango&quot;
+arrayVar=(${stringVar//+/ })
+echo ${arrayVar[0]} # will print Apple
+echo ${arrayVar[2]} # will print Banana
+</pre></div>
+</div>
+</section>
+<section id="id49">
+<h3>10. 初始化索引列表<a class="headerlink" href="#id49" title="Link to this heading">¶</a></h3>
+<p>在数组里获得初始化索引列表：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ arr[2]=&#39;second&#39;
+$ arr[10]=&#39;tenth&#39;
+$ arr[25]=&#39;twenty five&#39;
+$ echo ${!arr[@]}
+
+2 10 25
+</pre></div>
+</div>
+</section>
+<section id="id50">
+<h3>11. 将整个文件读入数组<a class="headerlink" href="#id50" title="Link to this heading">¶</a></h3>
+<p>一步读取：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>IFS=$&#39;\n&#39; read -r -a arr &lt; file
+</pre></div>
+</div>
+<p>循环中读取:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>arr=()
+while IFS= read -r line; do
+    arr+=(&quot;$line&quot;)
+done
+
+Version ≥ 4.0
+</pre></div>
+</div>
+<p>使用mapfile或readarray(它们是同义词):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapfile</span> <span class="o">-</span><span class="n">t</span> <span class="n">arr</span> <span class="o">&lt;</span> <span class="n">file</span>
+<span class="n">readarray</span> <span class="o">-</span><span class="n">t</span> <span class="n">arr</span> <span class="o">&lt;</span> <span class="n">file</span>
+</pre></div>
+</div>
+</section>
+<section id="id51">
+<h3>12. 数组插入函数<a class="headerlink" href="#id51" title="Link to this heading">¶</a></h3>
+<p>这个函数将一个元素插入到给定索引处的数组中:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>insert(){
+    h=&#39;
+################## insert ########################
+# Usage:
+#   insert arr_name index element
+#
+#   Parameters:
+#       arr_name    : Name of the array variable
+#       index       : Index to insert at
+#       element     : Element to insert
+##################################################
+    &#39;
+    [[ $1 = -h ]] &amp;&amp; { echo &quot;$h&quot; &gt;/dev/stderr; return 1; }
+    declare -n __arr__=$1   # reference to the array variable
+    i=$2                    # index to insert at
+    el=&quot;$3&quot;                 # element to insert
+    # handle errors
+    [[ ! &quot;$i&quot; =~ ^[0-9]+$ ]] &amp;&amp; { echo &quot;E: insert: index must be a valid integer&quot; &gt;/dev/stderr; return 1; }
+    (( $1 &lt; 0 )) &amp;&amp; { echo &quot;E: insert: index can not be negative&quot; &gt;/dev/stderr; return 1; }
+    # Now insert $el at $i
+    __arr__=(&quot;${__arr__[@]:0:$i}&quot; &quot;$el&quot; &quot;${__arr__[@]:$i}&quot;)
+    }
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[[ $1 = -h ]] &amp;&amp; { echo “$h” &gt;/dev/stderr; return 1; } 解释</p>
+<p>检查传递给脚本或函数的第一个参数是否等于 <cite>-h</cite>。让我解释一下：
+1. <cite>[[ $1 = -h ]]</cite>: 这是一个条件测试，它检查脚本或函数的第一个参数是否等于 <cite>-h</cite>。</p>
+<ol class="arabic simple" start="2">
+<li><p><cite>&amp;&amp;</cite>: 这是逻辑 AND 运算符，表示在前一个条件（<cite>[[ $1 = -h ]]</cite>）为真的情况下，执行后面的命令。</p></li>
+</ol>
+<p>3. <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">echo</span> <span class="pre">&quot;$h&quot;</span> <span class="pre">&gt;/dev/stderr;</span> <span class="pre">return</span> <span class="pre">1;</span> <span class="pre">}</span></code> : 如果前面的条件为真，这段代码块会执行两个命令：
+-            - <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;$h&quot;</span> <span class="pre">&gt;/dev/stderr</span></code> 将帮助文档 <cite>$h</cite> 输出到标准错误流（stderr）。
+- <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">1</span></code>: 返回一个非零的退出码（1），表示发生了错误或提供了帮助文档。
+所以，整体来说，这行代码的作用是：如果脚本或函数的第一个参数是 <code class="docutils literal notranslate"><span class="pre">-h</span></code> ，则将帮助文档输出到标准错误流，并返回一个非零的退出码。这通常用于显示帮助信息并通知用户有关正确使用脚本或函数的方式</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>declare -n __arr__=$1   # reference to the array variable 解释</p>
+<blockquote>
+<div><p>这行代码使用 <cite>declare</cite> 命令创建了一个变量 <cite>__arr__</cite>，并将其设置为对传递给脚本或函数的数组参数的引用。让我详细解释：</p>
+<ul class="simple">
+<li><p><cite>declare -n __arr__=$1</cite>: 这行代码使用 <cite>-n</cite> 选项声明了一个名称引用。它将变量 <cite>__arr__</cite> 设置为对 <cite>$1</cite> 的引用，其中 <cite>$1</cite> 是传递给脚本或函数的第一个参数，通常是一个数组的名称。</p></li>
+<li><p>简单来说，<cite>__arr__</cite> 现在是一个别名，它指向传递给脚本或函数的数组。这样，对 <cite>__arr__</cite> 的任何操作都将直接影响到原始数组。</p></li>
+</ul>
+<p>这通常用于在函数内部处理数组，而无需拷贝整个数组内容，从而提高效率。</p>
+<p>名称引用（name reference）是 Bash 中的一个特性，允许你创建一个变量，它的值是另一个变量的引用，而不是值的拷贝。在这里，<cite>declare -n</cite> 命令创建了一个名称引用 <cite>__arr__</cite>，该引用指向传递给函数的数组。</p>
+<p>使用名称引用的好处在于，它避免了在内存中创建原始数组的副本。当你传递一个数组给函数并在函数内部对其进行修改时，如果使用传值方式（拷贝数组内容），可能会导致内存占用较大，特别是当数组很大时。</p>
+<p>通过使用名称引用，函数实际上在处理原始数组，而不是创建一个数组副本。这样，对数组的修改直接反映在原始数组上，而不需要额外的内存开销。这可以提高程序的性能和效率，尤其是在处理大型数组时。</p>
+<p>在这个特定的代码中，<cite>declare -n __arr__=$1</cite> 的作用是在函数中创建一个名为 <cite>__arr__</cite> 的引用，该引用指向传递给函数的数组。这样，函数中对 <cite>__arr__</cite> 的任何修改都将影响到原始数组。</p>
+</div></blockquote>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<dl>
+<dt>在 Bash 中，<cite>=~</cite>、<cite>^</cite>、和`$` 是用于字符串匹配的模式匹配操作符。</dt><dd><ol class="arabic simple">
+<li><dl class="simple">
+<dt><strong>`=~`：正则表达式匹配</strong></dt><dd><ul class="simple">
+<li><p>使用 <cite>=~</cite> 来进行正则表达式匹配。例如，<cite>[[ $i =~ ^[0-9]+$ ]]</cite> 检查变量 <cite>$i</cite> 是否匹配一个以数字开头并以数字结尾的字符串。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>`^`：锚点 - 匹配字符串的开头</strong></dt><dd><ul class="simple">
+<li><p>在正则表达式中，<cite>^</cite> 用作锚点，匹配字符串的开头。例如，<cite>^abc</cite> 匹配以 “abc” 开头的字符串。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>`$`：锚点 - 匹配字符串的结尾</strong></dt><dd><ul class="simple">
+<li><p>在正则表达式中，<cite>$</cite> 用作锚点，匹配字符串的结尾。例如，<cite>xyz$</cite> 匹配以 “xyz” 结尾的字符串。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<p>在你的代码片段中，<cite>[[ ! “$i” =~ ^[0-9]+$ ]]</cite> 的含义是：检查变量 <cite>$i</cite> 是否不匹配一个以数字开头并以数字结尾的字符串。如果不匹配，执行相应的错误处理。</p>
+</dd>
+</dl>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>那以数字结尾不就是直接在0-9方括号后面加上$不就可以了吗，为什么还需要一个+号</p>
+<p>正确，你的理解是对的。在正则表达式中，<cite>[0-9]+$</cite> 表示匹配以一个或多个数字结尾的字符串。这是因为 <cite>+</cite> 是一个量词，表示匹配前面的元素（这里是 <cite>[0-9]</cite>）至少一次或更多次。</p>
+<p>如果只是 <cite>[0-9]$</cite>，它将匹配以单个数字结尾的字符串。添加 <cite>+</cite> 表示匹配一个或多个数字。</p>
+<p>所以，<cite>[0-9]+$</cite> 表示匹配以一个或多个数字结尾的字符串，而 <cite>^[0-9]+$</cite> 则表示整个字符串必须由一个或多个数字组成。</p>
+</div>
+<p>当涉及到正则表达式时，有许多符号和模式可用于灵活地匹配和处理字符串。以下是一些基本的正则表达式元字符和用法：</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt><strong>`.`：匹配任意单个字符</strong></dt><dd><ul class="simple">
+<li><p>例如，<cite>a.c</cite> 可以匹配 “abc”、”adc”、”aec” 等。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>`*`：匹配前一个元素零次或多次</strong></dt><dd><ul class="simple">
+<li><p>例如，<cite>ab*c</cite> 可以匹配 “ac”、”abc”、”abbc” 等。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>`?`：匹配前一个元素零次或一次</strong></dt><dd><ul class="simple">
+<li><p>例如，<cite>ab?c</cite> 可以匹配 “ac”、”abc” 等。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>`[…]`：字符类，匹配方括号中的任意一个字符</strong></dt><dd><ul class="simple">
+<li><p>例如，<cite>[aeiou]</cite> 匹配任何一个元音字母。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>`[^…]`：否定字符类，匹配不在方括号中的任意字符</strong></dt><dd><ul class="simple">
+<li><p>例如，<cite>[^0-9]</cite> 匹配任何非数字字符。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>`()`：捕获组，用于捕获匹配的子字符串</strong></dt><dd><ul class="simple">
+<li><p>例如，<cite>(ab)+</cite> 可以匹配 “ab”、”abab” 等。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>`\`：转义字符</strong></dt><dd><ul class="simple">
+<li><p>例如，<cite>\.</cite> 可以匹配实际的点字符，而不是任意字符。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>`|`：或操作符</strong></dt><dd><ul class="simple">
+<li><p>例如，<cite>cat|dog</cite> 可以匹配 “cat” 或 “dog”。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<p>这只是正则表达式的基础，正则表达式语法非常灵活，允许你进行更复杂的模式匹配。在 Bash 中，<cite>[[ … =~ … ]]</cite> 构造提供了对正则表达式的支持。如果你有具体的问题或用例，我可以提供更详细的帮助。</p>
+<hr class="docutils" />
+<p>在 Bash 中，圆括号 <cite>(( … ))</cite> 通常用于进行算术运算，而不是正则表达式。以下是圆括号在算术上的一些常见用法：</p>
+<ol class="arabic simple">
+<li><p><strong>基本算术运算</strong>：</p>
+<ul class="simple">
+<li><p><cite>(( a + b ))</cite>: 执行加法。</p></li>
+<li><p><cite>(( a - b ))</cite>: 执行减法。</p></li>
+<li><p><cite>(( a * b ))</cite>: 执行乘法。</p></li>
+<li><p><cite>(( a / b ))</cite>: 执行除法。</p></li>
+</ul>
+</li>
+<li><p><strong>比较运算</strong>：</p>
+<ul class="simple">
+<li><p><cite>(( a == b ))</cite>: 检查是否相等。</p></li>
+<li><p><cite>(( a != b ))</cite>: 检查是否不相等。</p></li>
+<li><p><cite>(( a &gt; b ))</cite>: 检查是否大于。</p></li>
+<li><p><cite>(( a &lt; b ))</cite>: 检查是否小于。</p></li>
+<li><p><cite>(( a &gt;= b ))</cite>: 检查是否大于等于。</p></li>
+<li><p><cite>(( a &lt;= b ))</cite>: 检查是否小于等于。</p></li>
+</ul>
+</li>
+<li><p><strong>逻辑运算</strong>：</p>
+<ul class="simple">
+<li><p><cite>(( a &amp;&amp; b ))</cite>: 逻辑 AND。</p></li>
+<li><p><cite>(( a || b ))</cite>: 逻辑 OR。</p></li>
+<li><p><cite>(( !a ))</cite>: 逻辑 NOT。</p></li>
+</ul>
+</li>
+<li><p><strong>自增和自减</strong>：</p>
+<ul class="simple">
+<li><p><cite>(( a++ ))</cite>: 将 <cite>a</cite> 增加 1。</p></li>
+<li><p><cite>(( a– ))</cite>: 将 <cite>a</cite> 减少 1。</p></li>
+</ul>
+</li>
+</ol>
+<p>这些圆括号用于执行整数算术运算，并且在条件判断中也很常见。例如，<cite>if (( a &gt; b )); then … fi</cite> 可以在 Bash 脚本中使用这种形式进行条件判断。圆括号中的变量和运算符不需要使用 <cite>$</cite> 符号。</p>
+<hr class="docutils" />
+<p>sh 中，双方括号 <cite>[[ … ]]</cite> 主要用于条件测试，提供了一些额外的功能和安全性比单方括号 <cite>[ … ]</cite> 更强大的条件测试。以下是双方括号的一些常见用法：</p>
+<ol class="arabic simple">
+<li><p><strong>字符串比较</strong>：</p>
+<ul class="simple">
+<li><p><cite>[[ “$string1” == “$string2” ]]</cite>: 检查两个字符串是否相等。</p></li>
+<li><p><cite>[[ “$string1” != “$string2” ]]</cite>: 检查两个字符串是否不相等。</p></li>
+</ul>
+</li>
+<li><p><strong>正则表达式匹配</strong>：</p>
+<ul class="simple">
+<li><p><cite>[[ “$string” =~ pattern ]]</cite>: 检查字符串是否匹配正则表达式模式。</p></li>
+</ul>
+</li>
+<li><p><strong>文件测试</strong>：</p>
+<ul class="simple">
+<li><p><cite>[[ -e “$file” ]]</cite>: 检查文件是否存在。</p></li>
+<li><p><cite>[[ -f “$file” ]]</cite>: 检查文件是否为普通文件。</p></li>
+<li><p><cite>[[ -d “$directory” ]]</cite>: 检查路径是否为目录。</p></li>
+</ul>
+</li>
+<li><p><strong>逻辑运算</strong>：
+- <cite>[[ condition1 &amp;&amp; condition2 ]]</cite>: 逻辑 AND。</p>
+<ul class="simple">
+<li><p><cite>[[ condition1 || condition2 ]]</cite>: 逻辑 OR。</p></li>
+<li><p><cite>[[ !condition ]]</cite>: 逻辑 NOT。</p></li>
+</ul>
+</li>
+<li><p><strong>变量存在性检查</strong>：</p>
+<ul class="simple">
+<li><p><cite>[[ -n “$variable” ]]</cite>: 检查变量是否存在且非空。</p></li>
+<li><p><cite>[[ -z “$variable” ]]</cite>: 检查变量是否存在且为空。</p></li>
+</ul>
+</li>
+<li><p><strong>数组测试</strong>：</p>
+<ul class="simple">
+<li><p><cite>[[ ${#array[&#64;]} -gt 0 ]]</cite>: 检查数组是否非空。</p></li>
+</ul>
+</li>
+<li><p><strong>模式匹配</strong>：</p>
+<ul class="simple">
+<li><p><cite>[[ “$string” == pattern* ]]</cite>: 检查字符串是否以指定模式开头。</p></li>
+</ul>
+</li>
+</ol>
+<p>双方括号支持更丰富的条件测试，同时在字符串和变量处理上更加灵活，因此在 Bash 脚本中，通常推荐使用 <cite>[[ … ]]</cite> 进行条件测试，而不是 <cite>[ … ]</cite>。</p>
+<p>使用:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">insert</span> <span class="n">array_variable_name</span> <span class="n">index</span> <span class="n">element</span>
+</pre></div>
+</div>
+<p>例子:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">=</span><span class="p">(</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">echo</span> <span class="s2">&quot;$</span><span class="si">{arr[2]}</span><span class="s2">&quot;</span> <span class="c1"># output: c</span>
+<span class="c1"># Now call the insert function and pass the array variable name,</span>
+<span class="c1"># index to insert at</span>
+<span class="c1"># and the element to insert</span>
+<span class="n">insert</span> <span class="n">arr</span> <span class="mi">2</span> <span class="s1">&#39;New Element&#39;</span>
+<span class="c1"># &#39;New Element&#39; was inserted at index 2 in arr, now print them</span>
+<span class="n">echo</span> <span class="s2">&quot;$</span><span class="si">{arr[2]}</span><span class="s2">&quot;</span> <span class="c1"># output: New Element</span>
+<span class="n">echo</span> <span class="s2">&quot;$</span><span class="si">{arr[3]}</span><span class="s2">&quot;</span> <span class="c1"># output: c</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id52">
+<h2>12. 关联数组<a class="headerlink" href="#id52" title="Link to this heading">¶</a></h2>
+<section id="id53">
+<h3>1. 检查关联数组<a class="headerlink" href="#id53" title="Link to this heading">¶</a></h3>
+<p>下面的代码片段显示了所有需要的用法:</p>
+<p>declare: usage: declare [-aAfFgiIlnrtux] [name[=value] …] or declare -p [-aAfFilnrtux] [name …]</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>-a：申明数组变量
+-A：申明关联数组，可以使用字符串作为数组索引
+-f：仅显示已定义的函数
+-F：不显示函数定义
+-g：指定变量为全局变量，即使在函数内定义变量
+-i：声明整型变量
+-l：将变量值的小写字母变为小写
+-r：设置只读属性
+-t：设置变量跟踪属性，用于跟踪函数进行调试，对于变量没有特殊意义
+-u：变量值的大写字母变为大写
+-x：将指定的Shell变量换成环境变量
+-p：显示变量定义的方式和值+：取消变量属性，但是 +a 和 +r 无效，无法删除数组和只读属性，可以使用unset删除数组，但是 unset 不能删除只读变量</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/env bash
+
+declare -A assoc_array=([key_string]=value \
+                        [one]=&quot;something&quot; \
+                        [two]=&quot;another thing&quot; \
+                        [ three ]=&#39;mind the blanks!&#39; \
+                        [ &quot; four&quot; ]=&#39;count the blanks of this key later!&#39; \
+                        [IMPORTANT]=&#39;SPACES DO ADD UP!!!&#39; \
+                        [1]=&#39;there are no integers!&#39; \
+                        [info]=&quot;to avoid history expansion &quot; \
+                        [info2]=&quot;quote exclamation mark with single quotes&quot; \
+                        )
+echo # just a blank line
+echo now here are the values of assoc_array:
+echo ${assoc_array[@]}
+echo not that useful,
+echo # just a blank line
+echo this is better:
+
+declare -p assoc_array # -p == print
+
+echo have a close look at the spaces above\!\!\!
+echo # just a blank line
+
+echo accessing the keys
+echo the keys in assoc_array are ${!assoc_array[*]}
+echo mind the use of indirection operator \!
+echo # just a blank line
+
+echo now we loop over the assoc_array line by line
+echo note the \! indirection operator which works differently,
+echo if used with assoc_array.
+echo # just a blank line
+
+for key in &quot;${!assoc_array[@]}&quot;; do # accessing keys using ! indirection!!!!
+        printf &quot;key: \&quot;%s\&quot;\nvalue: \&quot;%s\&quot;\n\n&quot; &quot;$key&quot; &quot;${assoc_array[$key]}&quot;
+done
+
+echo have a close look at the spaces in entries with keys two, three and four above\!\!\!
+echo # just a blank line
+echo # just another blank line
+
+echo there is a difference using integers as keys\!\!\!
+i=1
+echo declaring an integer var i=1
+echo # just a blank line
+echo Within an integer_array bash recognizes artithmetic context.
+echo Within an assoc_array bash DOES NOT recognize artithmetic context.
+echo # just a blank line
+echo this works: \${assoc_array[\$i]}: ${assoc_array[$i]}
+echo this NOT!!: \${assoc_array[i]}: ${assoc_array[i]}
+echo # just a blank line
+echo # just a blank line
+echo an \${assoc_array[i]} has a string context within braces in contrast to an integer_array
+declare -i integer_array=( one two three )
+echo &quot;doing a: declare -i integer_array=( one two three )&quot;
+echo # just a blank line
+
+echo both forms do work: \${integer_array[i]} : ${integer_array[i]}
+echo and this too: \${integer_array[\$i]} : ${integer_array[$i]}
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id54">
+<h2>13. 函数<a class="headerlink" href="#id54" title="Link to this heading">¶</a></h2>
+<section id="id55">
+<h3>1. 带参数的函数<a class="headerlink" href="#id55" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+greet() {
+local name=&quot;$1&quot;
+echo &quot;Hello, $name&quot;
+}
+greet &quot;John Doe&quot;
+# running above script
+$ bash helloJohn.sh
+Hello, John Doe
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>如果不以任何方式修改参数，则不需要将其复制到局部变量—只需echo即可 “Hello, $1“。</p></li>
+<li><p>你可以使用$1，$2，$3等等来访问函数内部的参数。</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>对于大于9的参数$10不起作用(bash会将其读取为$10)，您需要执行${10}， ${11}等等。
+就是给数字加个花括号</p>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>$&#64;表示函数的所有参数:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="n">foo</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">echo</span> <span class="s2">&quot;$@&quot;</span>
+<span class="p">}</span>
+<span class="n">foo</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="c1"># output =&gt; 1 2 3</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>你实际上应该总是在”$&#64;”周围使用双引号，就像这里一样。</p>
+</div>
+<p>省略引号将导致shell扩展通配符，通常会引入不受欢迎的行为，甚至潜在的安全问题。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;string with spaces;&quot;</span> <span class="s1">&#39;$HOME&#39;</span> <span class="s2">&quot;*&quot;</span>
+<span class="c1"># output =&gt; string with spaces; $HOME *</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>对于默认参数，使用${1:-default_val}。例如:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+foo() {
+local val=${1:-25}
+echo &quot;$val&quot;
+}
+foo
+foo 30
+# output =&gt; 25
+# output =&gt; 30
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>需要一个参数使用${var:?error message}</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>foo() {
+local val=${1:?Must provide an argument}
+echo &quot;$val&quot;
+}
+</pre></div>
+</div>
+</section>
+<section id="id56">
+<h3>2. 简单函数<a class="headerlink" href="#id56" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Define a function greet</span>
+<span class="n">greet</span> <span class="p">()</span>
+<span class="p">{</span>
+<span class="n">echo</span> <span class="s2">&quot;Hello World!&quot;</span>
+<span class="p">}</span>
+<span class="c1"># Call the function greet</span>
+<span class="n">greet</span>
+</pre></div>
+</div>
+<p>在运行脚本时，我们看到了我们的消息</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bash helloWorld.sh
+Hello World!
+</pre></div>
+</div>
+<p>请注意，使用函数源文件可以使它们在当前的bash会话中可用。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source helloWorld.sh
+$ greet
+Hello World!
+</pre></div>
+</div>
+<p>您可以在某些shell中export(导出)函数，以便将其公开给子进程。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;greet&#39;</span> <span class="c1"># fails</span>
+<span class="n">export</span> <span class="o">-</span><span class="n">f</span> <span class="n">greet</span> <span class="c1"># export function; note -f</span>
+<span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;greet&#39;</span> <span class="c1"># success</span>
+</pre></div>
+</div>
+</section>
+<section id="id57">
+<h3>3. 处理标志和可选参数<a class="headerlink" href="#id57" title="Link to this heading">¶</a></h3>
+<p>内置的getopts可以在函数内部使用，以编写容纳标志和可选的函数 参数。这没有特别的困难，但是必须适当地处理getopts所触及的值。 例如，我们定义了一个failwith函数，它在stderr上写一条消息，并以代码1或任意代码退出 作为参数提供给-x选项的代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># failwith [-x STATUS] PRINTF-LIKE-ARGV
+# Fail with the given diagnostic message
+#
+# The -x flag can be used to convey a custom exit status, instead of
+# the value 1. A newline is automatically added to the output.
+failwith()
+{
+        # 声明几个局部变量，用于处理命令行参数
+        local OPTIND OPTION OPTARG status
+
+        status=1 # 初始化一个变量status并设值为1
+        OPTIND=1 # 初始化命令行选项的索引
+
+        while getopts &#39;x:&#39; OPTION; do # while 循环，使用getopts命令解析命令行选项
+                case ${OPTION} in # 开始case语句，根据不同选项执行相应操作
+                        x)      status=&quot;${OPTARG}&quot;;;
+                        *)      1&gt;&amp;2 printf &#39;failwith: %s: Unsupported option.\n&#39; &quot;${OPTION}&quot;;; # 输出错误信息
+                esac
+        done
+
+        shift $(( OPTIND - 1 )) # 将处理过的选项移除，以便后续处理剩余的命令行参数
+        {
+                printf &#39;Failure: &#39;
+                printf &quot;$@&quot;
+                printf &#39;\n&#39;
+        } 1&gt;&amp;2 # 将输出定向到标准错误流
+        exit &quot;${status}&quot; # 以status的值退出脚本
+}
+</pre></div>
+</div>
+</section>
+<section id="id58">
+<h3>4. 打印函数定义<a class="headerlink" href="#id58" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">getfunc</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">declare</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;$@&quot;</span>
+<span class="p">}</span>
+<span class="n">function</span> <span class="n">func</span><span class="p">(){</span>
+        <span class="n">echo</span> <span class="s2">&quot;I am a sample function&quot;</span>
+<span class="p">}</span>
+<span class="n">funcd</span><span class="o">=</span><span class="s2">&quot;$(getfunc func)&quot;</span>
+<span class="n">getfunc</span> <span class="n">func</span> <span class="c1"># or echo &quot;$funcd&quot;</span>
+</pre></div>
+</div>
+<p>输出：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="p">()</span>
+<span class="p">{</span>
+        <span class="n">echo</span> <span class="s2">&quot;I am a sample function&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id59">
+<h3>5. 接受命名参数的函数<a class="headerlink" href="#id59" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>foo() {
+        while [[ &quot;$#&quot; -gt 0 ]]
+do
+        case $1 in
+                -f|--follow)
+                local FOLLOW=&quot;following&quot;
+                ;;
+                -t|--tail)
+                local TAIL=&quot;tail=$2&quot;
+                ;;
+        esac
+        shift
+done
+
+echo &quot;FOLLOW: $FOLLOW&quot;
+echo &quot;TAIL: $TAIL&quot;
+}
+</pre></div>
+</div>
+<p>使用例子：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span> <span class="o">-</span><span class="n">f</span>
+<span class="n">foo</span> <span class="o">-</span><span class="n">t</span> <span class="mi">10</span>
+<span class="n">foo</span> <span class="o">-</span><span class="n">f</span> <span class="o">--</span><span class="n">tail</span> <span class="mi">10</span>
+<span class="n">foo</span> <span class="o">--</span><span class="n">follow</span> <span class="o">--</span><span class="n">tail</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</section>
+<section id="id60">
+<h3>6. 函数的返回值<a class="headerlink" href="#id60" title="Link to this heading">¶</a></h3>
+<p>Bash中的return语句不像c函数那样返回一个值，而是用返回值退出函数 的地位。你可以把它想象成那个函数的退出状态。</p>
+<p>如果你想从函数中返回一个值，然后像这样将值发送到stdout:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fun</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">local</span> <span class="n">var</span><span class="o">=</span><span class="s2">&quot;Sample value to be returned&quot;</span>
+        <span class="n">echo</span> <span class="s2">&quot;$var&quot;</span>
+        <span class="c1">#printf &quot;%s\n&quot; &quot;$var&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果你这样执行：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span><span class="o">=</span><span class="s2">&quot;$(fun)&quot;</span>
+</pre></div>
+</div>
+<p>fun的输出将会储存在$var变量里</p>
+</section>
+<section id="id61">
+<h3>7. 函数的退出码就是它的 最后一个命令<a class="headerlink" href="#id61" title="Link to this heading">¶</a></h3>
+<p>考虑这个示例函数来检查主机是否已启动:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">is_alive</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">ping</span> <span class="o">-</span><span class="n">c1</span> <span class="s2">&quot;$1&quot;</span> <span class="o">&amp;&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>该函数向第一个函数参数指定的主机发送单个ping。输出和错误输出 的ping都被重定向到/dev/null，所以这个函数永远不会输出任何东西。但是ping命令可以 成功时退出代码为0，失败时退出代码为非0。因为这是最后一个(在本例中也是唯一的)命令 这个函数，ping的退出码将被重用为函数本身的退出码。</p>
+<p>这个事实在条件语句中非常有用。 例如，如果主机graucho已启动，那么使用ssh连接到它:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">is_alive</span> <span class="n">graucho</span><span class="p">;</span> <span class="n">then</span>
+        <span class="n">ssh</span> <span class="n">graucho</span>
+<span class="n">fi</span>
+</pre></div>
+</div>
+<p>另一个例子:反复检查，直到graucho主机启动，然后用ssh连接到它:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>while ! is_alive graucho; do
+        sleep 5
+done
+ssh graucho
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id62">
+<h2>14. Bash参数扩展<a class="headerlink" href="#id62" title="Link to this heading">¶</a></h2>
+<p>$字符引入了参数扩展、命令替换或算术扩展。参数要扩展的名称或符号可以括在大括号中，大括号是可选的，但用于保护变量从紧跟其后的字符扩展，这些字符可以解释为名称的一部分。在 Bash 用户手册中阅读更多内容。</p>
+<section id="id63">
+<h3>1. 修改字母的大小写<a class="headerlink" href="#id63" title="Link to this heading">¶</a></h3>
+<p>Version ≥ 4.0</p>
+<p>变成大写</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ v=&quot;hello&quot;
+# Just the first character
+$ printf &#39;%s\n&#39; &quot;${v^}&quot;
+Hello
+# All characters
+$ printf &#39;%s\n&#39; &quot;${v^^}&quot;
+HELLO
+# Alternative
+$ v=&quot;hello world&quot;
+$ declare -u string=&quot;$v&quot;
+$ echo &quot;$string&quot;
+HELLO WORLD
+</pre></div>
+</div>
+<p>变成小写</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ v=&quot;BYE&quot;
+# Just the first character
+$ printf &#39;%s\n&#39; &quot;${v,}&quot;
+bYE
+# All characters
+$ printf &#39;%s\n&#39; &quot;${v,,}&quot;
+bye
+# Alternative
+$ v=&quot;HELLO WORLD&quot;
+$ declare -l string=&quot;$v&quot;
+$ echo &quot;$string&quot;
+hello world
+</pre></div>
+</div>
+<p>切换大小写</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ v=&quot;Hello World&quot;
+# All chars
+$ echo &quot;${v~~}&quot;
+hELLO wORLD
+$ echo &quot;${v~}&quot;
+# Just the first char
+hello World
+</pre></div>
+</div>
+</section>
+<section id="id64">
+<h3>2. 参数长度<a class="headerlink" href="#id64" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Length of a string
+$ var=&#39;12345&#39;
+$ echo &quot;${#var}&quot;
+5
+</pre></div>
+</div>
+<p>请注意，它是以字符数为单位的长度，不一定与字节数相同(如in UTF-8，其中大多数字符编码在一个字节以上)，也不是字形/字素的数量(其中一些 这是字符的组合)，也不一定与显示宽度相同。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Number of array elements
+$ myarr=(1 2 3)
+$ echo &quot;${#myarr[@]}&quot;
+3
+# Works for positional parameters as well
+$ set -- 1 2 3 4
+$ echo &quot;${#@}&quot;
+4
+# But more commonly (and portably to other shells), one would use
+$ echo &quot;$#&quot;
+4
+</pre></div>
+</div>
+</section>
+<section id="id65">
+<h3>3. 替换字符串中的模式<a class="headerlink" href="#id65" title="Link to this heading">¶</a></h3>
+<p>第一次匹配</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ a=&#39;I am a string&#39;
+$ echo &quot;${a/a/A}&quot;
+I Am a string
+</pre></div>
+</div>
+<p>所有匹配</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo &quot;${a//a/A}&quot;
+I Am A string
+</pre></div>
+</div>
+<p>匹配开头</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo &quot;${a/#I/y}&quot;
+y am a string
+</pre></div>
+</div>
+<p>匹配结尾</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo &quot;${a/%g/N}&quot;
+I am a strinN
+</pre></div>
+</div>
+<p>用空替换一个模式:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo &quot;${a/g/}&quot;
+I am a strin
+</pre></div>
+</div>
+<p>添加前缀到数组本身</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ A=(hello world)
+$ echo &quot;${A[@]/#/R}&quot;
+Rhello Rworld
+</pre></div>
+</div>
+</section>
+<section id="id66">
+<h3>4. 子字符串和子数组<a class="headerlink" href="#id66" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var=&#39;0123456789abcdef&#39;
+
+# Define a zero-based offset
+$ printf &#39;%s\n&#39; &quot;${var:3}&quot;
+3456789abcdef
+
+# Offset and length of substring
+$ printf &#39;%s\n&#39; &quot;${var:3:4}&quot;
+3456
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Negative length counts from the end of the string
+$ printf &#39;%s\n&#39; &quot;${var:3:-5}&quot;
+3456789a
+
+# Negative offset counts from the end
+# Needs a space to avoid confusion with ${var:-6}
+$ printf &#39;%s\n&#39; &quot;${var: -6}&quot;
+abcdef
+
+# Alternative: parentheses
+$ printf &#39;%s\n&#39; &quot;${var:(-6)}&quot;
+abcdef
+
+# Negative offset and negative length
+$ printf &#39;%s\n&#39; &quot;${var: -6:-5}&quot;
+a
+</pre></div>
+</div>
+<p>如果形参是位置形参或下标数组的元素，则适用相同的展开:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Set positional parameter $1
+set -- 0123456789abcdef
+
+# Define offset
+$ printf &#39;%s\n&#39; &quot;${1:5}&quot;
+56789abcdef
+
+# Assign to array element
+myarr[0]=&#39;0123456789abcdef&#39;
+
+# Define offset and length
+$ printf &#39;%s\n&#39; &quot;${myarr[0]:7:3}&quot;
+789
+</pre></div>
+</div>
+<p>类似的展开适用于位置参数，其中偏移量是基于1的:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Set positional parameters $1, $2, ...
+$ set -- 1 2 3 4 5 6 7 8 9 0 a b c d e f
+# Define an offset (beware $0 (not a positional parameter)
+# is being considered here as well)
+$ printf &#39;%s\n&#39; &quot;${@:10}&quot;
+0
+a
+b
+c
+d
+e
+f
+
+# Define an offset and a length
+$ printf &#39;%s\n&#39; &quot;${@:10:3}&quot;
+0
+a
+b
+
+# No negative lengths allowed for positional parameters
+$ printf &#39;%s\n&#39; &quot;${@:10:-2}&quot;
+bash: -2: substring expression &lt; 0
+
+# Negative offset counts from the end
+# Needs a space to avoid confusion with ${@:-10:2}
+$ printf &#39;%s\n&#39; &quot;${@: -10:2}&quot;
+7
+8
+
+# ${@:0} is $0 which is not otherwise a positional parameters or part
+# of $@
+$ printf &#39;%s\n&#39; &quot;${@:0:2}&quot;
+/usr/bin/bash
+1
+</pre></div>
+</div>
+<p>子字符串扩展可用于索引数组:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Create array (zero-based indices)
+$ myarr=(0 1 2 3 4 5 6 7 8 9 a b c d e f)
+# Elements with index 5 and higher
+$ printf &#39;%s\n&#39; &quot;${myarr[@]:12}&quot;
+c
+d
+e
+f
+
+# 3 elements, starting with index 5
+$ printf &#39;%s\n&#39; &quot;${myarr[@]:5:3}&quot;
+5
+6
+7
+
+# The last element of the array
+$ printf &#39;%s\n&#39; &quot;${myarr[@]: -1}&quot;
+f
+</pre></div>
+</div>
+</section>
+<section id="id67">
+<h3>5. 从字符串的开头删除一个模式<a class="headerlink" href="#id67" title="Link to this heading">¶</a></h3>
+<p>最短匹配:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ a=&#39;I am a string&#39;
+$ echo &quot;${a#*a}&quot;
+m a string
+</pre></div>
+</div>
+<p>最长的匹配:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo &quot;${a##*a}&quot;
+string
+</pre></div>
+</div>
+</section>
+<section id="id68">
+<h3>6. 参数间接<a class="headerlink" href="#id68" title="Link to this heading">¶</a></h3>
+<p>Bash间接允许获取包含在另一个变量中的变量的值,通过另外一个变量的名称。变量 例子:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ red=&quot;the color red&quot;
+$ green=&quot;the color green&quot;
+$ color=red
+$ echo &quot;${!color}&quot;
+the color red
+
+$ color=green
+$ echo &quot;${!color}&quot;
+the color green
+</pre></div>
+</div>
+<p>下面是一些间接展开用法的例子:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ foo=10
+$ x=foo
+$ echo ${x}
+foo                             # 经典打印变量
+
+$ foo=10
+$ x=foo
+$ echo ${!x}
+10                              # 间接的扩张
+</pre></div>
+</div>
+<p>也就是调用参数时在参数名字前面加个叹号”!”</p>
+<p>另一个例子：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ argtester () { for (( i=1; i&lt;=&quot;$#&quot;; i++ )); do echo &quot;${i}&quot;;done; }; argtester -ab -cd -ef
+1       #i expanded to 1
+2       #i expanded to 2
+3       #i expanded to 3
+
+$ argtester () { for (( i=1; i&lt;=&quot;$#&quot;; i++ )); do echo &quot;${!i}&quot;;done; }; argtester -ab -cd -ef
+-ab     # i=1 --&gt; expanded to $1 ---&gt; expanded to first argument sent to function
+-cd     # i=2 --&gt; expanded to $2 ---&gt; expanded to second argument sent to function
+-ef     # i=3 --&gt; expanded to $3 ---&gt; expanded to third argument sent to function
+</pre></div>
+</div>
+</section>
+<section id="id69">
+<h3>7. 参数展开和文件名<a class="headerlink" href="#id69" title="Link to this heading">¶</a></h3>
+<p>您可以使用Bash参数扩展来模拟常见的文件名处理操作，如basename和 目录名。</p>
+<p>我们将使用这个作为我们的示例路径:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FILENAME</span><span class="o">=</span><span class="s2">&quot;/tmp/example/myfile.txt&quot;</span>
+</pre></div>
+</div>
+<p>模拟dirname并返回文件路径的目录名:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;${FILENAME%/*}&quot;</span>
+<span class="c1">#Out: /tmp/example</span>
+</pre></div>
+</div>
+<p>要模拟basename $FILENAME并返回文件路径的文件名:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;${FILENAME##*/}&quot;</span>
+<span class="c1">#Out: myfile.tx</span>
+</pre></div>
+</div>
+<p>模拟basename $FILENAME .txt并返回不带.txt的文件名。扩展:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BASENAME</span><span class="o">=</span><span class="s2">&quot;${FILENAME##*/}&quot;</span>
+<span class="n">echo</span> <span class="s2">&quot;${BASENAME</span><span class="si">%%</span><span class="s2">.txt}&quot;</span>
+<span class="c1">#Out: myfile</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>默认值替换</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>${parameter:-word}</p>
+<p>如果parameter未设置或为空，则替换word的展开部分。否则，parameter的值为设置值代替。</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ unset var
+$ echo &quot;${var:-XX}&quot;
+XX
+
+$ var=&quot;&quot;
+$ echo &quot;${var:-XX}&quot;
+XX
+
+$ var=23
+$ echo &quot;${var:-XX}&quot;
+23
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>${parameter:=word}</p>
+<p>如果parameter未设置或为null，则将word的展开值赋给parameter。parameter的值为 然后替换。位置参数和特殊参数不能这样分配。</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ unset var
+$ echo &quot;${var:=XX}&quot;
+XX
+$ echo &quot;$var&quot;
+XX
+$ var=&quot;&quot;
+$ echo &quot;${var:=XX}&quot;
+XX
+$ echo &quot;$var&quot;
+XX
+$ var=23
+$ echo &quot;${var:=XX}&quot;
+23
+$ echo &quot;$var&quot;
+23
+</pre></div>
+</div>
+</section>
+<section id="id70">
+<h3>9. 从字符串末尾删除一个模式<a class="headerlink" href="#id70" title="Link to this heading">¶</a></h3>
+<p>最短匹配：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ a=&#39;I am a string&#39;
+$ echo &quot;${a%a*}&quot;
+I am
+</pre></div>
+</div>
+<p>最长的匹配：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo &quot;${a%%a*}&quot;
+I
+</pre></div>
+</div>
+<p>这里展示了在 Bash（一种Unix shell和编程语言）中如何从字符串末尾删除特定模式的方法，使用的是`${}`结构中的`%`和`%%`操作符。</p>
+<ol class="arabic simple">
+<li><p><strong>${a%a*}</strong> ：
+- 这是最短匹配的例子。它会从变量 <cite>$a</cite> 的末尾开始，删除第一个匹配模式`a*` （即以字母 <cite>a</cite> 开头的任何内容），直到找到的第一个匹配为止。
+- 所以对于`$a=’I am a string’` ，匹配的模式是从最后一个 <cite>a</cite> 开始，直到末尾的所有内容。
+- 结果是 <cite>I am</cite> ，因为它删除了字符串中从最后一个 <cite>a</cite> 开始到末尾的部分。</p></li>
+<li><p><strong>${a%%a*}</strong> ：
+- 这是最长匹配的例子。它会从变量 <cite>$a</cite> 的末尾开始，删除所有匹配模式 <cite>a*</cite> （即以字母 <cite>a</cite> 开头的任何内容），直到找到的最后一个匹配为止。
+- 所以对于 <cite>$a=’I am a string’</cite> ，匹配的模式是从最后一个 <cite>a</cite> 开始，直到字符串的开头。
+- 结果是 <cite>I</cite> ，因为它删除了字符串中从最后一个 <cite>a</cite> 开始一直到开头的部分。</p></li>
+</ol>
+<p>这些操作符非常有用，可以用来快速地在脚本中处理字符串。</p>
+</section>
+<section id="id71">
+<h3>10. 参数扩展<a class="headerlink" href="#id71" title="Link to this heading">¶</a></h3>
+<p>变量不一定要扩展到其值–在扩展过程中可以提取子串，这对提取文件扩展名或部分路径非常有用。
+这对于提取文件扩展名或路径的部分内容非常有用。全局变换字符保留其通常的含义，因此 .*
+指的是一个字面意义上的点，后跟任意字符序列；它不是正则表达式。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ v=foo-bar-baz
+$ echo ${v%%-*}
+foo
+$ echo ${v%-*}
+foo-bar
+$ echo ${v##*-}
+baz
+$ echo ${v#*-}
+bar-baz
+
+例子中，v 是一个变量，它的值是 foo-bar-baz。你用了 #，##，%，%% 这四种符号，来从变量的值中删除一些子串。具体的结果如下：
+
+${v%%-*} 表示从 v 的值的结尾删除最长的匹配 -* 的子串，也就是 -bar-baz。所以结果是 foo。
+${v%-*} 表示从 v 的值的结尾删除最短的匹配 -* 的子串，也就是 -baz。所以结果是 foo-bar。
+${v##*-} 表示从 v 的值的开头删除最长的匹配 *- 的子串，也就是 foo-bar-。所以结果是 baz。
+${v#*-} 表示从 v 的值的开头删除最短的匹配 *- 的子串，也就是 foo-。所以结果是 bar-baz。
+</pre></div>
+</div>
+<p>参数扩展是一种在命令行中对变量或参数进行替换或修改的方法1。你可以用大括号（{}）来包围参数的名字或符号，这样可以避免后面的字符被误认为参数的一部分2。你还可以在参数名字后面加上一些特殊的符号，来实现不同的功能3。例如：</p>
+<p><cite>:-</cite> 表示如果参数为空或未设置，就用后面的单词代替。否则就用参数的值。</p>
+<p><cite>-</cite>  表示如果参数为未设置，才使用后面的默认值</p>
+<p><cite>:=</cite> 表示如果参数为空或未设置，就把后面的单词赋值给参数。然后用参数的值。</p>
+<p><cite>:?</cite> 表示如果参数为空或未设置，就把后面的单词（或者一个默认的错误信息）输出到标准错误，并且退出 shell。</p>
+<p><cite>#</cite> 表示从参数的开头删除最短的匹配后面的模式的子串。</p>
+<p><cite>##</cite> 表示从参数的开头删除最长的匹配后面的模式的子串。</p>
+<p><cite>%</cite> 表示从参数的结尾删除最短的匹配后面的模式的子串。</p>
+<p><cite>%%</cite> 表示从参数的结尾删除最长的匹配后面的模式的子串。</p>
+<p><cite>:+</cite> 与默认值类似，也可以给出替代值；如果某个变量不可用，则使用默认值，如果变量可用，则使用替代值。
+如果变量可用，则使用替代变量。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ a=&quot;set&quot;
+$ b=&quot;&quot;
+$ echo ${a:+alternative_a} ${b:+alternative_b}
+alternative_a
+</pre></div>
+</div>
+<p>注意到这些扩展可以嵌套，在提供
+参数时尤其有用；</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ output_file=/tmp/foo
+$ wget ${output_file:+&quot;-o ${output_file}&quot;} www.stackexchange.com 可以看见这里的嵌套,提供了参数
+# expands to wget -o /tmp/foo www.stackexchange.com
+
+$ unset output_file
+$ wget ${output_file:+&quot;-o ${output_file}&quot;} www.stackexchange.com
+# expands to wget www.stackexchange.com
+</pre></div>
+</div>
+</section>
+<section id="id72">
+<h3>11. 变量为空或未设置时出错<a class="headerlink" href="#id72" title="Link to this heading">¶</a></h3>
+<p>它的语义类似于默认值替换，但是它不是替换默认值，而是替换默认值
+错误与提供的错误消息。</p>
+<p>形式是${VARNAME？ERRMSG}和${VARNAME：？ERRMSG}。</p>
+<p>表格如果变量未设置或为空，则会出错，而没有的表单只会在变量为空时出错
+未设置。 如果抛出错误，则输出ERRMSG并将退出代码设置为1</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="n">FOO</span><span class="o">=</span>
+<span class="c1"># ./script.sh: line 4: FOO: EMPTY</span>
+<span class="n">echo</span> <span class="s2">&quot;FOO is ${FOO:?EMPTY}&quot;</span>
+<span class="c1"># FOO is</span>
+<span class="n">echo</span> <span class="s2">&quot;FOO is ${FOO?UNSET}&quot;</span>
+<span class="c1"># ./script.sh: line 8: BAR: EMPTY</span>
+<span class="n">echo</span> <span class="s2">&quot;BAR is ${BAR:?EMPTY}&quot;</span>
+<span class="c1"># ./script.sh: line 10: BAR: UNSET</span>
+<span class="n">echo</span> <span class="s2">&quot;BAR is ${BAR?UNSET}&quot;</span>
+</pre></div>
+</div>
+<p>错误扩展。它的作用是检查一个变量是否为空或未设置，如果是的话，就输出一个错误信息，并退出脚本。它的语法是 VARNAME?ERRMSG或 {VARNAME:?ERRMSG}。其中，VARNAME 是要检查的变量名，ERRMSG 是要输出的错误信息。</p>
+<p><strong>如果在 VARNAME 前面加上一个冒号 (:)，那么它会检查变量是否为空或未设置；如果不加冒号，那么它只会检查变量是否未设置。</strong></p>
+<p>你的例子中，你定义了一个变量 FOO，但没有给它赋值，所以它是空的。然后你用 echo 命令输出 FOO 的值，但是在 FOO 的名字前面加了一个错误扩展。这样，如果 FOO 是空或未设置，就会输出你指定的错误信息，并退出脚本。你的例子中，你分别用了两种错误扩展的形式，一种是 FOO:?EMPTY，一种是 {FOO?UNSET}。前者会检查 FOO 是否为空或未设置，后者只会检查 FOO 是否未设置。因为 FOO 是空的，所以前者会触发错误扩展，输出 FOO:EMPTY，并退出脚本。后者不会触发错误扩展，因为 FOO 虽然是空的，但是已经设置了。所以后者会正常输出 FOO 的值，即空。</p>
+<p>你的例子中，你还用了一个未定义的变量 BAR。你也用了两种错误扩展的形式，一种是 BAR:?EMPTY，一种是 {BAR?UNSET}。因为 BAR 是未设置的，所以两种形式都会触发错误扩展，分别输出 BAR: EMPTY 和 BAR: UNSET，并退出脚本</p>
+</section>
+</section>
+<section id="copying-cp">
+<h2>15. Copying (cp)<a class="headerlink" href="#copying-cp" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>选项</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-a,-archive</p></td>
+<td><p>结合了 d、p 和 r 选项 Combines the d, p and r options</p></td>
+</tr>
+<tr class="row-odd"><td><p>-b, -backupBefore</p></td>
+<td><p>在删除之前，进行备份 removal, makes a backup</p></td>
+</tr>
+<tr class="row-even"><td><p>-d, –no-deference</p></td>
+<td><p>保存链接 Preserves links</p></td>
+</tr>
+<tr class="row-odd"><td><p>-f, –force</p></td>
+<td><p>无需提示用户即可删除现有目的地 Remove existing destinations without prompting user</p></td>
+</tr>
+<tr class="row-even"><td><p>-i, –interactive</p></td>
+<td><p>覆盖前显示提示 Show prompt before overwriting</p></td>
+</tr>
+<tr class="row-odd"><td><p>-l, –link</p></td>
+<td><p>链接文件而不是复制文件 Instead of copying, link ﬁles instead</p></td>
+</tr>
+<tr class="row-even"><td><p>-p, –preserve</p></td>
+<td><p>尽可能保留文件属性 Preserve file attributes when possible</p></td>
+</tr>
+<tr class="row-odd"><td><p>-R, –recursive</p></td>
+<td><p>递归复制目录 Recursively copy directories</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="id73">
+<h3>1. 复制单个文件<a class="headerlink" href="#id73" title="Link to this heading">¶</a></h3>
+<p>Copy foo.txt from /path/to/source/ to /path/to/target/folder/</p>
+<p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/path/to/source/foo.txt</span> <span class="pre">/path/to/target/folder/</span></code></p>
+<p>Copy foo.txt from /path/to/source/ to /path/to/target/folder/ into a ﬁle called bar.txt</p>
+<p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/path/to/source/foo.txt</span> <span class="pre">/path/to/target/folder/bar.txt</span></code></p>
+</section>
+<section id="id74">
+<h3>2. 复制文件夹<a class="headerlink" href="#id74" title="Link to this heading">¶</a></h3>
+<p>将 foo 文件夹复制到 bar 文件夹中</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">foo</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">bar</span>
+</pre></div>
+</div>
+<p>如果在发出命令前存在文件夹 bar，那么 foo 及其内容将被复制到文件夹 bar 中。
+但是，如果在发出命令前 bar 不存在，那么将创建文件夹 bar，并将 foo 的内容放入 bar 中。
+foo 的内容将被放入 bar</p>
+</section>
+</section>
+<section id="find">
+<h2>16. Find<a class="headerlink" href="#find" title="Link to this heading">¶</a></h2>
+<p>find 是一条命令，用于递归搜索目录中符合条件的文件（或目录），然后对所选文件执行某些操作。
+操作。</p>
+<section id="id75">
+<h3>1. 按名称或扩展名搜索文件<a class="headerlink" href="#id75" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>查找与 pwd 相对的、具有特定名称的文件/目录：
+$ find . -name &quot;myFile.txt&quot;
+
+要查找具有特定扩展名的文件/目录，请使用通配符：
+$ find . -name &quot;*.txt&quot;
+
+# 要查找与多个扩展名之一匹配的文件/目录，请使用or标志:
+$ find . -name &quot;*.txt&quot; -o -name &quot;*.sh&quot;
+
+查找名称以 abc 开头并以一个字母和一个数字结尾的文件/目录：
+$ find . -name &quot;abc[a-z][0-9]&quot;
+
+查找指定目录中的所有文件/目录
+$ find /opt
+
+要只搜索文件（而不是目录），请使用 -type f：
+$ find /opt -type f
+
+要只搜索目录（而不是普通文件），请使用 -type d：
+$ find /opt -type d
+</pre></div>
+</div>
+</section>
+<section id="id76">
+<h3>2. 对找到的文件执行命令<a class="headerlink" href="#id76" title="Link to this heading">¶</a></h3>
+<p>有时，我们需要针对大量文件运行命令。这可以使用 xargs 来完成。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>find . -type d -print | xargs -r chmod 770
+
+上面的命令将递归地查找相对于 的所有目录（-type d）。（这是您当前的工作
+目录），并在其上执行 chmod 770。-r 选项指定 xargs 在未找到 find 时不运行 chmod
+任何文件。
+</pre></div>
+</div>
+<p>如果您的文件名或目录中有空格符号，该命令可能会卡住；解决方法是使用以下命令
+如下</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>find . -type d -print0 | xargs -r -0 chmod 770
+
+
+在上例中，-print0 和 -0 标志指定文件名使用空字节分隔，并允许在文件名中使用特殊字符（如空格）。
+允许在文件名中使用空格等特殊字符。这是 GNU 扩展，可能无法在
+其他版本的 find 和 xargs 中可能无法使用。
+</pre></div>
+</div>
+<p>首选方法是跳过 xargs 命令，让 find 自己调用子进程：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>find . -type d -exec chmod 770 {} \;
+
+在此，{} 是一个占位符，表示您希望在此时使用文件名。
+对每个文件执行 chmod 命令。
+</pre></div>
+</div>
+<p>您也可以在调用 chmod 时传递所有文件名，方法是使用</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>find . -type d -exec chmod 770 {} +
+
+这也是上述 xargs 片段的行为。(要单独调用每个文件，可以使用 xargs -n1）。)
+</pre></div>
+</div>
+<p>第三种方法是让 bash 在 ﬁlenames 列表中循环查找输出：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">|</span> <span class="k">while</span> <span class="n">read</span> <span class="o">-</span><span class="n">r</span> <span class="n">d</span><span class="p">;</span> <span class="n">do</span> <span class="n">chmod</span> <span class="mi">770</span> <span class="s2">&quot;$d&quot;</span><span class="p">;</span> <span class="n">done</span>
+</pre></div>
+</div>
+<p>这在语法上是最笨拙的，但当你想在每个找到的文件上运行多个命令时却很方便。
+不过，面对名称奇特的文件名，这种方法并不安全。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>find . -type f | while read -r d; do mv &quot;$d&quot; &quot;${d// /_}&quot;; done
+
+会用下划线替换文件名中的所有空格。如果目录名前有空格，此示例也将失效。
+</pre></div>
+</div>
+<p>上面的问题是，虽然 read -r 希望每行只有一个条目，但文件名可以包含换行符。
+(而且，read -r 会丢失任何尾部空白）。你可以通过回转来解决这个问题：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">-</span><span class="n">exec</span> <span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;for f; do mv &quot;$f&quot; &quot;${f// /_}&quot;; done&#39;</span> <span class="n">_</span> <span class="p">{}</span> <span class="o">+</span>
+</pre></div>
+</div>
+<p>会以完全正确和可移植的形式接收文件名；而 bash -c 会以若干参数的形式接收文件名。
+参数，这些参数将在 $&#64; 中找到，并正确地加上引号等。
+当然，脚本需要正确处理这些名称；每个包含文件名的变量都需要使用双引号）。</p>
+<p>神秘的 “_” 是必要的，因为 bash -c 的第一个参数 “脚本 “是用来填充 $0。</p>
+</section>
+<section id="id77">
+<h3>3. 按访问/修改时间查找文件<a class="headerlink" href="#id77" title="Link to this heading">¶</a></h3>
+<p>在 ext 文件系统上，每个文件都有一个存储的 Access、Modification 和 （Status） Change time 与之关联 - 到
+查看此信息，您可以使用</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stat</span> <span class="n">myFile</span><span class="o">.</span><span class="n">txt</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>使用 find 中的标志，我们可以搜索在一定时间范围内修改。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>查找最近 2 小时内修改过的文件：
+$ find . -mmin -120
+
+查找最近 2 小时内未被修改的文件：
+$ find . -mmin +120
+
+上述示例仅搜索修改后的时间，若要搜索访问时间或更改后的时间，请使用 a 或
+c 进行搜索。
+$ find . -amin -120
+$ find . -cmin +120
+
+一般格式：
+-mmin n : File was modiﬁed n minutes ago
+-mmin -n : File was modiﬁed less than n minutes ago
+-mmin +n : File was modiﬁed more than n minutes ago
+
+查找最近 2 天内修改过的文件：
+find . -mtime -2
+
+查找最近 2 天内未修改的文件
+find . -mtime +2
+
+使用 -atime 和 -ctime 分别表示访问时间和状态更改时间。
+一般格式：
+-mtime n : File was modiﬁed nx24 hours ago
+-mtime -n : File was modiﬁed less than nx24 hours ago
+-mtime +n : File was modiﬁed more than nx24 hours ago
+
+查找在 2007-06-07 到 2007-06-08 期间修改的文件：
+find . -type f -newermt 2007-06-07 ! -newermt 2007-06-08
+
+查找从 1 小时前到 10 分钟前在一定时间范围内访问过的文件（使用文件作为时间戳）：
+touch -t $(date -d &#39;1 HOUR AGO&#39; +%Y%m%d%H%M.%S) start_date
+touch -t $(date -d &#39;10 MINUTE AGO&#39; +%Y%m%d%H%M.%S) end_date
+timeout 10 find &quot;$LOCAL_FOLDER&quot; -newerat &quot;start_date&quot; ! -newerat &quot;end_date&quot; -print
+
+一般格式：
+-newerXY reference：将当前文件的时间戳与参照进行比较。XY 可以是以下值之一
+at（访问时间）、mt（修改时间）、ct（更改时间）等等。
+或描述绝对时间的字符串。
+时间。
+</pre></div>
+</div>
+</section>
+<section id="id78">
+<h3>4. 根据大小查找文件<a class="headerlink" href="#id78" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>查找大于 15MB 的文件：
+find -type f -size +15M
+
+查找小于 12KB 的文件：
+find -type f -size -12k
+
+查找大小正好为 12KB 的文件：
+find -type f -size 12k
+find -type f -size 12288c
+find -type f -size 24b
+find -type f -size 24
+
+一般格式：
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="o">-</span><span class="n">size</span> <span class="n">n</span><span class="p">[</span><span class="n">cwbkMG</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>查找 n 块大小的图框，其中 +n 表示大于 n 块，-n 表示小于 n 块，n（不带任何符号）表示正好是 n 块。表示正好是 n 块</p>
+</div>
+<p>Block size:</p>
+<ol class="arabic simple">
+<li><p>c: bytes</p></li>
+<li><p>w: 2 bytes</p></li>
+<li><p>b: 512 bytes (default)</p></li>
+<li><p>k: 1 KB</p></li>
+<li><p>M: 1 MB</p></li>
+<li><p>G: 1 GB</p></li>
+</ol>
+</section>
+<section id="id79">
+<h3>5. 过滤路径<a class="headerlink" href="#id79" title="Link to this heading">¶</a></h3>
+<p>路径参数允许指定一个模式来匹配结果的路径。该模式也可以匹配
+名称本身。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>只查找路径（文件夹或名称）中包含日志的文件：
+find . -type f -path &#39;*log*&#39;
+
+只查找名为日志的文件夹内的文件（任何级别）：
+find . -type f -path &#39;*/log/*&#39;
+
+只查找名为 **log** 或 **data** 的文件夹中的文件：
+find . -type f -path &#39;*/log/*&#39; -o -path &#39;*/data/*&#39;
+
+要查找除名为bin的文件夹中包含的文件之外的所有文件:
+find . -type f -not -path &#39;*/bin/*&#39;
+
+要查找所有文件，但 bin 或 log 文件夹中的文件除外：
+find . -type f -not -path &#39;*log&#39; -not -path &#39;*/bin/*&#39;
+</pre></div>
+</div>
+</section>
+<section id="id80">
+<h3>6. 按类型查找文件<a class="headerlink" href="#id80" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>要查找文件，请使用 -type f flag
+$ find . -type f
+
+要查找目录，请使用 -type d flag
+$ find . -type d
+
+要查找块设备，请使用 -type b flag
+$ find /dev -type b
+
+要查找符号链接，请使用 -type l flag
+$ find . -type l
+</pre></div>
+</div>
+</section>
+<section id="id81">
+<h3>7. 通过特定扩展查找文件<a class="headerlink" href="#id81" title="Link to this heading">¶</a></h3>
+<p>要查找当前路径下某个扩展名的所有文件，可以使用以下查找语法。它的工作原理是
+使用 bash 内置的 glob 结构来匹配所有带有 .扩展名的文件名。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">/</span><span class="n">directory</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">search</span> <span class="o">-</span><span class="n">maxdepth</span> <span class="mi">1</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.extension&quot;</span>
+</pre></div>
+</div>
+<p>要从当前目录中查找所有 .txt 类型的文件，请执行以下操作</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">maxdepth</span> <span class="mi">1</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.txt&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sort">
+<h2>17. sort<a class="headerlink" href="#sort" title="Link to this heading">¶</a></h2>
+<p>sort命令在默认情况下，会按照字母顺序对文本进行排序</p>
+<p>sort命令用于对文本文件的行进行排序，默认情况下按照ASCII码的次序排列。具体如下：</p>
+<p>基本语法：sort [选项]… [文件]…</p>
+<p>默认行为：sort命令会读取指定文件的内容，按行进行排序，并将结果输出到标准输出（屏幕）。如果没有指定文件，则接受标准输入。</p>
+<p>排序方式：默认情况下，sort命令按照字符串的ASCII码值进行升序排序。这意味着它会从每行的首字符开始比较，依次向后，直到决定出顺序。</p>
+<p>常用参数：</p>
+<blockquote>
+<div><p>-n：按照数值升序进行排序。</p>
+<p>-r：进行降序排序。</p>
+<p>-u：去除输出中的重复行。</p>
+<p>-k：指定排序的列，例如-k 2表示按照第二列排序。</p>
+<p>-t：指定列的分隔符，例如-t ‘,’表示列之间由逗号分隔。</p>
+</div></blockquote>
+<p>举个例子:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sort</span> <span class="o">-</span><span class="n">u</span> <span class="o">-</span><span class="n">k</span> <span class="mi">2</span> <span class="o">-</span><span class="n">t</span> <span class="p">,</span> <span class="n">example</span><span class="o">.</span><span class="n">txt</span>
+
+
+<span class="n">输出</span><span class="p">:</span>
+
+<span class="n">Alice</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="n">female</span>
+<span class="n">Bob</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="n">male</span>
+<span class="n">Charlie</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="n">male</span>
+<span class="n">Alice</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="n">female</span>
+<span class="n">David</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="n">male</span>
+</pre></div>
+</div>
+<p>将对example.txt内容进行去重排序，”-k 2”决定了以行第二个字段为标准来对整个文件进行排序,”-t ,”是设置以什么来作为分段的分隔符</p>
+</section>
+<section id="source">
+<h2>18. source/.<a class="headerlink" href="#source" title="Link to this heading">¶</a></h2>
+<p>source命令的详细使用说明：</p>
+<ol class="arabic simple">
+<li><p>刷新当前的shell环境</p></li>
+<li><p>从脚本中导入环境中的Shell函数</p></li>
+<li><p>读取并执行命令和”.”命令一样，./bash.sh</p></li>
+</ol>
+</section>
+<section id="here-documents-here-strings">
+<h2>19. Here documents”和”here strings”<a class="headerlink" href="#here-documents-here-strings" title="Link to this heading">¶</a></h2>
+<p>Here documents”和”here strings”是Shell脚本中用于输入多行文本到命令的机制</p>
+<section id="here-documents-eof">
+<h3>1. Here Documents (&lt;&lt;EOF):<a class="headerlink" href="#here-documents-eof" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Here documents使用&lt;&lt;操作符后面跟随一个分隔符（如EOF），然后是你想要提供的文本，最后是同样的分隔符结束。</p></li>
+<li><p>文本可以跨越多行，直到遇到结束分隔符为止。</p></li>
+<li><p>可以在here document中使用变量，并且可以选择是否让Shell对其进行解析。</p></li>
+<li><dl class="simple">
+<dt>有两种类型的here documents:</dt><dd><ul>
+<li><p>无限制的here documents：在&lt;&lt;之后直接放置分隔符，如&lt;&lt;EOF。这种类型的here document会进行变量替换和命令替换。</p></li>
+<li><p>有限制的here documents：在&lt;&lt;之后放置一个连字符和分隔符，如&lt;&lt;-EOF。这种类型的here document不会进行变量替换和命令替换。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="here-strings-word">
+<h3>2. Here Strings (&lt;&lt;&lt;word):<a class="headerlink" href="#here-strings-word" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Here strings类似于here documents，但它们使用&lt;&lt;&lt;操作符，并且只接受一个字符串作为输入，而不是多行文本。</p></li>
+<li><p>Here strings总是在双引号中进行解释，这意味着变量会被替换，但是命令不会。</p></li>
+<li><p>Here strings适用于只需要单行输入的情况。</p></li>
+</ul>
+</section>
+</section>
+<section id="quoting">
+<h2>19. Quoting,引号<a class="headerlink" href="#quoting" title="Link to this heading">¶</a></h2>
+<p>双引号和单引号的区别：</p>
+<p>单引号:Cannot accept variables,Only show original special symbols,No backslash can escaping except ‘',</p>
+<p>双引号:Can receive the variables,can use $,,and other special symbols,can directly use escaping backslash</p>
+</section>
+<section id="conditional-expressions">
+<h2>20. Conditional Expressions<a class="headerlink" href="#conditional-expressions" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if [[ -e $filename ]]; then
+    echo &quot;$filename exists&quot;
+fi
+</pre></div>
+</div>
+<p>-e Determine whether the file exists</p>
+<p>-f Determine whether the file is a regular file</p>
+<p>-d Determine whether the file is a directory</p>
+<p>-p Determine whether the file is a pipe file</p>
+<p>-S Determine whether the file is a Socket file</p>
+<p>-b Determine whether the file is block device</p>
+<p>-c Determine whether the file is a character device</p>
+<p>-L Determine whether the file is s symbolic link</p>
+<p>“||” 表示逻辑或（OR），当左侧的命令执行失败（返回非零值）时，才会执行右侧的命令。如果左侧的命令执行成功（返回零值），则整个表达式的结果为真。</p>
+<p>“&amp;&amp;” 表示逻辑与（AND），只有当左侧的命令执行成功（返回零值）时，才会执行右侧的命令。如果左侧的命令执行失败（返回非零值），则整个表达式的结果为假。</p>
+<p>! not</p>
+<section id="for-string">
+<h3>For String<a class="headerlink" href="#for-string" title="Link to this heading">¶</a></h3>
+<p>== Determine whether both are identical</p>
+<p>!= Determine whether both are not identical</p>
+<p>-n Determine whether the String is non-empty</p>
+<p>-z Determine whether the String is empty/unset</p>
+</section>
+<section id="fot-file">
+<h3>Fot File<a class="headerlink" href="#fot-file" title="Link to this heading">¶</a></h3>
+<p>-ef Determine whether both file are the same file</p>
+<p>if u want compare a file byte by byte ,use “cmp” command</p>
+<p>if u want a human-readable difference ,use “diff” utility command</p>
+<p>-r Determine whether the file is readable file</p>
+<p>-w Determine whether the file is writable file</p>
+<p>-x Determine whether the file is executable file</p>
+</section>
+<section id="for-numberical">
+<h3>For Numberical<a class="headerlink" href="#for-numberical" title="Link to this heading">¶</a></h3>
+<p>-eq Determine whether both number equal</p>
+<p>-le Determine whether the number less than or equal to the other</p>
+<p>-eq equal</p>
+<p>-ne not equal</p>
+<p>-le less or equal</p>
+<p>-lt less than</p>
+<p>-ge greater or equal</p>
+<p>-gt greater than</p>
+<p>if u want use &gt;,&lt;,==,&lt;=,&gt;=,The two sides must be numbers written in decimal (or in octal with a leading zero), Alternatively,use ((…)),The arithmetic expression syntax</p>
+</section>
+</section>
+<section id="scripting-with-parameters">
+<h2>Scripting with Parameters<a class="headerlink" href="#scripting-with-parameters" title="Link to this heading">¶</a></h2>
+<p>In a Bash script, $# is a special variable that holds the number of positional parameters (arguments) passed to the script. It represents the count of arguments provided to the script when it was executed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+# Load the user defined parameters
+while [[ $# &gt; 0 ]]
+do
+    case &quot;$1&quot; in
+        -a|--valueA)
+        valA=&quot;$2&quot;
+        shift
+        ;;
+
+        -b|--valueB)
+        valB=&quot;$2&quot;
+        shift
+        ;;
+
+        --help|*)
+        echo &quot;Usage:&quot;
+        echo &quot;
+        --valueA \&quot;value\&quot;&quot;
+        echo &quot;
+        --valueB \&quot;value\&quot;&quot;
+        echo &quot;
+        --help&quot;
+        exit 1
+        ;;
+    esac
+    shift
+done
+
+echo &quot;A: $valA&quot;
+echo &quot;B: $valB&quot;
+</pre></div>
+</div>
+<p>“shift” command to move all parameters to the left. This effectively removes the first parameter from the list, so on the next iteration of the loop, $1 will be the second parameter, $2 will be the third parameter, and so on. The loop ends when there are no more positional parameters left.</p>
+<p>$#: Represents the count of arguments provided to the script when it was executed. It is an integer value.</p>
+<p>$&#64;: Represents all of the positional parameters passed to the script as an array-like structure. It allows you to access each argument within a loop or other constructs.</p>
+<section id="split-string-into-an-array-in-bash">
+<h3>Split string into an array in Bash<a class="headerlink" href="#split-string-into-an-array-in-bash" title="Link to this heading">¶</a></h3>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, fajknli
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Bash</a><ul>
+<li><a class="reference internal" href="#id1">1.bash内建命令</a></li>
+<li><a class="reference internal" href="#id2">2.Bash 学习</a><ul>
+<li><a class="reference internal" href="#hello-world-using-variables">2.1.2: Hello World Using Variables</a></li>
+<li><a class="reference internal" href="#hello-world-in-debug-mode">2.1.2: Hello World in “Debug” mode</a></li>
+<li><a class="reference internal" href="#id3">2.1.3: 进入上一个目录，无论是从哪来的</a></li>
+<li><a class="reference internal" href="#id4">2.1.4: 进入家目录</a></li>
+<li><a class="reference internal" href="#id5">2.1.5: 切换到脚本的目录</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ls">3.列出文件ls</a><ul>
+<li><a class="reference internal" href="#ls-l">3.1 ls -l 长格式列表</a></li>
+<li><a class="reference internal" href="#ls-printf">3.2 不使用ls,而是使用printf</a></li>
+<li><a class="reference internal" href="#tree">3.3 tree命令可以以树形格式可视化显示目录结构及文件</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cat">4.使用Cat</a><ul>
+<li><a class="reference internal" href="#id6">4.1 连接文件（多个文件输出给一个文件）</a></li>
+<li><a class="reference internal" href="#id7">4.2 简单写入文件</a></li>
+<li><a class="reference internal" href="#id8">4.3 显示无法打印的字符，无法打印的字符包括控制字符和非打印字符</a></li>
+<li><a class="reference internal" href="#id9">4.4 从标准输入中读取文件</a></li>
+<li><a class="reference internal" href="#id10">4.5 通过cat添加行号</a></li>
+<li><a class="reference internal" href="#gzip">4.6 连接gzip压缩过的文件</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#grep">5. Grep</a><ul>
+<li><a class="reference internal" href="#id11">基本用法：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#aliasing">6. Aliasing</a><ul>
+<li><a class="reference internal" href="#id12">查看已存在的别名：</a></li>
+<li><a class="reference internal" href="#id13">创建别名：</a></li>
+<li><a class="reference internal" href="#id14">删除别名：</a></li>
+<li><a class="reference internal" href="#id15">临时替换别名：</a></li>
+<li><a class="reference internal" href="#id16">永久保存别名：</a></li>
+<li><a class="reference internal" href="#id17">示例：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jobs-and-processes">7. 工作和流程Jobs and Processes</a><ul>
+<li><a class="reference internal" href="#creating-jobs">1 Creating jobs 创建工作</a></li>
+<li><a class="reference internal" href="#id18">2. 检查特殊端口上的程序</a></li>
+<li><a class="reference internal" href="#id19">3. 脱离后台任务</a></li>
+<li><a class="reference internal" href="#id20">4. 显示最近任务</a></li>
+<li><a class="reference internal" href="#id21">5. 找到运行程序的信息</a></li>
+<li><a class="reference internal" href="#id22">6. 显示所有程序</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id23">8. 重定向</a><ul>
+<li><a class="reference internal" href="#id24">1. 重定向的标准输出</a></li>
+<li><a class="reference internal" href="#id25">2. 截断(&gt;)和追加(&gt;&gt;)</a></li>
+<li><a class="reference internal" href="#id26">3. 标准输出和标准错误的重定向</a></li>
+<li><a class="reference internal" href="#id27">4. 使用命名管道</a></li>
+<li><a class="reference internal" href="#id28">5. 重定向到网络地址</a></li>
+<li><a class="reference internal" href="#id29">6. 将错误信息打印到错误输出</a></li>
+<li><a class="reference internal" href="#id30">7. 将多个命令重定向到同一文件</a></li>
+<li><a class="reference internal" href="#id31">8. 标准输入重定向</a></li>
+<li><a class="reference internal" href="#id32">9. 标准错误重定向</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id33">9. 控制结构</a><ul>
+<li><a class="reference internal" href="#id34">1. 命令列表的条件执行</a></li>
+<li><a class="reference internal" href="#if">2. If语句</a></li>
+<li><a class="reference internal" href="#id35">3. 循环遍历数组</a></li>
+<li><a class="reference internal" href="#for">4. 使用For循环对数字进行列表迭代</a></li>
+<li><a class="reference internal" href="#id36">6. 循环打破</a></li>
+<li><a class="reference internal" href="#cfor">8. C语法风格的for循环</a></li>
+<li><a class="reference internal" href="#until">9. Until 循环</a></li>
+<li><a class="reference internal" href="#caseswitch">10. 带case的Switch语句</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#truefalse">10. True、false和:命令</a><ul>
+<li><a class="reference internal" href="#id37">1. 无限循环</a></li>
+<li><a class="reference internal" href="#id38">2. 函数返回</a></li>
+<li><a class="reference internal" href="#id39">3. 一直或者永不执行的代码</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id40">11. 数组</a><ul>
+<li><a class="reference internal" href="#id41">1. 数组赋值</a></li>
+<li><a class="reference internal" href="#id42">2. 访问数组元素</a></li>
+<li><a class="reference internal" href="#id43">3. 数组修改</a></li>
+<li><a class="reference internal" href="#id44">4. 数组的迭代</a></li>
+<li><a class="reference internal" href="#id45">5. 数组长度</a></li>
+<li><a class="reference internal" href="#id46">6. 关联数组</a></li>
+<li><a class="reference internal" href="#id47">7. 循环遍历数组</a></li>
+<li><a class="reference internal" href="#array">8. 销毁、删除或取消设置Array</a></li>
+<li><a class="reference internal" href="#id48">9. 来自字符串的数组</a></li>
+<li><a class="reference internal" href="#id49">10. 初始化索引列表</a></li>
+<li><a class="reference internal" href="#id50">11. 将整个文件读入数组</a></li>
+<li><a class="reference internal" href="#id51">12. 数组插入函数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id52">12. 关联数组</a><ul>
+<li><a class="reference internal" href="#id53">1. 检查关联数组</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id54">13. 函数</a><ul>
+<li><a class="reference internal" href="#id55">1. 带参数的函数</a></li>
+<li><a class="reference internal" href="#id56">2. 简单函数</a></li>
+<li><a class="reference internal" href="#id57">3. 处理标志和可选参数</a></li>
+<li><a class="reference internal" href="#id58">4. 打印函数定义</a></li>
+<li><a class="reference internal" href="#id59">5. 接受命名参数的函数</a></li>
+<li><a class="reference internal" href="#id60">6. 函数的返回值</a></li>
+<li><a class="reference internal" href="#id61">7. 函数的退出码就是它的 最后一个命令</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id62">14. Bash参数扩展</a><ul>
+<li><a class="reference internal" href="#id63">1. 修改字母的大小写</a></li>
+<li><a class="reference internal" href="#id64">2. 参数长度</a></li>
+<li><a class="reference internal" href="#id65">3. 替换字符串中的模式</a></li>
+<li><a class="reference internal" href="#id66">4. 子字符串和子数组</a></li>
+<li><a class="reference internal" href="#id67">5. 从字符串的开头删除一个模式</a></li>
+<li><a class="reference internal" href="#id68">6. 参数间接</a></li>
+<li><a class="reference internal" href="#id69">7. 参数展开和文件名</a></li>
+<li><a class="reference internal" href="#id70">9. 从字符串末尾删除一个模式</a></li>
+<li><a class="reference internal" href="#id71">10. 参数扩展</a></li>
+<li><a class="reference internal" href="#id72">11. 变量为空或未设置时出错</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#copying-cp">15. Copying (cp)</a><ul>
+<li><a class="reference internal" href="#id73">1. 复制单个文件</a></li>
+<li><a class="reference internal" href="#id74">2. 复制文件夹</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#find">16. Find</a><ul>
+<li><a class="reference internal" href="#id75">1. 按名称或扩展名搜索文件</a></li>
+<li><a class="reference internal" href="#id76">2. 对找到的文件执行命令</a></li>
+<li><a class="reference internal" href="#id77">3. 按访问/修改时间查找文件</a></li>
+<li><a class="reference internal" href="#id78">4. 根据大小查找文件</a></li>
+<li><a class="reference internal" href="#id79">5. 过滤路径</a></li>
+<li><a class="reference internal" href="#id80">6. 按类型查找文件</a></li>
+<li><a class="reference internal" href="#id81">7. 通过特定扩展查找文件</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sort">17. sort</a></li>
+<li><a class="reference internal" href="#source">18. source/.</a></li>
+<li><a class="reference internal" href="#here-documents-here-strings">19. Here documents”和”here strings”</a><ul>
+<li><a class="reference internal" href="#here-documents-eof">1. Here Documents (&lt;&lt;EOF):</a></li>
+<li><a class="reference internal" href="#here-strings-word">2. Here Strings (&lt;&lt;&lt;word):</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quoting">19. Quoting,引号</a></li>
+<li><a class="reference internal" href="#conditional-expressions">20. Conditional Expressions</a><ul>
+<li><a class="reference internal" href="#for-string">For String</a></li>
+<li><a class="reference internal" href="#fot-file">Fot File</a></li>
+<li><a class="reference internal" href="#for-numberical">For Numberical</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripting-with-parameters">Scripting with Parameters</a><ul>
+<li><a class="reference internal" href="#split-string-into-an-array-in-bash">Split string into an array in Bash</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=46f6607b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>
