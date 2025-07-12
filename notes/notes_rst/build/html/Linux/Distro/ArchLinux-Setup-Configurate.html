@@ -1,0 +1,1025 @@
+<!doctype html>
+<html class="no-js" lang="en-US" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Debian安装和配置" href="Debian-Setup-Configurate.html" /><link rel="prev" title="Linux Distros" href="index.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>Arch Linux 安装和配置 - fajknli Note IDK documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">fajknli Note IDK documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">fajknli Note IDK documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Commands:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Commands/Normal/index.html">Commands</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Commands</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Docker.html">Docker For beginner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Git.html">Git 日常使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Linux-Terminal-Shortcuts.html">Terminal_Shortcut</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Linux_Commands_Overview.html">Commands List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Linux_System_Commands.html">Linux系统命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Linux_Tricks.html">Linux-Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Midnight_Commander.html">Mindnight Commander</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Shell_Simple_Usage.html">Shell_Simple_Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Softwares.html">Softwares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Use_Of_Software.html">Use_of_Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Vim.html">Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Vim-SimpleUse.html">Vim SimpleUse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/awk_simple-usage.html">awk 数据处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/find.html">find</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/grep.html">grep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/lf.html">lf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/niri.html">Niri manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/qutebrowser.html">qutebrowser Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/reST.html">学习 reST Simple-CheatSheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/sed.html">sed</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Linux:</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Linux Distros</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Linux Distros</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Arch Linux 安装和配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Debian-Setup-Configurate.html">Debian安装和配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VoidLinux-Setup-Configurate.html">Void Linux 安装和配置</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programing:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Programing/Library/index.html">Libraries</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Libraries</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Library/Python_Library.html">Python_Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Library/Python_std_Library.html">Python Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Programing/Language/index.html">Languages</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Languages</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/AWK.html">AWK 程序设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Bash.html">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/C.html">C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Haskell.html">Haskell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/JavaScript.html">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Perl.html">Perl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Language/Rust.html">Rust</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Programing/Frontend/index.html">Frontend</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Frontend</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Frontend/CSS.html">CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programing/Frontend/HTML.html">HTML</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Misc/index.html">Misc Things</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Misc Things</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Misc/Cook.html">Cook</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../_sources/Linux/Distro/ArchLinux-Setup-Configurate.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="arch-linux">
+<h1>Arch Linux 安装和配置<a class="headerlink" href="#arch-linux" title="Link to this heading">¶</a></h1>
+<section id="archlinux">
+<h2>1. 安装Archlinux<a class="headerlink" href="#archlinux" title="Link to this heading">¶</a></h2>
+<section id="id1">
+<h3>1.1 字体设置和网络设置<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<p>进入archlinux后，默认是root账户，可以先设置个字体</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">setfont</span> <span class="n">ter</span><span class="o">-</span><span class="n">v32n</span>
+
+<span class="n">setfont</span> <span class="o">-</span><span class="n">n</span>
+</pre></div>
+</div>
+<p>再把网络连接上，这里使用无线网络，使用iwd工具</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ iwctl
+
+[iwd]# station wlan0 scan
+
+[iwd]# station wlan0 get-networks
+
+[iwd]# station wlan0 connect Xiaomi_wyks
+</pre></div>
+</div>
+<p>连接那个网络后输入密码然后差不多就可以连接上网络了，如果没有就自己网上搜</p>
+</section>
+<section id="id2">
+<h3>1.2 脚本自动化安装<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p>先禁用 reflector 服务,一个当你安装东西时给你连接上国外源的工具，下载速度60kb/s,国内的都1200kb/s</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">stop</span> <span class="n">reflector</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p>再配置国内源</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pacman</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">mirrorlist</span>
+</pre></div>
+</div>
+<p>删除文件内容，再在顶部添加</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+</pre></div>
+</div>
+<p>更新软件包缓存：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pacman</span> <span class="o">-</span><span class="n">Syyu</span>
+</pre></div>
+</div>
+<p>两次 y 能避免从损坏的镜像切换到正常的镜像时出现的问题。</p>
+<p>如果您从一个较新的镜像切换到较旧的镜像，以下命令可以降级部分包，以避免系统的部分更新。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pacman</span> <span class="o">-</span><span class="n">Syyuu</span>
+</pre></div>
+</div>
+<p>然后进行配置安装，然后就重新启动就可以了</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">archinstall</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>1.3 手动安装(适合双系统)<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>先安装windows,到后面要联网，直接shift+F10打开CMD输入’OOBEBYPASSNRO’,进去之后先搞驱动，也就是系统
+更新</p>
+<p>windows主要用来玩游戏，500G够了，其他的磁盘或者分区就不管了</p>
+<section id="id4">
+<h4>1.3.1 分区<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fdisk /dev/nvme0n1
+分/,/home,swap三个区，其实有第四个，就是windows的EFI(ESP)区,到时候直接挂载过来就好
+
+/,和/home随便分，swap就分个和内存一样的就欧克，小一点也可以,/home分区只是为了以后重装系统的
+时候可以不清除这个分区，可以继续挂载使用
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h4>1.3.2 格式化分区<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>不用格式化 EFI 分区,因为它是windows的，这个可以公用
+
+格式化 Swap 分区
+mkswap /dev/nvme0n1pX
+
+格式化/和/home分区
+mkfs.ext4 /dev/nvme0n1pX
+因为这个分区想使用ext4的
+</pre></div>
+</div>
+<p>除了这些，还要使用fdisk,给它们都打上标识，比如/和/home 使用linux filesystem,swap 分区标上
+linux swap ,efi分区还是不管</p>
+<p>然后就准备挂载了,先挂载到根分区</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mount /dev/nvme0n1pX /mnt
+这里的/mnt就是新系统的/根目录，我觉得可以自己创一个空目录然后这样搞，反正最后也是要umount
+不过算了，/mnt就是空的，然后再在里面创一个/home目录,也就是/mnt/home,然后还有个/mnt/boot给那个
+windows的efi分区，swap 分区就一个命令就欧克了，不用这样挂载。
+
+然后把对应分区都挂载进去
+mount /dev/nvme0n1pX /mnt/home
+mount /dev/nvme0n1pX /mnt/boot
+swapon /dev/nvme0n1pX 这个分区得是swap分区
+
+df -h 查看挂载如何，free -h 查看swap交换空间
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h4>1.3.3 为新系统安装一些工具<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pacstrap -K /mnt base base-devel linux linux-firmware (intel-ucode 或者amd-ucode)
+
+默认情况下，pacstrap 在安装内核相关包（如 linux、linux-lts）时会自动触发 mkinitcpio 生成 initramfs
+在 pacstrap -K 命令中，-K 选项用于 在安装时跳过对已安装文件的内核 hooks 处理（即不运行 mkinitcpio）
+
+pacstrap -K /mnt iwd vim git grub
+</pre></div>
+</div>
+</section>
+<section id="fstab">
+<h4>1.3.4 生成 fstab 文件<a class="headerlink" href="#fstab" title="Link to this heading">¶</a></h4>
+<p>fstab 用来定义磁盘分区。它是 Linux 系统中重要的文件之一。使用 genfstab 自动根据当前挂载情况生成并写入 fstab 文件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genfstab</span> <span class="o">-</span><span class="n">U</span> <span class="o">/</span><span class="n">mnt</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
+</pre></div>
+</div>
+<p>复查一下 /mnt/etc/fstab 确保没有错误：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h4>1.3.5 进入系统<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arch</span><span class="o">-</span><span class="n">chroot</span> <span class="o">/</span><span class="n">mnt</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h4>1.3.6 设置时间和时区<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">sf</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">zoneinfo</span><span class="o">/</span><span class="n">Asia</span><span class="o">/</span><span class="n">Shanghai</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span>
+</pre></div>
+</div>
+<p>然后运行 hwclock(8) 以生成 /etc/adjtime：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hwclock</span> <span class="o">--</span><span class="n">systohc</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h4>1.3.7 区域和本地化设置<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<p>需要设置这两个文件：locale.gen 与 locale.conf</p>
+<p>编辑 /etc/locale.gen，然后取消掉 en_US.UTF-8 UTF-8 和其他需要的 UTF-8 区域设置前的注释（#）</p>
+<p>接着执行 locale-gen 以生成 locale 信息：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">locale</span><span class="o">-</span><span class="n">gen</span>
+</pre></div>
+</div>
+<p>然后创建 locale.conf(5) 文件，并编辑设定 LANG 变量</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="o">.</span><span class="n">conf</span>
+
+<span class="n">LANG</span><span class="o">=</span><span class="n">en_US</span><span class="o">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h4>1.3.8 网络配置<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<p>设置主机名</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hostname</span>
+</pre></div>
+</div>
+</section>
+<section id="initramfs">
+<h4>1.3.9 创建新的 initramfs<a class="headerlink" href="#initramfs" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkinitcpio</span> <span class="o">-</span><span class="n">P</span>  <span class="c1"># 为所有已安装的内核生成 initramfs</span>
+</pre></div>
+</div>
+</section>
+<section id="root">
+<h4>1.3.10 设置 root/用户 密码<a class="headerlink" href="#root" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">passwd</span> <span class="c1"># 设置root密码</span>
+</pre></div>
+</div>
+</section>
+<section id="grub">
+<h4>1.3.11 安装grub引导程序<a class="headerlink" href="#grub" title="Link to this heading">¶</a></h4>
+<p>这个可以识别到linux和windows,如果没有就去设置/etc/default/grub，修改：GRUB_DISABLE_OS_PROBER=false
+应该需要下载os_prober 包</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 重新安装 GRUB（UEFI 模式）</span>
+<span class="n">grub</span><span class="o">-</span><span class="n">install</span> <span class="o">--</span><span class="n">target</span><span class="o">=</span><span class="n">x86_64</span><span class="o">-</span><span class="n">efi</span> <span class="o">--</span><span class="n">efi</span><span class="o">-</span><span class="n">directory</span><span class="o">=/</span><span class="n">boot</span> <span class="o">--</span><span class="n">bootloader</span><span class="o">-</span><span class="nb">id</span><span class="o">=</span><span class="n">ArchLinux</span>
+<span class="n">grub</span><span class="o">-</span><span class="n">mkconfig</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">grub</span><span class="o">/</span><span class="n">grub</span><span class="o">.</span><span class="n">cfg</span>  <span class="c1"># 生成 GRUB 配置</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>✅ –efi-directory=/boot 必须指向 ESP（通常是 /boot）</p></li>
+<li><p>✅ –bootloader-id=GRUB 会创建 /EFI/GRUB/grubx64.efi</p></li>
+<li><p>✅ grub-mkconfig 会自动检测 Windows 并添加启动项</p></li>
+</ul>
+<p>查看当前 UEFI 启动项</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">efibootmgr</span>
+</pre></div>
+</div>
+<p>输出示例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BootCurrent</span><span class="p">:</span> <span class="mi">0000</span>
+<span class="n">BootOrder</span><span class="p">:</span> <span class="mi">0000</span><span class="p">,</span><span class="mi">0001</span><span class="p">,</span><span class="mi">0002</span><span class="p">,</span><span class="mi">0003</span>
+<span class="n">Boot0000</span><span class="o">*</span> <span class="n">Windows</span> <span class="n">Boot</span> <span class="n">Manager</span>
+<span class="n">Boot0001</span><span class="o">*</span> <span class="n">Arch</span> <span class="n">Linux</span>
+<span class="n">Boot0002</span><span class="o">*</span> <span class="n">Ubuntu</span>
+<span class="n">Boot0003</span><span class="o">*</span> <span class="n">Fedora</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>BootOrder 决定启动顺序。</p></li>
+<li><p>Boot0001, Boot0002 等是 UEFI 引导条目。</p></li>
+</ul>
+<p>删除无效的 Linux 启动项</p>
+<p>假设你要删除 Boot0001（Arch Linux）和 Boot0002（Ubuntu）：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">efibootmgr</span> <span class="o">-</span><span class="n">b</span> <span class="mi">0001</span> <span class="o">-</span><span class="n">B</span>  <span class="c1"># 删除 Boot0001</span>
+<span class="n">sudo</span> <span class="n">efibootmgr</span> <span class="o">-</span><span class="n">b</span> <span class="mi">0002</span> <span class="o">-</span><span class="n">B</span>  <span class="c1"># 删除 Boot0002</span>
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h4>1.3.12 内核设置(救援模式)<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<p>通过archlinux.iso 挂载进入之前系统</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">nvme0n1pX</span> <span class="o">/</span><span class="n">mnt</span>       <span class="c1"># 挂载根分区（替换 X 为你的分区号）</span>
+<span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">nvme0n1p1</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">boot</span>  <span class="c1"># 挂载 ESP（如果是 UEFI）</span>
+<span class="n">arch</span><span class="o">-</span><span class="n">chroot</span> <span class="o">/</span><span class="n">mnt</span>                <span class="c1"># 切换到已安装的系统</span>
+</pre></div>
+</div>
+</section>
+<section id="linux-zen">
+<h4>安装 linux-zen 内核<a class="headerlink" href="#linux-zen" title="Link to this heading">¶</a></h4>
+<p>linux-zen 是 Arch Linux 提供的优化内核，适用于桌面和低延迟场景。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">linux</span><span class="o">-</span><span class="n">zen</span> <span class="n">linux</span><span class="o">-</span><span class="n">zen</span><span class="o">-</span><span class="n">headers</span>  <span class="c1"># 安装 Zen 内核</span>
+</pre></div>
+</div>
+<p>重新生成 initramfs</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkinitcpio</span> <span class="o">-</span><span class="n">P</span>  <span class="c1"># 自动为所有已安装的内核生成 initramfs</span>
+</pre></div>
+</div>
+<p>安装os_prober,编辑 /etc/default/grub，修改：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GRUB_DISABLE_OS_PROBER</span><span class="o">=</span><span class="n">false</span>
+</pre></div>
+</div>
+<p>更新 GRUB 配置</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grub</span><span class="o">-</span><span class="n">mkconfig</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">grub</span><span class="o">/</span><span class="n">grub</span><span class="o">.</span><span class="n">cfg</span>
+</pre></div>
+</div>
+</section>
+<section id="linux">
+<h4>更换linux内核<a class="headerlink" href="#linux" title="Link to this heading">¶</a></h4>
+<p>下载你想安装的内核
+linux  linux-zen   linux-lts</p>
+<p>安装后需要更新引导加载程序：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">grub</span><span class="o">-</span><span class="n">mkconfig</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">grub</span><span class="o">/</span><span class="n">grub</span><span class="o">.</span><span class="n">cfg</span>
+</pre></div>
+</div>
+<p>systemd-boot (使用 systemd 的系统)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">bootctl</span> <span class="n">update</span>
+
+<span class="n">sudo</span> <span class="n">reboot</span>
+
+<span class="n">uname</span> <span class="o">-</span><span class="n">r</span>  <span class="c1">#重启后检查当前运行的内核：</span>
+</pre></div>
+</div>
+<p>卸载旧内核（可选）</p>
+<p>可能需要删除efi/grub的内核相关文件，记得再mkinitcpio -P来检查initramfs</p>
+<p>再记得grub-mkconfig -o /boot/grub/grub.cfg来重新设置grub启动</p>
+<p>uname -r 查看内核版本</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pacman</span> <span class="o">-</span><span class="n">R</span> <span class="n">linux</span> <span class="n">linux</span><span class="o">-</span><span class="n">headers</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h4>设置字体大小<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">grub</span><span class="o">-</span><span class="n">mkfont</span> <span class="o">-</span><span class="n">s</span> <span class="mi">32</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">grub</span><span class="o">/</span><span class="n">fonts</span><span class="o">/</span><span class="n">unicode</span><span class="o">.</span><span class="n">pf2</span>
+</pre></div>
+</div>
+</section>
+<section id="nvidia">
+<h4>nvidia驱动问题<a class="headerlink" href="#nvidia" title="Link to this heading">¶</a></h4>
+<p>不安装nvidia-dkms,安装这个会无法打开pot,可以安装dkms</p>
+</section>
+<section id="id13">
+<h4>查看本地图像库<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pacman</span> <span class="o">-</span><span class="n">Q</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">E</span> <span class="s2">&quot;mesa|vulkan|nvidia|intel|amd|opengl|wayland|xorg&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h2>2. 添加Archlinux源<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<section id="archlinuxcn">
+<h3>2.1 添加Archlinuxcn源<a class="headerlink" href="#archlinuxcn" title="Link to this heading">¶</a></h3>
+<p>因为通过archinstall 脚本安装，自带国内源，我们可以添加 ‘Archlinuxcn源 &lt;<a class="reference external" href="http://repo.archlinuxcn.org">http://repo.archlinuxcn.org</a>&gt;’_</p>
+<p>在 ‘/etc/pacman.conf’ 文件末尾添加两行：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[archlinuxcn]
+Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+</pre></div>
+</div>
+<section id="archlinuxcn-keyring-farseerfc-key">
+<h4>2.1.1 新系统中安装 archlinuxcn-keyring 包前需要手动信任 farseerfc 的 key<a class="headerlink" href="#archlinuxcn-keyring-farseerfc-key" title="Link to this heading">¶</a></h4>
+<p>archlinuxcn 社区源的 keyring 包 archlinuxcn-keyring 由 farseerfc 的 key 签署验证，而 Arch Linux 官方 keyring 中包含了 farseerfc 的 key 。自12月初 archlinux-keyring 中删除了一个退任的 master key 导致 farseerfc 的 key 的信任数不足，由 GnuPG 的 web of trust 推算为 marginal trust，从而不再能自动信任 archlinuxcn-keyring 包的签名。</p>
+<p>如果你在新系统中尝试安装 archlinuxcn-keyring 包时遇到如下报错：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">error</span><span class="p">:</span> <span class="n">archlinuxcn</span><span class="o">-</span><span class="n">keyring</span><span class="p">:</span> <span class="n">Signature</span> <span class="kn">from</span><span class="w"> </span><span class="s2">&quot;Jiachen YANG (Arch Linux Packager Signing Key) &quot;</span> <span class="ow">is</span> <span class="n">marginal</span> <span class="n">trust</span>
+</pre></div>
+</div>
+<p>请使用以下命令在本地信任 farseerfc 的 key 。此 key 已随 archlinux-keyring 安装在系统中，只是缺乏信任：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pacman</span><span class="o">-</span><span class="n">key</span> <span class="o">--</span><span class="n">lsign</span><span class="o">-</span><span class="n">key</span> <span class="s2">&quot;farseerfc@archlinux.org&quot;</span>
+</pre></div>
+</div>
+<p>之后继续安装 archlinuxcn-keyring ：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">archlinuxcn</span><span class="o">-</span><span class="n">keyring</span>
+</pre></div>
+</div>
+<p>安装之后进行更新:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">Syu</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="blackarch">
+<h3>2.2 添加Blackarch源<a class="headerlink" href="#blackarch" title="Link to this heading">¶</a></h3>
+<p>获得blackarch-mirror-list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">blackarch</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">blackarch</span><span class="o">-</span><span class="n">mirrorlist</span>
+</pre></div>
+</div>
+<p>在 ‘/etc/pacman.conf’ 文件末尾添加：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[blackarch]
+Server = https://mirror.sjtu.edu.cn/blackarch/$repo/os/$arch
+Server = https://mirrors.nju.edu.cn/blackarch/$repo/os/$arch
+Server = http://mirrors.nju.edu.cn/blackarch/$repo/os/$arch
+Server = https://mirrors.tuna.tsinghua.edu.cn/blackarch/$repo/os/$arch
+Server = https://mirrors.ustc.edu.cn/blackarch/$repo/os/$arch
+Server = http://mirrors.aliyun.com/blackarch/$repo/os/$arch
+Server = https://mirrors.aliyun.com/blackarch/$repo/os/$arch
+</pre></div>
+</div>
+<p>刷新关于blackarch的数据库</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">Syyu</span>
+</pre></div>
+</div>
+<p>信任GPG key</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pacman</span><span class="o">-</span><span class="n">key</span> <span class="o">--</span><span class="n">lsign</span><span class="o">-</span><span class="n">key</span> <span class="n">noptrix</span><span class="nd">@nullsecurity</span><span class="o">.</span><span class="n">net</span>
+</pre></div>
+</div>
+<p>下载blackarch-keyring</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pacman</span> <span class="o">-</span><span class="n">Sy</span> <span class="n">blackarch</span><span class="o">-</span><span class="n">keyring</span>
+</pre></div>
+</div>
+<p>如果出现了pacman 下载archlinux.db 404的情况</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">Scc</span>  <span class="c1"># 清理所有缓存</span>
+<span class="n">sudo</span> <span class="n">rm</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">pacman</span><span class="o">/</span><span class="n">db</span><span class="o">.</span><span class="n">lck</span>  <span class="c1"># 删除锁文件（如果存在）</span>
+<span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">Syyu</span>  <span class="c1"># 强制刷新数据库并更新系统</span>
+</pre></div>
+</div>
+</section>
+<section id="dns">
+<h3>2.3 DNS设置<a class="headerlink" href="#dns" title="Link to this heading">¶</a></h3>
+<p>可能进入新系统没有网络，无法使用包管理器下载软件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;nameserver 8.8.8.8&quot;</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">resolv</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>使用 systemd-resolved</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">resolved</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>内容:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Resolve</span><span class="p">]</span>
+<span class="n">DNS</span><span class="o">=</span><span class="mf">8.8.8.8</span> <span class="mf">1.1.1.1</span>
+<span class="n">Domains</span><span class="o">=</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>重启:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">systemd</span><span class="o">-</span><span class="n">resolved</span>
+</pre></div>
+</div>
+<p>检查:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemd</span><span class="o">-</span><span class="n">resolve</span> <span class="o">--</span><span class="n">flush</span><span class="o">-</span><span class="n">caches</span>  <span class="c1"># 清空 DNS 缓存</span>
+<span class="n">sudo</span> <span class="n">systemd</span><span class="o">-</span><span class="n">resolve</span> <span class="o">--</span><span class="n">status</span>        <span class="c1"># 检查当前 DNS 配置</span>
+</pre></div>
+</div>
+</section>
+<section id="dhcp">
+<h3>2.3 dhcp 设置<a class="headerlink" href="#dhcp" title="Link to this heading">¶</a></h3>
+<p>即使连接了网络和设置了DNS,也可能无法连接网络</p>
+<p>配置开机自动 DHCP
+使用 systemd-networkd（推荐）</p>
+<p>编辑 /etc/systemd/network/20-wired.network：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Match</span><span class="p">]</span>
+<span class="n">Name</span><span class="o">=</span><span class="n">wlan0</span>
+
+<span class="p">[</span><span class="n">Network</span><span class="p">]</span>
+<span class="n">DHCP</span><span class="o">=</span><span class="n">yes</span>
+</pre></div>
+</div>
+<p>然后启用服务：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="o">--</span><span class="n">now</span> <span class="n">systemd</span><span class="o">-</span><span class="n">networkd</span>
+</pre></div>
+</div>
+</section>
+<section id="sddm">
+<h3>2.4 SDDM卡死<a class="headerlink" href="#sddm" title="Link to this heading">¶</a></h3>
+<p>SDDM 卡死可能与显卡驱动不兼容有关。(尤其是nvidia用户)
+办法就是直接使用emptty(一款TUI轻量级DM)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">删除sddm</span>
+<span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">Rns</span> <span class="n">sddm</span>
+
+<span class="n">下载emptty</span>
+<span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">emptty</span>
+</pre></div>
+</div>
+<p>但是在此之前已经被sddm卡死了
+切换到 TTY 终端排查问题</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>按 Ctrl + Alt + F2（或 F3-F6）进入 TTY 终端
+
+因为sddm一般在tty7里，F7就是sddm图形界面
+</pre></div>
+</div>
+</section>
+</section>
+<section id="v2raya">
+<h2>3. 安装v2raya<a class="headerlink" href="#v2raya" title="Link to this heading">¶</a></h2>
+<p>v2raya软件在archlinuxcn源内，</p>
+<p>配置好了archlinuxcn源后,直接 ‘pacman -Sy v2raya’ 安装</p>
+</section>
+<section id="yayaur">
+<h2>4. 安装yay访问AUR<a class="headerlink" href="#yayaur" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="o">--</span><span class="n">needed</span> <span class="n">git</span> <span class="n">base</span><span class="o">-</span><span class="n">devel</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">aur</span><span class="o">.</span><span class="n">archlinux</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">yay</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">yay</span>
+<span class="n">makepkg</span> <span class="o">-</span><span class="n">si</span>
+</pre></div>
+</div>
+<p>安装后，您可以使用像这样的 yay 命令</p>
+<ol class="arabic simple">
+<li><p>查找软件</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ yay firefox
+
+#OR
+
+$ yay -Ss firefox
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>安装软件包：</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yay</span> <span class="o">-</span><span class="n">S</span> <span class="n">package_name</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>显示包信息</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ yay -Si neofetch
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>删除包</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ yay -R neofetch
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>删除包缓存</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ yay -Sc
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>查看系统的信息，包括包数量，最大的包</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ yay -Ps
+</pre></div>
+</div>
+<p>删除yay包管理器</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo pacman -Rs yay
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<h2>5. 添加新用户,并添加到权限组<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">useradd</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+<span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">sudo</span> <span class="n">用户名</span>  <span class="c1"># Ubuntu/Debian 等</span>
+<span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">wheel</span> <span class="n">用户名</span>  <span class="c1"># CentOS/RHEL/Fedora 等（部分系统用 wheel 替代 sudo</span>
+</pre></div>
+</div>
+<p>处理常见问题</p>
+<p>sudoers 文件未包含 sudo 组</p>
+<p>编辑 /etc/sudoers：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>EDITOR=vim visudo  # 必须用 visudo 编辑，避免语法错误！
+以防系统没有vi
+
+确保存在以下行：
+%sudo ALL=(ALL:ALL) ALL  # Ubuntu/Debian
+%wheel ALL=(ALL:ALL) ALL # CentOS/RHEL/arch
+
+如果希望免密码使用 sudo，在 /etc/sudoers 中添加：
+
+用户名 ALL=(ALL) NOPASSWD:ALL
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h2>6.递归更改目录下所有文件的所有者<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">新所有者</span><span class="p">:</span><span class="n">新所属组</span> <span class="n">目录路径</span>
+</pre></div>
+</div>
+</section>
+<section id="pipewire">
+<h2>7. pipewire 声音设置<a class="headerlink" href="#pipewire" title="Link to this heading">¶</a></h2>
+<p>1.安装pipewire pipewire-pulse wireplumber</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">pipewire</span> <span class="n">pipewire</span><span class="o">-</span><span class="n">pulse</span> <span class="n">wireplumber</span>
+</pre></div>
+</div>
+<p>2.检查是否enable和started</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="o">--</span><span class="n">user</span> <span class="n">status</span> <span class="n">pipewire</span> <span class="n">pipewire</span><span class="o">-</span><span class="n">pulse</span> <span class="n">wireplumber</span>
+
+<span class="n">systemctl</span> <span class="o">--</span><span class="n">user</span> <span class="n">start</span> <span class="n">pipewire</span> <span class="n">pipewire</span><span class="o">-</span><span class="n">pulse</span> <span class="n">wireplumber</span>
+
+<span class="n">systemctl</span> <span class="o">--</span><span class="n">user</span> <span class="n">enable</span> <span class="n">pipewire</span> <span class="n">wireplumber</span>
+</pre></div>
+</div>
+<p>3.重启系统</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reboot</span>
+</pre></div>
+</div>
+</section>
+<section id="z">
+<h2>Z. 笔记本合屏断电与否<a class="headerlink" href="#z" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>编辑 /etc/systemd/logind.conf</p></li>
+<li><p>找到并修改HandleLidSwitch的值为ignore(忽略盖子关闭事件)/lock(锁定屏幕但不会进入睡眠模式)</p></li>
+<li><p>修改完成后使更改立即生效，重启 ‘systemd-logind’ 服务</p></li>
+</ol>
+</section>
+<section id="id17">
+<h2>Z. 禁用笔记本触摸板<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
+<p>感觉触摸板在有鼠标的情况下碍事，所以想插入鼠标就禁用触摸板，拔出就开启
+但是操作麻烦，就直接禁用了</p>
+<p>创建一个udev规则，管理底层硬件的</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">udev</span><span class="o">/</span><span class="n">rules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="mi">99</span><span class="o">-</span><span class="n">disable</span><span class="o">-</span><span class="n">touchpad</span><span class="o">.</span><span class="n">rules</span>
+</pre></div>
+</div>
+<p>输入如下内容：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ACTION</span><span class="o">==</span><span class="s2">&quot;add&quot;</span><span class="p">,</span><span class="n">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;input&quot;</span><span class="p">,</span><span class="n">ATTRS</span><span class="p">{</span><span class="nb">id</span><span class="o">/</span><span class="n">vendor</span><span class="p">}</span><span class="o">==</span><span class="s2">&quot;093a&quot;</span><span class="p">,</span><span class="n">ENV</span><span class="p">{</span><span class="n">LIBINPUT_IGNORE_DEVICE</span><span class="p">}</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+</pre></div>
+</div>
+<p>其中的ATTRS{id/vendor}是来自</p>
+<p>libinput list-devices 列出硬件信息，我们需要类似/dev/input/eventX的硬件路径</p>
+<p>然后再搭配上 udevadm info -a -p $(udevadm info -q path -n /dev/input/eventX)</p>
+<p>找到相关硬件的ATTRS{id/vendor},它只是一个标识而已，其他的可以代表这个硬件的标识都可以</p>
+<p>然后放入上面那个命令，就欧克了</p>
+</section>
+<section id="id18">
+<h2>Z. 自定义快捷键使用<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">取色<span class="colon">:</span></dt>
+<dd class="field-odd"><p>CTRL_ALT, p, exec, hyprpicker -a</p>
+</dd>
+<dt class="field-even">翻译<span class="colon">:</span></dt>
+<dd class="field-even"><p>CTRL ALT, T, exec, curl “127.0.0.1:60828/selection_translate”</p>
+</dd>
+<dt class="field-odd">调亮屏幕<span class="colon">:</span></dt>
+<dd class="field-odd"><p>CTRL_ALT_SHIFT, 0, exec, brightnessctl s 2%+</p>
+</dd>
+<dt class="field-even">调暗屏幕<span class="colon">:</span></dt>
+<dd class="field-even"><p>CTRL_ALT_SHIFT, 9, exec, brightnessctl s 2%-</p>
+</dd>
+<dt class="field-odd">调高音量<span class="colon">:</span></dt>
+<dd class="field-odd"><p>CTRL_ALT, 0,exec, pactl set-sink-volume 0 +2%</p>
+</dd>
+<dt class="field-even">调低音量<span class="colon">:</span></dt>
+<dd class="field-even"><p>CTRL_ALT, 9,exec, pactl set-sink-volume 0 -2%</p>
+</dd>
+<dt class="field-odd">静音<span class="colon">:</span></dt>
+<dd class="field-odd"><p>CTRL_ALT, 8,exec,pactl set-sink-mute 0 toggle # mute</p>
+</dd>
+<dt class="field-even">截图<span class="colon">:</span></dt>
+<dd class="field-even"><p>ALT CTRL, S, exec, grim -l 0 -g “$(slurp)” - | wl-copy</p>
+</dd>
+<dt class="field-odd">右移工作区<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ALT, f, workspace, e+1</p>
+</dd>
+<dt class="field-even">左移工作区<span class="colon">:</span></dt>
+<dd class="field-even"><p>ALT, a, workspace, e-1</p>
+</dd>
+<dt class="field-odd">super键加回车打开终端<span class="colon">:</span></dt>
+<dd class="field-odd"><p>$mainMod, Return, exec, $terminal</p>
+</dd>
+<dt class="field-even">关闭当前窗口<span class="colon">:</span></dt>
+<dd class="field-even"><p>$mainMod SHIFT, Q, killactive,</p>
+</dd>
+<dt class="field-odd">退出hyprland<span class="colon">:</span></dt>
+<dd class="field-odd"><p>$mainMod, M, exit,</p>
+</dd>
+<dt class="field-even">开启窗口悬浮<span class="colon">:</span></dt>
+<dd class="field-even"><p>$mainMod, V, togglefloating,</p>
+</dd>
+<dt class="field-odd">打开菜单<span class="colon">:</span></dt>
+<dd class="field-odd"><p>$mainMod, D, exec, $menu</p>
+</dd>
+<dt class="field-even">窗口全屏(打游戏用的)<span class="colon">:</span></dt>
+<dd class="field-even"><p>$mainMod, f, fullscreen</p>
+</dd>
+<dt class="field-odd">窗口编组(没什么用)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>$mainMod, g, togglegroup</p>
+</dd>
+</dl>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="Debian-Setup-Configurate.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Debian安装和配置</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Linux Distros</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, fajknli
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Arch Linux 安装和配置</a><ul>
+<li><a class="reference internal" href="#archlinux">1. 安装Archlinux</a><ul>
+<li><a class="reference internal" href="#id1">1.1 字体设置和网络设置</a></li>
+<li><a class="reference internal" href="#id2">1.2 脚本自动化安装</a></li>
+<li><a class="reference internal" href="#id3">1.3 手动安装(适合双系统)</a><ul>
+<li><a class="reference internal" href="#id4">1.3.1 分区</a></li>
+<li><a class="reference internal" href="#id5">1.3.2 格式化分区</a></li>
+<li><a class="reference internal" href="#id6">1.3.3 为新系统安装一些工具</a></li>
+<li><a class="reference internal" href="#fstab">1.3.4 生成 fstab 文件</a></li>
+<li><a class="reference internal" href="#id7">1.3.5 进入系统</a></li>
+<li><a class="reference internal" href="#id8">1.3.6 设置时间和时区</a></li>
+<li><a class="reference internal" href="#id9">1.3.7 区域和本地化设置</a></li>
+<li><a class="reference internal" href="#id10">1.3.8 网络配置</a></li>
+<li><a class="reference internal" href="#initramfs">1.3.9 创建新的 initramfs</a></li>
+<li><a class="reference internal" href="#root">1.3.10 设置 root/用户 密码</a></li>
+<li><a class="reference internal" href="#grub">1.3.11 安装grub引导程序</a></li>
+<li><a class="reference internal" href="#id11">1.3.12 内核设置(救援模式)</a></li>
+<li><a class="reference internal" href="#linux-zen">安装 linux-zen 内核</a></li>
+<li><a class="reference internal" href="#linux">更换linux内核</a></li>
+<li><a class="reference internal" href="#id12">设置字体大小</a></li>
+<li><a class="reference internal" href="#nvidia">nvidia驱动问题</a></li>
+<li><a class="reference internal" href="#id13">查看本地图像库</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">2. 添加Archlinux源</a><ul>
+<li><a class="reference internal" href="#archlinuxcn">2.1 添加Archlinuxcn源</a><ul>
+<li><a class="reference internal" href="#archlinuxcn-keyring-farseerfc-key">2.1.1 新系统中安装 archlinuxcn-keyring 包前需要手动信任 farseerfc 的 key</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#blackarch">2.2 添加Blackarch源</a></li>
+<li><a class="reference internal" href="#dns">2.3 DNS设置</a></li>
+<li><a class="reference internal" href="#dhcp">2.3 dhcp 设置</a></li>
+<li><a class="reference internal" href="#sddm">2.4 SDDM卡死</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#v2raya">3. 安装v2raya</a></li>
+<li><a class="reference internal" href="#yayaur">4. 安装yay访问AUR</a></li>
+<li><a class="reference internal" href="#id15">5. 添加新用户,并添加到权限组</a></li>
+<li><a class="reference internal" href="#id16">6.递归更改目录下所有文件的所有者</a></li>
+<li><a class="reference internal" href="#pipewire">7. pipewire 声音设置</a></li>
+<li><a class="reference internal" href="#z">Z. 笔记本合屏断电与否</a></li>
+<li><a class="reference internal" href="#id17">Z. 禁用笔记本触摸板</a></li>
+<li><a class="reference internal" href="#id18">Z. 自定义快捷键使用</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=46f6607b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>

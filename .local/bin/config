@@ -65,8 +65,8 @@ wget        |.wgetrc
 input       |.inputrc
 git         |.gitconfig
 bin         |.local/bin/jsj
-bin         |.local/bin/config
-bin         |.local/bin/color
+bin         |.local/bin/cf
+bin         |.local/bin/ys
 bin         |.local/bin/jqb
 bin         |.local/bin/dots
 bin         |.local/bin/pdf
@@ -85,7 +85,7 @@ bin         |.local/bin/setup_bootstrap
 bin         |.local/bin/setup_dotfile-setup
 bin         |.local/bin/wiki
 bin         |.local/bin/vA
-bin         |.local/bin/weather
+bin         |.local/bin/tq
 "
 
 choice_file="$(printf '%s' "$file_list" | grep -v '^$' | wmenu -i -l 15 -f "0xProto Nerd Font Regular 12" -N "#1f2032" -n "#a9b5d5" -S "#a0d0a0" -s "#151622")"

@@ -1,0 +1,1463 @@
+<!doctype html>
+<html class="no-js" lang="en-US" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Frontend" href="../Frontend/index.html" /><link rel="prev" title="Python" href="Python.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>Rust - fajknli Note IDK documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">fajknli Note IDK documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">fajknli Note IDK documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Commands:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Commands/Normal/index.html">Commands</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Commands</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Docker.html">Docker For beginner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Git.html">Git 日常使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Linux-Terminal-Shortcuts.html">Terminal_Shortcut</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Linux_Commands_Overview.html">Commands List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Linux_System_Commands.html">Linux系统命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Linux_Tricks.html">Linux-Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Midnight_Commander.html">Mindnight Commander</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Shell_Simple_Usage.html">Shell_Simple_Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Softwares.html">Softwares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Use_Of_Software.html">Use_of_Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Vim.html">Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/Vim-SimpleUse.html">Vim SimpleUse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/awk_simple-usage.html">awk 数据处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/find.html">find</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/grep.html">grep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/lf.html">lf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/niri.html">Niri manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/qutebrowser.html">qutebrowser Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/reST.html">学习 reST Simple-CheatSheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Commands/Normal/sed.html">sed</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Linux:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Linux/Distro/index.html">Linux Distros</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Linux Distros</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Distro/ArchLinux-Setup-Configurate.html">Arch Linux 安装和配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Distro/Debian-Setup-Configurate.html">Debian安装和配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Distro/VoidLinux-Setup-Configurate.html">Void Linux 安装和配置</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programing:</span></p>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Library/index.html">Libraries</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Libraries</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Library/Python_Library.html">Python_Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Library/Python_std_Library.html">Python Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Languages</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Languages</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AWK.html">AWK 程序设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bash.html">Bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="C.html">C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Haskell.html">Haskell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="JavaScript.html">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Perl.html">Perl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Rust</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Frontend/index.html">Frontend</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Frontend</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Frontend/CSS.html">CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Frontend/HTML.html">HTML</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Misc/index.html">Misc Things</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Misc Things</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Misc/Cook.html">Cook</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../_sources/Programing/Language/Rust.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="rust">
+<h1>Rust<a class="headerlink" href="#rust" title="Link to this heading">¶</a></h1>
+<section id="id1">
+<h2>1. 安装<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<section id="rustup">
+<h3>1.1 Rustup<a class="headerlink" href="#rustup" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Rustup 安装:</p></li>
+</ol>
+<p>Debian下： <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">rustup</span></code></p>
+<p>这样安装的在执行 <code class="docutils literal notranslate"><span class="pre">rustc</span> <span class="pre">--version</span></code> 可能会出现问题:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">error</span><span class="p">:</span> <span class="n">rustup</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">choose</span> <span class="n">a</span> <span class="n">version</span> <span class="n">of</span> <span class="n">rustc</span> <span class="n">to</span> <span class="n">run</span><span class="p">,</span> <span class="n">because</span> <span class="n">one</span> <span class="n">wasn</span><span class="s1">&#39;t specified explicitly, and no default is configured.</span>
+<span class="n">help</span><span class="p">:</span> <span class="n">run</span> <span class="s1">&#39;rustup default stable&#39;</span> <span class="n">to</span> <span class="n">download</span> <span class="n">the</span> <span class="n">latest</span> <span class="n">stable</span> <span class="n">release</span> <span class="n">of</span> <span class="n">Rust</span> <span class="ow">and</span> <span class="nb">set</span> <span class="n">it</span> <span class="k">as</span> <span class="n">your</span> <span class="n">default</span> <span class="n">toolchain</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>所以执行再 <code class="docutils literal notranslate"><span class="pre">rustup</span> <span class="pre">default</span> <span class="pre">stable</span></code> 更新稳定版</p>
+<p>更新时可使用镜像源加快下载速度:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># for bash</span>
+<span class="n">RUSTUP_DIST_SERVER</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">rustup</span> <span class="n">rustup</span> <span class="n">install</span> <span class="n">stable</span> <span class="c1"># for stable</span>
+<span class="c1"># for fish</span>
+<span class="n">env</span> <span class="n">RUSTUP_DIST_SERVER</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">rustup</span> <span class="n">rustup</span> <span class="n">install</span> <span class="n">stable</span> <span class="c1"># for stable</span>
+<span class="c1"># for bash</span>
+<span class="n">RUSTUP_DIST_SERVER</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">rustup</span> <span class="n">rustup</span> <span class="n">install</span> <span class="n">nightly</span> <span class="c1"># for nightly</span>
+<span class="c1"># for fish</span>
+<span class="n">env</span> <span class="n">RUSTUP_DIST_SERVER</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">rustup</span> <span class="n">rustup</span> <span class="n">install</span> <span class="n">nightly</span> <span class="c1"># for nightly</span>
+<span class="c1"># for bash</span>
+<span class="n">RUSTUP_DIST_SERVER</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">rustup</span> <span class="n">rustup</span> <span class="n">install</span> <span class="n">nightly</span><span class="o">-</span><span class="n">YYYY</span><span class="o">-</span><span class="n">mm</span><span class="o">-</span><span class="n">dd</span>
+<span class="c1"># for fish</span>
+<span class="n">env</span> <span class="n">RUSTUP_DIST_SERVER</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">rustup</span> <span class="n">rustup</span> <span class="n">install</span> <span class="n">nightly</span><span class="o">-</span><span class="n">YYYY</span><span class="o">-</span><span class="n">mm</span><span class="o">-</span><span class="n">dd</span>
+</pre></div>
+</div>
+<p>若要长期启用镜像源，执行：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># for bash</span>
+<span class="n">echo</span> <span class="s1">&#39;export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">bash_profile</span>
+<span class="n">echo</span> <span class="s1">&#39;export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">bash_profile</span>
+<span class="c1"># for fish</span>
+<span class="n">echo</span> <span class="s1">&#39;set -x RUSTUP_UPDATE_ROOT https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">config</span><span class="o">/</span><span class="n">fish</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">fish</span>
+<span class="n">echo</span> <span class="s1">&#39;set -x RUSTUP_DIST_SERVER https://mirrors.tuna.tsinghua.edu.cn/rustup&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">config</span><span class="o">/</span><span class="n">fish</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">fish</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://mirrors.tuna.tsinghua.edu.cn/help/rustup/">清华源</a></p>
+<ol class="arabic simple" start="2">
+<li><p>Rustup 更新:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rustup</span> <span class="n">updata</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="cargo">
+<h2>2. Cargo<a class="headerlink" href="#cargo" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h3>2.1. 用Cargo创建项目<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cargo new hello_cargo
+$ cd hello_cargo
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">cargo</span> <span class="pre">new</span> <span class="pre">--vcs=git</span></code> 可以指定version control system(版本控制系统)
+产生的 <code class="docutils literal notranslate"><span class="pre">cargo.lock</span></code> 不用修改啥，cargo会帮你自己控制它</p>
+</div>
+</section>
+<section id="cargo-build">
+<h3>2.2. cargo build<a class="headerlink" href="#cargo-build" title="Link to this heading">¶</a></h3>
+<p>使用cargo build来编译cargo/rust项目</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cargo build
+    Compiling hello_cargo v0.1.0 (file:///projects/hello_cargo)
+    Finished dev [unoptimized + debuginfo] target(s) in 2.85 secs
+</pre></div>
+</div>
+<p>cargo build –release命令是Rust中构建Release版本非常重要的一个步骤。
+使用cargo build –release可以启用优化来构建Release版本。主要的区别有:</p>
+<ul class="simple">
+<li><p>执行文件会生成在target/release目录,而不是target/debug。</p></li>
+<li><p>优化使代码运行更快,但编译时间会更长。</p></li>
+<li><p>debug版本用于开发,重建和编译频繁;release版本给最终用户,优化运行速度。</p></li>
+</ul>
+<p>所以使用步骤是:</p>
+<ul class="simple">
+<li><p>开发时使用cargo build构建debug版本</p></li>
+<li><p>准备发布时使用cargo build –release构建release版本</p></li>
+<li><p>测试运行速度时,使用target/release下的可执行文件</p></li>
+</ul>
+<p>总结起来,利用cargo build –release可以得到优化的release版本用于发布,是Rust开发到部署的关键一步。</p>
+</section>
+<section id="cargo-run">
+<h3>2.3. cargo run<a class="headerlink" href="#cargo-run" title="Link to this heading">¶</a></h3>
+<p>使用cargo run 来运行已经编译好的rust程序</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cargo run
+    Finished dev [unoptimized + debuginfo] target(s) in 0.0 secs
+    Running `target/debug/hello_cargo` Hello, world!
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这样就不必手动 <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">./target/debug/hello_cargo</span></code> 运行了，更方便</p>
+</div>
+<p>如果再次执行 <code class="docutils literal notranslate"><span class="pre">cargo</span> <span class="pre">run</span></code> 不会输出编译信息而是会直接执行输出，不会再次编译，如果你修改了源码，执行 <code class="docutils literal notranslate"><span class="pre">cargo</span> <span class="pre">run</span></code> 才会输出编译信息</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cargo run
+    Compiling hello_cargo v0.1.0 (file:///projects/hello_cargo)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.33 secs
+    Running `target/debug/hello_cargo` Hello, world!
+</pre></div>
+</div>
+</section>
+<section id="cargo-check">
+<h3>2.4. cargo check:<a class="headerlink" href="#cargo-check" title="Link to this heading">¶</a></h3>
+<p>使用cargo命令,执行check子命令。
+check子命令会对当前Rust项目进行检查,分析代码,确保可以正确编译通过。但不会产生实际的二进制可执行文件。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cargo check
+    Checking hello_cargo v0.1.0 (file:///projects/hello_cargo)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.32 secs
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>2.5. 总结<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>cargo new 创建项目</p></li>
+<li><p>cargo build 构建项目</p></li>
+<li><p>cargo run 构建并运行项目</p></li>
+<li><p>cargo check 检查错误,不产生二进制</p></li>
+<li><p>构建结果存放在target/debug目录</p></li>
+</ul>
+<p>另一个优点是Cargo的命令在不同操作系统下是一致的,所以使用Cargo可以避免不同系统间的差异。</p>
+<p>利用Cargo和它的子命令可以标准化Rust项目的构建和管理。主要要记住:</p>
+<ul class="simple">
+<li><p>cargo new 创建项目</p></li>
+<li><p>cargo build/run 构建和运行</p></li>
+<li><p>cargo check 检查错误</p></li>
+<li><p>Cargo把构建结果放在target目录</p></li>
+</ul>
+<p>通过Cargo可以统一管理Rust项目的整个生命周期。</p>
+<p>对于简单的项目,与直接使用rustc相比,Cargo并不能提供太多价值。但是随着程序变得越来越复杂,Cargo的优势就会体现出来。一旦程序增长到多个文件或需要依赖其他库,让Cargo来协调构建过程会方便很多。虽然hello_cargo这个项目很简单,但它已经使用了您之后在Rust编程中会大量用到的真正工具。事实上,要开发任何已存在的项目,您可以使用下面的命令检查代码、切换到项目目录并构建:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">&lt;</span><span class="n">someproject</span><span class="o">&gt;</span>
+<span class="n">cd</span> <span class="o">&lt;</span><span class="n">someproject</span><span class="o">&gt;</span>
+<span class="n">cargo</span> <span class="n">build</span>
+</pre></div>
+</div>
+<p>简而言之,Cargo的优势在大型复杂项目中更为明显。它可以很好地协调构建过程。即使在简单项目中使用Cargo也是Rust编程的最佳实践。掌握Cargo可以大大提高工作效率。</p>
+</section>
+</section>
+<section id="id5">
+<h2>3. 实现一个经典的入门问题:猜数游戏<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<section id="setting-up-a-new-project">
+<h3>3.1 Setting Up a New Project<a class="headerlink" href="#setting-up-a-new-project" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cargo new guessing_game
+$ cd guessing_game
+</pre></div>
+</div>
+</section>
+<section id="src-main-rs">
+<h3>3.2 查看src/main.rs<a class="headerlink" href="#src-main-rs" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fn main() {
+    println!(&quot;Hello, world!&quot;);
+}
+</pre></div>
+</div>
+<p>这个文件是主程序源码，主要的编译执行输出。</p>
+<p>将其改为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>use std::io;
+
+fn main() {
+    println!(&quot;Guess the number!&quot;);
+
+    println!(&quot;Please input your guess.&quot;);
+
+    let mut guess = String::new();
+
+    io::stdin()
+        .read_line(&amp;mut guess)
+        .expect(&quot;Failed to read line&quot;);
+
+    println!(&quot;You guessed: {guess}&quot;);
+}
+</pre></div>
+</div>
+<p>这段代码包含许多信息,我们一行行来看。为了获取用户输入并打印输出结果,我们需要引入io输入/输出库到作用域中。io库来自标准库std:</p>
+<section id="id6">
+<h4>3.2.1 分析<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<p>这行指令把std库中的io模块引入到当前作用域。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use</span> <span class="n">std</span><span class="p">::</span><span class="n">io</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>然后是主函数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">println!</span></code> 是一个宏,用于打印字符串到屏幕:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>println!(&quot;Guess the number!&quot;);
+
+println!(&quot;Please input your guess.&quot;);
+</pre></div>
+</div>
+<p>在 Rust 语言中，:: 是作用域解析运算符（scope resolution operator），它用于指定一个项（如函数、结构体、枚举、模块、常量等）属于哪个模块或命名空间。这个运算符有助于 Rust 的模块系统，允许你访问模块中的项，尤其是当存在命名冲突时。</p>
+<p>以下是 :: 在 Rust 中几种常见用法的示例：</p>
+<ol class="arabic simple">
+<li><p>访问模块中的项：
+如果有一个模块 my_module，它包含一个函数 my_function，你可以使用 :: 来指定 my_function 属于 my_module：</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span> <span class="n">my_module</span> <span class="p">{</span>
+    <span class="n">pub</span> <span class="n">fn</span> <span class="n">my_function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="o">//</span> <span class="n">函数体</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">调用</span> <span class="n">my_module</span> <span class="n">中的</span> <span class="n">my_function</span>
+<span class="n">my_module</span><span class="p">::</span><span class="n">my_function</span><span class="p">();</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>访问枚举的变体：
+对于枚举类型，:: 用于指定枚举的哪个变体：</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="n">Status</span> <span class="p">{</span>
+    <span class="n">Active</span><span class="p">,</span>
+    <span class="n">Inactive</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">创建一个</span> <span class="n">Status</span><span class="p">::</span><span class="n">Inactive</span> <span class="n">枚举的实例</span>
+<span class="n">let</span> <span class="n">status</span> <span class="o">=</span> <span class="n">Status</span><span class="p">::</span><span class="n">Inactive</span><span class="p">;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>访问类型的关联函数：
+:: 也用于调用一个类型的关联函数（即静态方法）：</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">Point</span> <span class="p">{</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">i32</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="n">i32</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">impl</span> <span class="n">Point</span> <span class="p">{</span>
+    <span class="n">fn</span> <span class="n">origin</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Point</span> <span class="p">{</span>
+        <span class="n">Point</span> <span class="p">{</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">0</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">使用</span> <span class="p">::</span> <span class="n">调用</span> <span class="n">Point</span> <span class="n">的关联函数</span> <span class="n">origin</span>
+<span class="n">let</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">::</span><span class="n">origin</span><span class="p">();</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>指定类型或函数的完全限定名：
+当你需要完全限定一个名称以避免冲突时，可以使用 <cite>::</cite> 来指定一个类型或函数的完整路径：</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use</span> <span class="n">some_crate</span><span class="p">::</span><span class="n">MyType</span><span class="p">;</span>
+<span class="n">use</span> <span class="n">another_crate</span><span class="p">::</span><span class="n">MyType</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">明确指定使用哪个</span> <span class="n">crate</span> <span class="n">中的</span> <span class="n">MyType</span>
+<span class="n">let</span> <span class="n">instance</span> <span class="o">=</span> <span class="n">some_crate</span><span class="p">::</span><span class="n">MyType</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>在你之前的代码示例中，<cite>Ordering::Less</cite> 中的 <cite>::</cite> 就是用来指定 <cite>Less</cite> 是 <cite>Ordering</cite> 枚举的一个变体。这样的语法确保了你访问的是 <cite>Ordering</cite> 枚举中的 <cite>Less</cite> 成员，而不是可能存在的同名的其他项。</p>
+</section>
+<section id="id7">
+<h4>存值到变量里<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">mut</span> <span class="n">guess</span> <span class="o">=</span> <span class="n">String</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>这个语句做了以下几件事:</p>
+<ol class="arabic simple">
+<li><p>使用`let`关键字声明了一个叫`guess`的变量</p></li>
+<li><p>用`mut`指定这个变量是可变的</p></li>
+<li><p>变量类型是`String`字符串</p></li>
+<li><p>使用`String::new()`创建一个空的`String`实例并赋值给`guess`</p></li>
+</ol>
+<p>所以这行代码声明了一个名为`guess`、类型为`String`、初始值为空串的可变变量。
+之后可以通过`guess`来获取用户输入并存储。使用`mut`是因为每轮游戏时需要修改`guess`的值。</p>
+<p>总结一下,这行代码展示了:</p>
+<ul class="simple">
+<li><p>使用`let`声明变量</p></li>
+<li><p>变量可变性`mut`</p></li>
+<li><p>变量类型注解</p></li>
+<li><p>为变量赋初始值</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">let</span></code> 关键字声明变量,如 <code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">apples</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></li>
+<li><p>默认情况下,Rust中的变量是不可变的(immutable),一旦绑定了一个值,就不能再改变</p></li>
+<li><p>使用`mut`关键字可以声明一个可变变量(mutable),如 <code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">mut</span> <span class="pre">bananas</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></li>
+<li><p>通过 <code class="docutils literal notranslate"><span class="pre">//</span></code> 可以写注释,注释内容会被Rust编译器忽略</p></li>
+<li><p>默认不可变可以防止意外地修改变量,是Rust安全性的重要组成。但有时需要可变性,就可以用 <code class="docutils literal notranslate"><span class="pre">mut</span></code></p></li>
+<li><p>第3章会更深入地讨论变量、可变性等概念</p></li>
+</ol>
+</section>
+<section id="associated-function">
+<h4>::语法和associated function的含义。让我来概括一下:<a class="headerlink" href="#associated-function" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p>::表示new是String类型的associated function,也就是说new函数是在String类型上实现的。</p></li>
+<li><p>associated function是在某个类型上实现的函数,这里的new函数可以创建一个新的空字符串。</p></li>
+<li><p>许多类型上都有new函数,因为这是“创建某种新值”这一常见功能的常用命名。</p></li>
+<li><p>let mut guess = String::new();这一行,创建了一个可变变量guess,当前绑定到一个新的空字符串上。</p></li>
+</ol>
+<p>通过这个示例,我对Rust中::语法调用associated function的用法有了更深的理解。associated function是Rust的一个非常好的设计,可以在类型上实现相关的功能。</p>
+</section>
+<section id="id8">
+<h4>3.2.2 接受用户输入<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">io</span><span class="p">::</span><span class="n">stdin</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">read_line</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mut</span> <span class="n">guess</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>通过use std::io在程序开头导入io库。(如果我们没有在程序开头通过use std::io导入io库,我们仍可以通过写成std::io::stdin来使用这个函数)</p></li>
+<li><p>调用io模块的stdin()函数来获取标准输入的句柄。</p></li>
+<li><p>stdin()返回一个Stdin实例,它代表终端标准输入的句柄。</p></li>
+<li><p>在Stdin上调用read_line方法获取用户输入。</p></li>
+<li><p>传入&amp;mut guess作为参数,来告诉read_line将用户输入存储在guess字符串中。</p></li>
+<li><p>read_line会将用户输入追加到字符串中,所以需要传入一个可变字符串。(mut)</p></li>
+<li><p>&amp;表示这个参数是引用,可以安全地在代码中共享数据。</p></li>
+<li><p>引用默认是不可变的,所以需要&amp;mut guess来使其可变。</p></li>
+<li><p>引用是Rust的重要优势之一,可以安全地在代码中共享数据。</p></li>
+</ol>
+</section>
+<section id="id9">
+<h4>3.2.3 处理程序可能出现的错误<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="s2">&quot;Failed to read line&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>它其实可以和上面一部分连在一起</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">io</span><span class="p">::</span><span class="n">stdin</span><span class="p">()</span><span class="o">.</span><span class="n">read_line</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mut</span> <span class="n">guess</span><span class="p">)</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="s2">&quot;Failed to read line&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>代码示例很好地解释了Result和expect的用法。让我来概括一下:</p>
+<ol class="arabic simple">
+<li><p>从逻辑上这是同一行代码,只是为了阅读方便分成多行。</p></li>
+<li><p>read_line后调用expect方法处理可能的错误。</p></li>
+<li><p>expect的字符串参数是读取失败时的错误信息。</p></li>
+<li><p>可以把这一行写成一行,但会难以阅读,所以最好分成多行。</p></li>
+<li><p>当用.method_name()语法调用方法时,使用换行和空白来分割长行会更易读。</p></li>
+<li><p>expect方法来自Result类型,可以处理read_line可能返回的错误。</p></li>
+</ol>
+<p>Rust 会警告你没有使用 read_line 返回的 Result 值,这表示程序没有处理可能的错误。</p>
+<p>需要使用 Result 值的原因是:</p>
+<p>read_line 这个函数在读取用户输入时,有可能会 occur 错误,比如文件结束或读取超时等。为了体现这个不确定性,它不会直接返回字符串,而是返回一个 Result。</p>
+<p>Result 是一个枚举,它有两个变体:Ok 和 Err。当成功读取到用户输入时,它会是 Ok 变体,并包含字符串;如果发生错误,它会是 Err 变体,并包含错误信息。</p>
+<p>所以 read_line 的返回值就是一个代表可能成功也可能失败的 Result。如果不去处理这个 Result,就相当于忽略了可能的错误情况。</p>
+<p>Rust 做了这个设计是为了鼓励开发者去显式处理错误,这样可以编写出更加健壮的程序。</p>
+<p>所以调用 read_line 后需要对其 Result 返回值进行处理:</p>
+<ul class="simple">
+<li><p>要么使用`match`去处理`Ok`和`Err`两种情况</p></li>
+<li><p>要么使用`unwrap`或`expect`来获取`Ok`中的值,如果是`Err`就panic</p></li>
+<li><p>要么使用`?`操作符在函数中简洁的处理错误</p></li>
+</ul>
+<p>总之,需要处理`Result`是Rust非常重要的错误处理机制,可以避免很多错误被忽略。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>您提到的使用expect来压制警告的方法虽然可以使程序快速crash掉,但并不是处理错误的正确方式。
+压制警告的正确方式是编写错误处理代码,在第9章中将会学习错误恢复。
+虽然在我们的例子中,可能只是想在出现问题时让程序快速crash,可以使用expect。
+但是在实际项目中,我们还是应该适当处理错误,而不是简单的崩溃程序。
+正确处理错误的方法有:</p>
+<ul class="simple">
+<li><p>使用match语句针对Ok和Err情况进行处理</p></li>
+<li><p>将错误传播给上层调用者处理</p></li>
+<li><p>提供默认的失败处理,让程序可以优雅的处理错误</p></li>
+<li><p>记录错误信息,以便debug</p></li>
+<li><p>显示错误信息给用户</p></li>
+<li><p>重试操作</p></li>
+</ul>
+</div>
+</section>
+<section id="println">
+<h4>3.2.4 用 println! 打印占位符<a class="headerlink" href="#println" title="Link to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>println!(&quot;You guessed: {guess}&quot;);
+</pre></div>
+</div>
+<p>{}, 调用之前的变量</p>
+<p>例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>let x = 5;
+let y = 10;
+
+println!(&quot;x = {x} and y + 2 = {}&quot;, y + 2);
+</pre></div>
+</div>
+<p>输出:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">12</span>
+</pre></div>
+</div>
+</section>
+<section id="rand">
+<h4>使用外来模块，Rand<a class="headerlink" href="#rand" title="Link to this heading">¶</a></h4>
+<p>在cargo创建的工作区里，如果程序要求使用不是标准库里的库时，也就是crate,直接在main.rc里调用会出问题</p>
+<p>但是可以在Cargo.toml,文件里的[dependencies]区域下面设置需要的模块，例如</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">dependencies</span><span class="p">]</span>
+<span class="n">rand</span> <span class="o">=</span> <span class="s2">&quot;0.8.5&quot;</span> <span class="o">//</span> <span class="n">或者是</span> <span class="n">rand</span> <span class="o">=</span> <span class="s2">&quot;^0.8.5&quot;</span> <span class="p">,</span><span class="n">意思是0</span><span class="mf">.8.5</span><span class="n">到0</span><span class="mf">.9.0</span><span class="n">版本之间</span>
+</pre></div>
+</div>
+<p>cargo 会从registry,也就是Crates.io下载rand,同时还会下载rand依赖的其他crates</p>
+<p>Crates.io 是 Rust 生态系统中的人们发布开源 Rust 项目供他人使用的地方。</p>
+</section>
+<section id="cargo-lock">
+<h4>Cargo.lock文件<a class="headerlink" href="#cargo-lock" title="Link to this heading">¶</a></h4>
+<p>用于控制crates的版本，移植项目的时候，就不会出问题</p>
+</section>
+<section id="cargo-update">
+<h4>cargo update<a class="headerlink" href="#cargo-update" title="Link to this heading">¶</a></h4>
+<p>用于更新crates,使用这个命令会忽略cargo.lock文件的内容，进行更新</p>
+<p>前提是要修改Cargo.toml里的版本，然后再进行更新</p>
+</section>
+</section>
+<section id="rng">
+<h3>3.3 rng生成随机数<a class="headerlink" href="#rng" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use</span> <span class="n">rand</span><span class="p">::</span><span class="n">Rng</span><span class="p">;</span>
+
+<span class="n">let</span> <span class="n">secret_number</span> <span class="o">=</span> <span class="n">rand</span><span class="p">::</span><span class="n">thread_rng</span><span class="p">()</span><span class="o">.</span><span class="n">gen_range</span><span class="p">(</span><span class="mf">1.</span><span class="o">.=</span><span class="mi">100</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>第一行，将 Rng 特性引入作用域</p>
+<p>use rand::Rng;：这行代码引入了 rand crate（一个生成随机数的库）中的 Rng trait。这个 trait 提供了生成随机数的方法。</p>
+<p>第二行，调用了 rand::thread_rng 函数,调用 gen_range 方法,range范围为1-100,(1..=100)</p>
+<p>源码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>use std::io;
+use rand::Rng;
+
+fn main() {
+    println!(&quot;Guess the number!&quot;);
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!(&quot;The secret number is: {secret_number}&quot;);
+
+    println!(&quot;Please input your guess.&quot;);
+
+    let mut guess = String::new();
+
+    io::stdin()
+        .read_line(&amp;mut guess)
+        .expect(&quot;Failed to read line&quot;);
+
+    println!(&quot;You guessed: {guess}&quot;);
+}
+</pre></div>
+</div>
+<section id="cargo-crates">
+<h4>Cargo 查看项目内的crates的描述<a class="headerlink" href="#cargo-crates" title="Link to this heading">¶</a></h4>
+<p>进入项目文件目录后，输入以下命令将创建个html文件，然后打开浏览器</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cargo</span> <span class="n">doc</span> <span class="o">--</span><span class="nb">open</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id10">
+<h3>3.4 将猜测与秘密数字进行比较<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p>从标准库中引入名为 std::cmp::Ordering 的类型,Ordering 类型是一个枚举,具有 Less、Greater 和 Equal 变体,也就是可以来比较数字</p>
+<p>use std::cmp::Ordering;：这行代码引入了 std（标准库）中的 cmp 模块的 Ordering 类型。Ordering 是一个枚举，表示比较的结果，它有三个变体：Less、Greater 和 Equal。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>use rand::Rng;
+use std::cmp::Ordering;
+use std::io;
+
+fn main() {
+    // --snip--
+
+    println!(&quot;You guessed: {guess}&quot;);
+
+    match guess.cmp(&amp;secret_number) {
+        Ordering::Less =&gt; println!(&quot;Too small!&quot;),
+        Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
+        Ordering::Equal =&gt; println!(&quot;You win!&quot;),
+    }
+}
+</pre></div>
+</div>
+<p>cmp 方法比较两个值，可以在任何可以比较的对象上调用。它需要一个指向你想要比较的任何值的引用：这里是将 guess 与 secret_number 进行比较</p>
+<p>match 语句是比较用户猜测的数字（guess）和秘数字（secret_number）的值，并根据比较结果输出相应的信息。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在 Rust 中，=&gt; 符号用于定义 match 表达式中的分支。match 表达式是一种强大的控制流结构，类似于其他编程语言中的 switch 语句。它允许你将一个值与多个模式进行比较，并执行与第一个匹配模式相对应的代码块</p>
+</div>
+<p>这里的 guess.cmp(&amp;secret_number) 调用是一个比较操作，它比较变量 guess 和 secret_number 的值。cmp 方法返回一个 Ordering 枚举的实例，具体取决于 guess 是小于、等于还是大于 secret_number。</p>
+<p>如果 guess 小于 secret_number，cmp 方法将返回 Ordering::Less，然后 match 表达式将匹配到第一个分支，并执行 println!(“Too small!”)，打印出 “Too small!”。</p>
+<p>match 表达式会找到第一个匹配的分支，并执行该分支后面的代码，然后退出 match 表达式。如果没有一个分支匹配成功，那么 match 表达式将是一个错误，因为 Rust 要求所有的可能情况都要被覆盖到。</p>
+<p>源码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>use rand::Rng;
+use std::cmp::Ordering;
+use std::io;
+
+fn main() {
+    // --snip--
+
+    println!(&quot;You guessed: {guess}&quot;);
+
+    match guess.cmp(&amp;secret_number) {
+        Ordering::Less =&gt; println!(&quot;Too small!&quot;),
+        Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
+        Ordering::Equal =&gt; println!(&quot;You win!&quot;),
+    }
+}
+</pre></div>
+</div>
+<p>但是这个会出现错误，出现错误的原因是 Rust 无法比较字符串和数字类型</p>
+<section id="signed-unsigned">
+<h4>基本数值,有符号（signed）和无符号（unsigned）两大类<a class="headerlink" href="#signed-unsigned" title="Link to this heading">¶</a></h4>
+<p>在 Rust 中，基本数值类型分为有符号（signed）和无符号（unsigned）两大类，并且提供了不同位数（bit width）的选择。这些类型用于确保程序中变量的存储大小和它们能够表示的数值范围。以下是一些基本数值类型的说明：</p>
+<ol class="arabic simple">
+<li><p>** i32 ** ：这是 32 位大小的有符号整数类型。”i” 代表 “integer”（整数），而 “32” 表示它占用 32 位的存储空间。有符号整数意味着它可以表示正数、负数以及零。</p></li>
+<li><p>** u32 ** ：这是 32 位大小的无符号整数类型。”u” 代表 “unsigned”（无符号），意味着它只能表示非负整数，即从 0 到其最大值（2^32 - 1）。</p></li>
+<li><p>** i64 ** ：这是 64 位大小的有符号整数类型，可以存储更大的整数范围，从 -2^63 到 2^63-1。</p></li>
+</ol>
+<p>Rust 提供了其他位数的整数类型，如 <cite>i8</cite>、<cite>u8`（8 位）、`i16</cite>、<cite>u16`（16 位）、`i128</cite>、<cite>u128`（128 位），以及 `isize</cite> 和 <cite>usize</cite>，它们的大小取决于目标平台的指针宽度（32 位或 64 位）。</p>
+<p>当提到 “除非另有说明，否则 Rust 默认使用 i32”，这通常是指在没有明确指定类型的情况下，Rust 会使用 <cite>i32</cite> 作为整数字面量（literal）的类型。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span> <span class="o">//</span> <span class="n">x</span> <span class="n">的类型是</span> <span class="n">i32</span>
+</pre></div>
+</div>
+<p>在这个例子中，没有指定 <cite>x</cite> 的类型，Rust 编译器根据上下文推断出 <cite>x</cite> 是一个 <cite>i32</cite> 类型的值。</p>
+<p>选择正确的整数类型对于性能和内存使用都是重要的。例如，如果你知道一个变量永远不会是负数，使用无符号整数类型（如 <cite>u32</cite>）可以节省内存，并可能提高性能，因为无符号整数的运算在某些情况下会更简单。</p>
+<p>此外，选择合适大小的整数类型也很重要。对于只需要表示较小数值的变量，使用 <cite>i8</cite> 或 <cite>i16</cite> 可以减少内存的使用。然而，对于可能表示非常大范围数值的变量，使用 <cite>i64</cite> 或 <cite>i128</cite> 可能更合适。在处理指针或数组索引时，<cite>isize</cite> 和 <cite>usize</cite> 是常用的，因为它们的大小与平台的指针大小相匹配。</p>
+</section>
+<section id="id11">
+<h4>修改整数类型<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<p>在 Rust 中，你可以通过以下几种方式改变默认的整数类型：</p>
+<ol class="arabic simple">
+<li><p>** 显式类型声明 ** ：你可以在变量声明时明确指定其类型。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">x</span><span class="p">:</span> <span class="n">u32</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span> <span class="o">//</span> <span class="n">显式声明</span> <span class="n">x</span> <span class="n">为</span> <span class="n">u32</span> <span class="n">类型</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>** 类型推断 ** ：在某些情况下，即使没有显式指定类型，编译器也可以根据变量的上下文来推断其类型。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>let y = SomeU32Value; // 如果 SomeU32Value 是 u32 类型，y 也会被推断为 u32
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>** 类型转换 ** ：你可以使用类型转换函数，如 <cite>to_i32</cite>、<cite>to_u32</cite>、<cite>to_i64</cite> 等，将一个数值转换为特定的类型。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">a</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="n">let</span> <span class="n">b</span><span class="p">:</span> <span class="n">u32</span> <span class="o">=</span> <span class="n">a</span> <span class="k">as</span> <span class="n">u32</span><span class="p">;</span> <span class="o">//</span> <span class="n">将</span> <span class="n">i32</span> <span class="n">类型的</span> <span class="n">a</span> <span class="n">转换为</span> <span class="n">u32</span> <span class="n">类型的</span> <span class="n">b</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>** 字面量后缀 ** ：在字面量后面添加后缀可以指定其类型。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">42</span><span class="n">_i32</span><span class="p">;</span>  <span class="o">//</span> <span class="n">使用</span> <span class="n">_i32</span> <span class="n">后缀明确表示</span> <span class="n">x</span> <span class="n">是</span> <span class="n">i32</span> <span class="n">类型</span>
+<span class="n">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">42</span><span class="n">_u32</span><span class="p">;</span>  <span class="o">//</span> <span class="n">使用</span> <span class="n">_u32</span> <span class="n">后缀明确表示</span> <span class="n">y</span> <span class="n">是</span> <span class="n">u32</span> <span class="n">类型</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>** 表达式类型推断 ** ：在表达式中，编译器会根据表达式的上下文来推断类型。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="mi">42</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span> <span class="o">//</span> <span class="n">z</span> <span class="n">的类型由表达式的结果推断得出</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>** 函数参数和返回类型 ** ：在定义函数时，可以指定参数和返回值的类型。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span> <span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">i32</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">i32</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">i32</span> <span class="p">{</span>
+    <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>** 宏使用 ** ：在使用宏时，可以指定参数的类型。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">arr</span><span class="p">:</span> <span class="p">[</span><span class="n">i32</span><span class="p">;</span> <span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">;</span> <span class="mi">10</span><span class="p">];</span> <span class="o">//</span> <span class="n">使用宏定义一个</span> <span class="n">i32</span> <span class="n">类型的数组</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>** trait 约束 ** ：在使用 trait 时，可以指定类型参数的类型。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fn foo&lt;T: std::fmt::Display&gt;(x: T) {
+    println!(&quot;{}&quot;, x);
+}
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li><p>** 结构体和枚举定义 ** ：在定义结构体或枚举时，可以为其中的字段指定类型。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">Point</span> <span class="p">{</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">i32</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="n">i32</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>通过这些方法，你可以控制变量、参数、返回类型等的类型，而不是依赖 Rust 的默认类型推断。这在编写明确、可读性高的代码时非常重要，尤其是在涉及到多种不同类型或跨模块交互时。</p>
+</section>
+<section id="id12">
+<h4>将字符串转换为数字<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<p>源码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// --snip--
+
+let mut guess = String::new();
+
+io::stdin()
+    .read_line(&amp;mut guess)
+    .expect(&quot;Failed to read line&quot;);
+
+let guess: u32 = guess.trim().parse().expect(&quot;Please type a number!&quot;); // 加入这条
+
+println!(&quot;You guessed: {guess}&quot;);
+
+match guess.cmp(&amp;secret_number) {
+    Ordering::Less =&gt; println!(&quot;Too small!&quot;),
+    Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
+    Ordering::Equal =&gt; println!(&quot;You win!&quot;),
+}
+</pre></div>
+</div>
+<p>将之前的guess的值转换为无符号32位数字</p>
+<p>trim() 方法移除字符串两端的空白字符（包括空格、制表符、换行符等）</p>
+<p>parse() 方法尝试将字符串解析为指定的类型，这里就是 u32,如果字符串能够成功解析为一个 u32，那么 parse() 将返回 Ok(value)，其中 value 是解析后的 u32 值；如果字符串包含非数字字符或为空，则返回 Err。</p>
+<p>expect() 方法用于处理 Result 类型，它接受一个参数，这个参数是一个字符串，当 Result 是 Err 时将被用作错误信息,Ok,就返回原来的数值</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">guess</span><span class="p">:</span> <span class="n">u32</span> <span class="o">=</span> <span class="n">guess</span><span class="o">.</span><span class="n">trim</span><span class="p">()</span><span class="o">.</span><span class="n">parse</span><span class="p">()</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="s2">&quot;Please type a number!&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>在这里，我们用它将字符串转换为数字。我们需要使用 let guess: u32 告诉 Rust 我们想要的确切数字类型。guess 后面的冒号（:）告诉 Rust 我们将注解变量的类型</p>
+</section>
+</section>
+<section id="id13">
+<h3>3.5 通过循环允许多次猜测<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loop</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>源码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    // --snip--
+
+    println!(&quot;The secret number is: {secret_number}&quot;);
+
+    loop {
+        println!(&quot;Please input your guess.&quot;);
+
+        // --snip--
+
+        match guess.cmp(&amp;secret_number) {
+            Ordering::Less =&gt; println!(&quot;Too small!&quot;),
+            Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
+            Ordering::Equal =&gt; println!(&quot;You win!&quot;),
+        }
+    }
+}
+</pre></div>
+</div>
+<p>把loop{}放在合适的位置</p>
+</section>
+<section id="id14">
+<h3>3.6 猜对后退出<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<p>源码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        // --snip--
+
+        match guess.cmp(&amp;secret_number) {
+            Ordering::Less =&gt; println!(&quot;Too small!&quot;),
+            Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
+            Ordering::Equal =&gt; {
+                println!(&quot;You win!&quot;);
+                break;
+            }
+        }
+    }
+}
+</pre></div>
+</div>
+<p>match 语法可以这样使用</p>
+</section>
+<section id="id15">
+<h3>3.7 处理无效输入<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<p>如果没有这个处理，当问你要个数字时，你输入个’k’或者其他的不是数字的，这个程序就自己退出了，所以要这个处理</p>
+<p>源码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// --snip--
+
+io::stdin()
+    .read_line(&amp;mut guess)
+    .expect(&quot;Failed to read line&quot;);
+
+let guess: u32 = match guess.trim().parse() {
+    Ok(num) =&gt; num,
+    Err(_) =&gt; continue,
+};
+
+println!(&quot;You guessed: {guess}&quot;);
+
+// --snip--
+</pre></div>
+</div>
+<p>使用 match 表达式处理 Result 类型,就是把.expect(“ERROR”),变成match … {Ok(num) =&gt; num, Err(_) =&gt; continue},更好控制错误输出</p>
+<p>** 解释 **</p>
+<p>由于 parse() 方法返回一个 Result&lt;u32, ParseIntError&gt; 类型，它可能是 Ok(num)（如果解析成功）或 Err(e)（如果解析失败）。使用 match 表达式来匹配这两种情况：</p>
+<ul class="simple">
+<li><p>Ok(num) =&gt; num：如果 parse() 成功，Ok(num) 将与第一个模式匹配，match 表达式将返回 num，这是解析后的数字，它将被用来更新 guess 变量的值。</p></li>
+<li><p>Err(_) =&gt; continue：如果 parse() 失败，Err(_) 将与第二个模式匹配。这里使用下划线 _ 作为通配符模式，表示匹配所有错误情况，而不考虑错误的具体内容。在这种情况下，执行 continue 语句，这会导致程序跳过当前循环的剩余部分，并开始下一次循环迭代，从而请求用户再次输入。</p></li>
+</ul>
+<p>** Ok(num) =&gt; num; 解释 **</p>
+<p>num 是在模式中定义的变量名，它只在 match 表达式的当前分支中有效。如果你想要在 Ok 分支中使用不同的变量名，你完全可以这样做，只是你需要在模式中以及使用该变量时保持一致：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ok</span><span class="p">(</span><span class="n">Fuck</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">Fuck</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h3>完整源代码<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>use rand::Rng;
+use std::cmp::Ordering;
+use std::io;
+
+fn main() {
+    println!(&quot;Guess the number!&quot;);
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    loop {
+        println!(&quot;Please input your guess.&quot;);
+
+        let mut guess = String::new();
+
+        io::stdin()
+            .read_line(&amp;mut guess)
+            .expect(&quot;Failed to read line&quot;);
+
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) =&gt; num,
+            Err(_) =&gt; continue,
+        };
+
+        println!(&quot;You guessed: {guess}&quot;);
+
+        match guess.cmp(&amp;secret_number) {
+            Ordering::Less =&gt; println!(&quot;Too small!&quot;),
+            Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
+            Ordering::Equal =&gt; {
+                println!(&quot;You win!&quot;);
+                break;
+            }
+        }
+    }
+}
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id17">
+<h2>Rust 关键字<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>as：用于类型转换，也可以用来消除歧义，即当有多个可能的 trait 包含同名项时，指定使用哪一个。</p></li>
+<li><p>async：将一个函数或闭包标记为异步操作，它将返回一个 Future 对象，而不是阻塞当前线程。</p></li>
+<li><p>await：用于暂停当前 async 函数的执行，直到某个 Future 对象准备就绪。</p></li>
+<li><p>break：立即退出最近的 loop（循环）。</p></li>
+<li><p>const：定义一个常量，常量的值在编译时就已经确定。</p></li>
+<li><p>continue：跳过当前循环的剩余部分，并开始下一次循环迭代。</p></li>
+<li><p>crate：在模块路径中，指向当前项目的根模块。</p></li>
+<li><p>dyn：用于创建动态分派的 trait 对象。</p></li>
+<li><p>else：在 if 或 if let 控制流结构中，作为备选分支。</p></li>
+<li><p>enum：定义枚举类型，枚举是一种特殊的类型，可以是多种预设值之一。</p></li>
+<li><p>extern：声明外部函数或变量，通常用于与 C 语言交互。</p></li>
+<li><p>false：布尔假值字面量。</p></li>
+<li><p>fn：定义一个函数或函数指针类型。</p></li>
+<li><p>for：遍历迭代器中的项，实现 trait，或指定一个高等级生命周期。</p></li>
+<li><p>if：根据条件表达式的结果进行分支选择。</p></li>
+<li><p>impl：实现特定类型的固有方法或 trait 方法。</p></li>
+<li><p>in：是 for 循环语法的一部分。</p></li>
+<li><p>let：绑定一个变量。</p></li>
+<li><p>loop：无条件地无限循环。</p></li>
+<li><p>match：将一个值与多个模式进行匹配。</p></li>
+<li><p>mod：定义一个模块。</p></li>
+<li><p>move：使闭包获取它所有捕获的值的所有权。</p></li>
+<li><p>mut：表示可变性，用于引用、裸指针或模式绑定。</p></li>
+<li><p>pub：表示公共可见性，用于结构体字段、实现块或模块。</p></li>
+<li><p>ref：通过引用进行绑定。</p></li>
+<li><p>return：从函数返回。</p></li>
+<li><p>Self：在定义或实现中，表示当前类型。</p></li>
+<li><p>self：方法的主体或当前模块。</p></li>
+<li><p>static：定义一个全局变量或一个持续整个程序执行的生命周期。</p></li>
+<li><p>struct：定义一个结构体。</p></li>
+<li><p>super：当前模块的父模块。</p></li>
+<li><p>trait：定义一个 trait，trait 是一种特殊的类型，用于为其他类型定义能力。</p></li>
+<li><p>true：布尔真值字面量。</p></li>
+<li><p>type：定义一个类型别名或关联类型。</p></li>
+<li><p>union：定义一个联合体，它是一种特殊的类型，其中所有字段共享相同的内存位置。</p></li>
+<li><p>unsafe：表示不安全的代码、函数、特性或实现。</p></li>
+<li><p>use：将符号引入当前作用域。</p></li>
+<li><p>where：用于指定类型约束的子句。</p></li>
+<li><p>while：根据表达式的结果有条件地进行循环。</p></li>
+</ul>
+</section>
+<section id="id18">
+<h2>变量和可变性<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
+<p>不可变变量,定义变量时，默认变量</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">ERROR</span><span class="p">,</span><span class="n">不能修改不可变变量</span>
+</pre></div>
+</div>
+<p>可变变量,变量名前加mut</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">mut</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">可以修改x</span> <span class="n">为</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<section id="id19">
+<h3>常量<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<p>Rust 的常量命名规则是使用全大写字母，字与字之间使用下划线</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">THREE_HOURS_IN_SECONDS</span><span class="p">:</span> <span class="n">u32</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>常量不能修改，不能加mut</p>
+<p>常量在程序运行的整个过程中都在其声明的范围内有效</p>
+</section>
+<section id="id20">
+<h3>变量遮蔽<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p>在Rust中，变量遮蔽（Shadowing）是一种特性，允许你使用相同的变量名来声明一个新的变量，这个新变量会遮蔽（shadow）之前声明的同名变量。这意味着在当前作用域内，同名的新变量会覆盖旧的变量。</p>
+<p>在你的示例代码中：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fn main() {
+    let x = 5; // 第一个x的声明
+
+    let x = x + 1; // 使用let关键字重新声明x，这会遮蔽第一个x，新的x的值是第一个x的值加1
+
+    {
+        let x = x * 2; // 在这个新的作用域内，再次使用let关键字声明x，这个x会遮蔽外层的x
+        println!(&quot;The value of x in the inner scope is: {}&quot;, x); // 这里的x是内层作用域的x，值为 (5 + 1) * 2 = 12
+    }
+
+    println!(&quot;The value of x is: {}&quot;, x); // 这里的x是外层作用域的x，其值是5 + 1 = 6
+}
+</pre></div>
+</div>
+<p>这段代码的输出将会是：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">inner</span> <span class="n">scope</span> <span class="ow">is</span><span class="p">:</span> <span class="mi">12</span>
+<span class="n">The</span> <span class="n">value</span> <span class="n">of</span> <span class="n">x</span> <span class="ow">is</span><span class="p">:</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p>这里的关键点是：</p>
+<ul class="simple">
+<li><p>第一个let x = 5;声明了一个变量x。</p></li>
+<li><p>第二个let x = x + 1;声明了一个新的变量x，它遮蔽了第一个x。这个新的x的值是第一个x的值加1。</p></li>
+<li><p>在花括号{}内的作用域中，第三个let x = x * 2;声明了另一个新的变量x，它遮蔽了外层作用域中的x。这个新的x的值是外层作用域中x的值乘以2。</p></li>
+<li><p>当内层作用域结束时，内层的x不再存在，外层的x仍然有效，其值为6。</p></li>
+</ul>
+<p>实际上，第二个变量会覆盖第一个变量，将变量名的任何使用都带到自己身上，直到它自己被阴影覆盖或作用域结束</p>
+<p>这种遮蔽机制在Rust中是完全合法的，并且经常被用于需要重新使用变量名以简化代码的情况。然而，它与变量的可变性（mutability）是两个不同的概念。可变性指的是变量的值是否可以改变，而遮蔽则是在相同作用域内使用相同的变量名来创建一个新的变量。</p>
+<p>例子:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">spaces</span> <span class="o">=</span> <span class="s2">&quot;   &quot;</span><span class="p">;</span>
+<span class="n">let</span> <span class="n">spaces</span> <span class="o">=</span> <span class="n">spaces</span><span class="o">.</span><span class="n">len</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>例如，我们的程序要求用户通过输入空格字符来显示他们希望在某些文本之间输入多少个空格，然后我们希望将输入值存储为一个数字：</p>
+<p>这样就只要一个变量名就ok了，不用什么spaces_num或者spaces_str</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">mut</span> <span class="n">spaces</span> <span class="o">=</span> <span class="s2">&quot;   &quot;</span><span class="p">;</span>
+<span class="n">spaces</span> <span class="o">=</span> <span class="n">spaces</span><span class="o">.</span><span class="n">len</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>不能用mut这种方法</p>
+</section>
+</section>
+<section id="id21">
+<h2>数据类型<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
+<p>Rust 中的每个值都有特定的数据类型</p>
+<section id="id22">
+<h3>标量<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<p>标量类型表示单个值。Rust 有四种主要的标量类型：整数、浮点数、布尔型和字符型</p>
+<section id="id23">
+<h4>整数类型<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h4>
+<p>整数是没有小数成分的数字</p>
+<p>Rust 默认定义整数类型是 <em>i32</em></p>
+<p>使用.parse(),结合以下的整数类型</p>
+<p>(显式定义)</p>
+<ul class="simple">
+<li><p>8-bit     i8      u8</p></li>
+<li><p>16-bit        i16         u16</p></li>
+<li><p>32-bit        i32         u32</p></li>
+<li><p>64-bit        i64         u64</p></li>
+<li><p>128-bit       i128    u128</p></li>
+<li><p>arch      isize       usize</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">guess</span><span class="p">:</span> <span class="n">u32</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="o">.</span><span class="n">parse</span><span class="p">()</span><span class="o">.</span><span class="n">expect</span><span class="p">(</span><span class="s2">&quot;Not a number!&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>isize 和 usize 类型取决于程序运行的计算机体系结构，表中用 “arch “表示：如果是 64 位架构，则为 64 位；如果是 32 位架构，则为 32 位。</p>
+<p>可以使用以下所示的任何形式编写整数字面量。需要注意的是，可以是多种数字类型的数字字面量允许使用类型后缀（如 57u8）来指定类型。数字字面量还可以使用 _ 作为视觉分隔符，使数字更容易读取，例如 1_000，其值与指定的 1000 相同。</p>
+<p>(隐式定义）</p>
+<ul class="simple">
+<li><p>Decimal           98_222</p></li>
+<li><p>Hex               0xff</p></li>
+<li><p>Octal             0o77</p></li>
+<li><p>Binary            0b1111_0000</p></li>
+<li><p>Byte (u8 only)        b’A’</p></li>
+</ul>
+</section>
+</section>
+<section id="id24">
+<h3>浮点类型<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<p>Rust 的浮点类型:</p>
+<ul class="simple">
+<li><p>32-bit      f32</p></li>
+<li><p>64-bit      f64</p></li>
+</ul>
+<p>默认类型是 f64，因为在现代 CPU 上，它的速度与 f32 大致相同，但精度更高。所有浮点类型都是带符号的。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">;</span> <span class="o">//</span> <span class="n">f64</span>
+
+    <span class="n">let</span> <span class="n">y</span><span class="p">:</span> <span class="n">f32</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">;</span> <span class="o">//</span> <span class="n">f32</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>f32 类型是单精度浮点数，f64 是双精度浮点数。</p>
+</section>
+<section id="id25">
+<h3>数字运算<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
+<p>Rust 支持所有数字类型的基本数学运算：加法、减法、乘法、除法和余数</p>
+<p>在定义变量时,可以进行数学运算</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">addition</span>
+    <span class="n">let</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+
+    <span class="o">//</span> <span class="n">subtraction</span>
+    <span class="n">let</span> <span class="n">difference</span> <span class="o">=</span> <span class="mf">95.5</span> <span class="o">-</span> <span class="mf">4.3</span><span class="p">;</span>
+
+    <span class="o">//</span> <span class="n">multiplication</span>
+    <span class="n">let</span> <span class="n">product</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">30</span><span class="p">;</span>
+
+    <span class="o">//</span> <span class="n">division</span>
+    <span class="n">let</span> <span class="n">quotient</span> <span class="o">=</span> <span class="mf">56.7</span> <span class="o">/</span> <span class="mf">32.2</span><span class="p">;</span>
+    <span class="n">let</span> <span class="n">truncated</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span> <span class="o">/</span> <span class="mi">3</span><span class="p">;</span> <span class="o">//</span> <span class="n">Results</span> <span class="ow">in</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="o">//</span> <span class="n">remainder</span>
+    <span class="n">let</span> <span class="n">remainder</span> <span class="o">=</span> <span class="mi">43</span> <span class="o">%</span> <span class="mi">5</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="id26">
+<h4>逻辑运算符<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>!：逻辑非，用于取反一个布尔值。</p></li>
+<li><p>&amp;&amp;：逻辑与，用于短路逻辑与操作。</p></li>
+<li><p>||：逻辑或，用于短路逻辑或操作。</p></li>
+</ul>
+</section>
+<section id="id27">
+<h4>比较运算符<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>==：等于，用于比较两个值是否相等。</p></li>
+<li><p>!=：不等于，用于比较两个值是否不相等。</p></li>
+<li><p>&lt;：小于，用于比较两个值的大小。</p></li>
+<li><p>&lt;=：小于或等于，用于比较两个值的大小。</p></li>
+<li><p>&gt;：大于，用于比较两个值的大小。</p></li>
+<li><p>&gt;=：大于或等于，用于比较两个值的大小。</p></li>
+</ul>
+</section>
+<section id="id28">
+<h4>位运算符<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>&amp;：按位与，用于对两个数的位进行逻辑与操作。</p></li>
+<li><p>|：按位或，用于对两个数的位进行逻辑或操作。</p></li>
+<li><p>^：按位异或，用于对两个数的位进行逻辑异或操作。</p></li>
+<li><p>!：按位非，用于对一个数的位进行逻辑非操作（注意：与逻辑非运算符 ! 的使用场合不同）。</p></li>
+<li><p>&lt;&lt;：左移，将一个数的位向左移动指定的位数。</p></li>
+<li><p>&gt;&gt;：右移，将一个数的位向右移动指定的位数。</p></li>
+</ul>
+</section>
+<section id="id29">
+<h4>算术运算符<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>+：加法，用于计算两个数值的和。</p></li>
+<li><p>-：减法，用于计算两个数值的差。</p></li>
+<li><p>*：乘法，用于计算两个数值的乘积。</p></li>
+<li><p>/：除法，用于计算两个数值的商。</p></li>
+<li><p>%：取模，用于计算两个数值相除后的余数。</p></li>
+</ul>
+</section>
+<section id="id30">
+<h4>赋值运算符<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>=：赋值，将右侧的值赋给左侧的变量。</p></li>
+<li><p>+=：加法赋值，将左侧变量与右侧表达式相加的结果赋给左侧变量。</p></li>
+<li><p>-=：减法赋值，将左侧变量与右侧表达式相减的结果赋给左侧变量。</p></li>
+<li><p>*=：乘法赋值，将左侧变量与右侧表达式相乘的结果赋给左侧变量。</p></li>
+<li><p>/=：除法赋值，将左侧变量与右侧表达式相除的结果赋给左侧变量。</p></li>
+<li><p>%=：取模赋值，将左侧变量与右侧表达式取模的结果赋给左侧变量。</p></li>
+<li><p>&amp;=：按位与赋值。</p></li>
+<li><p>|=：按位或赋值。</p></li>
+<li><p>^=：按位异或赋值。</p></li>
+<li><p>&lt;&lt;=：左移赋值。</p></li>
+<li><p>&gt;&gt;=：右移赋值。</p></li>
+</ul>
+</section>
+<section id="id31">
+<h4>其他运算符<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>.：点，用于访问结构体或枚举的成员。</p></li>
+<li><p>-&gt;：箭头，用于指定函数或闭包的返回类型，或者用于解引用智能指针访问其内部的值。</p></li>
+<li><p>:：冒号，用于类型约束、结构体字段初始化或循环标签。</p></li>
+<li><p>;：分号，用于终止语句或项。</p></li>
+<li><p>,：逗号，用于分隔函数参数或元组中的元素。</p></li>
+<li><p>?：错误传播，用于将错误传递到上一层代码。</p></li>
+</ul>
+</section>
+</section>
+<section id="id32">
+<h3>布尔类型<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h3>
+<p>Rust 中的布尔类型有两种可能的值：true 和 false。</p>
+<p>布尔值的大小为一个字节。</p>
+<p>Rust 中的布尔类型使用 bool 指定</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">t</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+
+    <span class="n">let</span> <span class="n">f</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span> <span class="o">//</span> <span class="n">具有显式类型注释with</span> <span class="n">explicit</span> <span class="nb">type</span> <span class="n">annotation</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id33">
+<h3>字符类型<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h3>
+<p>Rust 的 char 类型是该语言最原始的字母类型</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">let</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span><span class="p">;</span>
+    <span class="n">let</span> <span class="n">z</span><span class="p">:</span> <span class="n">char</span> <span class="o">=</span> <span class="s1">&#39;ℤ&#39;</span><span class="p">;</span> <span class="o">//</span> <span class="k">with</span> <span class="n">explicit</span> <span class="nb">type</span> <span class="n">annotation</span>
+    <span class="n">let</span> <span class="n">heart_eyed_cat</span> <span class="o">=</span> <span class="s1">&#39;😻&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../Frontend/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Frontend</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="Python.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Python</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, fajknli
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Rust</a><ul>
+<li><a class="reference internal" href="#id1">1. 安装</a><ul>
+<li><a class="reference internal" href="#rustup">1.1 Rustup</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cargo">2. Cargo</a><ul>
+<li><a class="reference internal" href="#id3">2.1. 用Cargo创建项目</a></li>
+<li><a class="reference internal" href="#cargo-build">2.2. cargo build</a></li>
+<li><a class="reference internal" href="#cargo-run">2.3. cargo run</a></li>
+<li><a class="reference internal" href="#cargo-check">2.4. cargo check:</a></li>
+<li><a class="reference internal" href="#id4">2.5. 总结</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">3. 实现一个经典的入门问题:猜数游戏</a><ul>
+<li><a class="reference internal" href="#setting-up-a-new-project">3.1 Setting Up a New Project</a></li>
+<li><a class="reference internal" href="#src-main-rs">3.2 查看src/main.rs</a><ul>
+<li><a class="reference internal" href="#id6">3.2.1 分析</a></li>
+<li><a class="reference internal" href="#id7">存值到变量里</a></li>
+<li><a class="reference internal" href="#associated-function">::语法和associated function的含义。让我来概括一下:</a></li>
+<li><a class="reference internal" href="#id8">3.2.2 接受用户输入</a></li>
+<li><a class="reference internal" href="#id9">3.2.3 处理程序可能出现的错误</a></li>
+<li><a class="reference internal" href="#println">3.2.4 用 println! 打印占位符</a></li>
+<li><a class="reference internal" href="#rand">使用外来模块，Rand</a></li>
+<li><a class="reference internal" href="#cargo-lock">Cargo.lock文件</a></li>
+<li><a class="reference internal" href="#cargo-update">cargo update</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rng">3.3 rng生成随机数</a><ul>
+<li><a class="reference internal" href="#cargo-crates">Cargo 查看项目内的crates的描述</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">3.4 将猜测与秘密数字进行比较</a><ul>
+<li><a class="reference internal" href="#signed-unsigned">基本数值,有符号（signed）和无符号（unsigned）两大类</a></li>
+<li><a class="reference internal" href="#id11">修改整数类型</a></li>
+<li><a class="reference internal" href="#id12">将字符串转换为数字</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13">3.5 通过循环允许多次猜测</a></li>
+<li><a class="reference internal" href="#id14">3.6 猜对后退出</a></li>
+<li><a class="reference internal" href="#id15">3.7 处理无效输入</a></li>
+<li><a class="reference internal" href="#id16">完整源代码</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id17">Rust 关键字</a></li>
+<li><a class="reference internal" href="#id18">变量和可变性</a><ul>
+<li><a class="reference internal" href="#id19">常量</a></li>
+<li><a class="reference internal" href="#id20">变量遮蔽</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id21">数据类型</a><ul>
+<li><a class="reference internal" href="#id22">标量</a><ul>
+<li><a class="reference internal" href="#id23">整数类型</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id24">浮点类型</a></li>
+<li><a class="reference internal" href="#id25">数字运算</a><ul>
+<li><a class="reference internal" href="#id26">逻辑运算符</a></li>
+<li><a class="reference internal" href="#id27">比较运算符</a></li>
+<li><a class="reference internal" href="#id28">位运算符</a></li>
+<li><a class="reference internal" href="#id29">算术运算符</a></li>
+<li><a class="reference internal" href="#id30">赋值运算符</a></li>
+<li><a class="reference internal" href="#id31">其他运算符</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id32">布尔类型</a></li>
+<li><a class="reference internal" href="#id33">字符类型</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=46f6607b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>

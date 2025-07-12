@@ -1,8 +1,0 @@
-Frontend
-###########
-
-.. toctree::
-   :titlesonly:
-   :glob:
-
-   *

@@ -1,9 +1,9 @@
 // ========== Autostart Applications ==========
 spawn-at-startup "waybar"
-spawn-at-startup "firefox"
+spawn-at-startup "zen"
 spawn-at-startup "prismlauncher"
 spawn-at-startup "foot"
-spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f -c 151622" "before-sleep" "swaylock -f -c 151622"
+//spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f -c 151622" "before-sleep" "swaylock -f -c 151622"
 //spawn-at-startup "alacritty"
 
 // ========== General Settings ==========
