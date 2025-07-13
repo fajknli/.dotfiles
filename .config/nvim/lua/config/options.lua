@@ -1,4 +1,4 @@
-vim.opt.clipboard = ""  -- 不自动将操作同步到系统剪贴板
+--vim.opt.clipboard = ""  -- 不自动将操作同步到系统剪贴板
 --vim.opt.clipboard = 'unnamedplus'  -- 共用系统剪贴板
 -- 使用 vim.opt 统一设置
 vim.opt.relativenumber = true      -- 等同于 vim.wo.relativenumber
@@ -52,7 +52,7 @@ vim.opt.smartcase = true           -- 有大写字母时区分大小写
 -- 其他重要设置
 vim.opt.undofile = true            -- 启用持久撤销（推荐）
 vim.opt.undodir = vim.fn.stdpath('data') .. "/undo" -- 撤销文件目录
-vim.opt.clipboard = "unnamedplus"  -- 系统剪贴板集成
+--vim.opt.clipboard = "unnamedplus"  -- 系统剪贴板集成
 
 -- 会话设置（优化版）
 vim.opt.sessionoptions = {    -- 使用 table 完整赋值更清晰

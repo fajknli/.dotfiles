@@ -378,7 +378,7 @@ if ! command -v wmenu >/dev/null 2>&1; then
     echo "wmenu is not install!" >&2
     notify-send -u critical "There is no [wmenu]"
     exit 1
-elif ! command -v zen >/dev/null 2>&1; then
+elif ! command -v qutebrowser >/dev/null 2>&1; then
     echo "firefox is not install!" >&2
     notify-send -u critical "There is no [firefox]"
     exit 1
@@ -392,12 +392,12 @@ if [ -n "$choice" ]; then
     case "$choice" in
         *"|"*)
             site="$(printf '%s' "$choice" | awk -F '|' '{print $2}')"
-            zen "$site"
+            qutebrowser "$site"
             ;;
         *)
     #        encoded_query="$(printf '%s' "$choice" | sed -e 's/%/%25/g' -e 's/ /%20/g' -e 's/?/%3F/g' -e 's/&/%26/g' -e 's/=/%3D/g')"
     #        it is not working
-            zen "https://cn.bing.com/search?q=$choice"
+            qutebrowser "https://cn.bing.com/search?q=$choice"
             ;;
     esac
 fi
