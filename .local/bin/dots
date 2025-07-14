@@ -44,7 +44,7 @@ set -- \
     "$HOME/.config/zathura" \
     "$HOME/.local/bin" \
     "$HOME/Project" \
-    "$HOME/notes" \
+    "$HOME/Documents/Notes" \
     "$HOME/.alacritty.toml" \
     "$HOME/.bash_aliases" \
     "$HOME/.bash_exports" \
