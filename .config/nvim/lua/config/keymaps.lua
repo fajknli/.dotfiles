@@ -65,8 +65,8 @@ end, { desc = 'Vertical split with local directory context' })
 -- 设置窗口大小调整快捷键
 vim.keymap.set('n', '<Tab>h', '<C-w>5<', { desc = 'Decrease window width', noremap = true, silent = true })
 vim.keymap.set('n', '<Tab>l', '<C-w>5>', { desc = 'Increase window width', noremap = true, silent = true })
-vim.keymap.set('n', '<Tab>j', '<C-w>5-', { desc = 'Decrease window height', noremap = true, silent = true })
-vim.keymap.set('n', '<Tab>k', '<C-w>5+', { desc = 'Increase window height', noremap = true, silent = true })
+vim.keymap.set('n', '<Tab>j', '<C-w>5+', { desc = 'Decrease window height', noremap = true, silent = true })
+vim.keymap.set('n', '<Tab>k', '<C-w>5-', { desc = 'Increase window height', noremap = true, silent = true })
 
 -- 窗口最大化/恢复
 vim.keymap.set('n', '<leader>w-', ':wincmd _<CR>:wincmd |<CR>', { desc = 'Maximize window', noremap = true, silent = true })
@@ -105,8 +105,8 @@ vim.keymap.set('n', 'k', 'gk', { desc = 'Move in graph', noremap = true, silent 
 
 -- 标签页操作
 -- 更一致的键位前缀
-vim.keymap.set('n', '<leader>tt', ':tabnew<CR>', { desc = 'New tab', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>to', ':tabonly<CR>', { desc = 'Close other tabs', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>t', ':tabnew<CR>', { desc = 'New tab', noremap = true, silent = true })
+--vim.keymap.set('n', '<leader>to', ':tabonly<CR>', { desc = 'Close other tabs', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { desc = 'Close tab', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tn', ':tabnext<CR>', { desc = 'Next tab', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tp', ':tabprevious<CR>', { desc = 'Previous tab', noremap = true, silent = true })
@@ -154,10 +154,10 @@ vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and keep selection', nore
 -- endofline
 
 -- 常用折叠快捷键
-vim.keymap.set('n', 'zc', 'zc', { desc = 'Fold current' })      -- 折叠当前
-vim.keymap.set('n', 'zo', 'zo', { desc = 'Unfold current' })    -- 展开当前
-vim.keymap.set('n', 'za', 'za', { desc = 'Toggle fold' })       -- 切换折叠
-vim.keymap.set('n', 'zR', 'zR', { desc = 'Unfold all' })        -- 展开所有
-vim.keymap.set('n', 'zM', 'zM', { desc = 'Fold all' })          -- 折叠所有
-vim.keymap.set('n', 'zj', 'zj', { desc = 'Next fold' })         -- 跳到下一个折叠
-vim.keymap.set('n', 'zk', 'zk', { desc = 'Prev fold' })         -- 跳到上一个折叠
+-- vim.keymap.set('n', 'zc', 'zc', { desc = 'Fold current' })      -- 折叠当前
+-- vim.keymap.set('n', 'zo', 'zo', { desc = 'Unfold current' })    -- 展开当前
+-- vim.keymap.set('n', 'za', 'za', { desc = 'Toggle fold' })       -- 切换折叠
+-- vim.keymap.set('n', 'zR', 'zR', { desc = 'Unfold all' })        -- 展开所有
+-- vim.keymap.set('n', 'zM', 'zM', { desc = 'Fold all' })          -- 折叠所有
+-- vim.keymap.set('n', 'zj', 'zj', { desc = 'Next fold' })         -- 跳到下一个折叠
+-- vim.keymap.set('n', 'zk', 'zk', { desc = 'Prev fold' })         -- 跳到上一个折叠

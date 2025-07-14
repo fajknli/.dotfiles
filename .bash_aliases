@@ -21,7 +21,7 @@ alias arckb='paru -Ps'
 
 
 # 工具 & 脚本
-alias vim='nvim'
+#alias vim='nvim'
 #alias bj='vim $(fzf)'
 alias ls='ls --color=auto'
 alias ll='ls --color=auto -AXhl'
