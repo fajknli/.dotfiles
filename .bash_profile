@@ -15,7 +15,7 @@ wl-paste --watch cliphist store &
 
 
 #export BROWSER="/usr/bin/firefox"
-export BROWSER="/usr/bin/zen"
+export BROWSER="/usr/bin/qutebrowser"
 
 # 启动一些后台程序（如果需要）
 # nohup some_program &

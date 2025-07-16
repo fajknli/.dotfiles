@@ -71,6 +71,9 @@ window-rule {
     match app-id="floatingfoot"
     open-on-workspace "Terminal"
     open-floating true
+    default-floating-position x=350 y=50
+    min-width 1000
+    min-height 900
 }
 // zathura
 window-rule {

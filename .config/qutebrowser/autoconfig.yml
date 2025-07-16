@@ -71,7 +71,7 @@ settings:
   colors.hints.bg:
     global: '#fab387'
   colors.hints.fg:
-    global: '#c6c9d5'
+    global: '#151622'
   colors.hints.match.fg:
     global: '#c2c7d9'
   colors.keyhint.bg:

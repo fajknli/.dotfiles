@@ -9,7 +9,7 @@ if ! command -v wmenu; then
     exit 1
 fi
 
-pdf_dirs=$(find "$HOME"/PDFs/ -mindepth 1 -type d)
+pdf_dirs=$(find "$HOME"/Documents/PDFs/ -mindepth 1 -type d)
 
 choice_dir=$(echo "$pdf_dirs" | \
 wmenu -p "PDF-DIR" -M "#a0d0a0" -m "#151622" -i -l 15 \

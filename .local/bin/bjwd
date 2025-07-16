@@ -7,7 +7,8 @@
 
 
 
-note_dirs=$(find "$HOME"/notes/notes_rst/source -type d | grep -v '_static')
+note_dirs=$(find "$HOME"/Documents/Notes/notes_rst/source -type d | \
+    grep -v '_static')
 
 
 if [ -n "$note_dirs" ]; then
