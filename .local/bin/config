@@ -1,114 +1,107 @@
 #!/bin/sh
 
-file_list="
-fcitx5      |.config/fcitx5/config
-fcitx5      |.config/fcitx5/profile
-fcitx5      |.config/fcitx5/conf/cached_layouts
-fcitx5      |.config/fcitx5/conf/chttrans.conf
-fcitx5      |.config/fcitx5/conf/claassicui.conf
-fcitx5      |.config/fcitx5/conf/notifications.conf
-fcitx5      |.config/fcitx5/conf/pinyin.conf
-fcitx5      |.config/fcitx5/conf/punctuation.conf
-fcitx5      |.config/fcitx5/conf/waylandim.conf
-fcitx5      |.config/fcitx5/conf/xim.conf
-foot        |.config/foot/foot.ini
-fuzzel      |.config/fuzzel/fuzzel.ini
-gtk         |.config/gtk-3.0/settings.ini
-htop        |.config/htop/htoprc
-hyprland    |.config/hypr/hyprland.conf
-kitty       |.config/kitty/kitty.conf
-lf          |.config/lf/lfrc
-lf          |.config/lf/colors
-lf          |.config/lf/icons
-mako        |.config/mako/config
-mc          |.config/mc/ini
-mc          |.config/mc/mc.default.keymap
-mc          |.config/mc/mc.keymap
-mc          |.config/mc/panels.ini
-niri        |.config/niri/config.kdl
-zathura     |.config/zathura/zathurarc
-neovim      |.config/nvim/lua/colors/fajknli.lua
-neovim      |.config/nvim/lua/config/appearance.lua
-neovim      |.config/nvim/lua/config/autocmds.lua
-neovim      |.config/nvim/lua/config/filetypes.lua
-neovim      |.config/nvim/lua/config/init.lua
-neovim      |.config/nvim/lua/config/keymaps.lua
-neovim      |.config/nvim/lua/config/netrw.lua
-neovim      |.config/nvim/lua/config/options.lua
-neovim      |.config/nvim/lua/config/settings.lua
-neovim      |.config/nvim/lua/plugins/init.lua
-neovim      |.config/nvim/lua/utils/utils.lua
-neovim      |.config/nvim/lua/utils/autocomment.lua
-neovim      |.config/nvim/init.lua
-neovim      |.config/nvim/lazy-lock.json
-qutebrowser |.config/qutebrowser/quickmarks
-qutebrowser |.config/qutebrowser/autoconfig.yml
-river       |.config/river/init
-sway        |.config/sway/config
-waybar      |.config/waybar/scripts/powermenu.sh
-waybar      |.config/waybar/scripts/touchpad-status.sh
-waybar      |.config/waybar/config
-waybar      |.config/waybar/style.css
-zellij      |.config/zellij/config.kdl
-foot        |.config/foot/foot.ini
-alacritty   |.alacritty.toml
-bash        |.bashrc
-bash        |.bash_aliases
-bash        |.bash_exports
-bash        |.bash_functions
-bash        |.bash_profile
-bash        |.bash_prompt
-curl        |.curlrc
-wget        |.wgetrc
-input       |.inputrc
-git         |.gitconfig
-bin         |.local/bin/calculator
-bin         |.local/bin/config
-bin         |.local/bin/color
-bin         |.local/bin/clipbd
-bin         |.local/bin/dots
-bin         |.local/bin/pdf
-bin         |.local/bin/gjwd
-bin         |.local/bin/gxwd
-bin         |.local/bin/bjwd
-bin         |.local/bin/music_name-shift
-bin         |.local/bin/music_tans-space-to-slash
-bin         |.local/bin/note_edit-rst-file
-bin         |.local/bin/novA
-bin         |.local/bin/ntp-time
-bin         |.local/bin/pm
-bin         |.local/bin/pmp
-bin         |.local/bin/pmr
-bin         |.local/bin/setup_bootstrap
-bin         |.local/bin/setup_dotfile-setup
-bin         |.local/bin/sites
-bin         |.local/bin/vA
-bin         |.local/bin/weather
-"
-
-choice_file="$(printf '%s' "$file_list" | grep -v '^$' | wmenu -i -l 15 -f "0xProto Nerd Font Regular 12" -N "#1f2032" -n "#a9b5d5" -S "#a0d0a0" -s "#151622")"
-
 if ! command -v foot; then
     echo "There no command foot" >&2
     notify-send "There no command foot"
     exit 1
 fi
 
+bin=$(printf "%s\n" "$HOME"/.local/bin/*)
+fcitx5=$(printf "%s\n" "$HOME"/.config/fcitx5/*)
+lf=$(printf "%s\n" "$HOME"/.config/lf/*)
+foot=$(printf "%s\n" "$HOME"/.config/foot/*)
+mc=$(printf "%s\n" "$HOME"/.config/mc/*)
+gtk=$(printf "%s\n" "$HOME"/.config/gtk-3.0/*)
+kitty=$(printf "%s\n" "$HOME"/.config/kitty/*)
+niri=$(printf "%s\n" "$HOME"/.config/niri/*)
+fuzzel=$(printf "%s\n" "$HOME"/.config/fuzzel/*)
+htop=$(printf "%s\n" "$HOME"/.config/htop/*)
+hypr=$(printf "%s\n" "$HOME"/.config/hypr/*)
+waybar=$(printf "%s\n" "$HOME"/.config/waybar/*)
+mako=$(printf "%s\n" "$HOME"/.config/mako/*)
+zathura=$(printf "%s\n" "$HOME"/.config/zathura/*)
+qutebrowser=$(printf "%s\n" "$HOME"/.config/qutebrowser/*)
+nvim=$(printf "%s\n" "$HOME"/.config/nvim/*)
+sway=$(printf "%s\n" "$HOME"/.config/sway/*)
+zellij=$(printf "%s\n" "$HOME"/.config/zellij/*)
+bash=$(find . -maxdepth 1 -type f -name "$HOME/.bash_*" \
+    -exec printf "%s\n" {} \;)
 
-if [ -n "$choice_file" ]; then
-    case "$choice_file" in
-        *"|"*)
-            file_path="$HOME/$(printf '%s' "$choice_file" | awk -F '|' '{print $2}')"
-            if [ -f "$file_path" ]; then
-                 foot nvim "$file_path"
-             else
-                 echo "The path has changed, plz check if the path exist"
-                 notify-send "The path has changed, plz check if the path exist"
-            fi
-            ;;
-        *)
-            echo "no such file"
-            notify-send "no such file"
-            ;;
-    esac
+file_list="
+$bin
+$fcitx5
+$foot
+$gtk
+$fuzzel
+$htop
+$mako
+$sway
+$zathura
+$lf
+$hypr
+$kitty
+$zellij
+$mc
+$niri
+$nvim
+$waybar
+$qutebrowser
+$bash
+$HOME/.bashrc
+$HOME/.inputrc
+$HOME/.gitconfig
+$HOME/.wgetrc
+$HOME/.curlrc
+$HOME/.alacritty
+"
+
+
+choice="$(printf '%s' "$file_list" | grep -v '^$' | \
+    wmenu -i -l 15 -f"0xProto Nerd Font Regular 12" -N \
+    "#1f2032" -n "#a9b5d5" -S "#a0d0a0" -s "#151622")"
+
+if [ -n "$choice" ]; then
+    if [ -f "$choice" ]; then
+        foot nvim "$choice"
+    elif [ -d "$choice" ]; then
+        if [ "$(ls -A "$choice" 2>/dev/null)" ]; then
+        # this is for printf which have * and do not want show itself
+        # turn on nullglob THIS IS FOR BASH ONLY
+        # shopt -s nullglob
+        choice="$(printf '%s' "$choice"/* | grep -v '^$' | \
+            wmenu -i -l 15 -f"0xProto Nerd Font Regular 12" -N \
+            "#1f2032" -n "#a9b5d5" -S "#a0d0a0" -s "#151622")"
+        # turn off nullglob
+        # shopt -u nullglob
+        else
+            echo "Director is empty"
+            notify-send "Director is empty"
+        fi
+    else
+         echo "The path has changed, plz check if the path exist"
+         notify-send "The path has changed, plz check if the path exist"
+    fi
 fi
+
+
+
+
+
+# if [ -n "$choice_file" ]; then
+#     case "$choice_file" in
+#         *"|"*)
+#             file_path="$HOME/$(printf '%s' "$choice_file" | awk -F '|' '{print $2}')"
+#             if [ -f "$file_path" ]; then
+#                  foot nvim "$file_path"
+#              else
+#                  echo "The path has changed, plz check if the path exist"
+#                  notify-send "The path has changed, plz check if the path exist"
+#             fi
+#             ;;
+#         *)
+#             echo "no such file"
+#             notify-send "no such file"
+#             ;;
+#     esac
+# fi
+

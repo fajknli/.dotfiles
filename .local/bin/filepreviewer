@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Author:       fajknli
+# Emial         fajknli@gmail.com
+# Created Time: 2025-07-21 06:52
+# Filename:     filepreviewer
+
+mkdir -p "$HOME"/.cache/lf
+
+way_to_open() {
+    if [ -n "$FZF_LEVEL" ] || [ -n "$NVIM" ]; then
+        catimg -t -w 80 "$1" # use catimg when running with `fzf` & `lf.vim`
+    elif [ "$XDG_SESSION_TYPE" != "tty" ]; then
+        chafa -f sixel -s "$2x$3" --animate off --polite on -t 1 --bg '#111111' "$1"
+    else
+        # catimg is faster than chafa for ANSI
+        catimg -t -w "$2" "$1"
+    fi
+}
+
+case "$(file -Lb --mime-type -- "$1")" in
+    image/*)
+        way_to_open "$1" "$2" "$3"
+        ;;
+    application/pdf)
+esac

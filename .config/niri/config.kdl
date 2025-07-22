@@ -1,6 +1,6 @@
 // ========== Autostart Applications ==========
 spawn-at-startup "waybar"
-spawn-at-startup "zen"
+spawn-at-startup "qutebrowser"
 spawn-at-startup "prismlauncher"
 spawn-at-startup "foot"
 //spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f -c 151622" "before-sleep" "swaylock -f -c 151622"
@@ -83,14 +83,9 @@ window-rule {
 }
 // firefox
 window-rule {
-    match app-id=r#"firefox$"#
+    match app-id=r#"org\.qutebrowser\.qutebrowser$"#
     open-on-workspace "Browser"
     open-maximized true
-}
-// firefox picture
-window-rule {
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
 }
 // prismlauncher
 window-rule {
