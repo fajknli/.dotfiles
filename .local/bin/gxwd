@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd $HOME/notes/notes_rst
+cd $HOME/Documents/Notes/notes_rst
 
 CURRENT_TIME=$(date "+%Y-%m-%d_%H-%M-%S")  # 格式示例：2024-06-15_15-30-45
 TARGET_FILE="note_${CURRENT_TIME}.bk"
