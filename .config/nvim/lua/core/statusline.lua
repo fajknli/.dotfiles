@@ -1,3 +1,9 @@
+-- Author:       fajknli
+-- Email:        fajknli@gmail.com
+-- Created Time: 2025-07-27 19:58
+-- Filename:     statusline.lua
+
+
 require("colors.fajknli").setup()
 -- 设置状态栏的内容，包括当前文件名、行号、列号、编码等信息
 vim.o.statusline = '%* [Bf-%n] CWD:%r%{getcwd()}%h%*/'

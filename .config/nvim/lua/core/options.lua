@@ -1,5 +1,4 @@
---vim.opt.clipboard = ""  -- 不自动将操作同步到系统剪贴板
---vim.opt.clipboard = 'unnamedplus'  -- 共用系统剪贴板
+-- options 
 -- 使用 vim.opt 统一设置
 vim.opt.relativenumber = true      -- 等同于 vim.wo.relativenumber
 vim.opt.mouse = 'a'                -- 在所有模式下启用鼠标支持
@@ -99,3 +98,4 @@ vim.opt.colorcolumn = "80,100,120"   -- 建议添加：80 列参考线
 vim.opt.wildmenu = true              -- 启用图形化补全菜单
 vim.opt.wildignorecase = true        -- 补全时忽略大小写
 vim.opt.cmdwinheight = 5             -- 命令行窗口高度
+

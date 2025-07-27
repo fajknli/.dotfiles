@@ -1,10 +1,5 @@
+-- keymaps
 -- 移动行
--- vim.api.nvim_set_keymap('n', '<M-j>', 'mz:m+<CR>z', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<M-k>', 'mz:m-2<CR>z', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('v', '<M-j>', ':m\'>+<CR><my>mzgvyoz', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('v', '<M-k>', ':m\'<-2<CR>>my<mzgvyoz', { noremap = true, silent = true })
--- 使用更现代的 vim.keymap.set()
--- 添加描述文本方便理解
 vim.keymap.set('n', '<M-j>', ':move .+1<CR>', { desc = 'Move line down', noremap = true, silent = true })
 vim.keymap.set('n', '<M-k>', ':move .-2<CR>', { desc = 'Move line up', noremap = true, silent = true })
 
@@ -12,38 +7,23 @@ vim.keymap.set('n', '<M-k>', ':move .-2<CR>', { desc = 'Move line up', noremap =
 vim.keymap.set('v', '<M-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down', noremap = true, silent = true })
 vim.keymap.set('v', '<M-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up', noremap = true, silent = true })
 
-
 -- 剪贴板操作快捷键
---vim.api.nvim_set_keymap('v', '<C-c>', '"+y', { noremap = true, silent = true })
---vim.api.nvim_set_keymap('i', '<C-v>', '"+p', { noremap = true, silent = true })
--- 使用更直观的键位
 vim.keymap.set({'n', 'v'}, '<leader>y', '"+y', { desc = 'Yank to system clipboard', noremap = true, silent = true })
 vim.keymap.set({'n', 'v'}, '<leader>p', '"+p', { desc = 'Paste from system clipboard', noremap = true, silent = true })
 vim.keymap.set({'n', 'v'}, '<C-c>', '"+y', { desc = 'Yank to system clipboard', noremap = true, silent = true })
 vim.keymap.set('i', '<C-v>', '<C-r>+', { desc = 'Paste from clipboard in insert mode', noremap = true, silent = true })
-
-
--- 粘贴模式切换
--- 使用切换而不是两个键
---vim.keymap.set('n', '<leader>pp', ':set paste!<CR>', { desc = 'Toggle paste mode', noremap = true, silent = true })
 
 -- 文件操作
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save file', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = 'Quit', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>W', ':w !sudo tee % > /dev/null<CR>', { desc = 'Save with sudo', noremap = true, silent = true })
 
--- 窗口
--- 禁用原始的 <C-w>h/j/k/l 导航
--- vim.keymap.del('n', '<C-w>h')
--- vim.keymap.del('n', '<C-w>j')
--- vim.keymap.del('n', '<C-w>k')
--- vim.keymap.del('n', '<C-w>l')
 -- 窗口导航
 vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left window', noremap = true, silent = true })
 vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move to below window', noremap = true, silent = true })
 vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to above window', noremap = true, silent = true })
 vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right window', noremap = true, silent = true })
--- 基本窗口分割
+
 -- 水平分割并保持目录上下文
 vim.keymap.set('n', '<leader>hh', function()
   -- 先保存当前窗口的局部目录
@@ -71,19 +51,20 @@ vim.keymap.set('n', '<Tab>k', '<C-w>5-', { desc = 'Increase window height', nore
 -- 窗口最大化/恢复
 vim.keymap.set('n', '<leader>w-', ':wincmd _<CR>:wincmd |<CR>', { desc = 'Maximize window', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>w=', ':wincmd =<CR>', { desc = 'Balance windows', noremap = true, silent = true })
+
 -- 窗口移动
 vim.keymap.set('n', '<leader>wh', ':wincmd H<CR>', { desc = 'Move window left', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>wj', ':wincmd J<CR>', { desc = 'Move window down', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>wk', ':wincmd K<CR>', { desc = 'Move window up', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>wl', ':wincmd L<CR>', { desc = 'Move window right', noremap = true, silent = true })
+
 -- 在当前窗口打开文件
 vim.keymap.set('n', '<leader>o', ':edit ', { desc = 'Open file in current window' })
+
 -- 快速切换最近文件
 vim.keymap.set('n', '<leader><leader>', '<C-^>', { desc = 'Switch to alternate file', noremap = true, silent = true })
 
-
 -- 命令行光标移动
--- 增强命令行模式的光标移动
 vim.keymap.set('c', '<C-a>', '<Home>', { desc = '移动到行首', noremap = true })
 vim.keymap.set('c', '<C-e>', '<End>', { desc = '移动到行尾', noremap = true })
 vim.keymap.set('c', '<C-b>', '<Left>', { desc = '左移字符', noremap = true })
@@ -161,3 +142,21 @@ vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and keep selection', nore
 -- vim.keymap.set('n', 'zM', 'zM', { desc = 'Fold all' })          -- 折叠所有
 -- vim.keymap.set('n', 'zj', 'zj', { desc = 'Next fold' })         -- 跳到下一个折叠
 -- vim.keymap.set('n', 'zk', 'zk', { desc = 'Prev fold' })         -- 跳到上一个折叠
+
+-- 复制行内链接
+function CopyUrlFromLine()
+  local line = vim.fn.getline('.')
+  -- 匹配 http:// 或 https:// 开头的URL
+  -- local url = line:match('https?://[%w-_%.%?%.:/%+=&]+')
+  local url = line:match('[%w]+://[%w%-_%.%?%.:/%+=&%%#@,;!]*')
+  
+  if url then
+    vim.fn.setreg('+', url)  -- 复制到系统剪贴板
+    print('已复制URL: ' .. url)
+  else
+    print('未找到URL')
+  end
+end
+
+vim.keymap.set('n', '<leader>cu', CopyUrlFromLine)
+

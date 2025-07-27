@@ -1,8 +1,15 @@
--- 自动重新加载外部修改的文件
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+-- autocmds
+-- 为每个窗口自动设置局部工作目录到当前文件所在目录
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
   pattern = "*",
   callback = function()
-    vim.cmd("silent! checktime")
+    -- 获取当前缓冲区文件所在目录
+    local buf_dir = vim.fn.expand("%:p:h")
+    -- 确认是有效目录
+    if vim.fn.isdirectory(buf_dir) == 1 then
+      -- 使用 lcd 只改变当前窗口的工作目录
+      vim.cmd("lcd " .. vim.fn.fnameescape(buf_dir))
+    end
   end,
 })
 
@@ -16,16 +23,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- 自动清除搜索高亮
-vim.api.nvim_create_autocmd("ModeChanged", {
-  pattern = "*",
-  callback = function()
-    if vim.fn.mode() ~= "n" then
-      vim.cmd("nohlsearch")
-    end
-  end,
-})
-
 -- 删除行尾空格函数
 function _G.CleanExtraSpaces()
   local save_cursor = vim.fn.getpos(".")
@@ -34,7 +31,6 @@ function _G.CleanExtraSpaces()
   vim.fn.setpos('.', save_cursor)
   vim.fn.setreg('/', old_query)
 end
-
 -- 设置 BufWritePre 自动命令清除行尾空格
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.txt", "*.js", "*.py", "*.wiki", "*.sh", "*.coffee" },
@@ -72,108 +68,26 @@ vim.api.nvim_create_autocmd("VimEnter", {
   desc = "检查并创建 undo 文件夹，启用持久化撤销",
 })
 
-
-----------------------------------------------------------------------------
-
--- 文件注释头
-
-vim.api.nvim_create_autocmd("BufNewFile", {
-  pattern = { "*.py", "*.sh", "*.pl", "*.js", "*.cpp", "*.go", "*.lua" },  -- 可以扩展到更多语言
-  callback = function()
-    SetComment()  -- 调用统一的设置注释头函数
-  end,
-})
-
--- 让光标跳到文件底部
-vim.api.nvim_create_autocmd("BufNewFile", {
-  pattern = "*",
-  callback = function()
-    vim.cmd("normal! G")
-  end,
-})
-
--- 获取当前时间的函数
-local function get_current_time()
-  return os.date("%Y-%m-%d %H:%M")
-end
-
--- 通用的注释头设置函数
-function SetComment()
-  local filetype = vim.bo.filetype
-  local author = "a6dg2uv"  -- 作者可以自定义
-  local created_time = get_current_time()
-
-  -- 根据文件类型动态设置文件头注释
-  if filetype == "sh" then
-    vim.api.nvim_buf_set_lines(0, 0, 1, false, {
-      "#! /usr/bin/env bash",
-      "# Author:        " .. author,
-      "# Created Time:  " .. created_time,
-      "",
-      ""
-    })
-  elseif filetype == "py" then
-    vim.api.nvim_buf_set_lines(0, 0, 1, false, {
-      "#! /usr/bin/env python",
-      "# -*- coding: utf-8 -*-",
-      "# Author:        " .. author,
-      "# Created Time:  " .. created_time,
-      "",
-      ""
-    })
-  elseif filetype == "pl" then
-    vim.api.nvim_buf_set_lines(0, 0, 1, false, {
-      "#! /usr/bin/env perl",
-      "# -*- coding: utf-8 -*-",
-      "# Author:        " .. author,
-      "# Created Time:  " .. created_time,
-      "",
-      ""
-    })
-  elseif filetype == "js" then
-    vim.api.nvim_buf_set_lines(0, 0, 1, false, {
-      "// Author:        " .. author,
-      "// Created Time:  " .. created_time,
-      "// Script:        " .. vim.fn.expand("%:t"),
-      "",
-      ""
-    })
-  elseif filetype == "cpp" then
-    vim.api.nvim_buf_set_lines(0, 0, 1, false, {
-      "// Author:        " .. author,
-      "// Created Time:  " .. created_time,
-      "// File:          " .. vim.fn.expand("%:t"),
-      "",
-      ""
-    })
-  elseif filetype == "go" then
-    vim.api.nvim_buf_set_lines(0, 0, 1, false, {
-      "// Author:        " .. author,
-      "// Created Time:  " .. created_time,
-      "// File:          " .. vim.fn.expand("%:t"),
-      "",
-      ""
-    })
-  elseif filetype == "lua" then
-    vim.api.nvim_buf_set_lines(0, 0, 1, false, {
-      "-- Author:        " .. author,
-      "-- Created Time:  " .. created_time,
-      "-- File:          " .. vim.fn.expand("%:t"),
-      "",
-      ""
-    })
-  end
-end
-
 local function get_time()
     return os.date("%Y-%m-%d %H:%M")
 end
 
 local function set_header()
-    local filetype = vim.bo.filetype  -- get fily type
-    local author = "fajknli"            -- set your name
+    -- 改用文件扩展名检测
+    local ext_map = {
+        sh = "sh", py = "python", lua = "lua",
+        c = "c", h = "c", cpp = "cpp", hpp = "cpp",
+        java = "java", go = "go", rs = "rust",
+        js = "javascript", ts = "typescript", php = "php",
+        rb = "ruby", html = "html", css = "css",
+        md = "markdown", markdown = "markdown"
+    }
+    local ext = vim.fn.expand('%:e')
+    local filetype = ext_map[ext] or ext
+    
+    local author = "fajknli"
     local email = "fajknli@gmail.com"
-    local filename = vim.fn.expand("%:t")       -- get file name
+    local filename = vim.fn.expand('%:t')
     local time = get_time()
 
     local headers = {
@@ -338,32 +252,18 @@ local function set_header()
         },
     }
 
-    if vim.fn.line('$') == 1 and vim.fn.getline(1) == '' then
-        local header = headers[filetype]
-        if header then
-            vim.api.nvim_buf_set_lines(0, 0, 1, false, header)
-        end
+    -- 更宽松的空文件检测
+    local is_empty = vim.fn.line('$') <= 1 and vim.fn.trim(vim.fn.getline(1)) == ''
+    if is_empty and headers[filetype] then
+        vim.api.nvim_buf_set_lines(0, 0, 0, false, headers[filetype])
+        vim.cmd("normal! G")  -- 移动光标到文件末尾
     end
 end
 
--- 1. 先创建一个 autogroup（并设置 clear=true）
+-- 注册自动命令
 local header_group = vim.api.nvim_create_augroup("FileHeaders", { clear = true })
-
--- 2. 将 autocmd 添加到这个组
 vim.api.nvim_create_autocmd("BufNewFile", {
-    pattern = {
-        "*.sh", "*.py", "*.lua", 
-        "*.c", "*.h", "*.cpp", "*.hpp", 
-        "*.java", "*.go", "*.rs",
-        "*.js", "*.ts", "*.php",
-        "*.rb", "*.html", "*.css",
-        "*.md", "*.markdown", "rst"
-    },
-    callback = function()
-        set_header()
-        print("自动插入 Shell 文件头")
-        vim.cmd("normal! G")
-    end,
-    group = header_group  -- 关键！把这个 autocmd 放进 "FileHeaders" 组
+    pattern = "*",  -- 改为监听所有文件，在函数内过滤
+    group = header_group,
+    callback = set_header  -- 直接引用函数
 })
-

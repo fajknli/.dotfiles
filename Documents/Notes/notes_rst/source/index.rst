@@ -7,19 +7,19 @@ fajknli.files
 ================================
 
 .. toctree::
-    :maxdepth: 9
+    :maxdepth: 4
     :caption: Commands:
 
     Commands/Normal/index
 
 .. toctree::
-    :maxdepth: 9
+    :maxdepth: 4
     :caption: Linux:
 
     Linux/Distro/index
 
 .. toctree::
-    :maxdepth: 9
+    :maxdepth: 4
     :caption: Programing:
     :titlesonly:
     :hidden:
@@ -29,9 +29,13 @@ fajknli.files
     Programing/Frontend/index
 
 .. toctree::
-    :maxdepth: 9
+    :maxdepth: 4
     :caption: Misc:
 
     Misc/index
 
+.. toctree::
+    :maxdepth: 4
+    :caption: Nvim:
 
+    Nvim/index
