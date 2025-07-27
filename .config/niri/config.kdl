@@ -54,22 +54,22 @@ hotkey-overlay {
 }
 
 // ========== Workspace Definitions ==========
-workspace "Terminal"
+workspace "Term"
 workspace "Browser"
 workspace "Reading"
-workspace "Minecraft"
+workspace "Game"
 
 // ========== Window Rules ==========
 // foot
 window-rule {
     match app-id=r#"foot$"#
-    open-on-workspace "Terminal"
+    open-on-workspace "Term"
     //open-maximized true
 }
 // floating foot
 window-rule {
     match app-id="floatingfoot"
-    open-on-workspace "Terminal"
+    open-on-workspace "Term"
     open-floating true
     default-floating-position x=350 y=50
     min-width 1000
@@ -90,14 +90,14 @@ window-rule {
 // prismlauncher
 window-rule {
     match app-id=r#"^org\.prismlauncher\.PrismLauncher$"#
-    open-on-workspace "Minecraft"
+    open-on-workspace "Game"
 }
 // Minecraft game-window
 window-rule {
     match title="^Minecraft"
     open-maximized true
     block-out-from "screencast"
-    open-on-workspace "Minecraft"
+    open-on-workspace "Game"
 }
 // Block out password managers from screencasts
 window-rule {

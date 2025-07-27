@@ -6,26 +6,26 @@ if ! command -v foot; then
     exit 1
 fi
 
-bin=$(printf "%s\n" "$HOME"/.local/bin/*)
-fcitx5=$(printf "%s\n" "$HOME"/.config/fcitx5/*)
-lf=$(printf "%s\n" "$HOME"/.config/lf/*)
-foot=$(printf "%s\n" "$HOME"/.config/foot/*)
-mc=$(printf "%s\n" "$HOME"/.config/mc/*)
-gtk=$(printf "%s\n" "$HOME"/.config/gtk-3.0/*)
-kitty=$(printf "%s\n" "$HOME"/.config/kitty/*)
-niri=$(printf "%s\n" "$HOME"/.config/niri/*)
-fuzzel=$(printf "%s\n" "$HOME"/.config/fuzzel/*)
-htop=$(printf "%s\n" "$HOME"/.config/htop/*)
-hypr=$(printf "%s\n" "$HOME"/.config/hypr/*)
-waybar=$(printf "%s\n" "$HOME"/.config/waybar/*)
-mako=$(printf "%s\n" "$HOME"/.config/mako/*)
-zathura=$(printf "%s\n" "$HOME"/.config/zathura/*)
-qutebrowser=$(printf "%s\n" "$HOME"/.config/qutebrowser/*)
-nvim=$(printf "%s\n" "$HOME"/.config/nvim/*)
-sway=$(printf "%s\n" "$HOME"/.config/sway/*)
-zellij=$(printf "%s\n" "$HOME"/.config/zellij/*)
+bin=$(find "$HOME"/.local/bin -type f)
+fcitx5=$(find "$HOME"/.config/fcitx5 -type f)
+lf=$(find "$HOME"/.config/lf -type f)
+foot=$(find "$HOME"/.config/foot -type f)
+mc=$(find "$HOME"/.config/mc -type f)
+gtk=$(find "$HOME"/.config/gtk-3.0 -type f)
+kitty=$(find "$HOME"/.config/kitty -type f)
+niri=$(find "$HOME"/.config/niri -type f)
+fuzzel=$(find "$HOME"/.config/fuzzel -type f)
+htop=$(find "$HOME"/.config/htop -type f)
+hypr=$(find "$HOME"/.config/hypr -type f)
+waybar=$(find "$HOME"/.config/waybar -type f)
+mako=$(find "$HOME"/.config/mako -type f)
+zathura=$(find "$HOME"/.config/zathura -type f)
+qutebrowser=$(find "$HOME"/.config/qutebrowser -type f)
+nvim=$(find "$HOME"/.config/nvim -type f)
+sway=$(find "$HOME"/.config/sway -type f)
+zellij=$(find "$HOME"/.config/zellij -type f)
 bash=$(find . -maxdepth 1 -type f -name "$HOME/.bash_*" \
-    -exec printf "%s\n" {} \;)
+    -exec find {} \;)
 
 file_list="
 $bin
@@ -63,20 +63,20 @@ choice="$(printf '%s' "$file_list" | grep -v '^$' | \
 if [ -n "$choice" ]; then
     if [ -f "$choice" ]; then
         foot nvim "$choice"
-    elif [ -d "$choice" ]; then
-        if [ "$(ls -A "$choice" 2>/dev/null)" ]; then
+#    elif [ -d "$choice" ]; then
+#        if [ "$(ls -A "$choice" 2>/dev/null)" ]; then
         # this is for printf which have * and do not want show itself
         # turn on nullglob THIS IS FOR BASH ONLY
         # shopt -s nullglob
-        choice="$(printf '%s' "$choice"/* | grep -v '^$' | \
-            wmenu -i -l 15 -f"0xProto Nerd Font Regular 12" -N \
-            "#1f2032" -n "#a9b5d5" -S "#a0d0a0" -s "#151622")"
+#        choice="$(printf '%s' "$choice" | grep -v '^$' | \
+#            wmenu -i -l 15 -f"0xProto Nerd Font Regular 12" -N \
+#            "#1f2032" -n "#a9b5d5" -S "#a0d0a0" -s "#151622")"
         # turn off nullglob
         # shopt -u nullglob
-        else
-            echo "Director is empty"
-            notify-send "Director is empty"
-        fi
+#        else
+#            echo "Director is empty"
+#            notify-send "Director is empty"
+#        fi
     else
          echo "The path has changed, plz check if the path exist"
          notify-send "The path has changed, plz check if the path exist"

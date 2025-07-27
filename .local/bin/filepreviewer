@@ -23,4 +23,6 @@ case "$(file -Lb --mime-type -- "$1")" in
         way_to_open "$1" "$2" "$3"
         ;;
     application/pdf)
+        way_to_open "$1"
+        ;;
 esac

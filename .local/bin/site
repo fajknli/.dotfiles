@@ -1,8 +1,10 @@
 #!/bin/sh
 
 site_lists="
+mynote|file:///home/fajknli/Documents/Notes/notes_rst/build/html/index.html
 nvim|https://neovim.io
 dockerdoc|https://docs.docker.com
+unixchad|
 "
 
 if ! command -v wmenu >/dev/null 2>&1; then
