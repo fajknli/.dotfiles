@@ -2,9 +2,16 @@
 
 site_lists="
 mynote|file:///home/fajknli/Documents/Notes/notes_rst/build/html/index.html
+deepseek|https://chat.deepseek.com/
 nvim|https://neovim.io
 dockerdoc|https://docs.docker.com
-unixchad|
+unixchad|https://github.com/gnuunixchad
+mcwiki|https://zh.minecraft.wiki/?search=
+archwiki|https://wiki.archlinux.org/index.php?search=
+color|https://colorhexa.com
+stardict|https://web.archive.org/web/20200702000038/http://download.huzheng.org/
+achiveorg|https://web.archive.org/
+fedoradoc|https://docs.fedoraproject.org/en-US/docs/
 "
 
 if ! command -v wmenu >/dev/null 2>&1; then
@@ -25,12 +32,14 @@ if [ -n "$choice" ]; then
     case "$choice" in
         *"|"*)
             site="$(printf '%s' "$choice" | awk -F '|' '{print $2}')"
-            qutebrowser "$site"
+            #qutebrowser "$site"
+            $BROWSER "$site"
             ;;
         *)
     #        encoded_query="$(printf '%s' "$choice" | sed -e 's/%/%25/g' -e 's/ /%20/g' -e 's/?/%3F/g' -e 's/&/%26/g' -e 's/=/%3D/g')"
     #        it is not working
-            qutebrowser "https://cn.bing.com/search?q=$choice"
+            #qutebrowser "https://cn.bing.com/search?q=$choice"
+            $BROWSER "https://cn.bing.com/search?q=$choice"
             ;;
     esac
 fi

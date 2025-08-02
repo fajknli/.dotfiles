@@ -1,0 +1,27 @@
+map ,clf cd ~/.config/lf
+map ,ckt cd ~/.config/kitty
+map ,cnv cd ~/.config/nvim
+map ,cnr cd ~/.config/niri
+map ,chp cd ~/.config/hypr
+map ,cfc cd ~/.config/fcitx5
+map ,cft cd ~/.config/foot
+map ,cmk cd ~/.config/mako
+map ,czt cd ~/.config/zathura
+map ,cwb cd ~/.config/waybar
+map ,cqb cd ~/.config/qutebrowser
+map ,csw cd ~/.config/sway
+map ,czl cd ~/.config/zellij
+
+map ,lb cd ~/.local/bin
+
+map ,wp cd ~/Pictures/Wallpaper
+map ,ss cd ~/Pictures/Screenshots
+
+map ,ms cd ~/Music/
+
+map ,dl cd ~/Downloads
+
+map ,dc cd ~/Documents
+map ,dn cd ~/Documents/Notes/notes_rst/source
+map ,dp cd ~/Documents/PDFs
+map ,ds cd ~/Documents/schematics

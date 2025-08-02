@@ -179,6 +179,7 @@ fcitx5 \
 fcitx5-chinese-addons \
 fcitx5-configtool \
 fcitx5-gtk \
+fcitx5-pinyin-zhwiki \
 xdg-desktop-portal-wlr \
 xdg-desktop-portal-gtk \
 xdg-desktop-portal-gnome \
@@ -194,6 +195,7 @@ bluez-utils \
 pavucontrol \
 helvum \
 ffmpeg \
+ffmpegthumbnailer \
 "
 
 # ----------------------------------------

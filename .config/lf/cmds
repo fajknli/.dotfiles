@@ -7,6 +7,15 @@ cmd delete ${{
     [ "$ans" = "y" ] && rm -rf $fx
 }}
 
+#cmd premission ${{
+#    case $(stat -c "%a" "$f") in
+#        644) chmod 755 "$f" ;;
+#        755) chmod 600 "$f" ;;
+#        600) chmod 644 "$f" ;;
+#        *) chmod 644 "$f" ;;
+#    esac
+#}}
+
 
 # move current file or selected files to trash folder
 # (also see 'man mv' for backup/overwrite options)
@@ -85,4 +94,16 @@ cmd bulk-rename ${{
     done
     rm -- "$old" "$new"
     lf -remote "send $id unselect"
+}}
+
+cmd permisson ${{
+    case $(stat -c "%a" "$f") in
+    644) chmod 755 "$f";;
+    755) chmod 600 "$f";;
+    600) chmod 644 "$f";;
+    *)   chmod 644 "$f";;
+    esac
+    lf -remote "send $id unselect"
+    lf -remote "send $id reload"
+    lf -remote "send $id select \"$f\""
 }}

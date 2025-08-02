@@ -99,3 +99,6 @@ vim.opt.wildmenu = true              -- 启用图形化补全菜单
 vim.opt.wildignorecase = true        -- 补全时忽略大小写
 vim.opt.cmdwinheight = 5             -- 命令行窗口高度
 
+-- 禁用自动注释延续（适用于 Lua 配置）
+vim.opt.formatoptions:remove("r")  -- 不自动插入注释符（按 Enter 时）
+vim.opt.formatoptions:remove("o")  -- 不自动插入注释符（按 o/O 时）

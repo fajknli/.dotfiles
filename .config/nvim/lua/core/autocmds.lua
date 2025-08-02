@@ -102,7 +102,7 @@ local function set_header()
             ""
         },
         python = {
-            "#!/user/bin/env python3",
+            "#!/usr/bin/env python3",
             "",
             "# Author:       " .. author,
             "# Emial         " .. email,

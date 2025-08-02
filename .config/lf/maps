@@ -1,3 +1,7 @@
+map ,
+# source $XDG_CONFIG_HOME/lf/locate
+source ~/.config/lf/locate
+
 map <delete> delete
 map R bulk-rename
 map D trash
@@ -16,3 +20,6 @@ map X !$f
 # dedicated keys for file opener actions
 #map o &mimeopen $f
 #map O $mimeopen --ask $f
+
+#map <c-p> premission
+map <c-p> permisson

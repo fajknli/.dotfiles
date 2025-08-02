@@ -1,0 +1,1032 @@
+<!doctype html>
+<html class="no-js" lang="en-US" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Awk" href="../Awk/index.html" /><link rel="prev" title="Python_Libraries" href="Python_Library.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
+        <title>Python Standard Library - fajknli Note IDK documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">fajknli Note IDK documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <span class="sidebar-brand-text">fajknli Note IDK documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Linux:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Linux/Distributions/index.html">Distributions</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Distributions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Distributions/ArchLinux-Setup-Configurate.html">Arch Linux 安装和配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Distributions/Debian-Setup-Configurate.html">Debian安装和配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Distributions/VoidLinux-Setup-Configurate.html">Void Linux 安装和配置</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Linux/System-Commands/index.html">System-Commands</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of System-Commands</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/System-Commands/Linux_Commands_Overview.html">Commands List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/System-Commands/Linux_System_Commands.html">Linux系统命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/System-Commands/Shell_Simple_Usage.html">Shell_Simple_Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/System-Commands/awk_simple-usage.html">awk 数据处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/System-Commands/find.html">find</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/System-Commands/grep.html">grep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/System-Commands/sed.html">sed</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Linux/Tool-Softwares/index.html">Tool-Softwares</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Tool-Softwares</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Tool-Softwares/Docker.html">Docker For beginner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Tool-Softwares/Git.html">Git 日常使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Tool-Softwares/Linux-Terminal-Shortcuts.html">Terminal_Shortcut</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Tool-Softwares/Linux_Tricks.html">Linux-Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Tool-Softwares/Midnight_Commander.html">Mindnight Commander</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Tool-Softwares/Softwares.html">Softwares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Tool-Softwares/Use_Of_Software.html">Use_of_Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Tool-Softwares/Vim.html">Vim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Tool-Softwares/Vim-SimpleUse.html">Vim SimpleUse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Tool-Softwares/lf.html">lf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Tool-Softwares/niri.html">Niri manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Tool-Softwares/qutebrowser.html">qutebrowser Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Linux/Tool-Softwares/sdcv.html">sdcv - StarDict CLI tool</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programing:</span></p>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Shell/index.html">Shell</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Shell</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Shell/Bash.html">Bash</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Python</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Python</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python_Library.html">Python_Libraries</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Python Standard Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Awk/index.html">Awk</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Awk</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Awk/AWK.html">AWK 程序设计</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Rust/index.html">Rust</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Rust</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Rust/Rust.html">Rust</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../C/index.html">C</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of C</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../C/C.html">C</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../HTML/index.html">HTML</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of HTML</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../HTML/CSS.html">CSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HTML/HTML.html">HTML</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Perl/index.html">Perl</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Perl</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Perl/Perl.html">Perl</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../JavaScript/index.html">JavaScript</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of JavaScript</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../JavaScript/JavaScript.html">JavaScript</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Haskell/index.html">Haskell</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of Haskell</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Haskell/Haskell.html">Haskell</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Misc/index.html">Misc Things</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of Misc Things</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Misc/ColorSchemeemote%20%22send%20%24id%20clear%22.html">ColorScheme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Misc/Cook.html">Cook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Misc/reST.html">学习 reST Simple-CheatSheet</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Nvim:</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Nvim/index.html">Nvim</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of Nvim</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Nvim/Basic_Setting.html">Nvim Basic Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Nvim/Commands.html">Nvim Commands</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../_sources/Programing/Python/Python_std_Library.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="python-standard-library">
+<h1>Python Standard Library<a class="headerlink" href="#python-standard-library" title="Link to this heading">¶</a></h1>
+<blockquote>
+<div><p>os：提供了与操作系统交互的接口，用于文件和目录操作。</p>
+<p>sys：提供对Python解释器使用或维护的一些变量以及与解释器强烈交互的操作。</p>
+<p>math：包含数学函数。</p>
+<p>random：生成随机数的模块。</p>
+<p>datetime：处理日期和时间的类。</p>
+<p>json：处理JSON数据的编码和解码。</p>
+<p>collections：提供额外的数据类型，如deque、namedtuple等。</p>
+<p>re：支持正则表达式。</p>
+<p>threading：支持多线程编程。</p>
+<p>multiprocessing：支持多进程编程。</p>
+<p>subprocess：用于生成新的进程，连接到它们的输入/输出/错误管道，并获取它们的返回码。</p>
+<p>io：处理流（如文件操作）的基础库。</p>
+<p>pickle：对象的序列化和反序列化。</p>
+<p>time：提供时间相关的函数。</p>
+<p>warnings：警告的触发、控制和过滤。</p>
+<p>itertools：创建有效循环的函数。</p>
+<p>logging：配置日志记录的功能。</p>
+<p>argparse：编写命令行接口的程序。</p>
+<p>gettext：国际化和本地化的应用程序。</p>
+<p>unittest：测试发现和丰富的断言方法。</p>
+</div></blockquote>
+<hr class="docutils" />
+<section id="os">
+<h2>1. OS<a class="headerlink" href="#os" title="Link to this heading">¶</a></h2>
+<p>os：提供了与操作系统交互的接口，用于文件和目录操作。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import os
+print(dir(os))
+
+dir(os) 会返回一个包含 os 模块所有属性和方法的列表。
+</pre></div>
+</div>
+<section id="id1">
+<h3>1. 系统相关<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>os.name                                         系统名字</p></li>
+<li><p>os.environ                                      系统的坏境变量</p></li>
+<li><p>os.sep                                          系统分隔符号</p></li>
+<li><p>os.pathsep                                      系统路径分隔符号</p></li>
+<li><p>os.linesep                                      系统行分隔符号</p></li>
+<li><p>os.getgid                                       来获取当前进程的真实组ID</p></li>
+<li><p>os.getpid                                       返回当前进程的进程 ID</p></li>
+<li><p>os.getuid                                       返回当前进程的用户 ID。它也被称为 UID</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>2. 文件和目录相关<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>os.getcwd                                       函数输入当前工作目录</p></li>
+<li><p>os.chdir                                        函数可更改当前工作目录</p></li>
+<li><p>os.listdir                                      函数返回当前工作目录中所有文件和文件夹的名称列表</p></li>
+<li><p>os.walk                                         输出目标路径,目录,文件</p></li>
+<li><p>os.mkdir                                        函数创建一个新目录(不能已经存在),不能递归创建</p></li>
+<li><p>os.makedirs                                     创建一个目录，可以递归，不像mkdir,没那么严格</p></li>
+<li><p>os.removedirs                                   删除包括所有子目录在内的现有目录(必须存在此目录)</p></li>
+<li><p>os.rmdir                                        删除现有目录(必须存在此目录),不会删除子目录</p></li>
+<li><p>with open(filename,’w/r’) as file</p></li>
+<li><p>os.renames                                      该函数用于重命名文件或目录。它需要文件的当前名称和文件的新名称。</p></li>
+<li><p>os.remove                                       永久删除现有文件，但对目录不起作用</p></li>
+<li><p>os.unlink                                       删除文件</p></li>
+<li><p>os.path.exists                                  判断目录或者文件是否存在</p></li>
+<li><p>os.path.isdir                                   判断目标是否是目录</p></li>
+<li><p>os.path.isfile                                  判断目标是否是文件</p></li>
+<li><p>os.path.isabs                                   判断是否是绝对路径(就是从根目录开始的)</p></li>
+<li><p>os.path.split                                   将路径和文件名分开，存放在二元组里</p></li>
+<li><p>os.path.getatime                                表示文件最后一次被读取的时间</p></li>
+<li><p>os.path.getctime                                最后一次更改的时间，或者内容最后一次更改的时间</p></li>
+<li><p>os.path.getmtime                                表示文件内容最后一次被写入的时间</p></li>
+<li><p>os.path.getsize                                 获取目标字节大小</p></li>
+<li><p>os.access(‘path’,os.F_OK)                       F/R/W/X_OK 模式验证路径是否存在/可读/可写/可执行</p></li>
+<li><p>os.stat                                         输出目标路径信息</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>3. 执行目录,管理进程<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>os.system                                       函数允许我们在 Python 环境中运行 shell 命令</p></li>
+</ul>
+<p>with…as…加open()写入目标文件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>file_name = &quot;apple.txt&quot;
+
+# 写入文件
+with open(file_name, &#39;w&#39;) as file:
+    file.write(&quot;Apples are healthy&quot;)
+
+# 读取并打印文件内容
+with open(file_name, &#39;r&#39;) as file:
+    print(file.read())
+
+使用 with ... as ... 结构的好处是，当代码块执行完毕后，它会确保资源被正确关闭或释放，即使在代码块中发生了异常。这样可以简化代码，避免因为忘记关闭资源而导致的问题
+这不是属于os库的，但是和打开文件有关，os.popen()函数，这个函数在Python 3中已经被移除了。我们可以使用open()函数来替代它。
+</pre></div>
+</div>
+<p>输出目标路径信息</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import os
+print(os.stat(&quot;path&quot;))
+
+该函数对传递的路径执行 stat 系统调用，并返回路径的以下信息。
+
+st_mode = 保护位
+st_ino = 节点编号
+st_dev = 设备 ID
+st_nlink = 硬连接数
+st_uid = 用户 ID
+st_gid = 组 ID
+st_size = 以字节为单位的文件大小
+st_atime = 最近一次访问的时间
+st_mtime = 最近一次修改的时间
+st_ctime = 最近一次元数据更改的时间
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="sys">
+<h2>2. sys<a class="headerlink" href="#sys" title="Link to this heading">¶</a></h2>
+<section id="id4">
+<h3>1. 命令行参数处理：<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>sys.argv                  一个显示命令行执行的参数的列表</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>2. 系统相关操作：<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>sys.exit([arg])           退出Python程序。如果提供了arg，它会显示一个错误消息并退出；如果没有提供arg，程序将正常退出</p></li>
+<li><p>sys.version               返回当前Python解释器的版本信息</p></li>
+<li><p>sys.platform              返回当前操作系统的名称</p></li>
+</ul>
+</section>
+<section id="io">
+<h3>3. 文件IO操作：<a class="headerlink" href="#io" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>sys.stdin                    标准输入</p></li>
+<li><p>sys.stdout                   标准输出</p></li>
+<li><p>sys.stderr                   标准错误</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>4. 内存和性能管理：<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>sys.getsizeof(object)              返回指定对象的内存大小（以字节为单位）。</p></li>
+<li><p>sys.setrecursionlimit(limit)       设置Python递归调用的最大深度。</p></li>
+</ul>
+</section>
+<section id="id7">
+<h3>5. 模块和引用管理：<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>sys.path       一个字符串列表，包含了系统查找模块的路径集合。</p></li>
+<li><p>sys.modules    一个字典，键为模块名，值为模块对象，包含了所有已导入的模块。</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>6. 其他<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>sys.getrefcount(object)      返回指定对象的引用计数。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="math">
+<h2>3. math<a class="headerlink" href="#math" title="Link to this heading">¶</a></h2>
+<section id="id9">
+<h3>1. 数学常量：<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>math.pi：圆周率π的值。</p></li>
+<li><p>math.e：自然对数的底数e的值。</p></li>
+<li><p>math.tau：tau（2π）的值。</p></li>
+<li><p>math.inf：表示正无穷大的浮点数。</p></li>
+<li><p>math.nan：表示非数字（Not a Number）的特殊浮点数。</p></li>
+</ul>
+</section>
+<section id="id10">
+<h3>2. 三角函数和双曲函数：<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>math.sin(x)：返回x的正弦值。</p></li>
+<li><p>math.cos(x)：返回x的余弦值。</p></li>
+<li><p>math.tan(x)：返回x的正切值。</p></li>
+<li><p>math.asin(x)：返回x的反正弦值。</p></li>
+<li><p>math.acos(x)：返回x的反余弦值。</p></li>
+<li><p>math.atan(x)：返回x的反正切值。</p></li>
+<li><p>math.acosh(x)：返回x的反双曲余弦值。</p></li>
+</ul>
+</section>
+<section id="id11">
+<h3>3. 指数和对数函数：<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>math.exp(x)：返回E的x次方。</p></li>
+<li><p>math.log(x[, base])：返回x的自然对数，base参数可选，默认为e。</p></li>
+<li><p>math.log10(x)：返回x的以10为底的对数。</p></li>
+</ul>
+</section>
+<section id="id12">
+<h3>4. 幂函数和根号函数：<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>math.pow(x, y)：返回x的y次方。</p></li>
+<li><p>math.sqrt(x)：返回x的平方根。</p></li>
+</ul>
+</section>
+<section id="id13">
+<h3>5. 取整和取余函数：<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>math.ceil(x)：返回大于或等于x的最小整数。</p></li>
+<li><p>math.floor(x)：返回小于或等于x的最大整数。</p></li>
+<li><p>math.comb(n, k)：返回n个元素中取k个元素的组合数。</p></li>
+</ul>
+</section>
+<section id="id14">
+<h3>6. 其他有用的数学函数：<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>math.copysign(x, y)：返回一个数值，其绝对值为x，符号与y相同。</p></li>
+<li><p>math.fabs(x)：返回x的绝对值。</p></li>
+<li><p>math.factorial(x)：返回x的阶乘。</p></li>
+<li><p>math.fmod(x, y)：返回x除以y后的余数。</p></li>
+<li><p>math.frexp(x)：返回x的尾数和指数。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="random">
+<h2>4. random<a class="headerlink" href="#random" title="Link to this heading">¶</a></h2>
+<section id="id15">
+<h3>1. 生成随机数：<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>random.random(): 返回一个 0 到 1 之间的随机浮点数。</p></li>
+<li><p>random.randint(a, b): 返回一个 a 到 b 之间的随机整数，包括 a 和 b。</p></li>
+<li><p>random.uniform(a, b): 返回一个 a 到 b 之间的随机浮点数。</p></li>
+<li><p>random.gauss(mu, sigma): 返回一个服从正态分布的随机数，其中 mu 是均值，sigma 是标准差。</p></li>
+</ul>
+</section>
+<section id="id16">
+<h3>2. 生成随机序列：<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>random.choice(seq): 从序列 seq 中随机选择一个元素。</p></li>
+<li><p>random.shuffle(seq): 将序列 seq 中的元素随机打乱顺序。</p></li>
+<li><p>random.sample(population, k): 从总体 population 中随机选择 k 个不重复的样本。</p></li>
+</ul>
+</section>
+<section id="id17">
+<h3>3. 种子和状态控制：<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>random.seed(a=None): 初始化随机数生成器的种子，可用于控制随机数生成的结果。</p></li>
+<li><p>random.getstate(), random.setstate(state): 获取和设置随机数生成器的状态，用于保存和恢复生成器的状态。</p></li>
+</ul>
+</section>
+<section id="id18">
+<h3>4. 其他函数：<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>random.randrange(start, stop[, step]): 返回一个指定范围内的随机整数，可指定起始值、结束值和步长。</p></li>
+<li><p>random.random(): 返回一个 0 到 1 之间的随机浮点数。</p></li>
+<li><p>random.seed(a=None): 初始化随机数生成器的种子。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="datetime">
+<h2>5. datetime<a class="headerlink" href="#datetime" title="Link to this heading">¶</a></h2>
+<p>datetime 模块是 Python 标准库中用于处理日期和时间的模块，主要负责日期时间的表示、计算和格式化。下面是 datetime 模块中的一些主要功能分类和函数：</p>
+<section id="id19">
+<h3>1. 日期时间对象：<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>datetime.datetime(year, month, day, hour, minute, second, microsecond): 创建一个表示特定日期时间的对象。</p></li>
+<li><p>datetime.date(year, month, day): 创建一个表示日期的对象。</p></li>
+<li><p>datetime.time(hour, minute, second, microsecond): 创建一个表示时间的对象。</p></li>
+<li><p>datetime.timedelta(days, seconds, microseconds, milliseconds, minutes, hours, weeks): 表示时间间隔或持续时间的对象。</p></li>
+</ul>
+</section>
+<section id="id20">
+<h3>2. 日期时间操作：<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>datetime.datetime.now(): 返回当前日期时间。</p></li>
+<li><p>datetime.datetime.combine(date, time): 合并日期和时间对象。</p></li>
+<li><p>datetime.datetime.strptime(date_string, format): 将日期时间字符串转换为 datetime 对象。</p></li>
+<li><p>datetime.datetime.strftime(format): 将 datetime 对象格式化为字符串。</p></li>
+</ul>
+</section>
+<section id="id21">
+<h3>3. 日期时间比较和计算：<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>datetime.datetime1 &lt; datetime.datetime2: 比较两个日期时间对象的大小。</p></li>
+<li><p>datetime.datetime1 + timedelta: 对日期时间对象进行加法操作。</p></li>
+<li><p>datetime.datetime1 - datetime.datetime2: 计算两个日期时间对象之间的时间间隔。</p></li>
+</ul>
+</section>
+<section id="id22">
+<h3>4. 时区处理：<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>datetime.timezone(offset, name): 表示时区的对象。</p></li>
+<li><p>datetime.datetime.astimezone(tz): 将日期时间对象转换为指定时区的时间。</p></li>
+</ul>
+</section>
+<section id="id23">
+<h3>5. 其他函数：<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>datetime.datetime.today(): 返回当前日期时间，不包含时区信息。</p></li>
+<li><p>datetime.datetime.fromtimestamp(timestamp): 将时间戳转换为 datetime 对象。</p></li>
+<li><p>datetime.datetime.utcfromtimestamp(timestamp): 将 UTC 时间戳转换为 datetime 对象。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="json">
+<h2>6. json<a class="headerlink" href="#json" title="Link to this heading">¶</a></h2>
+<p>json 模块在 Python 中主要负责 JSON 数据的编码和解码。JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，常用于前后端数据传输和存储。</p>
+<p>下面是 json 模块中的主要分类和函数：</p>
+<section id="id24">
+<h3>JSON 编码（序列化）：<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>json.dumps(obj, indent=None, separators=None, default=None): 将 Python 对象编码为 JSON 字符串。可以指定缩进、分隔符等参数。</p></li>
+<li><p>json.dump(obj, fp, indent=None, separators=None, default=None): 将 Python 对象编码为 JSON 字符串，并将结果写入文件对象。</p></li>
+</ul>
+</section>
+<section id="id25">
+<h3>JSON 解码（反序列化）：<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>json.loads(s): 将 JSON 字符串解码为 Python 对象。</p></li>
+<li><p>json.load(fp): 从文件对象中读取 JSON 数据并解码为 Python 对象。</p></li>
+</ul>
+</section>
+<section id="id26">
+<h3>其他函数：<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>json.dump(obj, fp, kwargs): 将 Python 对象编码为 JSON 格式并写入文件，支持更多参数设置。</p></li>
+<li><p>json.dumps(obj, kwargs): 将 Python 对象编码为 JSON 格式的字符串，支持更多参数设置。</p></li>
+<li><p>json.load(fp, kwargs): 从文件对象中读取 JSON 数据并解码为 Python 对象，支持更多参数设置。</p></li>
+<li><p>json.loads(s, kwargs): 将 JSON 字符串解码为 Python 对象，支持更多参数设置。</p></li>
+<li><p>json.JSONEncoder.default(o): JSON 编码器的默认方法，用于处理不可序列化的对象。</p></li>
+<li><p>json.JSONDecoder.object_hook(d): JSON 解码器的默认方法，用于处理 JSON 字符串中的对象。</p></li>
+</ul>
+<p>json 模块提供了方便的方法来处理 JSON 数据，实现了 Python 对象与 JSON 数据之间的相互转换。通过这些函数，可以轻松地将 Python 数据结构转换为 JSON 格式进行传输和存储，也可以将 JSON 数据解析为 Python 对象进行处理。这使得在 Python 中与其他系统进行数据交换变得更加简单和高效。</p>
+</section>
+</section>
+<section id="collections">
+<h2>7. collections<a class="headerlink" href="#collections" title="Link to this heading">¶</a></h2>
+<p>collections 模块在 Python 中主要提供了一些额外的数据结构，这些数据结构不同于内置的基本数据结构（如列表、字典、集合等），可以帮助我们更高效地解决一些特定的问题。</p>
+<p>下面是 collections 模块中的主要分类和函数：</p>
+<section id="id27">
+<h3>容器数据类型：<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>namedtuple(typename, field_names, *, rename=False, defaults=None, module=None): 创建一个具有命名字段的元组子类。</p></li>
+<li><p>deque([iterable[, maxlen]]): 双向队列，支持在两端快速添加和删除元素。</p></li>
+<li><p>ChainMap(*maps): 将多个字典或映射合并为一个视图。</p></li>
+<li><p>Counter([iterable-or-mapping]): 字典的子类，用于计数可哈希对象。</p></li>
+<li><p>OrderedDict: 有序字典，可以记住元素的添加顺序。</p></li>
+<li><p>defaultdict(default_factory): 字典的子类，提供默认值以避免键错误。</p></li>
+</ul>
+</section>
+<section id="id28">
+<h3>抽象基类：<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>abc: 提供了抽象基类，如 Iterable, Container, Sized 等，用于定义集合类的接口规范。</p></li>
+</ul>
+</section>
+<section id="id29">
+<h3>其他函数：<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>ChainMap.new_child(m=None): 创建一个新的 ChainMap 对象，继承原始的 ChainMap 对象。</p></li>
+<li><p>Counter.most_common([n]): 返回计数器中出现次数最多的元素及其计数。</p></li>
+<li><p>OrderedDict.popitem(last=True): 弹出并返回有序字典中的一个键值对。</p></li>
+<li><p>defaultdict.default_factory: 返回 defaultdict 对象的默认工厂函数。</p></li>
+</ul>
+<p>collections 模块为 Python 提供了一些有用的数据结构，可以帮助我们更方便地处理特定类型的数据。这些数据结构在实际编程中经常被用到，能够提高代码的可读性和性能。例如，Counter 可用于统计元素出现的次数，deque 可以用于实现队列和栈等数据结构，namedtuple 则可以方便地创建具有命名字段的元组，提高代码的可读性。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="re">
+<h2>8. re<a class="headerlink" href="#re" title="Link to this heading">¶</a></h2>
+<p>re 模块在 Python 中主要负责处理正则表达式（regular expressions）。正则表达式是一种强大的字符串匹配工具，可以用来搜索、替换和解析字符串。</p>
+<p>下面是 re 模块中的主要分类和函数：</p>
+<section id="id30">
+<h3>1. 函数：<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>re.compile(pattern, flags=0): 编译正则表达式模式，返回一个正则表达式对象。</p></li>
+<li><p>re.match(pattern, string, flags=0): 尝试从字符串的起始位置匹配一个模式。</p></li>
+<li><p>re.search(pattern, string, flags=0): 在字符串中搜索匹配模式的位置。</p></li>
+<li><p>re.findall(pattern, string, flags=0): 返回字符串中所有与模式匹配的字符串。</p></li>
+<li><p>re.finditer(pattern, string, flags=0): 返回一个迭代器，包含所有与模式匹配的匹配对象。</p></li>
+<li><p>re.sub(pattern, repl, string, count=0, flags=0): 使用替换字符串替换匹配到的模式。</p></li>
+<li><p>re.split(pattern, string, maxsplit=0, flags=0): 根据模式分割字符串。</p></li>
+<li><p>re.fullmatch(pattern, string, flags=0): 尝试完全匹配字符串与模式。</p></li>
+</ul>
+</section>
+<section id="flags">
+<h3>2. 标志（flags）：<a class="headerlink" href="#flags" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>re.IGNORECASE: 忽略大小写。</p></li>
+<li><p>re.MULTILINE: 多行模式，改变 ^ 和 $ 的行为。</p></li>
+<li><p>re.DOTALL: 使 . 匹配包括换行符在内的任意字符。</p></li>
+</ul>
+<p>等等其他标志。</p>
+</section>
+<section id="id31">
+<h3>3. 正则表达式模式语法：<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>.: 匹配任意字符。</p></li>
+<li><p>^: 匹配字符串的开头。</p></li>
+<li><p>$: 匹配字符串的结尾。</p></li>
+<li><p>*: 匹配前一个字符的零个或多个。</p></li>
+<li><p>+: 匹配前一个字符的一个或多个。</p></li>
+<li><p>?: 匹配前一个字符的零个或一个。</p></li>
+<li><p>\: 转义特殊字符。</p></li>
+<li><p>[]: 匹配括号内的任意一个字符。</p></li>
+<li><p>|: 或操作符。</p></li>
+<li><p>(): 分组。</p></li>
+</ul>
+<p>re 模块提供了丰富的功能来处理正则表达式，可以用于字符串的模式匹配、查找和替换等操作。正则表达式在文本处理和数据提取中非常有用，能够帮助我们快速有效地处理各种复杂的字符串匹配问题。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="time">
+<h2>9. time<a class="headerlink" href="#time" title="Link to this heading">¶</a></h2>
+<p>time 模块在 Python 中主要用于处理时间相关的操作，包括获取时间戳、日期时间的转换、暂停程序执行等功能。</p>
+<p>下面是 time 模块中的主要分类和函数：</p>
+<section id="id32">
+<h3>时间获取：<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>time(): 返回当前时间的时间戳（从1970年1月1日开始的秒数）。</p></li>
+<li><p>gmtime([secs]): 将时间戳转换为 UTC 时间的 struct_time 对象。</p></li>
+<li><p>localtime([secs]): 将时间戳转换为本地时间的 struct_time 对象。</p></li>
+<li><p>asctime([t]): 将 struct_time 对象转换为可读的时间字符串。</p></li>
+<li><p>ctime([secs]): 将时间戳转换为可读的时间字符串。</p></li>
+</ul>
+</section>
+<section id="id33">
+<h3>时间格式化：<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>strftime(format[, t]): 将 struct_time 对象根据指定格式转换为字符串。</p></li>
+<li><p>strptime(string, format): 将字符串解析为 struct_time 对象。</p></li>
+</ul>
+</section>
+<section id="id34">
+<h3>时间延迟：<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>sleep(secs): 暂停程序执行指定秒数。</p></li>
+</ul>
+</section>
+<section id="id35">
+<h3>性能计时：<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>perf_counter(): 返回一个性能计数器的值，用于测量短时间间隔的性能。</p></li>
+<li><p>process_time(): 返回当前进程的用户CPU时间和系统CPU时间的总和。</p></li>
+</ul>
+</section>
+<section id="id36">
+<h3>其他函数：<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>time_ns(): 返回当前时间的纳秒级别精确时间戳。</p></li>
+<li><p>monotonic(): 返回一个单调递增的时间值，用于测量时间间隔。</p></li>
+</ul>
+<p>time 模块提供了丰富的时间处理功能，可以帮助我们获取、转换和操作时间相关的信息。这些函数在编写需要处理时间的程序时非常有用，可以用于实现定时任务、性能测试、日志记录等功能。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="argparse">
+<h2>9. argparse<a class="headerlink" href="#argparse" title="Link to this heading">¶</a></h2>
+<p>argparse 模块在 Python 中主要用于解析命令行参数，帮助我们编写命令行工具时能够接收用户输入的参数，并进行相应的处理。</p>
+<p>下面是 argparse 模块中的主要分类和函数：</p>
+<section id="id37">
+<h3>1. 创建解析器：<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>ArgumentParser(): 创建一个参数解析器对象，用于管理命令行参数的定义和解析。</p></li>
+</ul>
+</section>
+<section id="id38">
+<h3>2. 添加参数：<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>add_argument(): 向解析器中添加命令行参数的定义，包括参数名、参数类型、帮助信息等。</p></li>
+</ul>
+<p>参数类型包括：位置参数、可选参数、布尔参数等。</p>
+</section>
+<section id="id39">
+<h3>3. 解析参数：<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>parse_args(args=None, namespace=None): 解析命令行参数，并返回一个包含用户输入值的命名空间对象。</p></li>
+</ul>
+</section>
+<section id="id40">
+<h3>4. 参数定义：<a class="headerlink" href="#id40" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>nargs: 指定参数接受的值的个数。</p></li>
+<li><p>choices: 指定参数接受的值的范围。</p></li>
+<li><p>default: 指定参数的默认值。</p></li>
+<li><p>help: 参数的帮助信息。</p></li>
+<li><p>type: 参数的类型，如 int、float、str 等。</p></li>
+<li><p>action: 参数的行为，如存储值、计数等。</p></li>
+</ul>
+</section>
+<section id="id41">
+<h3>5. 子命令：<a class="headerlink" href="#id41" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>add_subparsers(): 添加子命令解析器，用于支持多个子命令的情况。</p></li>
+</ul>
+</section>
+<section id="id42">
+<h3>6. 参数组：<a class="headerlink" href="#id42" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>add_argument_group(): 添加参数组，用于将参数分组显示在帮助信息中。</p></li>
+</ul>
+</section>
+<section id="id43">
+<h3>7. 帮助信息：<a class="headerlink" href="#id43" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>print_help(): 打印程序的帮助信息。</p></li>
+<li><p>print_usage(): 打印程序的用法信息。</p></li>
+</ul>
+<p>argparse 模块提供了强大的功能，使得我们可以轻松地处理命令行参数，定义参数的类型、默认值和帮助信息，并且支持子命令和参数分组，让我们的命令行工具更加灵活和易用。通过使用 argparse 模块，我们可以快速构建出功能完善的命令行工具。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="pickie">
+<h2>10. pickie<a class="headerlink" href="#pickie" title="Link to this heading">¶</a></h2>
+<p>pickle 模块是 Python 中用于序列化（serialization）和反序列化（deserialization）对象的标准模块。序列化是指将对象转换为字节流的过程，以便于存储到文件或在网络上传输；而反序列化则是将字节流转换回对象的过程。pickle 模块提供了一种将 Python 对象转换为字节流，以及将字节流转换回 Python 对象的机制。</p>
+<p>pickle 模块中主要包含以下几个类别的函数：</p>
+<section id="id44">
+<h3>1. 序列化和反序列化函数：<a class="headerlink" href="#id44" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>pickle.dump(obj, file)：将对象序列化并写入文件对象。</p></li>
+<li><p>pickle.dumps(obj)：将对象序列化为字节流。</p></li>
+<li><p>pickle.load(file)：从文件对象中读取字节流并反序列化为对象。</p></li>
+<li><p>pickle.loads(bytes_object)：从字节流中反序列化为对象。</p></li>
+</ul>
+</section>
+<section id="id45">
+<h3>2. 高级接口函数：<a class="headerlink" href="#id45" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>pickle.dump(obj, file, protocol)：指定序列化协议版本。</p></li>
+<li><p>pickle.dumps(obj, protocol)：指定序列化协议版本。</p></li>
+<li><p>pickle.load(file, *, fix_imports=True, encoding=”ASCII”, errors=”strict”)：控制导入行为和编码。</p></li>
+<li><p>pickle.loads(bytes_object, *, fix_imports=True, encoding=”ASCII”, errors=”strict”)：控制导入行为和编码。</p></li>
+</ul>
+</section>
+<section id="id46">
+<h3>3. 辅助函数：<a class="headerlink" href="#id46" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>pickle.HIGHEST_PROTOCOL：返回支持的最高协议版本。</p></li>
+<li><p>pickle.DEFAULT_PROTOCOL：返回默认的序列化协议版本。</p></li>
+<li><p>pickle.Pickler(file, protocol)：用于自定义序列化行为的 Pickler 类。</p></li>
+<li><p>pickle.Unpickler(file)：用于自定义反序列化行为的 Unpickler 类。</p></li>
+</ul>
+<p>除了上述函数外，pickle 模块还提供了一些其他功能，如处理循环引用、支持自定义对象的序列化和反序列化，以及支持压缩等。总的来说，pickle 模块是 Python 中用于对象序列化和反序列化的核心模块，能够方便地将 Python 对象转换为可存储或传输的格式，以及将其还原为原始对象。</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../Awk/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Awk</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="Python_Library.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Python_Libraries</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, fajknli
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Python Standard Library</a><ul>
+<li><a class="reference internal" href="#os">1. OS</a><ul>
+<li><a class="reference internal" href="#id1">1. 系统相关</a></li>
+<li><a class="reference internal" href="#id2">2. 文件和目录相关</a></li>
+<li><a class="reference internal" href="#id3">3. 执行目录,管理进程</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sys">2. sys</a><ul>
+<li><a class="reference internal" href="#id4">1. 命令行参数处理：</a></li>
+<li><a class="reference internal" href="#id5">2. 系统相关操作：</a></li>
+<li><a class="reference internal" href="#io">3. 文件IO操作：</a></li>
+<li><a class="reference internal" href="#id6">4. 内存和性能管理：</a></li>
+<li><a class="reference internal" href="#id7">5. 模块和引用管理：</a></li>
+<li><a class="reference internal" href="#id8">6. 其他</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#math">3. math</a><ul>
+<li><a class="reference internal" href="#id9">1. 数学常量：</a></li>
+<li><a class="reference internal" href="#id10">2. 三角函数和双曲函数：</a></li>
+<li><a class="reference internal" href="#id11">3. 指数和对数函数：</a></li>
+<li><a class="reference internal" href="#id12">4. 幂函数和根号函数：</a></li>
+<li><a class="reference internal" href="#id13">5. 取整和取余函数：</a></li>
+<li><a class="reference internal" href="#id14">6. 其他有用的数学函数：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#random">4. random</a><ul>
+<li><a class="reference internal" href="#id15">1. 生成随机数：</a></li>
+<li><a class="reference internal" href="#id16">2. 生成随机序列：</a></li>
+<li><a class="reference internal" href="#id17">3. 种子和状态控制：</a></li>
+<li><a class="reference internal" href="#id18">4. 其他函数：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#datetime">5. datetime</a><ul>
+<li><a class="reference internal" href="#id19">1. 日期时间对象：</a></li>
+<li><a class="reference internal" href="#id20">2. 日期时间操作：</a></li>
+<li><a class="reference internal" href="#id21">3. 日期时间比较和计算：</a></li>
+<li><a class="reference internal" href="#id22">4. 时区处理：</a></li>
+<li><a class="reference internal" href="#id23">5. 其他函数：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#json">6. json</a><ul>
+<li><a class="reference internal" href="#id24">JSON 编码（序列化）：</a></li>
+<li><a class="reference internal" href="#id25">JSON 解码（反序列化）：</a></li>
+<li><a class="reference internal" href="#id26">其他函数：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#collections">7. collections</a><ul>
+<li><a class="reference internal" href="#id27">容器数据类型：</a></li>
+<li><a class="reference internal" href="#id28">抽象基类：</a></li>
+<li><a class="reference internal" href="#id29">其他函数：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#re">8. re</a><ul>
+<li><a class="reference internal" href="#id30">1. 函数：</a></li>
+<li><a class="reference internal" href="#flags">2. 标志（flags）：</a></li>
+<li><a class="reference internal" href="#id31">3. 正则表达式模式语法：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#time">9. time</a><ul>
+<li><a class="reference internal" href="#id32">时间获取：</a></li>
+<li><a class="reference internal" href="#id33">时间格式化：</a></li>
+<li><a class="reference internal" href="#id34">时间延迟：</a></li>
+<li><a class="reference internal" href="#id35">性能计时：</a></li>
+<li><a class="reference internal" href="#id36">其他函数：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#argparse">9. argparse</a><ul>
+<li><a class="reference internal" href="#id37">1. 创建解析器：</a></li>
+<li><a class="reference internal" href="#id38">2. 添加参数：</a></li>
+<li><a class="reference internal" href="#id39">3. 解析参数：</a></li>
+<li><a class="reference internal" href="#id40">4. 参数定义：</a></li>
+<li><a class="reference internal" href="#id41">5. 子命令：</a></li>
+<li><a class="reference internal" href="#id42">6. 参数组：</a></li>
+<li><a class="reference internal" href="#id43">7. 帮助信息：</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pickie">10. pickie</a><ul>
+<li><a class="reference internal" href="#id44">1. 序列化和反序列化函数：</a></li>
+<li><a class="reference internal" href="#id45">2. 高级接口函数：</a></li>
+<li><a class="reference internal" href="#id46">3. 辅助函数：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=46f6607b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>

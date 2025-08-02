@@ -8,15 +8,11 @@ fajknli.files
 
 .. toctree::
     :maxdepth: 4
-    :caption: Commands:
-
-    Commands/Normal/index
-
-.. toctree::
-    :maxdepth: 4
     :caption: Linux:
 
-    Linux/Distro/index
+    Linux/Distributions/index
+    Linux/System-Commands/index
+    Linux/Tool-Softwares/index
 
 .. toctree::
     :maxdepth: 4
@@ -24,9 +20,15 @@ fajknli.files
     :titlesonly:
     :hidden:
 
-    Programing/Library/index
-    Programing/Language/index
-    Programing/Frontend/index
+    Programing/Shell/index
+    Programing/Python/index
+    Programing/Awk/index
+    Programing/Rust/index
+    Programing/C/index
+    Programing/HTML/index
+    Programing/Perl/index
+    Programing/JavaScript/index
+    Programing/Haskell/index
 
 .. toctree::
     :maxdepth: 4

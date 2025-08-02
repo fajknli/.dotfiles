@@ -1,8 +1,9 @@
 // ========== Autostart Applications ==========
-spawn-at-startup "waybar"
+//spawn-at-startup "waybar"
 spawn-at-startup "qutebrowser"
-spawn-at-startup "prismlauncher"
+//spawn-at-startup "prismlauncher"
 spawn-at-startup "foot"
+//spawn-at-startup "zathura"
 //spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f -c 151622" "before-sleep" "swaylock -f -c 151622"
 //spawn-at-startup "alacritty"
 
@@ -69,11 +70,18 @@ window-rule {
 // floating foot
 window-rule {
     match app-id="floatingfoot"
-    open-on-workspace "Term"
     open-floating true
     default-floating-position x=350 y=50
     min-width 1000
     min-height 900
+}
+// floating foot with sdcv
+window-rule {
+    match app-id="floatingfoot_translate"
+    open-floating true
+    default-floating-position x=950 y=50
+    min-width 50
+    min-height 500
 }
 // zathura
 window-rule {
@@ -162,7 +170,7 @@ output "eDP-1" {
 
 // ========== Layout Settings ==========
 layout {
-    gaps 4
+    gaps 2
     center-focused-column "never"
     //always-center-single-column
     //default-column-display "tabbed"
@@ -182,14 +190,14 @@ layout {
 
     focus-ring {
         width 2
-        active-color "#f08"
+        active-color "#f08080"
         inactive-color "#a9b5d5"
     }
     border {
-        off
-        //width 2
-        //active-color "#a9b5d5"
-        //inactive-color "#151622"
+        //off
+        width 3
+        active-color "#c2c27d"
+        inactive-color "#2e3048"
         //urgent-color "#607bc3"
     }
     tab-indicator {
@@ -299,6 +307,7 @@ binds {
     // Application launchers
     Mod+Return { spawn "foot"; }
     Mod+Shift+Return { spawn "foot" "-a" "floatingfoot"; }
+    Mod+T { spawn "foot" "-a" "floatingfoot_translate" "sdcv"; }
     Mod+D { spawn "wmenu-run" "-i" "-f" "0xProto Nerd Font Regular 12" "-N" "#1f2032" "-n" "#a9b5d5" "-S" "#a0d0a0" "-s" "#151622"; }
     
     // System controls

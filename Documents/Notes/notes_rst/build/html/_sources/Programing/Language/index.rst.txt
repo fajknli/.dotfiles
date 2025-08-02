@@ -1,8 +1,0 @@
-Languages
-#######################
-
-.. toctree::
-   :titlesonly:
-   :glob:
-
-   *

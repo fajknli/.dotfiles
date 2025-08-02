@@ -10,7 +10,7 @@ fzfcd() {
   ) && cd "$dir"
 }
 
-mcc() { mc; }
+#mcc() { mc; }
 
 #function y() {
 #	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -20,3 +20,16 @@ mcc() { mc; }
 #	rm -f -- "$tmp"
 #}
 #bind -x '"\C-f":"y"'
+
+# use lfcd to jump dir by use lf -last-dir-path
+lfcd() {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            cd "$dir" || return
+        fi
+    fi
+}
