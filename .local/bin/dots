@@ -92,8 +92,9 @@ else
     exit 1
 fi
 
+
+mkdir -p dotfiles
 if [ -d "$HOME"/dotfiles ]; then
-    mkdir -p dotfiles
     rm -r "$HOME"/dotfiles
     mkdir -p dotfiles
     for item in "$@"; do
