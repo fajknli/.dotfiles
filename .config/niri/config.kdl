@@ -306,6 +306,8 @@ binds {
 
     // Application launchers
     Mod+Return { spawn "foot"; }
+    //Alt+Return { spawn "foot"; }
+    //Super+Return { spawn "foot"; }
     Mod+Shift+Return { spawn "foot" "-a" "floatingfoot"; }
     Mod+T { spawn "foot" "-a" "floatingfoot_translate" "sdcv"; }
     Mod+D { spawn "wmenu-run" "-i" "-f" "0xProto Nerd Font Regular 12" "-N" "#1f2032" "-n" "#a9b5d5" "-S" "#a0d0a0" "-s" "#151622"; }
