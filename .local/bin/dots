@@ -91,3 +91,13 @@ else
     notify-send -u low ".dotfiles Sync" "✗ 推送失败！请检查终端"        # mako notice
     exit 1
 fi
+
+if [ -d "$HOME"/dotfiles ]; then
+    rm -r "$HOME"/dotfiles
+    mkdir -p dotfiles
+    for item in "$@"; do
+        if [ -f "$item" ]; then
+            cp "$item" "$HOME"/dotfiles
+        elif [ -d "$item" ]; then
+            cp -r "$item" "$HOME"/dotfiles
+
