@@ -100,11 +100,12 @@ if [ -d "$HOME"/dotfiles ]; then
     for item in "$@"; do
         if [ -f "$item" ]; then
             cp "$item" "$HOME"/dotfiles
-            echo "cped ${item}"
+            echo "cped FILE ${item}"
         fi
 
         if [ -d "$item" ]; then
             cp -r "$item" "$HOME"/dotfiles
+            echo "cped DIRECTORY ${item}"
         fi
     done
 fi
