@@ -100,4 +100,7 @@ if [ -d "$HOME"/dotfiles ]; then
             cp "$item" "$HOME"/dotfiles
         elif [ -d "$item" ]; then
             cp -r "$item" "$HOME"/dotfiles
+        fi
+    done
+fi
 
