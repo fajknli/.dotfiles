@@ -48,6 +48,11 @@ $waybar
 $qutebrowser
 $bash
 $HOME/.bashrc
+$HOME/.bash_aliases
+$HOME/.bash_exports
+$HOME/.bash_functions
+$HOME/.bash_profile
+$HOME/.bash_prompt
 $HOME/.inputrc
 $HOME/.gitconfig
 $HOME/.wgetrc

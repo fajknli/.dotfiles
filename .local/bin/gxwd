@@ -2,12 +2,12 @@
 
 cd $HOME/Documents/Notes/notes_rst
 
-CURRENT_TIME=$(date "+%Y-%m-%d_%H-%M-%S")  # 格式示例：2024-06-15_15-30-45
-TARGET_FILE="note_${CURRENT_TIME}.bk"
+#CURRENT_TIME=$(date "+%Y-%m-%d_%H-%M-%S")  # 格式示例：2024-06-15_15-30-45
+#TARGET_FILE="note_${CURRENT_TIME}.bk"
 
-rm *.tar.gz
+#rm *.tar.gz
 
-tar -zcvf ${TARGET_FILE}.tar.gz build
+#tar -zcvf ${TARGET_FILE}.tar.gz build
 
 # 获取当前时间戳（秒级）
 # CURRENT_TIMESTAMP=$(date "+%s")
@@ -24,6 +24,7 @@ tar -zcvf ${TARGET_FILE}.tar.gz build
 #     echo "时间相同"
 # fi
 
-rm -r build && make html
+#rm -r build
 
+make html
 

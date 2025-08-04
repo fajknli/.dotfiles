@@ -43,6 +43,7 @@ set -- \
     "$HOME/.config/zellij" \
     "$HOME/.config/zathura" \
     "$HOME/.local/bin" \
+    "$HOME/.local/share/fcitx5" \
     "$HOME/Project" \
     "$HOME/Documents/Notes" \
     "$HOME/.alacritty.toml" \
