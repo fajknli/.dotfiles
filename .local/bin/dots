@@ -98,6 +98,7 @@ if [ -d "$HOME"/dotfiles ]; then
     for item in "$@"; do
         if [ -f "$item" ]; then
             cp "$item" "$HOME"/dotfiles
+            echo "cped ${item}"
         elif [ -d "$item" ]; then
             cp -r "$item" "$HOME"/dotfiles
         fi
