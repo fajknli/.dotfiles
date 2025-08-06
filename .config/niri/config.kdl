@@ -359,7 +359,7 @@ binds {
 
         if [ -n \"$INPUT\" ]; then
             echo \"$INPUT\" | wl-copy
-            sudo ydotool key 29:1 47:1 47:0 29:0 14:1 14:0
+            ydotool key 29:1 47:1 47:0 29:0 14:1 14:0
         fi
         "
     }

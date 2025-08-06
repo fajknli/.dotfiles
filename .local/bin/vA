@@ -8,7 +8,7 @@ if ! command -v notify-send; then
 fi
 
 # mkdir命令 目录内的所有文件、子目录均不受影响,只有 rm、cp、mv 等命令才会修改或删除文件。
-mkdir -p "$HOME/proxy" && cd "$HOME/proxy" || exit 1
+mkdir -p "$HOME/Documents/PROXY" && cd "$HOME/Documents/PROXY" || exit 1
 
 if [ ! -f "/etc/sysctl.conf" ]; then
     echo "Try to copy sysctl.conf to /etc/"
@@ -19,7 +19,7 @@ fi
 # sudo sysctl -p
 
 if [ ! -d "/etc/dae" ]; then
-    echo "Try to make /etc/dae/ dir" && notify-send -u low "Try to make /etc/dae/ dir"
+    echo "Try to make /etc/dae/ dir" && notify-sent -u low "Try to make /etc/dae/ dir"
     sudo mkdir -p /etc/dae/ || echo "Cant mkdir /etc/dae"; notify-send -u critical "Cant mkdir /etc/dae" && echo "Try to copy config.dae tp /etc/dae/"; notify-send -u low "Try to copy config.dae tp /etc/dae/"
     sudo cp config.dae /etc/dae/ || { echo "Failed to copy config.dae,sure in root?"; notify-send -u critical "Failed to copy config.dae,sure in root?"; exit 1; }
 fi

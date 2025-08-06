@@ -12,6 +12,8 @@ color|https://colorhexa.com
 stardict|https://web.archive.org/web/20200702000038/http://download.huzheng.org/
 achiveorg|https://web.archive.org/
 fedoradoc|https://docs.fedoraproject.org/en-US/docs/
+feishu|https://www.feishu.cn/
+youtube|https://youtube.com/
 "
 
 if ! command -v wmenu >/dev/null 2>&1; then

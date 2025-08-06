@@ -9,6 +9,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 # export LANG=zh_CN.UTF-8
 # export LC_ALL=zh_CN.UTF-8
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
 # 启动剪切板历史记录
 wl-paste --watch cliphist store &
