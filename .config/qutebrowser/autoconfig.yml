@@ -196,3 +196,10 @@ settings:
     global: left
   tabs.width:
     global: 120
+  url.default_page:
+    global: https://www.bing.com/
+  url.searchengines:
+    global:
+      DEFAULT: https://bing.com/search?q={}
+  url.start_pages:
+    global: https://bing.com

@@ -227,9 +227,14 @@ fstab 用来定义磁盘分区。它是 Linux 系统中重要的文件之一。�
 应该需要下载os_prober 包
 
 ::
+    
+    pacman -S os_prober
+
+    vim /etc/default/grub
+    # 取消GRUB_DISABLE_OS_PROBER=false 的注释
 
     # 重新安装 GRUB（UEFI 模式）
-    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ArchLinux
+    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
     grub-mkconfig -o /boot/grub/grub.cfg  # 生成 GRUB 配置
 
 * ✅ --efi-directory=/boot 必须指向 ESP（通常是 /boot）
@@ -255,6 +260,11 @@ fstab 用来定义磁盘分区。它是 Linux 系统中重要的文件之一。�
 
 * BootOrder 决定启动顺序。
 * Boot0001, Boot0002 等是 UEFI 引导条目。
+
+::
+
+    sudo efibootmgr -o 0001,0000
+    # 修改启动顺序
 
 删除无效的 Linux 启动项
 

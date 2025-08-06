@@ -1,6 +1,6 @@
 // ========== Autostart Applications ==========
 //spawn-at-startup "waybar"
-spawn-at-startup "qutebrowser"
+//spawn-at-startup "qutebrowser"
 //spawn-at-startup "prismlauncher"
 spawn-at-startup "foot"
 //spawn-at-startup "zathura"
@@ -36,7 +36,7 @@ overview {
     backdrop-color "#151622"
 
     workspace-shadow {
-        // off
+        off
         softness 40
         spread 10
         offset x=0 y=10
@@ -55,57 +55,57 @@ hotkey-overlay {
 }
 
 // ========== Workspace Definitions ==========
-workspace "Term"
-workspace "Browser"
-workspace "Reading"
-workspace "Game"
+//workspace "Term"
+//workspace "Browser"
+//workspace "Reading"
+//workspace "Game"
 
 // ========== Window Rules ==========
 // foot
-window-rule {
-    match app-id=r#"foot$"#
-    open-on-workspace "Term"
-    //open-maximized true
-}
+//window-rule {
+//    match app-id=r#"foot$"#
+//    open-on-workspace "Term"
+//    //open-maximized true
+//}
 // floating foot
 window-rule {
     match app-id="floatingfoot"
     open-floating true
-    default-floating-position x=350 y=50
-    min-width 1000
-    min-height 900
+//    default-floating-position x=350 y=50
+//    min-width 1000
+//    min-height 900
 }
 // floating foot with sdcv
 window-rule {
     match app-id="floatingfoot_translate"
     open-floating true
-    default-floating-position x=950 y=50
-    min-width 50
-    min-height 500
+//    default-floating-position x=950 y=50
+//    min-width 50
+//    min-height 500
 }
 // zathura
-window-rule {
-    match app-id="org.pwmt.zathura"
-    open-on-workspace "Reading"
-    open-maximized true
-}
-// firefox
-window-rule {
-    match app-id=r#"org\.qutebrowser\.qutebrowser$"#
-    open-on-workspace "Browser"
-    open-maximized true
-}
-// prismlauncher
-window-rule {
-    match app-id=r#"^org\.prismlauncher\.PrismLauncher$"#
-    open-on-workspace "Game"
-}
+//window-rule {
+//    match app-id="org.pwmt.zathura"
+//    open-on-workspace "Reading"
+//    open-maximized true
+//}
+//// firefox
+//window-rule {
+//    match app-id=r#"org\.qutebrowser\.qutebrowser$"#
+//    open-on-workspace "Browser"
+//    open-maximized true
+//}
+//// prismlauncher
+//window-rule {
+//    match app-id=r#"^org\.prismlauncher\.PrismLauncher$"#
+//    open-on-workspace "Game"
+//}
 // Minecraft game-window
 window-rule {
     match title="^Minecraft"
     open-maximized true
     block-out-from "screencast"
-    open-on-workspace "Game"
+//    open-on-workspace "Game"
 }
 // Block out password managers from screencasts
 window-rule {
@@ -159,9 +159,11 @@ input {
 
 // ========== Output Configuration ==========
 output "eDP-1" {
-    mode "2560x1600@240.000"
+    //mode "2560x1600@240.000"
+    mode "2560x1440@180.000"
     // Screen scaling (1.5 = 150%)
-    scale 1.5
+    //scale 1.5
+    scale 2
     // Screen rotation (normal, 90, 180, 270, flipped, etc.)
     transform "normal"
     //position x=1280 y=0
@@ -175,6 +177,7 @@ layout {
     //always-center-single-column
     //default-column-display "tabbed"
     default-column-display "normal"
+    background-color "#1e2030"
     preset-column-widths {
         proportion 0.49
         proportion 0.61
