@@ -13,7 +13,7 @@ note_dirs=$(find "$HOME"/Documents/Notes/notes_rst/source -type d | \
 
 if [ -n "$note_dirs" ]; then
     choice_dir="$(echo "$note_dirs" | \
-        wmenu -p "reST_dirs" -M "#a0d0a0" -m "#151622" -i -l 25 \
+        wmenu -p "reST_dirs" -M "#a0d0a0" -m "#151622" -i -l 12 \
         -f "0xProto Nerd Font Regular 12" \
         -N "1f2032" -n "#a9b5d5" -S "#a0d0a0" -s "#151622")"
 else
@@ -24,7 +24,7 @@ note_files=$(find "$choice_dir" -type f)
 
 if [ -n "$note_files" ]; then
     choice_file="$(echo "$note_files" | \
-            wmenu -p "reST_files" -M "#a0d0a0" -m "#151622" -i -l 25 \
+            wmenu -p "reST_files" -M "#a0d0a0" -m "#151622" -i -l 12 \
             -f "0xProto Nerd Font Regular 12" \
             -N "1f2032" -n "#a9b5d5" -S "#a0d0a0" -s "#151622")"
     if [ -n "$choice_file" ]; then

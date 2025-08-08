@@ -314,7 +314,13 @@ binds {
     Mod+Shift+Return { spawn "foot" "-a" "floatingfoot"; }
     Mod+T { spawn "foot" "-a" "floatingfoot_translate" "sdcv"; }
     Mod+D { spawn "wmenu-run" "-i" "-f" "0xProto Nerd Font Regular 12" "-N" "#1f2032" "-n" "#a9b5d5" "-S" "#a0d0a0" "-s" "#151622"; }
-    
+    Alt+I { spawn "sh" "-c" "$HOME/.local/bin/site"; }
+    Alt+M { spawn "sh" "-c" "$HOME/.local/bin/pm"; }
+    Alt+N { spawn "sh" "-c" "$HOME/.local/bin/bjwd"; }
+    Alt+C { spawn "sh" "-c" "$HOME/.local/bin/config"; }
+    Alt+P { spawn "sh" "-c" "$HOME/.local/bin/pdf"; }
+    Alt+E { spawn "sh" "-c" "$HOME/.local/bin/clipbd"; }
+
     // System controls
     Mod+Ctrl+Shift+Space { spawn "swaylock" "-f" "-c" "151622"; }
     //Mod+Shift+P { power-off-monitors; }

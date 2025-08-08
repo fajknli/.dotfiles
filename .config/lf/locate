@@ -25,3 +25,5 @@ map ,dc cd ~/Documents
 map ,dn cd ~/Documents/Notes/notes_rst/source
 map ,dp cd ~/Documents/PDFs
 map ,ds cd ~/Documents/schematics
+
+map ,h cd ~
