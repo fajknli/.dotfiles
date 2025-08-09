@@ -192,6 +192,8 @@ settings:
     global: '#c6c9d5'
   colors.webpage.darkmode.enabled:
     global: true
+  downloads.remove_finished:
+    global: 10
   tabs.position:
     global: left
   tabs.width:

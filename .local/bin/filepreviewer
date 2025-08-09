@@ -60,7 +60,7 @@ case "$(file -Lb --mime-type -- "$1")" in
         w3m "$1"
         ;;
     text/*)
-        bat --color always --style="plain" "$1"
+        #bat --color always --style="plain" "$1"
         cat "$1"
         ;;
 #    audio/*)

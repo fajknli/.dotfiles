@@ -31,6 +31,7 @@ function _G.CleanExtraSpaces()
   vim.fn.setpos('.', save_cursor)
   vim.fn.setreg('/', old_query)
 end
+
 -- 设置 BufWritePre 自动命令清除行尾空格
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.txt", "*.js", "*.py", "*.wiki", "*.sh", "*.coffee" },

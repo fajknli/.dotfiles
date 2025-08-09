@@ -1,4 +1,5 @@
 map ,
+map ;
 # source $XDG_CONFIG_HOME/lf/locate
 source ~/.config/lf/locate
 
@@ -23,3 +24,12 @@ map X !$f
 
 #map <c-p> premission
 map <c-p> permisson
+
+# extract 
+map <c-e> extract
+
+map .pwd cp_path
+map .nv nvim_edit_files
+
+map <c-t> nvim-tabs
+

@@ -20,8 +20,14 @@ cmd delete ${{
 # move current file or selected files to trash folder
 # (also see 'man mv' for backup/overwrite options)
 cmd trash ${{
-  mkdir -p ~/.trash
-  IFS="$(printf '\n\t')"; mv $fx ~/.trash
+    mkdir -p "$HOME"/.trash
+    name=$(basename $f)
+    echo "$name"
+    if [ -e "$HOME"/.trash/"$name" ]; then 
+      [ -n "$name" ] && rm -rf "$HOME"/.trash/"$name"
+    else
+      IFS="$(printf '\n\t')"; mv -- "$fx" "$HOME"/.trash/
+    fi
 }}
 
 
@@ -42,12 +48,12 @@ cmd open &{{
 cmd extract ${{
     set -f
     case $f in
-        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
-        *.tar.gz|*.tgz) tar xzvf $f;;
-        *.tar.xz|*.txz) tar xJvf $f;;
-        *.zip) unzip $f;;
-        *.rar) unrar x $f;;
-        *.7z) 7z x $f;;
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) mkdir -p "${f%.tar.*}" && tar -xjvf $f -C "${f%.tar.*}";;
+        *.tar.gz|*.tgz) mkdir -p "${f%.tar.*}" && tar -xzvf $f -C "${f%.tar.*}";;
+        *.tar.xz|*.txz) mkdir -p "${f%.tar.*}" && tar -xJvf $f -C "${f%.tar.*}";;
+        *.zip) unzip -d ${f%.zip} $f;;
+        *.rar) mkdir -p ${f%.rar} && unrar x $f ${f%.rar};;
+        *.7z) 7z x $f -o ${f%.7z};;
     esac
 }}
 
@@ -57,7 +63,7 @@ cmd tar ${{
     set -f
     mkdir $1
     cp -r $fx $1
-    tar czf $1.tar.gz $1
+    tar czf $1.tar.gz $fx
     rm -rf $1
 }}
 
@@ -106,4 +112,22 @@ cmd permisson ${{
     lf -remote "send $id unselect"
     lf -remote "send $id reload"
     lf -remote "send $id select \"$f\""
+}}
+
+cmd nvim_edit_files ${{
+    nvim $fx
+}}
+
+cmd cp_path ${{
+    pwd | wl-copy
+}}
+
+cmd nvim-tabs ${{
+    nvim -p $fx
+  # Convert selected files ($fx) into a Lua-compatible string
+  #files=$(printf "'%s', " $fx | sed "s/, $//")
+  #nvim --cmd "lua fajopenfilesastabs({$files})"
+  # files=$(printf "%s " $fx | xargs)
+  # nvim -p $files
+  # echo $files
 }}
