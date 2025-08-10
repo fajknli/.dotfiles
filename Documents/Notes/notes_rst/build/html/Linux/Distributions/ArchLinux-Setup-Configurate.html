@@ -279,6 +279,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Misc/index.html">Misc Things</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of Misc Things</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Misc/ColorScheme.html">ColorScheme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Misc/Cook.html">Cook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Misc/Proxy.html">Proxy Setting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Misc/reST.html">学习 reST Simple-CheatSheet</a></li>
 </ul>
 </li>
@@ -504,8 +505,13 @@ pacstrap -K /mnt iwd vim git grub
 <h4>1.3.11 安装grub引导程序<a class="headerlink" href="#grub" title="Link to this heading">¶</a></h4>
 <p>这个可以识别到linux和windows,如果没有就去设置/etc/default/grub，修改：GRUB_DISABLE_OS_PROBER=false
 应该需要下载os_prober 包</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 重新安装 GRUB（UEFI 模式）</span>
-<span class="n">grub</span><span class="o">-</span><span class="n">install</span> <span class="o">--</span><span class="n">target</span><span class="o">=</span><span class="n">x86_64</span><span class="o">-</span><span class="n">efi</span> <span class="o">--</span><span class="n">efi</span><span class="o">-</span><span class="n">directory</span><span class="o">=/</span><span class="n">boot</span> <span class="o">--</span><span class="n">bootloader</span><span class="o">-</span><span class="nb">id</span><span class="o">=</span><span class="n">ArchLinux</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">os_prober</span>
+
+<span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">default</span><span class="o">/</span><span class="n">grub</span>
+<span class="c1"># 取消GRUB_DISABLE_OS_PROBER=false 的注释</span>
+
+<span class="c1"># 重新安装 GRUB（UEFI 模式）</span>
+<span class="n">grub</span><span class="o">-</span><span class="n">install</span> <span class="o">--</span><span class="n">target</span><span class="o">=</span><span class="n">x86_64</span><span class="o">-</span><span class="n">efi</span> <span class="o">--</span><span class="n">efi</span><span class="o">-</span><span class="n">directory</span><span class="o">=/</span><span class="n">boot</span> <span class="o">--</span><span class="n">bootloader</span><span class="o">-</span><span class="nb">id</span><span class="o">=</span><span class="n">GRUB</span>
 <span class="n">grub</span><span class="o">-</span><span class="n">mkconfig</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">grub</span><span class="o">/</span><span class="n">grub</span><span class="o">.</span><span class="n">cfg</span>  <span class="c1"># 生成 GRUB 配置</span>
 </pre></div>
 </div>
@@ -531,6 +537,10 @@ pacstrap -K /mnt iwd vim git grub
 <li><p>BootOrder 决定启动顺序。</p></li>
 <li><p>Boot0001, Boot0002 等是 UEFI 引导条目。</p></li>
 </ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">efibootmgr</span> <span class="o">-</span><span class="n">o</span> <span class="mi">0001</span><span class="p">,</span><span class="mi">0000</span>
+<span class="c1"># 修改启动顺序</span>
+</pre></div>
+</div>
 <p>删除无效的 Linux 启动项</p>
 <p>假设你要删除 Boot0001（Arch Linux）和 Boot0002（Ubuntu）：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">efibootmgr</span> <span class="o">-</span><span class="n">b</span> <span class="mi">0001</span> <span class="o">-</span><span class="n">B</span>  <span class="c1"># 删除 Boot0001</span>

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "[*] 正在同步系统软件包..."
+echo "Download packages"
 
 # ----------------------------------------
 # 字体与本地化支持
@@ -141,7 +141,15 @@ python-tqdm \
 python-click \
 python-emoji \
 python-pillow \
+python-sphinx \
+python-sphinx-lv2-theme \
+python-sphinx-furo \
+python-sphinx-autobuild \
+python-sphinx-alabaster-theme \
+python-guzzle-sphinx-theme \
+python-sphinx_rtd_theme \
 "
+
 
 
 # ----------------------------------------
@@ -185,6 +193,11 @@ fcitx5-pinyin-zhwiki \
 xdg-desktop-portal-wlr \
 xdg-desktop-portal-gtk \
 xdg-desktop-portal-gnome \
+"
+
+GTK_RELATE="\
+materia-gtk-theme \
+adapta-gtk-theme \
 "
 
 
@@ -252,7 +265,6 @@ dae \
 ### ------------------------
 #ALL_PACKAGES="$SERVER_TOOLS $AUDIO_AND_BT"
 
-echo "[+] 正在安装软件包..."
 #notify-send "[+] 正在安装软件包..."
 #sudo pacman -Syu --noconfirm $ALL_PACKAGES
 
@@ -265,6 +277,7 @@ $CLI_TOOLS\
 $GUI_APPS\
 $DIRVES\
 $PYTHON_LIBRARY\
+$GTK_RELATE\
 $WAYLAND_NIRI\
 $WAYLAND_COMMON\
 $AUDIO_AND_BT\

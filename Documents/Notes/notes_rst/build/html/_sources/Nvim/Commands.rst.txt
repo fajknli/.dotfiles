@@ -17,3 +17,9 @@ Nvim Commands
 ::
 
     :sort u
+
+- replace words
+
+::
+
+    :%s/word1/word2/
