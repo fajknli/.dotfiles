@@ -1,0 +1,329 @@
+global {
+#    # 绑定到 LAN 和/或 WAN 接口。将下述接口替换成你自己的接口名。
+#    #lan_interface: docker0
+#    wan_interface: auto # 使用 "auto" 自动侦测 WAN 接口。
+#  
+#    log_level: info
+#    allow_insecure: false
+#    auto_config_kernel_parameter: true
+
+
+#-------------------------------------------------------------------------
+    ##### 软件选项。
+
+    # 监听的 tproxy 端口。不是 HTTP/SOCKS 端口，仅供 eBPF 程序使用.
+    # 一般情况下，你不需要使用它。
+    tproxy_port: 12345
+
+    # 设为 true 来避免意外的流量进入 tproxy 端口。 设为 false 以配合用户自定义的 iptables tproxy 规则。
+    tproxy_port_protect: true
+
+    # 若非 0，dae 发出的流量会打上 SO_MARK。 这有助于使用 iptables tproxy 规则时避免流量回环。
+    so_mark_from_dae: 0
+
+    # 日志等级: error, warn, info, debug, trace。
+    log_level: info
+
+    # 禁用等待网络以拉取订阅。
+    disable_waiting_network: false
+
+
+    ##### 接口和内核选项。
+
+    # 绑定的 LAN 接口。使用它来代理局域网设备。
+    # 多个接口使用 "," 分隔。
+    #lan_interface: docker0
+
+    # 绑定的 WAN 接口. 使用它来代理本机。
+    # 多个接口使用 "," 分隔。使用 "auto" 自动检测接口.
+    wan_interface: auto
+
+    # 自动配置 Linux 的内核选项（如 ip_forward 和 send_redirects）。
+    # 参考https://github.com/daeuniverse/dae/blob/main/docs/en/user-guide/kernel-parameters.md
+    auto_config_kernel_parameter: true
+
+
+    ##### 节点连通性检测。
+
+    # 如果你本地网络为双栈，URL的主机应该同时支持 IPv4 和 IPv6。
+    # 第一个是 URL，如果在其后填写了 IP 地址，代表对 URL 中 Host 的固定解析。
+    # 考虑到流量消耗，推荐使用具有任播且响应简短的站点。
+    #tcp_check_url: 'http://cp.cloudflare.com'
+    tcp_check_url: 'http://cp.cloudflare.com,1.1.1.1,2606:4700:4700::1111'
+
+    # 用于 `tcp_check_url` 的 HTTP 请求方法。 默认使用 'HEAD'，因为一些服务器实现不统计该类型流量。
+    tcp_check_http_method: HEAD
+
+    # 该 DNS 用于检测节点的 UDP 连通性。若包含 tcp 的 DNS，同样用于检测节点的 TCP DNS 连通性。
+    # 第一个是 URL，如果在其后填写了 IP 地址，代表对 URL 中 Host 的固定解析。
+    # 如果你本地网络为双栈，DNS 服务器应同时支持 IPv4 和 IPv6。
+    #udp_check_dns: 'dns.google.com:53'
+    udp_check_dns: 'dns.google.com:53,8.8.8.8,2001:4860:4860::8888'
+
+    # 检测间隔
+    check_interval: 30s
+
+    # 仅在 new_latency <= old_latency - tolerance 时组内切换节点。
+    check_tolerance: 50ms
+
+
+    ##### 连接选项。
+
+    # dial_mode 选项为:
+    # 1. "ip"。 使用 DNS 查询得到的 IP 直接发送代理。这允许 ipv4、ipv6 分别选择最佳路径，并使应用程序请求的 IP 版本满足预期。
+    #       例如，如果使用 curl-4 ip.sb，将通过代理请求 IPv4 并获得 IPv4 响应。curl-6 ip.sb 将请求 IPv6。若节点支持IPv6，
+    #       这可能会解决一些奇怪的全锥问题。在此模式下将禁用嗅探。
+    # 2. "domain"。 使用嗅探到的域名发送代理。若 DNS 环境不纯净，这将在很大程度上缓解 DNS 污染问题。通常，这种模式会带来更快的
+    #       代理响应，因为代理会在远程重新解析域名，从而获得更好的 IP 连接结果。此策略不影响路由，也就是说，域名重写将在路由的
+    #       流量拆分后进行， dae 不会重新路由。
+    # 3. "domain+"。 基于 domain 模式但不会检查嗅探得到域名的真实性。 对于 DNS 请求不经过 dae 但想要更快的代理响应的用户有用。
+    #       但是， 若 DNS 请求不经过 dae，基于域名的流量拆分将失效。
+    # 4. "domain++"。 基于 domain+ 模式但会根据嗅探到的域名重新进行流量路由，以部分恢复基于域名的流量拆分能力。对于直连流量无效
+    #       且会占用更多的 CPU 资源。
+    dial_mode: domain
+
+    # 允许不安全的 TLS 证书. 非须勿用.
+    allow_insecure: false
+
+    # 嗅探第一个数据的超时。若 dial_mode 为 ip 则该值总为 0。若局域网延迟较高，应调高它。
+    sniffing_timeout: 100ms
+
+    # TLS 实现. 设为 tls 以使用 Go's crypto/tls。设为 utls 以使用 uTLS, 可以模拟浏览器的 Client Hello、
+    tls_implementation: tls
+
+    # uTLS 模拟的 Client Hello ID。 仅在 tls_implementation 设为 utls时 生效。
+    # 参考: https://github.com/daeuniverse/dae/blob/331fa23c16/component/outbound/transport/tls/utls.go#L17
+#    utls_imitate: chrome_auto
+#
+#    # Multipath TCP (MPTCP) support. If is true, dae will try to use MPTCP to connect all nodes, but it will only take
+#    # effects when the node supports MPTCP. It can use for load balance and failover to multiple interfaces and IPs.
+#    mptcp: false
+#
+#    # The maximum bandwidth for accessing the Internet. It is useful for some specific protocols (e.g., Hysteria2), 
+#    # which will perform better with bandwith information provided. The unit is **byte** per second.
+#    bandwidth_max_tx: 26214400 # 200Mbps == 25MB/s == 26214400 B/s uplink
+#    bandwidth_max_rx: 131072000 # 1Gbps == 125MB/s == 131072000 B/s downlink
+}
+
+
+#-----------------------------------------------------------------------------------------------------------
+
+
+
+subscription {
+  # 在下面填入你的订阅链接。
+  'https://abc.xhonor.top:9066/v2b/qz/api/v1/client/subscribe?token=4950eb88d953460728fce7d22dbadef1'
+}
+
+#node {}
+
+# 更多的 DNS 样例见 https://github.com/daeuniverse/dae/blob/main/docs/en/configuration/dns.md
+# dns {
+#   upstream {
+#     googledns: 'tcp+udp://dns.google:53'
+#     alidns: 'udp://dns.alidns.com:53'
+#   }
+#   routing {
+#     request {
+#       qtype(https) -> reject
+#       fallback: alidns
+#     }
+#     response {
+#       upstream(googledns) -> accept
+#       ip(geoip:private) && !qname(geosite:cn) -> googledns
+#       fallback: accept
+#     }
+#   }
+# }
+
+dns {
+      # For example, if ipversion_prefer is 4 and the domain name has both type A and type AAAA records, the dae will only
+    # respond to type A queries and response empty answer to type AAAA queries.
+    #ipversion_prefer: 4
+
+    # Give a fixed ttl for domains. Zero means that dae will request to upstream every time and not cache DNS results
+    # for these domains.
+    #fixed_domain_ttl {
+    #    ddns.example.org: 10
+    #    test.example.org: 3600
+    #}
+
+    upstream {
+        # Value can be scheme://host:port, where the scheme can be tcp/udp/tcp+udp.
+        # If host is a domain and has both IPv4 and IPv6 record, dae will automatically choose
+        # IPv4 or IPv6 to use according to group policy (such as min latency policy).
+        # Please make sure DNS traffic will go through and be forwarded by dae, which is REQUIRED for domain routing.
+        # If dial_mode is "ip", the upstream DNS answer SHOULD NOT be polluted, so domestic public DNS is not recommended.
+
+        alidns: 'udp://dns.alidns.com:53'
+        googledns: 'tcp+udp://dns.google:53'
+    }
+    routing {
+        # According to the request of dns query, decide to use which DNS upstream.
+         response {
+           upstream(googledns) -> accept
+           ip(geoip:private) && !qname(geosite:cn) -> googledns
+           fallback: accept
+         }
+       # Match rules from top to bottom.
+#        request {
+#            # Lookup China mainland domains using alidns, otherwise googledns.
+#            qname(geosite:cn) -> alidns
+#            # fallback is also called default.
+#            fallback: googledns
+#        }
+    }
+}
+
+group {
+  my_group {
+    #filter: name(keyword: HK, keyword: SG)
+
+    # No filter. Use all nodes.
+
+    # Randomly select a node from the group for every connection.
+    #policy: random
+
+    # Select the first node from the group for every connection.
+    policy: fixed(0)
+
+    # Select the node with min last latency from the group for every connection.
+    #policy: min
+
+    # Select the node with min moving average of latencies from the group for every connection.
+    # policy: min_moving_avg
+
+
+  }
+}
+
+# 更多的 Routing 样例见 https://github.com/daeuniverse/dae/blob/main/docs/en/configuration/routing.md
+routing {
+#
+#  pname(NetworkManager) -> direct
+#
+#  # ps aux | grep iwd 查找iwd进程名，因为我现在没使用NetworkManager
+#  #pname(iwd) -> direct
+#
+#  dip(224.0.0.0/3, 'ff00::/8') -> direct
+#
+#  # This line allows you to access private addresses directly instead of via your proxy. If you really want to access
+#  # private addresses in your proxy host network, modify the below line.
+#  dip(geoip:private) -> direct
+#
+#  ### 以下为自定义规则
+#
+#  # 禁用 h3，因为它通常消耗很多 CPU 和内存资源
+#  l4proto(udp) && dport(443) -> block
+#  dip(geoip:cn) -> direct
+#  domain(geosite:cn) -> direct
+#
+#  fallback: proxy
+#
+
+#---------------------------------------------------------
+
+### 内置出站: block, direct, must_rules
+
+# must_rules 表示不将DNS流量重定向至dae并继续匹配。
+# 对于单条规则，"direct"和"must_direct"的区别在于"direct"会劫持并处理DNS请求（用于流量分割使用），而"must_direct"不会。
+# 当存在 DNS 请求的回环时，"must_direct"很有用。
+# "must_direct" 也可以写作 "direct(must)"。
+# 同样，"must_groupname"也支持不劫持、处理 DNS 流量，相当于"groupname(must)"。
+
+### fallback 出站
+# 如果没有规则匹配，流量将通过fallback出站.
+fallback: my_group
+
+### 域名规则
+domain(suffix: v2raya.org) -> my_group
+# 相当于 domain(v2raya.org) -> my_group
+domain(full: dns.google.com) -> my_group
+domain(keyword: facebook) -> my_group
+domain(regex: '\.goo.*\.com$') -> my_group
+domain(geosite:category-ads) -> block
+domain(geosite:cn)->direct
+
+### 目标 IP 规则
+dip(8.8.8.8) -> direct
+dip(101.97.0.0/16) -> direct
+dip(geoip:private) -> direct
+
+### 源 IP 规则
+sip(192.168.0.0/24) -> my_group
+sip(192.168.50.0/24) -> direct
+
+### 目标端口规则
+dport(80) -> direct
+dport(10080-30000) -> direct
+
+### 源端口规则
+sport(38563) -> direct
+sport(10080-30000) -> direct
+
+### 四层协议规则:
+l4proto(tcp) -> my_group
+l4proto(udp) -> direct
+
+### IP版本规则:
+ipversion(4) -> block
+ipversion(6) -> ipv6_group
+
+### 源MAC地址规则
+mac('02:42:ac:11:00:02') -> direct
+
+### 进程名称规则（绑定WAN时仅支持本机进程）
+pname(curl) -> direct
+
+### 多个域名规则
+domain(keyword: google, suffix: www.twitter.com, suffix: v2raya.org) -> my_group
+### 多个IP规则
+dip(geoip:cn, geoip:private) -> direct
+dip(9.9.9.9, 223.5.5.5) -> direct
+sip(192.168.0.6, 192.168.0.10, 192.168.0.15) -> direct
+
+### "并"规则
+dip(geoip:cn) && dport(80) -> direct
+dip(8.8.8.8) && l4proto(tcp) && dport(1-1023, 8443) -> my_group
+dip(1.1.1.1) && sip(10.0.0.1, 172.20.0.0/16) -> direct
+
+### "非"规则
+!domain(geosite:google-scholar,
+        geosite:category-scholar-!cn,
+        geosite:category-scholar-cn
+    ) -> my_group
+
+### 更复杂一点的规则
+domain(geosite:geolocation-!cn) &&
+    !domain(geosite:google-scholar,
+            geosite:category-scholar-!cn,
+            geosite:category-scholar-cn
+        ) -> my_group
+
+### 个性化DAT文件
+domain(ext:"yourdatfile.dat:yourtag")->direct
+dip(ext:"yourdatfile.dat:yourtag")->direct
+
+### 设置防火墙标记
+# 当您想要将流量重定向到特定接口（例如wireguard）或用于其他高级用途时，标记非常有用。
+# 这里给出了将 Disney 流量重定向到 wg0 的示例。
+# 您需要像这样设置 ip 规则和 ip 路由表：
+# 1. 将所有标记为 0x800/0x800 的流量设置为使用路由表 1145：
+# >> ip rule add fwmark 0x800/0x800 table 1145
+# >> ip -6 rule add fwmark 0x800/0x800 table 1145
+# 2. 设置路由表1145的默认路由：
+# >> ip route add default dev wg0 scope global table 1145
+# >> ip -6 route add default dev wg0 scope global table 1145
+# 注意：接口wg0，标记0x800，表1145可以通过首选项设置，但不能冲突。
+# 3. 在dae配置文件中设置路由规则。
+domain(geosite:disney) -> direct(mark: 0x800)
+
+### Must规则
+# 使用下面给出的规则，DNS请求将被强制重定向到dae，除了来自mosdns的请求。
+# 与must_direct/must_my_group不同，来自mosdns的流量将继续匹配其他规则。
+pname(mosdns) -> must_rules
+ip(geoip:cn) -> direct
+domain(geosite:cn) -> direct
+fallback: my_group
+
+}

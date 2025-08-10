@@ -44,8 +44,12 @@ set -- \
     "$HOME/.config/zathura" \
     "$HOME/.local/bin" \
     "$HOME/.local/share/fcitx5" \
+    "$HOME/.local/share/stardict" \
+    "$HOME/.local/share/man" \
+    "$HOME/.local/share/fonts/0xProto" \
     "$HOME/Project" \
     "$HOME/Documents/Notes" \
+    "$HOME/Documents/PROXY" \
     "$HOME/.alacritty.toml" \
     "$HOME/.bash_aliases" \
     "$HOME/.bash_exports" \

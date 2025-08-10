@@ -1,0 +1,158 @@
+global {
+
+
+    # 当节点延迟差多少会切换节点
+    check_tolerance: 50ms
+
+  # 绑定到 LAN 和/或 WAN 接口。将下述接口替换成你自己的接口名。
+  #lan_interface: docker0
+  wan_interface: auto # 使用 "auto" 自动侦测 WAN 接口。
+
+    # 是否禁止等待网络，在拉取订阅之前
+    disable_waiting_network: false
+
+  log_level: info
+  allow_insecure: true
+  auto_config_kernel_parameter: true
+}
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+subscription {
+  # 在下面填入你的订阅链接。
+    'https://159.75.122.45/api/v1/client/subscribe?token=4db8803fc43390291b6b2fd0b29370ce'
+    'https://6826b4.xfxcloud.click/api/v1/client/subscribe?token=4db8803fc43390291b6b2fd0b29370ce'
+
+}
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+
+# 更多的 DNS 样例见 https://github.com/daeuniverse/dae/blob/main/docs/en/configuration/dns.md
+dns {
+  upstream {
+    googledns: 'tcp+udp://dns.google:53'
+    alidns: 'udp://dns.alidns.com:53'
+  }
+  routing {
+    request {
+      qtype(https) -> reject
+      fallback: alidns
+    }
+    response {
+      upstream(googledns) -> accept
+      ip(geoip:private) && !qname(geosite:cn) -> googledns
+      fallback: accept
+    }
+  }
+}
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+
+group {
+  proxy {
+    #filter: name(keyword: HK, keyword: SG)
+
+    # No filter. Use all nodes.
+
+    # Randomly select a node from the group for every connection.
+    #policy: random
+
+    # Select the first node from the group for every connection.
+    #policy: fixed(0)
+
+    # Select the node with min last latency from the group for every connection.
+    #policy: min
+
+    # Select the node with min moving average of latencies from the group for every connection.
+    policy: min_moving_avg
+
+  }
+}
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+
+# 更多的 Routing 样例见 https://github.com/daeuniverse/dae/blob/main/docs/en/configuration/routing.md
+routing {
+  pname(NetworkManager, systemd-resolved, dnsmasq) -> direct
+  #pname(iwd) -> direct
+  pname(mosdns) -> must_rules
+  ip(geoip:cn) -> direct
+  dip(224.0.0.0/3, 'ff00::/8') -> direct
+
+  ### 以下为自定义规则
+
+  # 所有UDP流量走直连，除了DNS和Quic
+  l4proto(udp) && !dport(53, 443) -> direct
+
+  # ipv6 走直连，代理不支持
+  ipversion(6) -> direct
+
+  # 局域网内广播，防止被代理转发
+  dip(224.0.0.0/3, 'ff00::/8') -> direct
+  
+  # 目标非常用端口都走直连，避免BT流量走代理
+  !dport(21,23,53,80,123,143,194,443,465,587,853,993,995,998) -> direct
+  
+  # 阻断广告连接
+  domain(ext:'geosite.dat:category-ads') -> block
+  
+  # 一些域名
+  domain(keyword: 'syncthing.net') -> direct
+  domain(keyword: 'picacomic') -> direct
+  domain(keyword: 'mangacopy') -> direct
+  domain(keyword: 'tr.nyacat') -> direct
+  domain(keyword: 'tracker') -> direct
+  domain(keyword: 'ghproxy') -> direct
+  domain(keyword: 'gh-proxy') -> direct
+  domain(keyword: 'fgit') -> direct
+  domain(keyword: 'jsdelivr') -> direct
+  domain(keyword: 'nintendo') -> direct
+  domain(keyword: 'fanqiev2') -> direct
+  domain(keyword: 'announce') -> direct
+  domain(keyword: 'torrent') -> direct
+  
+  # 国内网站
+  domain(ext:'geosite.dat:category-games') -> direct
+  domain(ext:'geosite.dat:category-game-accelerator-cn') -> direct
+  domain(ext:'geosite.dat:alibaba') -> direct
+  domain(ext:'geosite.dat:bilibili') -> direct
+  domain(ext:'geosite.dat:bilibili2') -> direct
+  domain(ext:'geosite.dat:tencent') -> direct
+  domain(ext:'geosite.dat:zhihu') -> direct
+  domain(ext:'geosite.dat:cloudflare') -> direct
+  domain(ext:'geosite.dat:cloudflare-cn') -> direct
+  domain(ext:'geosite.dat:category-scholar-cn') -> direct
+  domain(ext:'geosite.dat:category-media-cn') -> direct
+  domain(ext:'geosite.dat:category-social-media-cn') -> direct
+  domain(ext:'geosite.dat:category-dev-cn') -> direct
+  domain(ext:'geosite.dat:category-bank-cn') -> direct
+  domain(ext:'geosite.dat:category-public-tracker') -> direct
+  domain(ext:'geosite.dat:mozilla') -> direct
+  domain(ext:'geosite.dat:picacg') -> direct
+  domain(ext:'geosite.dat:apple') -> direct
+  domain(ext:'geosite.dat:apple-cn') -> direct
+  domain(ext:'geosite.dat:icloud') -> direct
+  domain(ext:'geosite.dat:icloudprivaterelay') -> direct
+  domain(ext:'geosite.dat:nintendo') -> direct
+  domain(ext:'geosite.dat:speedtest') -> direct
+  domain(ext:'geosite.dat:cn') -> direct
+  domain(ext:'geosite.dat:china-list') -> direct
+  domain(ext:'geosite.dat:geolocation-cn') -> direct
+  domain(ext:'geosite.dat:private') -> direct
+  
+  domain(suffix: 'windows.com') -> direct
+  
+  dip(ext:'geoip.dat:private') -> direct
+  dip(ext:'geoip.dat:cn') -> direct
+
+  # 禁用 h3，因为它通常消耗很多 CPU 和内存资源
+  l4proto(udp) && dport(443) -> block
+  dip(geoip:private) -> direct
+  dip(geoip:cn) -> direct
+  domain(geosite:cn) -> direct
+
+  fallback: proxy
+}
