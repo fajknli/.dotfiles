@@ -17,6 +17,8 @@ feishu|https://www.feishu.cn/
 youtube|https://youtube.com/
 bilibili|https://www.bilibili.com/
 douyin|https://www.douyin.com/
+chunkbase|https://www.chunkbase.com/
+seedmap|https://mcseedmap.net/
 "
 
 if ! command -v wmenu >/dev/null 2>&1; then

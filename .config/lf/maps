@@ -1,5 +1,4 @@
 map ,
-map ;
 # source $XDG_CONFIG_HOME/lf/locate
 source ~/.config/lf/locate
 
