@@ -361,7 +361,7 @@ ${1:-main}	                    Shell 参数默认值，未提供 $1 参数时使
 ::
 
     # 克隆仓库（裸模式）
-    git clone --bare git@github.com:yourusername/dotfiles.git $HOME/.dotfiles
+    git clone --bare  https://github.com/fajknli/.dotfiles.git$HOME/.dotfiles
 
     # 设置别名
     echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> ~/.bashrc
@@ -385,7 +385,7 @@ ${1:-main}	                    Shell 参数默认值，未提供 $1 参数时使
 
 .. code-block:: bash
 
-    git clone --bare git@github.com:yourusername/dotfiles.git $HOME/.dotfiles
+    git clone --bare https://github.com/fajknli/.dotfiles.git $HOME/.dotfiles
 
     alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 

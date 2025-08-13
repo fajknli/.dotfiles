@@ -49,7 +49,6 @@ set -- \
     "$HOME/.local/share/fonts/0xProto" \
     "$HOME/Project" \
     "$HOME/Documents/Notes" \
-    "$HOME/Documents/PROXY" \
     "$HOME/.alacritty.toml" \
     "$HOME/.bash_aliases" \
     "$HOME/.bash_exports" \
@@ -86,7 +85,6 @@ if ! eval "$DOTFILES_CMD commit -m \"$message\""; then
     exit 1
 fi
 
-
 if eval "$DOTFILES_CMD push origin main"; then
     printf "\033[32m✓ .dotfiles 推送成功\033[0m\n"
     notify-send -u low ".dotfiles Sync" "✓ 推送成功"                    # mako notice
@@ -97,6 +95,8 @@ else
 fi
 
 
+# creat a directory for USB diver
+# you can easily copy this to USB diver for backup the file
 mkdir -p dotfiles
 if [ -d "$HOME"/dotfiles ]; then
     rm -rf "$HOME"/dotfiles

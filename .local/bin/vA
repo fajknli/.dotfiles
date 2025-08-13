@@ -8,11 +8,11 @@ if ! command -v notify-send; then
 fi
 
 # mkdir命令 目录内的所有文件、子目录均不受影响,只有 rm、cp、mv 等命令才会修改或删除文件。
-mkdir -p "$HOME/Documents/PROXY" && cd "$HOME/Documents/PROXY" || exit 1
+mkdir -p "$HOME"/.local/share/proxy-files-dae && cd "$HOME"/.local/share/proxy-files-dae || exit 1
 
 if [ ! -f "/etc/sysctl.conf" ]; then
     echo "Try to copy sysctl.conf to /etc/"
-    notify-sent "Try to copy sysctl.conf to /etc/"
+    notify-send "Try to copy sysctl.conf to /etc/"
     sudo cp sysctl.conf /etc/ || { echo "Failed to copy sysctl.conf,mayby not in root"; exit 1; }
 fi
 

@@ -1,0 +1,8 @@
+MyNote
+#######
+
+.. toctree::
+   :titlesonly:
+   :glob:
+
+   *

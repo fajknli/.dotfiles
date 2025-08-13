@@ -4,11 +4,12 @@
 
 ```bash
 
-git clone --bare git@github.com:yourusername/dotfiles.git $HOME/.dotfiles
+git clone --bare https://github.com/fajknli/.dotfiles.git $HOME/.dotfiles
+
 
 ```
 
-2. adds alias
+2. adds alias in .bashrc or .profile ...
 
 ```bash
 
@@ -32,12 +33,15 @@ dotfiles config --local status.showUntrackedFiles no
 
 ```
 
+6. How to track file? 
+
+you can use `$HOME/.local/bin/dots` check it , add file or directories in it, then run the script
+
 ## Notices
 
 1. automatically track any new files which created after been tracked directory
 
 Check the file `.dotfile/hooks/pre-commit`
 
-More alias at .bash_alias
+More alias at `.bash_alias`
 
-Hello

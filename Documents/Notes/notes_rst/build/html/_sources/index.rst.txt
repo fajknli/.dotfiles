@@ -8,6 +8,12 @@ fajknli.files
 
 .. toctree::
     :maxdepth: 4
+    :caption: MyNote:
+    
+    MyNote/index
+
+.. toctree::
+    :maxdepth: 4
     :caption: Linux:
 
     Linux/Distributions/index

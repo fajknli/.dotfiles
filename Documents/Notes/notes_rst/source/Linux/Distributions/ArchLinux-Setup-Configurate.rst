@@ -275,6 +275,107 @@ fstab 用来定义磁盘分区。它是 Linux 系统中重要的文件之一。�
     sudo efibootmgr -b 0001 -B  # 删除 Boot0001
     sudo efibootmgr -b 0002 -B  # 删除 Boot0002
     
+2. 添加源
+--------------------
+
+2.1 添加Archlinuxcn源
+''''''''''''''''''''''
+
+因为通过archinstall 脚本安装，自带国内源，我们可以添加 'Archlinuxcn源 <http://repo.archlinuxcn.org>'_ 
+
+在 '/etc/pacman.conf' 文件末尾添加两行：
+
+::
+
+    [archlinuxcn]
+    Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch
+    Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+    Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch 
+
+2.1.1 新系统中安装 archlinuxcn-keyring 包前需要手动信任 farseerfc 的 key
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+archlinuxcn 社区源的 keyring 包 archlinuxcn-keyring 由 farseerfc 的 key 签署验证，而 Arch Linux 官方 keyring 中包含了 farseerfc 的 key 。自12月初 archlinux-keyring 中删除了一个退任的 master key 导致 farseerfc 的 key 的信任数不足，由 GnuPG 的 web of trust 推算为 marginal trust，从而不再能自动信任 archlinuxcn-keyring 包的签名。
+
+如果你在新系统中尝试安装 archlinuxcn-keyring 包时遇到如下报错：
+
+::
+
+    error: archlinuxcn-keyring: Signature from "Jiachen YANG (Arch Linux Packager Signing Key) " is marginal trust
+
+请使用以下命令在本地信任 farseerfc 的 key 。此 key 已随 archlinux-keyring 安装在系统中，只是缺乏信任：
+
+::
+
+    sudo pacman-key --lsign-key "farseerfc@archlinux.org"
+
+之后继续安装 archlinuxcn-keyring ：
+
+::
+
+    sudo pacman -S archlinuxcn-keyring
+
+安装之后进行更新:
+
+::
+
+    sudo pacman -Syu
+
+2.2 添加blackarch源
+----------------------
+
+获得blackarch-mirror-list:
+
+::
+
+    wget https://blackarch.org/blackarch-mirrorlist
+
+在 '/etc/pacman.conf' 文件末尾添加：
+
+::
+
+    [blackarch]
+    Server = https://mirror.sjtu.edu.cn/blackarch/$repo/os/$arch
+    Server = https://mirrors.nju.edu.cn/blackarch/$repo/os/$arch
+    Server = http://mirrors.nju.edu.cn/blackarch/$repo/os/$arch
+    Server = https://mirrors.tuna.tsinghua.edu.cn/blackarch/$repo/os/$arch
+    Server = https://mirrors.ustc.edu.cn/blackarch/$repo/os/$arch
+    Server = http://mirrors.aliyun.com/blackarch/$repo/os/$arch
+    Server = https://mirrors.aliyun.com/blackarch/$repo/os/$arch
+
+刷新关于blackarch的数据库
+
+::
+
+    sudo pacman -Syyu 
+
+信任GPG key
+
+::
+
+    sudo pacman-key --lsign-key noptrix@nullsecurity.net
+
+下载blackarch-keyring
+
+::
+
+    pacman -Sy blackarch-keyring
+
+如果出现了pacman 下载archlinux.db 404的情况
+
+::
+
+    sudo pacman -Scc  # 清理所有缓存
+    sudo rm /var/lib/pacman/db.lck  # 删除锁文件（如果存在）
+    sudo pacman -Syyu  # 强制刷新数据库并更新系统
+
+3. 自定义脚本设置
+
+1. 安装个人脚本
+
+::
+
+git clone --bare git
 1.3.12 内核设置(救援模式)
 ''''''''''''''''''''''''''''
 
@@ -372,99 +473,6 @@ nvidia驱动问题
 
 ----------
 
-2. 添加Archlinux源
-====================
-
-2.1 添加Archlinuxcn源
-----------------------
-
-因为通过archinstall 脚本安装，自带国内源，我们可以添加 'Archlinuxcn源 <http://repo.archlinuxcn.org>'_ 
-
-在 '/etc/pacman.conf' 文件末尾添加两行：
-
-::
-
-    [archlinuxcn]
-    Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch
-    Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
-    Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch 
-
-2.1.1 新系统中安装 archlinuxcn-keyring 包前需要手动信任 farseerfc 的 key
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-archlinuxcn 社区源的 keyring 包 archlinuxcn-keyring 由 farseerfc 的 key 签署验证，而 Arch Linux 官方 keyring 中包含了 farseerfc 的 key 。自12月初 archlinux-keyring 中删除了一个退任的 master key 导致 farseerfc 的 key 的信任数不足，由 GnuPG 的 web of trust 推算为 marginal trust，从而不再能自动信任 archlinuxcn-keyring 包的签名。
-
-如果你在新系统中尝试安装 archlinuxcn-keyring 包时遇到如下报错：
-
-::
-
-    error: archlinuxcn-keyring: Signature from "Jiachen YANG (Arch Linux Packager Signing Key) " is marginal trust
-
-请使用以下命令在本地信任 farseerfc 的 key 。此 key 已随 archlinux-keyring 安装在系统中，只是缺乏信任：
-
-::
-
-    sudo pacman-key --lsign-key "farseerfc@archlinux.org"
-
-之后继续安装 archlinuxcn-keyring ：
-
-::
-
-    sudo pacman -S archlinuxcn-keyring
-
-安装之后进行更新:
-
-::
-
-    sudo pacman -Syu
-
-2.2 添加Blackarch源
-----------------------
-
-获得blackarch-mirror-list:
-
-::
-
-    wget https://blackarch.org/blackarch-mirrorlist
-
-在 '/etc/pacman.conf' 文件末尾添加：
-
-::
-
-    [blackarch]
-    Server = https://mirror.sjtu.edu.cn/blackarch/$repo/os/$arch
-    Server = https://mirrors.nju.edu.cn/blackarch/$repo/os/$arch
-    Server = http://mirrors.nju.edu.cn/blackarch/$repo/os/$arch
-    Server = https://mirrors.tuna.tsinghua.edu.cn/blackarch/$repo/os/$arch
-    Server = https://mirrors.ustc.edu.cn/blackarch/$repo/os/$arch
-    Server = http://mirrors.aliyun.com/blackarch/$repo/os/$arch
-    Server = https://mirrors.aliyun.com/blackarch/$repo/os/$arch
-
-刷新关于blackarch的数据库
-
-::
-
-    sudo pacman -Syyu 
-
-信任GPG key
-
-::
-
-    sudo pacman-key --lsign-key noptrix@nullsecurity.net
-
-下载blackarch-keyring
-
-::
-
-    pacman -Sy blackarch-keyring
-
-如果出现了pacman 下载archlinux.db 404的情况
-
-::
-
-    sudo pacman -Scc  # 清理所有缓存
-    sudo rm /var/lib/pacman/db.lck  # 删除锁文件（如果存在）
-    sudo pacman -Syyu  # 强制刷新数据库并更新系统
 
 2.3 DNS设置
 -------------
@@ -670,7 +678,7 @@ sudoers 文件未包含 sudo 组
 
     systemctl --user enable pipewire wireplumber
 
-3.重启系统
+3. 重启系统
 
 ::
 

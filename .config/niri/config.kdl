@@ -1,5 +1,5 @@
 // ========== Autostart Applications ==========
-//spawn-at-startup "waybar"
+spawn-at-startup "waybar"
 //spawn-at-startup "qutebrowser"
 //spawn-at-startup "prismlauncher"
 spawn-at-startup "foot"

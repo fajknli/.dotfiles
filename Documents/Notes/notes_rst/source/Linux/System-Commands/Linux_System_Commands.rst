@@ -90,6 +90,25 @@ chech user information ``cat /etc/passwd``
 
     $ useradd -m -G [groupname] [username]
 
+- modify homedir for user
+
+::
+
+    sudo usermod -d /new/home/dir -m username
+
+- creat a homedir for new user
+
+::
+
+    sudo mkhomedir_helper username
+
+::
+
+    sudo mkdir /home/username
+    sudo cp -r /etc/skel. /home/username
+    sudo chown -R username:useername /home/username
+    sudo chmod 700 /home/username
+
 2. Modify a user's informations
 --------------------------------
 

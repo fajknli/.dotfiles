@@ -260,6 +260,16 @@ sdcv \
 dae \
 "
 
+# ----------------------------------------
+# Archlinux tool applications
+# ----------------------------------------
+ARCH_TOOL="\
+base-devel \
+arch-wiki-docs \
+arch-wiki-lite \
+arch-wiki-docs-zh-cn \
+"
+
 ### ------------------------
 ### 安装命令组装
 ### ------------------------
