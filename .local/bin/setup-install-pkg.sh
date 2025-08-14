@@ -38,6 +38,7 @@ inetutils \
 CLI_TOOLS="\
 fzf \
 git-crypt \
+cronie \
 ripgrep \
 sysstat \
 git-filter-repo \

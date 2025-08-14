@@ -33,9 +33,3 @@ if_online() {
 #    echo "Network is offline"
 #    exit 1
 #fi
-
-if if_online; then
-    return 0
-else
-    if command -v nmcli; then
-

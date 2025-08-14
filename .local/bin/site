@@ -19,6 +19,8 @@ bilibili|https://www.bilibili.com/
 douyin|https://www.douyin.com/
 chunkbase|https://www.chunkbase.com/
 seedmap|https://mcseedmap.net/
+wyyyy|https://music.163.com/
+wyyyyapi|https://163api.qijieya.cn/
 "
 
 if ! command -v wmenu >/dev/null 2>&1; then

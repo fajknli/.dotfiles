@@ -191,7 +191,7 @@ settings:
   colors.webpage.bg:
     global: '#c6c9d5'
   colors.webpage.darkmode.enabled:
-    global: true
+    global: false
   downloads.remove_finished:
     global: 10
   tabs.position:

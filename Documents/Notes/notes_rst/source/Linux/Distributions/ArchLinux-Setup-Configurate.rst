@@ -369,13 +369,7 @@ archlinuxcn 社区源的 keyring 包 archlinuxcn-keyring 由 farseerfc 的 key �
     sudo rm /var/lib/pacman/db.lck  # 删除锁文件（如果存在）
     sudo pacman -Syyu  # 强制刷新数据库并更新系统
 
-3. 自定义脚本设置
 
-1. 安装个人脚本
-
-::
-
-git clone --bare git
 1.3.12 内核设置(救援模式)
 ''''''''''''''''''''''''''''
 

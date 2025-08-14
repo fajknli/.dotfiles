@@ -20,7 +20,7 @@ cmd delete ${{
 # move current file or selected files to trash folder
 # (also see 'man mv' for backup/overwrite options)
 cmd trash ${{
-    mkdir -p "$HOME"/.trash
+    mkdir -p "$HOME"/.trash &>/dev/null
     name=$(basename $f)
     echo "$name"
     if [ -e "$HOME"/.trash/"$name" ]; then 
