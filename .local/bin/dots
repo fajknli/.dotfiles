@@ -47,6 +47,7 @@ set -- \
     "$HOME/.local/share/stardict" \
     "$HOME/.local/share/man" \
     "$HOME/.local/share/fonts/0xProto" \
+    "$HOME/.local/lib" \
     "$HOME/Project" \
     "$HOME/Documents/Notes" \
     "$HOME/.alacritty.toml" \

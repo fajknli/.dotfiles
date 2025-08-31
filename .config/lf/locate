@@ -1,3 +1,4 @@
+map ,c cd ~/.config
 map ,clf cd ~/.config/lf
 map ,ckt cd ~/.config/kitty
 map ,cnv cd ~/.config/nvim
@@ -12,11 +13,14 @@ map ,cqb cd ~/.config/qutebrowser
 map ,csw cd ~/.config/sway
 map ,czl cd ~/.config/zellij
 
+map ,l  cd ~/.local
 map ,lb cd ~/.local/bin
-map ,lp cd ~/.local/share/PrismLauncher/instances
-map ,lm cd ~/.local/share/man
-map ,lf cd ~/.local/share/fonts
-map ,li cd ~/.local/share/fcitx5
+map ,ll cd ~/.local/lib
+map ,ls cd ~/.local/share
+map ,lsp cd ~/.local/share/PrismLauncher/instances
+map ,lsm cd ~/.local/share/man
+map ,lsf cd ~/.local/share/fonts
+map ,lsi cd ~/.local/share/fcitx5
 
 map ,wp cd ~/Pictures/Wallpaper
 map ,ss cd ~/Pictures/Screenshots

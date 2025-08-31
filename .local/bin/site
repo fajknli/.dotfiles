@@ -6,6 +6,7 @@ deepseek|https://chat.deepseek.com/
 nvim|https://neovim.io
 dockerdoc|https://docs.docker.com
 mygithub|https://github.com/fajknli
+mygitee|https://gitee.com/
 unixchad|https://github.com/gnuunixchad
 mcwiki|https://zh.minecraft.wiki/?search=
 archwiki|https://wiki.archlinux.org/index.php?search=
@@ -21,6 +22,16 @@ chunkbase|https://www.chunkbase.com/
 seedmap|https://mcseedmap.net/
 wyyyy|https://music.163.com/
 wyyyyapi|https://163api.qijieya.cn/
+mindustry|https://mindustrygame.github.io/
+haihaiyun|https://www.seaidc.asia/
+techmc|http://techmc.wiki/#/
+modrinth|https://modrinth.com/
+freemovie-55|http://wcvod.com/
+freemovie-ddys|https://ddys.mov/
+freemovie-dyyy|https://www.yys02.cc/
+freemovee-cupfox|https://www.cupfox.in/
+freemovie-ole|http://olevod.com/
+minecraft-tool-mc-utils|https://mc-utils.vercel.app/
 "
 
 if ! command -v wmenu >/dev/null 2>&1; then

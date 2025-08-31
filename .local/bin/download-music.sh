@@ -23,7 +23,7 @@ while true; do
     esac
     # tr -s 压缩多个连在一起的空格为一个下划线
     music_name_no_space=$(echo "$music_name" | tr -s ' ' '_')
-    if echo "$origin_url" | grep -Eq '^https://.*\.m4a\?vuutv=.*&authSecret=.*&cdntag=.*$'; then
+    if echo "$origin_url" | grep -Eq '^https://.*vuutv=.*&cdntag=.*$'; then
         curl -L -# -o "$music_name_no_space.m4a" "$origin_url"
     fi
 done

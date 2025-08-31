@@ -104,7 +104,6 @@ window-rule {
 window-rule {
     match title="^Minecraft"
     open-maximized true
-    block-out-from "screencast"
 //    open-on-workspace "Game"
 }
 // Block out password managers from screencasts
@@ -273,6 +272,15 @@ binds {
     Alt+7 { focus-workspace 7; }
     Alt+8 { focus-workspace 8; }
     Alt+9 { focus-workspace 9; }
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
     Mod+Shift+1 { move-column-to-workspace 1; }
     Mod+Shift+2 { move-column-to-workspace 2; }
     Mod+Shift+3 { move-column-to-workspace 3; }
@@ -320,6 +328,7 @@ binds {
     Alt+C { spawn "sh" "-c" "$HOME/.local/bin/config"; }
     Alt+P { spawn "sh" "-c" "$HOME/.local/bin/pdf"; }
     Alt+E { spawn "sh" "-c" "$HOME/.local/bin/clipbd"; }
+    Alt+Q { spawn "sh" "-c" "$HOME/.local/bin/calculator"; }
 
     // System controls
     Mod+Ctrl+Shift+Space { spawn "swaylock" "-f" "-c" "151622"; }

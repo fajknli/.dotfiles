@@ -6,6 +6,8 @@ map <delete> delete
 map R bulk-rename
 map D trash
 map a :push %mkdir<space>
+#map n :push $nvim<space>
+#map n $nvim $f
 
 #map <enter> shell
 map <enter> open

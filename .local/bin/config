@@ -7,6 +7,7 @@ if ! command -v foot; then
 fi
 
 bin=$(find "$HOME"/.local/bin -type f)
+lib=$(find "$HOME"/.local/lib -type f)
 fcitx5=$(find "$HOME"/.config/fcitx5 -type f)
 lf=$(find "$HOME"/.config/lf -type f)
 foot=$(find "$HOME"/.config/foot -type f)
@@ -29,6 +30,7 @@ bash=$(find . -maxdepth 1 -type f -name "$HOME/.bash_*" \
 
 file_list="
 $bin
+$lib
 $fcitx5
 $foot
 $gtk

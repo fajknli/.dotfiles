@@ -33,15 +33,7 @@ set -o emacs
 # bind '"\ew":"fzfcd\n"'
 # bind '"\ee":"mcc\n"'
 
-# Java Home
-export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
-export PATH=$JAVA_HOME/bin:$PATH
-
 # 禁用历史记录临时文件
 shopt -s histappend
-export HISTFILE=~/.bash_history
-export HISTCONTROL=ignoredups:erasedups
-export HISTSIZE=100000
-export HISTFILESIZE=100000
 # 确保历史记录立即写入，而不是生成临时文件
 PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"

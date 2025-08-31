@@ -199,9 +199,9 @@ settings:
   tabs.width:
     global: 120
   url.default_page:
-    global: https://www.bing.com/
+    global: https://duckduckgo.com
   url.searchengines:
     global:
-      DEFAULT: https://bing.com/search?q={}
+      DEFAULT: https://duckduckgo.com/?q={}
   url.start_pages:
     global: https://bing.com

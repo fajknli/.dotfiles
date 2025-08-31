@@ -29,6 +29,7 @@ lsb-release \
 vsftpd \
 drill \
 nmap \
+nc \
 inetutils \
 "
 
@@ -39,6 +40,7 @@ CLI_TOOLS="\
 fzf \
 git-crypt \
 cronie \
+frpc \
 ripgrep \
 sysstat \
 git-filter-repo \
