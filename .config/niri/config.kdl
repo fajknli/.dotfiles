@@ -336,26 +336,30 @@ binds {
     
     // Audio controls
     XF86AudioRaiseVolume {
-    spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
-    Ctrl+Alt+0 {
-    spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume-up.sh"; }
     XF86AudioLowerVolume {
-    spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
-    Ctrl+Alt+9 {
-    spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume-down.sh"; }
     XF86AudioMute {
-    spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume-mute.sh"; }
+    Ctrl+Alt+0 {
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume-up.sh"; }
+    Ctrl+Alt+9 {
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume-down.sh"; }
     Ctrl+Alt+8 {
-    spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AudioMicMute  {
-    spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume-mute.sh"; }
     
     // Brightness controls
-    XF86MonBrightnessUp { spawn "brightnessctl" "s" "5+"; }
-    Ctrl+Alt+Shift+0 { spawn "brightnessctl" "s" "5+"; }
-    XF86MonBrightnessDown  { spawn "brightnessctl" "s" "5-"; }
-    Ctrl+Alt+Shift+9 { spawn "brightnessctl" "s" "5-"; }
+    //XF86MonBrightnessUp { spawn "brightnessctl" "s" "5+"; }
+    //Ctrl+Alt+Shift+0 { spawn "brightnessctl" "s" "5+"; }
+    //XF86MonBrightnessDown  { spawn "brightnessctl" "s" "5-"; }
+    //Ctrl+Alt+Shift+9 { spawn "brightnessctl" "s" "5-"; }
     
+    Ctrl+Alt+Shift+0 {
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/brightness-up.sh"; }
+    Ctrl+Alt+Shift+9 {
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/brightness-down.sh"; }
+
+    Ctrl+Alt+Shift+I { spawn "sh" "-c" "$HOME/.local/lib/shell/system/system-info.sh"; }
     // mc 游戏中文输入实现
     Shift+Return {
         spawn "sh" "-c" "

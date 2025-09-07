@@ -1,0 +1,8 @@
+Nvim
+#####
+
+.. toctree::
+   :titlesonly:
+   :glob:
+
+   *

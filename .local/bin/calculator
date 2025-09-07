@@ -16,6 +16,7 @@ if [ $? -eq 0 ]; then
     "0xProto Nerd Font Regular 12" -N "#1f2032" -n \
     "#a9b5d5" -S "#a0d0a0" -s "#151622" | wl-copy
     notify-send "Calculation Result" "$result"
+    echo "$result" | wl-copy
 else
     notify-send "Calculation Error" "$result"
 fi

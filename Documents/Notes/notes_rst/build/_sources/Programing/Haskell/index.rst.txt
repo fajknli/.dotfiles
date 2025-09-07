@@ -1,0 +1,8 @@
+Haskell
+#######################
+
+.. toctree::
+   :titlesonly:
+   :glob:
+
+   *

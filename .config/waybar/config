@@ -9,7 +9,7 @@
   //"modules-left": ["custom/arch", "sway/workspaces"],
   //"modules-left": ["custom/arch", "hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["tray", "network", "custom/touchpad", "pulseaudio", "backlight", "battery"],
+  "modules-right": ["tray", "network", "pulseaudio", "backlight", "battery"],
 
   "keyboard-state": {
     "numlock": true,

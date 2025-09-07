@@ -6,8 +6,10 @@ echo "Download packages"
 # 字体与本地化支持
 # ----------------------------------------
 FONTS_AND_LOCALE="\
+otf-comicshanns-nerd \
 adobe-source-han-sans-cn-fonts \
 ttf-font-awesome \
+ttf-lxgw-wenkai \
 ttf-0xproto-nerd \
 ttf-opensans \
 ttf-liberation \
@@ -29,7 +31,7 @@ lsb-release \
 vsftpd \
 drill \
 nmap \
-nc \
+openbsd-netcat \
 inetutils \
 "
 
@@ -38,6 +40,7 @@ inetutils \
 # ----------------------------------------
 CLI_TOOLS="\
 fzf \
+wf-recorder \
 git-crypt \
 cronie \
 frpc \
@@ -93,6 +96,7 @@ bc \
 GUI_APPS="\
 alacritty \
 mako \
+libnotify \
 glfw \
 gimp \
 remmina \
