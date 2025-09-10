@@ -268,3 +268,13 @@ vim.api.nvim_create_autocmd("BufNewFile", {
     group = header_group,
     callback = set_header  -- 直接引用函数
 })
+
+-- 清理所有寄存器
+vim.api.nvim_create_user_command('ClearRegisters', function()
+    local registers = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"'
+    for i = 1, #registers do
+        local reg = registers:sub(i, i)
+        vim.fn.setreg(reg, '')
+    end
+    print("All registers cleared!")
+end, {})

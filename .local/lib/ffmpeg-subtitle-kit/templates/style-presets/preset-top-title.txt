@@ -1,0 +1,3 @@
+# preset-top-title.txt
+# 样式：顶部标题
+FontName=Microsoft YaHei,FontSize=28,PrimaryColour=&H00FFFFFF,BorderStyle=3,Outline=1,Alignment=8,MarginV=30

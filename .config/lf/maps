@@ -1,21 +1,37 @@
 map ,
 # source $XDG_CONFIG_HOME/lf/locate
+# 导航文件
 source ~/.config/lf/locate
 
+# 单个确认删除
 map <delete> delete
+# 多选改名
 map R bulk-rename
+# 删除目标
 map D trash
+# 创建目录
 map a :push %mkdir<space>
+# 创建文件
+map t :push %touch<space>
 #map n :push $nvim<space>
 #map n $nvim $f
 
 #map <enter> shell
+# 自动文件的打开方式
 map <enter> open
 
 # show the result of execution of previous commands
+# 查看lf里执行的命令在终端的输出
 map ` !true
 
 # execute current file (must be executable)
+# 执行选中的可执行文件
+#               :  read (default)  builtin/custom command
+#               $  shell           shell command
+#               %  shell-pipe      shell command running with the UI
+#               !  shell-wait      shell command waiting for a key press
+#               &  shell-async     shell command running asynchronously
+# x，lf后台执行，不显示输出结果。X,停留输出终端，显示结果
 map x $$f
 map X !$f
 
@@ -23,14 +39,14 @@ map X !$f
 #map o &mimeopen $f
 #map O $mimeopen --ask $f
 
-#map <c-p> premission
+#切换文件权限
 map <c-p> permisson
 
-# extract 
+# extract,解压缩目标,单个 
 map <c-e> extract
 
+# 复制当前路径
 map .pwd cp_path
-map .nv nvim_edit_files
 
 map <c-t> nvim-tabs
 

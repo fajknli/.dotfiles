@@ -35,9 +35,10 @@ cmd trash ${{
 # This command is called when current file is not a directory. You may want to
 # use either file extensions and/or mime types here. Below uses an editor for
 # text files and a file opener for the rest.
+# 对于文本文件，nvim可以多标签打开多个文件
 cmd open &{{
     case $(file --mime-type -Lb $f) in
-        text/*) lf -remote "send $id \$$EDITOR \$fx";;
+        text/*) lf -remote "send $id \$$EDITOR -p \$fx";;
         *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
@@ -45,18 +46,33 @@ cmd open &{{
 
 # extract the current file with the right command
 # (xkcd link: https://xkcd.com/1168/)
+
 cmd extract ${{
     set -f
     case $f in
+        # 现有格式
         *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) mkdir -p "${f%.tar.*}" && tar -xjvf $f -C "${f%.tar.*}";;
         *.tar.gz|*.tgz) mkdir -p "${f%.tar.*}" && tar -xzvf $f -C "${f%.tar.*}";;
         *.tar.xz|*.txz) mkdir -p "${f%.tar.*}" && tar -xJvf $f -C "${f%.tar.*}";;
-        *.zip) unzip -d ${f%.zip} $f;;
-        *.rar) mkdir -p ${f%.rar} && unrar x $f ${f%.rar};;
-        *.7z) 7z x $f -o ${f%.7z};;
+        *.tar.zst|*.tzst) mkdir -p "${f%.tar.*}" && tar --zstd -xvf $f -C "${f%.tar.*}";;
+        *.zip) unzip -d "${f%.zip}" "$f";;
+        *.rar) mkdir -p "${f%.rar}" && unrar x "$f" "${f%.rar}";;
+        *.7z) 7z x "$f" -o"${f%.7z}";;
+        
+        # 新增格式
+        *.tar) mkdir -p "${f%.tar}" && tar -xvf "$f" -C "${f%.tar}";;
+        *.gz) gunzip -k "$f";;
+        *.bz2) bunzip2 -k "$f";;
+        *.xz) unxz -k "$f";;
+        *.zst) unzstd -k "$f";;
+        
+        # 特殊格式
+        *.deb) mkdir -p "${f%.deb}" && ar x "$f" --output="${f%.deb}";;
+        *.rpm) mkdir -p "${f%.rpm}" && rpm2cpio "$f" | cpio -idmv -D "${f%.rpm}";;
+        
+        *) echo "不支持的文件格式: $f";;
     esac
 }}
-
 
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
@@ -78,6 +94,7 @@ cmd zip ${{
 
 # You can define a command to rename multiple files at the same time using your text editor to change the names.
 
+# 多选文件/目录换名
 cmd bulk-rename ${{
     old="$(mktemp)"
     new="$(mktemp)"
@@ -102,6 +119,7 @@ cmd bulk-rename ${{
     lf -remote "send $id unselect"
 }}
 
+# 循环设置指导权限
 cmd permisson ${{
     case $(stat -c "%a" "$f") in
     644) chmod 755 "$f";;
@@ -114,20 +132,16 @@ cmd permisson ${{
     lf -remote "send $id select \"$f\""
 }}
 
-cmd nvim_edit_files ${{
-    nvim $fx
-}}
-
 cmd cp_path ${{
     pwd | wl-copy
 }}
 
 cmd nvim-tabs ${{
     nvim -p $fx
-  # Convert selected files ($fx) into a Lua-compatible string
-  #files=$(printf "'%s', " $fx | sed "s/, $//")
-  #nvim --cmd "lua fajopenfilesastabs({$files})"
-  # files=$(printf "%s " $fx | xargs)
-  # nvim -p $files
-  # echo $files
+}}
+
+cmd on-quit ${{
+    if [ -n "$PWD" ]; then
+        echo "cd \"$PWD\""
+    fi
 }}

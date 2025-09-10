@@ -13,7 +13,6 @@ map ,cqb cd ~/.config/qutebrowser
 map ,csw cd ~/.config/sway
 map ,czl cd ~/.config/zellij
 
-map ,l  cd ~/.local
 map ,lb cd ~/.local/bin
 map ,ll cd ~/.local/lib
 map ,ls cd ~/.local/share

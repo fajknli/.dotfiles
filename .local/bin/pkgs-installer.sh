@@ -1,0 +1,246 @@
+#!/bin/sh
+
+# Author:       fajknli
+# Emial         fajknli@gmail.com
+# Created Time: 2025-09-10 00:14
+# Filename:     pkgs-installer.sh
+
+# 字体与本地化
+fonts_localization="\
+otf-comicshanns-nerd \
+adobe-source-han-sans-cn-fonts \
+ttf-font-awesome \
+ttf-lxgw-wenkai \
+ttf-0xproto-nerd \
+ttf-opensans \
+ttf-liberation \
+noto-fonts-emoji \
+noto-fonts \
+fcitx5 \
+fcitx5-chinese-addons \
+fcitx5-configtool \
+fcitx5-gtk \
+fcitx5-pinyin-zhwiki \
+"
+
+# 网络工具
+network_tools="\
+networkmanager \
+iwd \
+ntp \
+bind \
+socat \
+vsftpd \
+drill \
+nmap \
+openbsd-netcat \
+inetutils \
+frpc \
+curl \
+wget \
+aria2 \
+rsync \
+dae \
+speedtest-cli \
+"
+# 系统工具
+system_utilities="\
+lsb-release \
+cronie \
+sysstat \
+htop \
+glances \
+fastfetch \
+man-db \
+tealdeer \
+bash-completion \
+hwinfo \
+ncdu \
+inxi \
+ydotool \
+lm_sensors \
+zenity \
+i2c-tools \
+iproute2 \
+iputils \
+coreutils \
+mtr \
+base-devel \
+arch-wiki-docs \
+arch-wiki-lite \
+arch-wiki-docs-zh-cn \
+firejail \
+docker \
+"
+
+# 命令行工具
+cli_tools="\
+pkgfile \
+colordiff \
+cloc \
+fzf \
+wf-recorder \
+git-crypt \
+ripgrep \
+git-filter-repo \
+jq \
+most \
+unzip \
+zip \
+7zip \
+exfat-utils \
+tree \
+make \
+shellcheck \
+xh \
+rustup \
+gcc \
+yt-dlp \
+unrar \
+zoxide \
+wev \
+neomutt \
+imagemagick \
+chafa \
+fd \
+lf \
+catimg \
+w3m \
+odt2txt \
+poppler \
+bc \
+figlet \
+fuse2fs \
+asciinema \
+"
+
+# 图形界面应用
+gui_application="\
+alacritty \
+mako \
+libnotify \
+gimp \
+remmina \
+waybar \
+mpv \
+obs-studio \
+newsflash \
+element-desktop \
+virt-manager \
+irssi \
+thunar \
+gthumb \
+foliate \
+zathura \
+zathura-pdf-poppler \
+qutebrowser \
+prismlauncher \
+pavucontrol \
+helvum \
+"
+
+# wayland/wm相关
+wayland_wm="\
+sway \
+swaylock \
+swaybg \
+swayidle \
+sway-contrib \
+niri \
+wofi \
+fuzzel \
+grim \
+slurp \
+wl-clipboard \
+brightnessctl \
+cliphist \
+swayimg \
+xdg-desktop-portal-wlr \
+xdg-desktop-portal-gtk \
+xdg-desktop-portal-gnome \
+lemurs \
+wmenu \
+"
+
+# 音频和蓝牙
+audio_bluetooth="\
+pipewire \
+wireplumber \
+pipewire-pulse \
+bluez \
+bluez-utils \
+ffmpeg \
+ffmpegthumbnailer \
+"
+
+# 图像驱动和库
+graphics_drivers_libraries="\
+intel-media-driver \
+libva-utils \
+glfw \
+vulkan-radeon \
+"
+
+# GTK/Qt 主题与支持 (GTK/Qt Themes & Support)
+gtk_qt_support="\
+materia-gtk-theme \
+adapta-gtk-theme \
+qt5-declarative \
+layer-shell-qt \
+layer-shell-qt5 \
+"
+
+# Python 库 (Python Libraries)
+python_libraries="\
+pypinyin \
+python-polars \
+python-orjson \
+python-faker \
+scrapy \
+python-lxml \
+python-pyfiglet \
+python-rich \
+python-tqdm \
+python-click \
+python-emoji \
+python-pillow \
+python-sphinx \
+python-sphinx-lv2-theme \
+python-sphinx-furo \
+python-sphinx-autobuild \
+python-sphinx-alabaster-theme \
+python-guzzle-sphinx-theme \
+python-sphinx_rtd_theme \
+"
+
+# 服务器工具 (Server Tools)
+server_tools="\
+redis \
+nginx \
+docker \
+kubectl \
+kubelet \
+kubeadm \
+cri-o \
+crictl \
+"
+
+# 文档与词典 (Documentation & Dictionary)
+documentation_dictionary="\
+sdcv \
+"
+
+sudo pacman -Syu --noconfirm --needed --color auto \
+$documentation_dictionary\
+$server_tools\
+$python_libraries\
+$gtk_qt_support\
+$graphics_drivers_libraries\
+$audio_bluetooth\
+$wayland_wm\
+$gui_application\
+$cli_tools\
+$system_utilities\
+$network_tools\
+$fonts_localization\
+

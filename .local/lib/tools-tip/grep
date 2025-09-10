@@ -1,0 +1,26 @@
+基本搜索
+grep -v 'patten' # 反向选择
+grep -i 'patten' # 忽略大小写
+grep -w 'patten' # 匹配整个单词
+grep -n 'patten' # 显示行号
+grep -c 'patten' # 只显示匹配行的计数
+
+输出控制
+grep -o 'patten' # 只输出匹配的部分，不输出匹配的整行
+grep -h 'patten' # 不显示文件名(多文件搜索时有用)
+grep -H 'patten' # 总显示文件名(哪怕但文件也显示)
+grep --color=auto # 高亮显示文件名
+grep -A <num> 'patten' # 显示匹配行之后的几行(after)
+grep -B <num> 'patten' # 显示匹配行之前的几行(before)
+grep -C <num> 'patten' # 显示匹配行前后的几行(Context)
+
+高级搜索
+grep -e 'patten1' -e 'patten2'# 指定多个模式
+grep -E 'p.*n' # 启用扩展正则表达式(Extended regex)
+grep -F '.*' # 将模式视为固定字符串，而不是正则表达式
+grep -r 'patten' # 递归搜索目录
+grep -l 'patten' # 只显示包含匹配项的文件名
+grep -L 'patten' # 只显示不包含匹配项的文件名
+
+静默模式
+if grep -q 'patten' file; then echo "0"; fi # 不输出内容，只通过退出状态码显示结果

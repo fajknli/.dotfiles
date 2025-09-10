@@ -1,0 +1,37 @@
+pacman -S <> # 下载软件
+pacman -Sy <> # 下载软件,并更新数据库
+pacman -S --needed <> # 如果已安装且是最新,则跳过安装
+pacman -Ss <> # 基本搜索：在包名和描述中搜索关键字
+pacman -Sw <> # 只下载包，不安装
+pacman -U <> # 安装本地的.pkg.tar.zst文件
+pacman -Syu # 刷新数据库并升级所有软件包(系统全面升级)
+pacman -Syuu # 降级软件包(如果版本高于仓库)
+pacman -Syyu # 强制刷新数据库并升级(忽略本地缓存)
+pacman -Si <> # 查看包的详细描述、版本、依赖等
+
+pacman -Qs <> # 在已安装的包里搜索（包名和描述）
+pacman -Qi <> # 查看已安装包的详情	
+pacman -Ql <> # 列出包安装的所有文件
+pacman -Qm <> # 列出所有从AUR或手动安装的包
+pacman -Qdt # 列出无用孤儿包(可清理)
+pacman -Qet	<> # 列出显式安装且不被任何包依赖的包
+pacman -Fy # 下载更新文件数据库
+pacman -F <>  # 查询文件由哪个包提供(得先-Fy下载数据信息)
+pacman -Fl <> # 列出软件库里包的所有文件
+pacman -Fo <> # 查询本地文件属于哪个已安装的包
+
+pacman -R <> # 删除软件包，保留其依赖
+pacman -Rs <> # 删除软件包，并删除不需要的依赖
+pacman -Rsc <> # 递归删除软件包和其所有依赖(危险)
+pacman -Rns <> # 删除软件包，依赖和其配置文件
+pacman -Rdd <> # 强制删除包(即使此包作为其他包的依赖)
+pacman -Scc # 清空所有下载的包缓存(谨慎)
+pacman -Sc # 清空旧版本的包缓存(保留当前安装的)
+谨慎使用 -Rsc 和 -Scc，它们可能会破坏你的系统或让你无法降级软件
+
+pacman -D --asdeps <> # 将包标记为[依赖]
+pacman -D --asexplicit <> # 将包标记为[显式安装]
+pacman-db-upgrade # 升级本地包数据库格式
+
+pacman -Qqe > pkglist.txt # 备份已显式安装的软件包列表
+pacman -S - < pkglist.txt # 从列表恢复安装（在新系统上）

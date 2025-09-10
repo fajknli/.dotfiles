@@ -1,0 +1,3 @@
+# preset-bottom-large.txt
+# 样式：底部大字体，适合手机观看
+FontName=Microsoft YaHei,FontSize=32,PrimaryColour=&H00FFFFFF,BackColour=&H80000000,BorderStyle=3,Outline=1,Shadow=0,Alignment=2,MarginV=50

@@ -1,0 +1,8 @@
+tar -tf archive.tar.gz # 快速查看压缩包内容
+tar -czf archive.tar.gz directory/ # 创建压缩包
+tar -xzf archive.tar.gz -C target_dir/ # 解压到指定目录
+fcrackzip -u -D -p /usr/share/wordlists/rockyou.txt file.zip # zip文件密码破解（合法用途）
+unrar x file.rar # 解压rar
+7z x file.7z     # 解压7z
+tar -xzf file.tar.gz # 解压tar.gz
+zip -r archive.zip dir/ # 创建zip

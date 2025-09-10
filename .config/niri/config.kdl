@@ -1,5 +1,5 @@
 // ========== Autostart Applications ==========
-spawn-at-startup "waybar"
+//spawn-at-startup "waybar"
 //spawn-at-startup "qutebrowser"
 //spawn-at-startup "prismlauncher"
 spawn-at-startup "foot"
@@ -11,6 +11,7 @@ spawn-at-startup "foot"
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
+
 // ========== Environment Variables ==========
 environment {
 //    QT_QPA_PLATFORM "wayland"
@@ -19,7 +20,17 @@ environment {
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
     GDK_BACKEND "wayland"
     MOZ_ENABLE_WAYLAND "1"
-    DISPLAY null  // 明确禁用 X11
+    //DISPLAY null  // 明确禁用 X11
+//00000000000000000000000000000000000
+    XMODIFIERS "@im=fcitx"
+    //GTK_IM_MODULE "fcitx"
+    //QT_IM_MODULE "fcitx"
+    //INPUT_METHOD "fcitx"
+    //SDL_IM_MODULE "fcitx"
+// 注意：GLFW 通常更认 ibus，但 fcitx5 有时兼容。如果无效可以尝试改成 "fcitx"
+    //GLFW_IM_MODULE "fcitx"
+//00000000000000000000000000000000000
+
 }
 
 // ========== Cursor Settings ==========
@@ -329,9 +340,11 @@ binds {
     Alt+P { spawn "sh" "-c" "$HOME/.local/bin/pdf"; }
     Alt+E { spawn "sh" "-c" "$HOME/.local/bin/clipbd"; }
     Alt+Q { spawn "sh" "-c" "$HOME/.local/bin/calculator"; }
+    Alt+W { spawn "sh" "-c" "$HOME/.local/bin/weather"; }
+    Alt+T { spawn "sh" "-c" "$HOME/.local/bin/tools-tip"; }
 
     // System controls
-    Mod+Ctrl+Shift+Space { spawn "swaylock" "-f" "-c" "151622"; }
+    Ctrl+Shift+Space { spawn "swaylock" "-f" "-c" "151622"; }
     //Mod+Shift+P { power-off-monitors; }
     
     // Audio controls
@@ -354,33 +367,22 @@ binds {
     //XF86MonBrightnessDown  { spawn "brightnessctl" "s" "5-"; }
     //Ctrl+Alt+Shift+9 { spawn "brightnessctl" "s" "5-"; }
     
+    // 屏幕亮度
     Ctrl+Alt+Shift+0 {
     spawn "sh" "-c" "$HOME/.local/lib/shell/system/brightness-up.sh"; }
     Ctrl+Alt+Shift+9 {
     spawn "sh" "-c" "$HOME/.local/lib/shell/system/brightness-down.sh"; }
 
-    Ctrl+Alt+Shift+I { spawn "sh" "-c" "$HOME/.local/lib/shell/system/system-info.sh"; }
+    //录制视频
+    Ctrl+Alt+Shift+6 {
+        spawn "sh" "-c" "$HOME/.local/lib/shell/utils/record-screen.sh start"; }
+    Ctrl+Alt+Shift+7 {
+        spawn "sh" "-c" "$HOME/.local/lib/shell/utils/record-screen.sh stop"; }
+
+    // 系统信息
+    Ctrl+Alt+Shift+I { spawn "sh" "-c" "$HOME/.local/lib/shell/system/system-status.sh"; }
+
     // mc 游戏中文输入实现
     Shift+Return {
-        spawn "sh" "-c" "
-        if ! pgrep ydotoold >/dev/null; then
-            sudo ydotoold &
-            sleep 1
-        fi
-
-        coproc ZENITY {
-            zenity --entry 2>/dev/null
-        }
-        sleep 0.5
-        fcitx5-remote -t
-
-        read -u \"${ZENITY[0]}\" INPUT
-
-        if [ -n \"$INPUT\" ]; then
-            echo \"$INPUT\" | wl-copy
-            ydotool key 29:1 47:1 47:0 29:0 14:1 14:0
-        fi
-        "
-    }
-    //Mod+t { spawn "~/scripts/scripts_tools/mcinput.sh"; }
+    spawn "sh" "-c" "$HOME/.local/lib/shell/utils/minecraft-input.sh"; }
 }

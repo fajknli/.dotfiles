@@ -1,0 +1,48 @@
+系统监控
+inxi -Fxz   查看硬件信息
+sensors 温度监控
+free -h 内存信息
+ncdu    可视化磁盘信息
+uptime 系统运行时间
+
+文件操作
+fd  查找文件
+rg  查找内容
+colordiff -u file1 file2 文件差异对比
+cloc . 统计当前目录下代码文件信息
+lf 文件管理
+lfcd 文件管理+cd
+
+网络诊断
+xh httpbin.org/json #http请求(curl的替代)
+ss -tulpn #网络连接/端口占用报告
+speedtest-cli   #网络测速工具
+nmap -sC -sV 192.168.1.1   #收集目标信息
+dig example.com +short #获取目标域名的A记录(IPv4地址)
+mtr google.com  #路由追踪(比tracepath更强)
+
+文本处理
+echo '{"name": "John"}' | jq '.name'  # json 处理
+xsv table data.csv # CSV查看
+wc -l file.txt          # 统计文件行数
+wc -w file.txt          # 统计文件单词数
+wc -c file.txt          # 统计文件字节数
+iconv -f UTF-8 -t ASCII//TRANSLIT file.txt #编码转换
+sed -i 's/old/new/g' file.txt # 文本替换
+
+进程管理
+ps aux --sort=-%cpu | head #按CPU排序进程
+ps aux --sort=-%mem | head #按内存排序进程  
+pkill -9 -P <pid> #杀死进程树
+glances #实时进程监控
+pgrep -lf "pattern" #查找进程
+time ls -la # 查看命令执行时间
+
+开发调试
+openssl rand -base64 32 # 生成随机数据
+
+多媒体
+ffmpeg -i input.mp4 -vf "fps=10,scale=320:-1" output.gif # 视频转GIF
+ffmpeg -i input.mp3 output.ogg # 音频格式转换
+mogrify -resize 50% *.jpg #图片尺寸调整
+

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+TARGET_DIR="$HOME/.local/lib/tools-tip"
+
+#ls -1 "$TARGET_DIR" | grep -v '^\.'
+
+TOOL=$(ls -1 "$TARGET_DIR" | grep -v '^\.' | \
+wmenu -p "Tools-Tip" -M "#a0d0a0" -m "#151622" -i -l 10 -f "0xProto Nerd Font Regular 12" -N "#1f2032" \
+-n "#a9b5d5" -S "#a0d0a0" -s "#151622")
+
+if [ -z "$TOOL" ]; then
+    exit 1
+fi
+
+TOOL_TIP=$(cat "$TARGET_DIR/$TOOL")
+
+notify-send "$TOOL_TIP"
+

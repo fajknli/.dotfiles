@@ -1,0 +1,17 @@
+# 简洁状态
+git status -sb
+
+# 图形化日志
+git log --oneline --graph --all
+
+# 查看更改
+git diff --color-words
+
+# 暂存部分更改
+git add -p
+
+# 恢复误删文件
+git checkout -- path/to/file
+
+# 清理本地已合并分支
+git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
