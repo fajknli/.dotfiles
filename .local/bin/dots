@@ -82,9 +82,9 @@ safe_add() {
     for item in "$@"; do
         if [ -e "$item" ]; then
             eval "$DOTFILES_CMD add -f \"$item\""
-            notify-send -u low "Added \"$item\""
         fi
     done
+    notify-send -u low "Added Success"
 }
 
 # 检查是否有任何更改需要提交
