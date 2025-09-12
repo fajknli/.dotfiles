@@ -117,6 +117,7 @@ asciinema \
 # 图形界面应用
 gui_application="\
 alacritty \
+tk \
 mako \
 libnotify \
 gimp \

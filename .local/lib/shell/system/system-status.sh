@@ -59,7 +59,7 @@ MESSAGE="<b>📅 基本信息:</b>
 • <span color='#a0d0a0'><b>亮度:</b></span> $BRIGHTNESS"
 
 # 发送通知（支持HTML格式）
-notify-send -t 10000 "系统状态监控" "$MESSAGE"
+notify-send "系统状态监控" "$MESSAGE"
 
 # 同时在终端输出（带颜色）
 # echo -e "${BLUE}╔══════════════════════════════════════════════════╗${NC}"

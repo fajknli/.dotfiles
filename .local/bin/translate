@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# Author:       fajknli
+# Emial         fajknli@gmail.com
+# Created Time: 2025-09-11 07:49
+
+TRANSLATE_ENGINE="bing"
+TRANSLATE_INPUT=$(zenity --entry --title="Translate" --text="请输入要翻译的文本" 2>/dev/null)
+[ -z "$TRANSLATE_INPUT" ] && exit 1
+
+# chinese check
+is_chinese() {
+    printf "%s" "$TRANSLATE_INPUT" | grep -qP "[\x{4E00}-\x{9FFF}\x{3000}-\x{303F}]"
+}
+
+# japanese check
+is_japanese() {
+    printf "%s" "$TRANSLATE_INPUT" | grep -qP "[\x{3040}-\x{309F}\x{30A0}-\x{30FF}]"
+}
+
+# dependencies check
+check_dependencies() {
+    command -v trans >/dev/null 2>&1 && command -v zenity >/dev/null 2>&1
+}
+
+# copy to clipboard
+copy_to_clipboard() {
+    printf "%s" "$1" | wl-copy
+}
+
+
+main() {
+    # deppendencies check
+    if ! check_dependencies; then
+        notify-send -u critical "请安装: sudo pacman -S translate-shell zenity"
+        exit 1
+    fi
+
+    if is_chinese; then
+        if is_japanese; then
+            trans_result=$(trans -e "$TRANSLATE_ENGINE" -b -t zh "$TRANSLATE_INPUT")
+        else
+            trans_result=$(trans -e "$TRANSLATE_ENGINE" -b -t en "$TRANSLATE_INPUT")
+        fi
+    else
+        trans_result=$(trans -e "$TRANSLATE_ENGINE" -b -t zh "$TRANSLATE_INPUT")
+    fi
+
+    copy_to_clipboard "$trans_result"
+
+    notify-send "翻译结果:" "$trans_result"
+
+}
+
+main "$@"

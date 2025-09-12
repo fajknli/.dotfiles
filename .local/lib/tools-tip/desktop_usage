@@ -1,0 +1,47 @@
+截图
+Ctrl+Alt+Shift+P # 区域截图
+Ctrl+Alt+Shift+S # 全屏截图
+Ctrl+Alt+S # Column截图
+录制
+Ctrl+Alt+Shift+6 # 启动录制
+Ctrl+Alt+Shift+7 # 停止录制
+系统
+Ctrl+Alt+Shift+I # 查看系统信息
+Mod+Shift+P # 关闭屏幕(按任意键唤醒)
+Ctrl+Alt+9 # 减小5%音量
+Ctrl+Alt+0 # 增加5%音量
+Ctrl+Shift+Alt+0 # 增加5%亮度
+Ctrl+Shift+Alt+0 # 增加5%亮度
+浮动窗口
+Mod+Return # 打开终端
+Mod+Shift+Return # 打开浮动终端
+Mod+V # 启动窗口浮动
+Mod+Shift+V # 在浮动和固定间切换聚焦窗口
+窗口设置
+Mod+C # 窗口居中
+Mod+Ctrl+H # 向左减小窗口大小10%
+Mod+Ctrl+L # 向右增大窗口大小10%
+Mod+Ctrl+K # 向上减小窗口大小10%
+Mod+Ctrl+J # 向下增大窗口大小10%
+Mod+Alt+O # 预设窗口高度(25%,50%,100%)
+Mod+Alt+P # 预设窗口宽度(49%,61%,73%)
+Mod+F # 最大化窗口
+Mod+Shift+F # 全屏
+窗口移动
+Mod+Alt+H # 切换到第一个窗口
+Mod+Alt+L # 切换到最后一个窗口
+Mod+Ctrl+Shift+H # 移动窗口到第一个窗口
+Mod+Ctrl+Shift+L # 移动窗口到最后一个窗口
+工具
+Alt+I # 自定义网站列表
+Alt+M # 播放歌曲
+Alt+N # 编辑笔记文档
+Alt+C # 编辑配置文件列表
+Alt+P # PDF查看列表
+Alt+E # 剪切板
+Alt+Q # bc计算器
+Alt+W # 天气
+Alt+H # Tool-Tips
+Mod+T # sdcv 翻译(暂时关闭)
+Alt+T # translate-cli 在线翻译
+Alt+Y # 关闭通知

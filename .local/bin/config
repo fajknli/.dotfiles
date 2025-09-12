@@ -8,6 +8,7 @@ fi
 
 bin=$(find "$HOME"/.local/bin -type f)
 lib=$(find "$HOME"/.local/lib -type f)
+etc=$(find "$HOME"/.local/etc -type f)
 fcitx5=$(find "$HOME"/.config/fcitx5 -type f)
 lf=$(find "$HOME"/.config/lf -type f)
 foot=$(find "$HOME"/.config/foot -type f)
@@ -31,6 +32,7 @@ bash=$(find . -maxdepth 1 -type f -name "$HOME/.bash_*" \
 file_list="
 $bin
 $lib
+$etc
 $fcitx5
 $foot
 $gtk
@@ -64,7 +66,8 @@ $HOME/.alacritty
 
 
 choice="$(printf '%s' "$file_list" | grep -v '^$' | \
-    wmenu -i -l 15 -f"0xProto Nerd Font Regular 12" -N \
+    wmenu -p "Config_Files:" -M "#a0d0a0" -m "#151622" \
+    -i -l 15 -f"0xProto Nerd Font Regular 12" -N \
     "#1f2032" -n "#a9b5d5" -S "#a0d0a0" -s "#151622")"
 
 if [ -n "$choice" ]; then

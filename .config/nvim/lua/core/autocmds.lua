@@ -98,7 +98,6 @@ local function set_header()
             "# Author:       " .. author,
             "# Emial         " .. email,
             "# Created Time: " .. time,
-            "# Filename:     " .. filename,
             "",
             ""
         },
@@ -108,7 +107,6 @@ local function set_header()
             "# Author:       " .. author,
             "# Emial         " .. email,
             "# Created Time: " .. time,
-            "# Filename:     " .. filename,
             "",
             ""
         },
@@ -118,7 +116,6 @@ local function set_header()
             "-- Author:       " .. author,
             "-- Email:        " .. email,
             "-- Created Time: " .. time,
-            "-- Filename:     " .. filename,
             "",
             ""
         },
@@ -127,7 +124,6 @@ local function set_header()
             " * Author:       " .. author,
             " * Email:        " .. email,
             " * Created Time: " .. time,
-            " * Filename:     " .. filename,
             " */",
             "",
             ""
@@ -137,7 +133,6 @@ local function set_header()
             " * Author:       " .. author,
             " * Email:        " .. email,
             " * Created Time: " .. time,
-            " * Filename:     " .. filename,
             " */",
             "",
             ""
@@ -147,7 +142,6 @@ local function set_header()
             " * Author:       " .. author,
             " * Email:        " .. email,
             " * Created Time: " .. time,
-            " * Filename:     " .. filename,
             " */",
             "",
             ""
@@ -157,7 +151,6 @@ local function set_header()
             " * Author:       " .. author,
             " * Email:        " .. email,
             " * Created Time: " .. time,
-            " * Filename:     " .. filename,
             " */",
             "",
             ""
@@ -167,7 +160,6 @@ local function set_header()
             " * Author:       " .. author,
             " * Email:        " .. email,
             " * Created Time: " .. time,
-            " * Filename:     " .. filename,
             " */",
             "",
             ""
@@ -177,7 +169,6 @@ local function set_header()
             " * Author:       " .. author,
             " * Email:        " .. email,
             " * Created Time: " .. time,
-            " * Filename:     " .. filename,
             " */",
             "",
             ""
@@ -187,7 +178,6 @@ local function set_header()
             " * Author:       " .. author,
             " * Email:        " .. email,
             " * Created Time: " .. time,
-            " * Filename:     " .. filename,
             " */",
             "",
             ""
@@ -198,7 +188,6 @@ local function set_header()
             " * Author:       " .. author,
             " * Email:        " .. email,
             " * Created Time: " .. time,
-            " * Filename:     " .. filename,
             " */",
             "",
             ""
@@ -209,7 +198,6 @@ local function set_header()
             "# Author:       " .. author,
             "# Email:        " .. email,
             "# Created Time: " .. time,
-            "# Filename:     " .. filename,
             "",
             ""
         },
@@ -218,7 +206,6 @@ local function set_header()
             "  Author:       " .. author,
             "  Email:        " .. email,
             "  Created Time: " .. time,
-            "  Filename:     " .. filename,
             "-->",
             "",
             ""
@@ -228,7 +215,6 @@ local function set_header()
             " * Author:       " .. author,
             " * Email:        " .. email,
             " * Created Time: " .. time,
-            " * Filename:     " .. filename,
             " */",
             "",
             ""
@@ -238,7 +224,6 @@ local function set_header()
             "  Author:       " .. author,
             "  Email:        " .. email,
             "  Created Time: " .. time,
-            "  Filename:     " .. filename,
             "-->",
             "",
             ""
@@ -247,7 +232,6 @@ local function set_header()
             ".. Author:       " .. author,
             ".. Email:        " .. email,
             ".. Created Time: " .. time,
-            ".. Filename:     " .. filename,
             "",
             ""
         },

@@ -1,17 +1,23 @@
 # ~/.config/mako/config (verified syntax)
 font=Noto 12
 width=550
-height=1000
+height=1500
+max-visible=100
 margin=10
 padding=10,5
 border-size=2
 border-radius=0
-#anchor=top-left
 anchor=top-right
-
 background-color=#1f2032
 text-color=#b6c0db
 border-color=#89b4fa
+
+[urgency=normal]
+default-timeout=0
+background-color=#1f2032
+text-color=#b6c0db
+border-color=#89b4fa
+# cyan
 
 [urgency=low]
 default-timeout=5000
@@ -20,12 +26,6 @@ text-color=#b6c0db
 border-color=#a0d0a0
 # green
 
-[urgency=normal]
-default-timeout=10000
-background-color=#1f2032
-text-color=#b6c0db
-border-color=#89b4fa
-# cyan
 
 [urgency=critical]
 default-timeout=15000
