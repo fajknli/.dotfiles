@@ -20,7 +20,7 @@ border-color=#89b4fa
 # cyan
 
 [urgency=low]
-default-timeout=5000
+default-timeout=2000
 background-color=#1f2032
 text-color=#b6c0db
 border-color=#a0d0a0
@@ -28,7 +28,7 @@ border-color=#a0d0a0
 
 
 [urgency=critical]
-default-timeout=15000
+default-timeout=5000
 font=Noto Bold 12
 background-color=#1f2032
 text-color=#b6c0db
