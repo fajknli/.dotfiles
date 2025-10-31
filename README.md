@@ -4,7 +4,8 @@
 
 ```bash
 
-git clone --bare https://github.com/fajknli/.dotfiles.git $HOME/.dotfiles
+~~git clone --bare https://github.com/fajknli/.dotfiles.git $HOME/.dotfiles~~
+git clone --bare git@github.com:fajknli/.dotfiles.git --depth=1 $HOME/.dotfiles
 
 
 ```
