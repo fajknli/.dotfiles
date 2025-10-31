@@ -2,11 +2,6 @@
 
 # Bash feature 'pipefail'
 # set -euo pipefail
-
-#!/bin/sh
-
-# Bash feature 'pipefail'
-# set -euo pipefail
 set -eu
 
 # 出现参数解析问题,使用eval(硬编码避免风险)
