@@ -118,7 +118,7 @@ ${1:-main}	                    Shell 参数默认值，未提供 $1 参数时使
 ::
 
     # 先添加远程仓库地址
-    dotfiles remote add origin git@github.com:你的用户名/.dotfiles.git
+    dotfiles remote add origin git@github.com:your_username/your_repository.git
     # 如果已经有了，修改的方法如下
         # 删除原地址
         git remote remove origin
