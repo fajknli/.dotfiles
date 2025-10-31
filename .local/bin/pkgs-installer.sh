@@ -100,6 +100,7 @@ unrar \
 zoxide \
 wev \
 neomutt \
+neovim \
 imagemagick \
 chafa \
 fd \
@@ -117,6 +118,7 @@ asciinema \
 # 图形界面应用
 gui_application="\
 alacritty \
+foot \
 tk \
 mako \
 libnotify \
@@ -187,8 +189,6 @@ gtk_qt_support="\
 materia-gtk-theme \
 adapta-gtk-theme \
 qt5-declarative \
-layer-shell-qt \
-layer-shell-qt5 \
 "
 
 # Python 库 (Python Libraries)
