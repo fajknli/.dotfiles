@@ -434,15 +434,15 @@ dotfiles remote add origin git@github.com:your_username/your_repository.git
 # dotfiles remote -v
 
 # 添加到暂存区
-# 添加单个文件（如 .bashrc）
-dotfiles add ~/.bashrc
+    # 添加单个文件（如 .bashrc）
+    dotfiles add ~/.bashrc
 # 添加多个文件
-# dotfiles add ~/.vimrc ~/.zshrc
+    # dotfiles add ~/.vimrc ~/.zshrc
 # 添加整个目录（如 .config/ 下的配置）
-# dotfiles add ~/.config/nvim/
-# dotfiles add -u  # 更新已经添加的追逐文件，只添加已被跟踪文件的修改（不添加新文件）
-dotfiles add -A  # 添加所有变更（包括新文件，慎用）
-dotfiles add -p  # 交互式选择要暂存的修改（可精确控制）
+    # dotfiles add ~/.config/nvim/
+    # dotfiles add -u  # 更新已经添加的追逐文件，只添加已被跟踪文件的修改（不添加新文件）
+    dotfiles add -A  # 添加所有变更（包括新文件，慎用）
+    dotfiles add -p  # 交互式选择要暂存的修改（可精确控制）
 
 #暂存区删除/撤回------------------------------------------------------------------
 
