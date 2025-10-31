@@ -112,7 +112,7 @@ if eval "$DOTFILES_CMD push origin main"; then
     printf "\033[32m✓ .dotfiles 推送成功\033[0m\n"
     notify-send -u low ".dotfiles Sync" "✓ 推送成功"                    # mako notice
 else
-    printf "\033[31m✗ 推送失败，请检查网络或冲突\033[0m\n" >&2
+    printf "\033[31m✗ 推送失败，请检查网络或冲突,有可能是密码验证不支持\033[0m\n" >&2
     notify-send -u low ".dotfiles Sync" "✗ 推送失败！请检查终端"        # mako notice
     exit 1
 fi
