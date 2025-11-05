@@ -2,6 +2,7 @@
 
 #countries="${1:-长沙}"
 countries="
+changsha                    | 长沙
 zhixiashijitequ:            | 直辖市及特区:
 beijing                     | 北京
 shanghai                    | 上海
@@ -798,7 +799,13 @@ hualian                     | 花莲
 
 if ! command -v wmenu >/dev/null 2>&1; then
     echo "wmenu is not install!" >&2
-    notify-send -u critical "There is no [wmenu]"
+    notify-send -u critical "Please install wmenu"
+    exit 1
+fi
+
+if ! command -v xh >/dev/null 2>&1; then
+    echo "xh is not install!" >&2
+    notify-send -u critical "Please install xh"
     exit 1
 fi
 
@@ -815,24 +822,43 @@ fi
 choice_city="$(echo $choice | awk '{print $3}')"
 
 # 缓存文件路径
-cache_dir="$HOME/.cache/weather"
-cache_file="$cache_dir/wttr"
+#cache_dir="$HOME/.cache/weather"
+#cache_file="$cache_dir/wttr"
 
 # 确保缓存目录存在
 mkdir -p "$cache_dir"
 
-# 获取天气数据(无论缓存是否存在都获取新数据)
-weather="$(curl -s \
-"wttr.in/$choice_city?format=%l:+%c+%C+%f++%w" 2>/dev/null)"
+juhe_api_key="fecd5c2590869f29a383b2edd3faede8"
 
-if [ -n "$weather" ]; then
-    printf '%s' "$weather" > "$cache_file"
-    notify-send "$weather"
-else
-    if [ -f "$cache_file" ]; then
-        weather="$(cat "$cache_file")"
-        notify-send "[cache] $weather"
-    else
-        notify-send "Can not get the weather even in cache"
-    fi
-fi
+# 获取天气数据(无论缓存是否存在都获取新数据)
+weather_json=$(xh -b "http://apis.juhe.cn/simpleWeather/query?key=$juhe_api_key&city=$choice_city")
+# weather="$(curl -s "wttr.in/$choice_city?format=%l:+%c+%C+%f++%w" 2>/dev/null)"
+
+# 使用jq美化并格式化输出
+formatted_weather=$(echo "$weather_json" | jq -r '
+  "🌤️  城市: \(.result.city) (\(.result.realtime.info))\n",
+  "🌡️  当前温度: \(.result.realtime.temperature)°C | 💧 湿度: \(.result.realtime.humidity)% | 🌬️ 风向: \(.result.realtime.direct) \(.result.realtime.power) | 🍃 空气质量: AQI \(.result.realtime.aqi)\n",
+  "📅 未来天气预报:",
+  (.result.future[] | 
+    "   \(.date): \(.weather) | 温度: \(.temperature) | 风向: \(.direct)"
+  )
+')
+
+# 清空通知
+makoctl dismiss -a
+
+# 输出格式化后的结果
+echo "$formatted_weather" | xargs -0 notify-send "天气通知:"
+
+# 
+# if [ -n "$weather" ]; then
+#     printf '%s' "$weather" > "$cache_file"
+#     notify-send "$weather"
+# else
+#     if [ -f "$cache_file" ]; then
+#         weather="$(cat "$cache_file")"
+#         notify-send "[cache] $weather"
+#     else
+#         notify-send -u critical "Can not get the weather even in cache"
+#     fi
+# fi

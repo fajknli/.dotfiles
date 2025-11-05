@@ -18,6 +18,8 @@ else
     source "$HOME"/.local/lib/shell/proxy/cp_files_to_dae.sh
 fi
 
+sudo systemctl stop dae.service || { echo "Failed to reload service"; exit 1; }
+
 sudo systemctl enable dae.service || { echo "Failed to enable service"; exit 1; }
 
 sudo systemctl start dae.service || { echo "Failed to start service"; exit 1; }

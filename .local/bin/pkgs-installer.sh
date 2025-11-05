@@ -16,6 +16,7 @@ ttf-opensans \
 ttf-liberation \
 noto-fonts-emoji \
 noto-fonts \
+noto-fonts-cjk \
 fcitx5 \
 fcitx5-chinese-addons \
 fcitx5-configtool \
@@ -76,7 +77,12 @@ docker \
 # 命令行工具
 cli_tools="\
 pkgfile \
+ollama \
+ollama-rocm \
+ollama-docs \
+amdgpu_top \
 colordiff \
+glow \
 cloc \
 fzf \
 wf-recorder \
@@ -100,7 +106,6 @@ unrar \
 zoxide \
 wev \
 neomutt \
-neovim \
 imagemagick \
 chafa \
 fd \
@@ -118,7 +123,6 @@ asciinema \
 # 图形界面应用
 gui_application="\
 alacritty \
-foot \
 tk \
 mako \
 libnotify \
@@ -189,14 +193,18 @@ gtk_qt_support="\
 materia-gtk-theme \
 adapta-gtk-theme \
 qt5-declarative \
+layer-shell-qt \
 "
 
 # Python 库 (Python Libraries)
 python_libraries="\
 pypinyin \
+mypy \
 python-polars \
 python-orjson \
 python-faker \
+python-transformers \
+python-pytorch \
 scrapy \
 python-lxml \
 python-pyfiglet \

@@ -288,8 +288,8 @@ fstab 用来定义磁盘分区。它是 Linux 系统中重要的文件之一。�
 ::
 
     [archlinuxcn]
-    Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch
     Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+    Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch
     Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch 
 
 2.1.1 新系统中安装 archlinuxcn-keyring 包前需要手动信任 farseerfc 的 key
@@ -321,8 +321,8 @@ archlinuxcn 社区源的 keyring 包 archlinuxcn-keyring 由 farseerfc 的 key �
 
     sudo pacman -Syu
 
-2.2 添加blackarch源
-----------------------
+2.2 添加blackarch源(可选)
+------------------------------
 
 获得blackarch-mirror-list:
 

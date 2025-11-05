@@ -3,17 +3,24 @@
 site_lists="
 mynote|file:///home/fajknli/Documents/Notes/notes_rst/build/html/index.html
 deepseek|https://chat.deepseek.com/
+qwenai|https://chat.qwen.ai/
+kimiai|https://www.kimi.com/
+yuanbaoai|https://yuanbao.tencent.com/chat/
+claudeai|https://claude.ai/chat/
+chatgptai|https://chatgpt.com/
 nvim|https://neovim.io
 dockerdoc|https://docs.docker.com
 mygithub|https://github.com/fajknli
 mygitee|https://gitee.com/
 unixchad|https://github.com/gnuunixchad
 mcwiki|https://zh.minecraft.wiki/?search=
-ai_qwen|https://qwen.ai/home
 archwiki|https://wiki.archlinux.org/index.php?search=
 archstatus|https://status.archlinux.org/
 niriconfigration|https://yalter.github.io/niri/Configuration%3A-Introduction.html
 color|https://colorhexa.com
+lesspass|https://www.lesspass.com/
+huggingface|https://huggingface.co/
+ollama|https://ollama.com/search
 stardict|https://web.archive.org/web/20200702000038/http://download.huzheng.org/
 achiveorg|https://web.archive.org/
 fedoradoc|https://docs.fedoraproject.org/en-US/docs/
@@ -35,6 +42,7 @@ freemovie-dyyy|https://www.yys02.cc/
 freemovee-cupfox|https://www.cupfox.in/
 freemovie-ole|http://olevod.com/
 minecraft-tool-mc-utils|https://mc-utils.vercel.app/
+xfxcloud|https://home.xfx.life/
 "
 
 if ! command -v wmenu >/dev/null 2>&1; then

@@ -160,3 +160,232 @@ end
 
 vim.keymap.set('n', '<leader>cu', CopyUrlFromLine)
 
+-- ========== 通用括号操作（支持所有可视模式）==========
+-- 添加括号：支持所有可视模式
+vim.keymap.set('v', '<leader>s', function()
+  -- 获取可视模式类型
+  local mode = vim.fn.visualmode()
+  
+  -- 保存选中的文本
+  vim.cmd('normal! "xy')
+  local text = vim.fn.getreg('x')
+  
+  -- 提示用户选择括号类型
+  vim.cmd('echo "Surround with: () [] {} <> \\" \' ` * _ ~"')
+  local char = vim.fn.getchar()
+  local bracket = vim.fn.nr2char(char)
+  
+  local pairs = {
+    ['('] = {'(', ')'}, [')'] = {'(', ')'},
+    ['['] = {'[', ']'}, [']'] = {'[', ']'},
+    ['{'] = {'{', '}'}, ['}'] = {'{', '}'},
+    ['<'] = {'<', '>'}, ['>'] = {'<', '>'},
+    ['"'] = {'"', '"'},
+    ["'"] = {"'", "'"},
+    ['`'] = {'`', '`'},
+    ['*'] = {'*', '*'},
+    ['_'] = {'_', '_'},
+    ['~'] = {'~', '~'},
+  }
+  
+  if pairs[bracket] then
+    local left, right = pairs[bracket][1], pairs[bracket][2]
+    
+    -- 处理不同的可视模式
+    if mode == 'V' or mode == '\22' then  -- Visual line 或 Visual block
+      -- 对于整行模式，在每行前后添加括号
+      local lines = vim.split(text, '\n', {plain = true})
+      local new_lines = {}
+      for _, line in ipairs(lines) do
+        if line ~= '' then
+          table.insert(new_lines, left .. line .. right)
+        else
+          table.insert(new_lines, line)
+        end
+      end
+      local result = table.concat(new_lines, '\n')
+      
+      -- 使用寄存器来插入，避免特殊字符问题
+      vim.fn.setreg('z', result)
+      vim.cmd('normal! gv"zp')
+    else  -- 字符模式
+      local result = left .. text .. right
+      vim.fn.setreg('z', result)
+      vim.cmd('normal! gv"zp')
+    end
+    
+    vim.cmd('echo ""')
+  end
+end, { noremap = true, silent = false, desc = "Surround with..." })
+
+-- Normal 模式：给当前单词加括号
+vim.keymap.set('n', '<leader>s', function()
+  vim.cmd('normal! viw"xy')
+  local text = vim.fn.getreg('x')
+  
+  vim.cmd('echo "Surround with: () [] {} <> \\" \' ` * _ ~"')
+  local char = vim.fn.getchar()
+  local bracket = vim.fn.nr2char(char)
+  
+  local pairs = {
+    ['('] = {'(', ')'}, [')'] = {'(', ')'},
+    ['['] = {'[', ']'}, [']'] = {'[', ']'},
+    ['{'] = {'{', '}'}, ['}'] = {'{', '}'},
+    ['<'] = {'<', '>'}, ['>'] = {'<', '>'},
+    ['"'] = {'"', '"'},
+    ["'"] = {"'", "'"},
+    ['`'] = {'`', '`'},
+    ['*'] = {'*', '*'},
+    ['_'] = {'_', '_'},
+    ['~'] = {'~', '~'},
+  }
+  
+  if pairs[bracket] then
+    local left, right = pairs[bracket][1], pairs[bracket][2]
+    local result = left .. text .. right
+    vim.fn.setreg('z', result)
+    vim.cmd('normal! viw"zp')
+  end
+  vim.cmd('echo ""')
+end, { noremap = true, silent = false, desc = "Surround word with..." })
+
+-- 删除括号
+vim.keymap.set('n', '<leader>ds', function()
+  local pairs = {
+    ['('] = ')', [')'] = '(',
+    ['['] = ']', [']'] = '[',
+    ['{'] = '}', ['}'] = '{',
+    ['<'] = '>', ['>'] = '<',
+    ['"'] = '"', ["'"] = "'", ['`'] = '`',
+    ['*'] = '*', ['_'] = '_', ['~'] = '~',
+  }
+  
+  local line = vim.api.nvim_get_current_line()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  
+  local start_pos, start_char = nil, nil
+  for i = col, 0, -1 do
+    local c = line:sub(i+1, i+1)
+    if pairs[c] then
+      start_pos, start_char = i, c
+      break
+    end
+  end
+  
+  local end_pos = nil
+  if start_char and pairs[start_char] then
+    for i = col+1, #line do
+      if line:sub(i+1, i+1) == pairs[start_char] then
+        end_pos = i
+        break
+      end
+    end
+  end
+  
+  if start_pos and end_pos then
+    local new_line = line:sub(1, start_pos) .. line:sub(start_pos+2, end_pos) .. line:sub(end_pos+2)
+    vim.api.nvim_set_current_line(new_line)
+    if col > start_pos then
+      vim.api.nvim_win_set_cursor(0, {row, col-1})
+    end
+  else
+    print("No surrounding found")
+  end
+end, { noremap = true, silent = true, desc = "Delete surrounding" })
+
+-- 修改括号
+vim.keymap.set('n', '<leader>cs', function()
+  local pairs = {
+    ['('] = ')', [')'] = '(',
+    ['['] = ']', [']'] = '[',
+    ['{'] = '}', ['}'] = '{',
+    ['<'] = '>', ['>'] = '<',
+    ['"'] = '"', ["'"] = "'", ['`'] = '`',
+  }
+  
+  local line = vim.api.nvim_get_current_line()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  
+  local start_pos, start_char = nil, nil
+  for i = col, 0, -1 do
+    local c = line:sub(i+1, i+1)
+    if pairs[c] then
+      start_pos, start_char = i, c
+      break
+    end
+  end
+  
+  local end_pos = nil
+  if start_char and pairs[start_char] then
+    for i = col+1, #line do
+      if line:sub(i+1, i+1) == pairs[start_char] then
+        end_pos = i
+        break
+      end
+    end
+  end
+  
+  if not (start_pos and end_pos) then
+    print("No surrounding found")
+    return
+  end
+  
+  local text = line:sub(start_pos+2, end_pos)
+  
+  vim.cmd('echo "Change to: () [] {} <> \\" \' `"')
+  local char = vim.fn.getchar()
+  local bracket = vim.fn.nr2char(char)
+  
+  local new_pairs = {
+    ['('] = {'(', ')'}, [')'] = {'(', ')'},
+    ['['] = {'[', ']'}, [']'] = {'[', ']'},
+    ['{'] = {'{', '}'}, ['}'] = {'{', '}'},
+    ['<'] = {'<', '>'}, ['>'] = {'<', '>'},
+    ['"'] = {'"', '"'},
+    ["'"] = {"'", "'"},
+    ['`'] = {'`', '`'},
+  }
+  
+  if new_pairs[bracket] then
+    local left, right = new_pairs[bracket][1], new_pairs[bracket][2]
+    local new_line = line:sub(1, start_pos) .. left .. text .. right .. line:sub(end_pos+2)
+    vim.api.nvim_set_current_line(new_line)
+  end
+  vim.cmd('echo ""')
+end, { noremap = true, silent = false, desc = "Change surrounding" })
+
+
+-- ========== 执行文件 ==========
+vim.keymap.set("n", "<leader>r", function()
+  local ft = vim.bo.filetype
+  local cmd = ""
+
+  if ft == "python" then
+    cmd = "python3 %"
+  elseif ft == "cpp" then
+    cmd = "g++ % -o %< && ./%<"
+  elseif ft == "c" then
+    cmd = "gcc % -o %< && ./%<"
+  elseif ft == "java" then
+    cmd = "javac % && java %<"
+  elseif ft == "javascript" then
+    cmd = "node %"
+  elseif ft == "typescript" then
+    cmd = "ts-node %"
+  elseif ft == "lua" then
+    cmd = "lua %"
+  elseif ft == "sh" then
+    cmd = "bash %"
+  elseif ft == "go" then
+    cmd = "go run %"
+  elseif ft == "rust" then
+    cmd = "rustc % && ./%<"
+  else
+    print("Unsupported filetype: " .. ft)
+    return
+  end
+
+  vim.cmd("w") -- 保存当前文件
+  vim.cmd("botright split term://" .. cmd) -- 在底部打开终端运行
+  vim.cmd("resize 20") --控制终端高度，为20行
+end)

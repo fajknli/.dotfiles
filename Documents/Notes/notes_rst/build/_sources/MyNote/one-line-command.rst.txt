@@ -34,3 +34,10 @@ server-client
 ::
 
     cat frp_0.64.0_linux_amd64.tar.gz | ssh -p 26059 root@119.188.232.23 "cat > /root/frp_0.64.0_linux_amd64.tar.gz"
+
+pacman source choice
+''''''''''''''''''''''
+
+::
+
+    sudo reflector --country China --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist

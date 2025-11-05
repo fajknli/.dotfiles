@@ -9,6 +9,7 @@
 import os
 from pypinyin import lazy_pinyin
 
+# 替换abc 为想要操作的文件名
 chinese_file = "a"
 pinyin_file = "b"
 output_file = "c"

@@ -2,6 +2,11 @@
 
 # Bash feature 'pipefail'
 # set -euo pipefail
+
+#!/bin/sh
+
+# Bash feature 'pipefail'
+# set -euo pipefail
 set -eu
 
 # 出现参数解析问题,使用eval(硬编码避免风险)
@@ -42,13 +47,13 @@ set -- \
     "$HOME/.config/waybar" \
     "$HOME/.config/zellij" \
     "$HOME/.config/zathura" \
+    "$HOME/.local/lib" \
     "$HOME/.local/bin" \
     "$HOME/.local/share/fcitx5" \
     "$HOME/.local/share/stardict" \
     "$HOME/.local/share/man" \
-    "$HOME/.local/share/fonts/0xProto" \
-    "$HOME/.local/lib" \
     "$HOME/Documents/Notes" \
+    "$HOME/Project" \
     "$HOME/.alacritty.toml" \
     "$HOME/.bash_aliases" \
     "$HOME/.bash_exports" \
@@ -112,7 +117,7 @@ if eval "$DOTFILES_CMD push origin main"; then
     printf "\033[32m✓ .dotfiles 推送成功\033[0m\n"
     notify-send -u low ".dotfiles Sync" "✓ 推送成功"                    # mako notice
 else
-    printf "\033[31m✗ 推送失败，请检查网络或冲突,有可能是密码验证不支持\033[0m\n" >&2
+    printf "\033[31m✗ 推送失败，请检查网络或冲突\033[0m\n" >&2
     notify-send -u low ".dotfiles Sync" "✗ 推送失败！请检查终端"        # mako notice
     exit 1
 fi
