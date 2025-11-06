@@ -76,6 +76,7 @@ docker \
 
 # 命令行工具
 cli_tools="\
+npm \
 pkgfile \
 ollama \
 ollama-rocm \

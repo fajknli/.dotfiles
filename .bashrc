@@ -37,3 +37,7 @@ set -o emacs
 shopt -s histappend
 # 确保历史记录立即写入，而不是生成临时文件
 PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

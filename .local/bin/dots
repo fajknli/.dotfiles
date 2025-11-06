@@ -53,7 +53,8 @@ set -- \
     "$HOME/.local/share/stardict" \
     "$HOME/.local/share/man" \
     "$HOME/Documents/Notes" \
-    "$HOME/Project" \
+    "$HOME/Project/Python" \
+    "$HOME/Project/Shell" \
     "$HOME/.alacritty.toml" \
     "$HOME/.bash_aliases" \
     "$HOME/.bash_exports" \
