@@ -1,15 +1,48 @@
 #!/bin/sh
 # Author:        a6dg2uv
 # Created Time:  2025-04-16 09:23
+# 定义变量
+NOTES_DIR="$HOME/Documents/Notes"
 
-cd $HOME/Documents/Notes/notes_rst
+# 查找并选择文档目录
+document_dir=$(find "$NOTES_DIR" -mindepth 1 -maxdepth 1 -type d | \
+    awk -F/ '{print $NF}' | \
+    wmenu -p "Document_Dirs" -M "#a0d0a0" -m "#151622" -i -l 5 -f "0xProto Nerd Font Regular 12" -N "#1f2032" \
+    -n "#a9b5d5" -S "#a0d0a0" -s "#151622")
 
-sphinx-autobuild \
-  source build \
-  --port 8000 \
-  --open-browser \
-  --watch source \
-  --ignore "*.swp"
+if [ -z "$document_dir" ]; then
+    echo "No directory selected" >&2
+    exit 1
+fi
+
+full_dir_path="$HOME/Documents/Notes/$document_dir"
+
+# 检查目录是否存在
+if [ ! -d "$full_dir_path" ]; then
+    echo "Directory does not exist: $full_dir_path" >&2
+    exit 1
+fi
+
+# 输出路径信息
+echo "Selected directory: $full_dir_path"
+
+# 切换到目录并启动 sphinx-autobuild
+cd "$full_dir_path" || {
+    echo "Failed to change directory to: $full_dir_path" >&2
+    exit 1
+}
+
+if [ "$(pwd)" = "$full_dir_path" ]; then
+    sphinx-autobuild \
+      source build \
+      --port 8000 \
+      --open-browser \
+      --watch source \
+      --ignore "*.swp"
+else
+    echo "Unexpected current directory: $(pwd)" >&2
+    exit 1
+fi
 
 # 源目录 -> 输出目录
 # 指定端口（默认8000）

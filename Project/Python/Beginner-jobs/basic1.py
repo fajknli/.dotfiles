@@ -110,7 +110,99 @@ print("--------------------------")
 x = 10
 y = 9
 print(x > y) # True
-print(bool(0), bool(""), bool([]), bool(()), bool({})) # all False
+
+# True 和 False 本质上是1,0的别名
+print(True == 1) # True
+print(False == 0) # True
+print(int(True)) # 1
+print(int(False)) # 0
+print(True + True) # 2
+print(False + 3) # 3
+
+# and 运算（与）
+print(True and True)    # True
+print(True and False)   # False
+print(False and False)  # False
+
+# or 运算（或）
+print(True or True)     # True
+print(True or False)    # True
+print(False or False)   # False
+
+# not 运算（非）
+print(not True)         # False
+print(not False)        # True
+
+# 以下值在布尔上下文中被视为 False：
+# False, None, 0, 0.0, '', [], (), {}, set(), range(0)
+print(bool(False))      # False
+print(bool(0))          # False
+print(bool(0.0))        # False
+print(bool(''))         # False
+print(bool([]))         # False
+print(bool(()))         # False
+print(bool({}))         # False
+print(bool(set()))      # False
+print(bool(None))       # False
+# 其他所有值都被视为 True
+print(bool(1))          # True
+print(bool(-1))         # True
+print(bool(0.1))        # True
+print(bool('hello'))    # True
+print(bool([1, 2, 3]))  # True
+print(bool({'a': 1}))   # True
+
+# 比较运算
+# 数值比较
+a, b = 10, 20
+print(a == b)   # False (等于)
+print(a != b)   # True  (不等于)
+print(a < b)    # True  (小于)
+print(a > b)    # False (大于)
+print(a <= b)   # True  (小于等于)
+print(a >= b)   # False (大于等于)
+
+# Python 支持链式比较
+x = 15
+print(10 < x < 20)      # True
+print(10 <= x <= 20)    # True
+print(5 < x < 10)       # False
+# 相当于
+print(10 < x and x < 20)  # True
+
+# 字符串比较（按字典序）
+print("apple" < "banana")   # True
+print("cat" == "cat")       # True
+print("dog" > "cat")        # True
+# 列表比较
+print([1, 2] < [1, 2, 3])   # True
+print([1, 3] > [1, 2])      # True
+
+# 传统写法
+score = 85
+if score >= 60:
+    result = "及格"
+else:
+    result = "不及格"
+# 三元表达式写法
+result = "及格" if score >= 60 else "不及格"
+print(result)  # 及格
+# 复杂示例
+age = 20
+category = "成人" if age >= 18 else "未成年"
+print(category)  # 成人
+
+# any() all() 函数
+# any() - 任意一个为 True 就返回 True
+numbers = [0, 1, 0, 0]
+print(any(numbers))  # True
+conditions = [False, False, True]
+print(any(conditions))  # True
+# all() - 所有都为 True 才返回 True
+numbers = [1, 2, 3, 4]
+print(all(numbers))  # True
+conditions = [True, True, False]
+print(all(conditions))  # False
 
 print("--------------------------")
 
@@ -268,6 +360,60 @@ dq.clear()
 # s.push(1)
 # s.push(2) # 类似堆书本，最后放的，先拿走
 # print(s.pop())  # 输出: 2
+
+# depue 和列表的转化
+# from collections import deque
+# dq = deque([1, 2, 3])
+# lst = list(dq)
+#
+# lst = [4, 5, 6]
+# dq = deque(lst)
+
+# 回文检查
+# from collections import deque
+#
+# def is_palindrome(word):
+#     dq = deque(word.lower())
+#
+#     while len(dq) > 1:
+#         if dq.popleft() != dq.pop():
+#             return False
+#     return True
+#
+# print(is_palindrome("radar"))    # True
+# print(is_palindrome("python"))   # False
+
+# 滑动窗口问题
+# from collections import deque
+#
+# def max_sliding_window(nums, k):
+#     """求滑动窗口最大值"""
+#     if not nums:
+#         return []
+#
+#     result = []
+#     dq = deque()  # 存储索引
+#
+#     for i in range(len(nums)):
+#         # 移除超出窗口的元素
+#         if dq and dq[0] < i - k + 1:
+#             dq.popleft()
+#
+#         # 移除比当前元素小的元素
+#         while dq and nums[dq[-1]] < nums[i]:
+#             dq.pop()
+#
+#         dq.append(i)
+#
+#         # 当窗口形成时记录结果
+#         if i >= k - 1:
+#             result.append(nums[dq[0]])
+#
+#     return result
+#
+# # 示例
+# nums = [1, 3, -1, -3, 5, 3, 6, 7]
+# print(max_sliding_window(nums, 3))  # 输出: [3, 3, 5, 5, 6, 7]
 
 print("remove():")
 

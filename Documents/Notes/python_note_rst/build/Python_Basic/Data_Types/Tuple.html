@@ -1,0 +1,788 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html"><link rel="prev" title="String" href="String.html">
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
+        <title>Tuple - Python_Note 1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=580074bf" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Python_Note 1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <span class="sidebar-brand-text">Python_Note 1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Programing:</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Python_Basic</a><input aria-label="Toggle navigation of Python_Basic" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Bool.html">Bool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dict.html">Dict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Float.html">Float</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Int.html">Int</a></li>
+<li class="toctree-l2"><a class="reference internal" href="List.html">List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Set.html">Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="String.html">String</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Tuple</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../_sources/Python_Basic/Data_Types/Tuple.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="tuple">
+<h1>Tuple<a class="headerlink" href="#tuple" title="Link to this heading">¶</a></h1>
+<p>元组（tuple）是 Python 中不可变的序列类型，与列表相似但具有重要的区别和特性。</p>
+<section id="id1">
+<h2>元组基础<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<section id="id2">
+<h3>1. 创建元组<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 多种创建方式</span>
+<span class="n">empty_tuple</span> <span class="o">=</span> <span class="p">()</span>
+<span class="n">single_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">42</span><span class="p">,)</span>  <span class="c1"># 注意逗号！没有逗号就是整数42</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">mixed</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">nested</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>  <span class="c1"># 可以嵌套其他可变对象</span>
+
+<span class="c1"># 不使用括号（元组打包）</span>
+<span class="n">packed</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;打包元组:&quot;</span><span class="p">,</span> <span class="n">packed</span><span class="p">)</span>  <span class="c1"># (1, 2, 3, 4, 5)</span>
+
+<span class="c1"># 使用 tuple() 构造函数</span>
+<span class="n">from_list</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">from_string</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">)</span>
+<span class="n">from_range</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;从列表创建:&quot;</span><span class="p">,</span> <span class="n">from_list</span><span class="p">)</span>    <span class="c1"># (1, 2, 3)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;从字符串创建:&quot;</span><span class="p">,</span> <span class="n">from_string</span><span class="p">)</span> <span class="c1"># (&#39;P&#39;, &#39;y&#39;, &#39;t&#39;, &#39;h&#39;, &#39;o&#39;, &#39;n&#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;从range创建:&quot;</span><span class="p">,</span> <span class="n">from_range</span><span class="p">)</span>  <span class="c1"># (0, 1, 2, 3, 4)</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>2. 元组的基本特性<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 不可变性测试</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;原元组:&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># 以下操作都会报错：</span>
+<span class="c1"># t[0] = 10        # TypeError</span>
+<span class="c1"># t.append(4)      # AttributeError</span>
+<span class="c1"># t.remove(2)      # AttributeError</span>
+
+<span class="c1"># 但可以访问元素</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;第一个元素:&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>    <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最后一个元素:&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;切片:&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>        <span class="c1"># (2, 3)</span>
+
+<span class="c1"># 元组长度和成员检查</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;长度:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>           <span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;包含2:&quot;</span><span class="p">,</span> <span class="mi">2</span> <span class="ow">in</span> <span class="n">t</span><span class="p">)</span>         <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;不包含5:&quot;</span><span class="p">,</span> <span class="mi">5</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">t</span><span class="p">)</span>    <span class="c1"># True</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id4">
+<h2>元组操作和方法<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<section id="id5">
+<h3>1. 元组方法（有限的几个）<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># count() - 统计元素出现次数</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2的出现次数:&quot;</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5的出现次数:&quot;</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># 0</span>
+
+<span class="c1"># index() - 查找元素第一次出现的索引</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3的索引:&quot;</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>      <span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;从索引2开始找2:&quot;</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 2</span>
+
+<span class="c1"># 注意：没有 append, extend, insert, remove, pop, sort, reverse 等方法</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>2. 元组运算<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 连接运算</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">combined</span> <span class="o">=</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;连接后:&quot;</span><span class="p">,</span> <span class="n">combined</span><span class="p">)</span>  <span class="c1"># (1, 2, 3, 4, 5, 6)</span>
+
+<span class="c1"># 重复运算</span>
+<span class="n">repeated</span> <span class="o">=</span> <span class="n">t1</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;重复3次:&quot;</span><span class="p">,</span> <span class="n">repeated</span><span class="p">)</span>  <span class="c1"># (1, 2, 3, 1, 2, 3, 1, 2, 3)</span>
+
+<span class="c1"># 比较运算</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(1,2) &lt; (1,3):&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(1,2) == (1,2):&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(1,2,3) &gt; (1,2):&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># True</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id7">
+<h2>元组的不可变性深入理解<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<section id="vs">
+<h3>1. 浅不可变 vs 深不可变<a class="headerlink" href="#vs" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 元组本身不可变，但包含的可变对象可以改变</span>
+<span class="n">mixed_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;原元组:&quot;</span><span class="p">,</span> <span class="n">mixed_tuple</span><span class="p">)</span>  <span class="c1"># (1, 2, [3, 4])</span>
+
+<span class="c1"># 可以修改元组中的列表</span>
+<span class="n">mixed_tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">mixed_tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;修改后:&quot;</span><span class="p">,</span> <span class="n">mixed_tuple</span><span class="p">)</span>  <span class="c1"># (1, 2, [30, 4, 5])</span>
+
+<span class="c1"># 但不能替换整个列表</span>
+<span class="c1"># mixed_tuple[2] = [6, 7]  # TypeError</span>
+
+<span class="c1"># 真正的不可变元组应该只包含不可变元素</span>
+<span class="n">immutable_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;真正的不可变元组:&quot;</span><span class="p">,</span> <span class="n">immutable_tuple</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3>2. 不可变性的优势<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. 作为字典的键</span>
+<span class="n">coordinates</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="s2">&quot;点A&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span> <span class="s2">&quot;点B&quot;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;坐标字典:&quot;</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">)</span>  <span class="c1"># {(1, 2): &#39;点A&#39;, (3, 4): &#39;点B&#39;}</span>
+
+<span class="c1"># 列表不能作为字典键</span>
+<span class="c1"># invalid_dict = {[1, 2]: &quot;错误&quot;}  # TypeError</span>
+
+<span class="c1"># 2. 线程安全</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="n">data_tuple</span><span class="p">):</span>
+    <span class="c1"># 由于元组不可变，多线程环境下是安全的</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data_tuple</span><span class="p">)</span>
+
+<span class="c1"># 3. 哈希支持</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;元组的哈希值:&quot;</span><span class="p">,</span> <span class="nb">hash</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+<span class="c1"># print(&quot;列表的哈希值:&quot;, hash([1, 2, 3]))  # TypeError</span>
+</pre></div>
+</div>
+</section>
+<section id="tuple-unpacking">
+<h3>元组解包（Tuple Unpacking）<a class="headerlink" href="#tuple-unpacking" title="Link to this heading">¶</a></h3>
+</section>
+<section id="id9">
+<h3>1. 基本解包<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 简单解包</span>
+<span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">point</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">, y: </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># x: 10, y: 20</span>
+
+<span class="c1"># 交换变量（不需要临时变量）</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;a: </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">, b: </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># a: 2, b: 1</span>
+
+<span class="c1"># 函数返回多个值</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_stats</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">numbers</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">numbers</span><span class="p">),</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+
+<span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span><span class="p">,</span> <span class="n">avg_val</span> <span class="o">=</span> <span class="n">get_stats</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;最小值: </span><span class="si">{</span><span class="n">min_val</span><span class="si">}</span><span class="s2">, 最大值: </span><span class="si">{</span><span class="n">max_val</span><span class="si">}</span><span class="s2">, 平均值: </span><span class="si">{</span><span class="n">avg_val</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h3>2. 高级解包技巧<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用 * 操作符解包</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">middle</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">numbers</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;第一个: </span><span class="si">{</span><span class="n">first</span><span class="si">}</span><span class="s2">, 中间: </span><span class="si">{</span><span class="n">middle</span><span class="si">}</span><span class="s2">, 最后: </span><span class="si">{</span><span class="n">last</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># 第一个: 1, 中间: [2, 3, 4], 最后: 5</span>
+
+<span class="c1"># 嵌套解包</span>
+<span class="n">nested</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span> <span class="n">d</span> <span class="o">=</span> <span class="n">nested</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;a: </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">, b: </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">, c: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">, d: </span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># a: 1, b: 2, c: 3, d: 4</span>
+
+<span class="c1"># 解包在循环中</span>
+<span class="n">points</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;处理点 (</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># 解包函数参数</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">connect_to_database</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;连接到 </span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2"> 用户: </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">db_config</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">5432</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="s1">&#39;secret&#39;</span><span class="p">)</span>
+<span class="n">connect_to_database</span><span class="p">(</span><span class="o">*</span><span class="n">db_config</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id11">
+<h2>元组与函数的配合<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<section id="id12">
+<h3>1. 函数返回多个值<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">analyze_numbers</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;返回统计信息&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="n">count</span>
+    <span class="n">variance</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="n">count</span>
+
+    <span class="k">return</span> <span class="n">count</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">variance</span>
+
+<span class="n">stats</span> <span class="o">=</span> <span class="n">analyze_numbers</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;统计结果: </span><span class="si">{</span><span class="n">stats</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># 或者解包</span>
+<span class="n">count</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">variance</span> <span class="o">=</span> <span class="n">analyze_numbers</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;数量: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">, 总和: </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">, 均值: </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, 方差: </span><span class="si">{</span><span class="n">variance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="args">
+<h3>2. \*args 参数<a class="headerlink" href="#args" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_details</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">scores</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;演示 *args 的使用&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;姓名: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;分数: </span><span class="si">{</span><span class="n">scores</span><span class="si">}</span><span class="s2"> (类型: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;其他信息:&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 调用</span>
+<span class="n">print_details</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">city</span><span class="o">=</span><span class="s2">&quot;Beijing&quot;</span><span class="p">)</span>
+<span class="c1"># 姓名: Alice</span>
+<span class="c1"># 分数: (85, 92, 78) (类型: &lt;class &#39;tuple&#39;&gt;)</span>
+<span class="c1"># 其他信息:</span>
+<span class="c1">#   age: 20</span>
+<span class="c1">#   city: Beijing</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id13">
+<h2>实际应用场景<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<section id="id14">
+<h3>1. 数据库记录<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模拟数据库查询结果</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_user_profile</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;模拟从数据库获取用户信息&quot;&quot;&quot;</span>
+    <span class="c1"># 返回不可变的用户信息元组</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;alice@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;Engineer&quot;</span><span class="p">)</span>
+
+<span class="n">user_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">job</span> <span class="o">=</span> <span class="n">get_user_profile</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;用户 </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (ID: </span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">), 年龄: </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">, 职业: </span><span class="si">{</span><span class="n">job</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 多个用户</span>
+<span class="n">users</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;Engineer&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;Designer&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="s2">&quot;Manager&quot;</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">users</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">job</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<h3>2. 坐标和几何计算<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_distance</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;计算两点间距离&quot;&quot;&quot;</span>
+    <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">point1</span>
+    <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">point2</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_rectangle_corners</span><span class="p">(</span><span class="n">top_left</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;根据左上角坐标计算矩形四个角&quot;&quot;&quot;</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">top_left</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>                    <span class="c1"># 左上</span>
+        <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">width</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>            <span class="c1"># 右上</span>
+        <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">width</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">height</span><span class="p">),</span>   <span class="c1"># 右下</span>
+        <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">height</span><span class="p">)</span>            <span class="c1"># 左下</span>
+    <span class="p">)</span>
+
+<span class="c1"># 使用</span>
+<span class="n">point_a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">point_b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">distance</span> <span class="o">=</span> <span class="n">calculate_distance</span><span class="p">(</span><span class="n">point_a</span><span class="p">,</span> <span class="n">point_b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;两点距离: </span><span class="si">{</span><span class="n">distance</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 5.0</span>
+
+<span class="n">corners</span> <span class="o">=</span> <span class="n">get_rectangle_corners</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;矩形角点:&quot;</span><span class="p">,</span> <span class="n">corners</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h3>3. 配置信息<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 不可变的配置信息</span>
+<span class="n">DATABASE_CONFIG</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>    <span class="c1"># host</span>
+    <span class="mi">5432</span><span class="p">,</span>           <span class="c1"># port</span>
+    <span class="s2">&quot;myapp_db&quot;</span><span class="p">,</span>     <span class="c1"># database</span>
+    <span class="s2">&quot;admin&quot;</span><span class="p">,</span>        <span class="c1"># username</span>
+    <span class="s2">&quot;password&quot;</span>      <span class="c1"># password</span>
+<span class="p">)</span>
+
+<span class="c1"># 颜色配置</span>
+<span class="n">COLORS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;RED&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s2">&quot;GREEN&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s2">&quot;BLUE&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_color_rgb</span><span class="p">(</span><span class="n">color_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;根据颜色名获取RGB值&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">rgb</span> <span class="ow">in</span> <span class="n">COLORS</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="n">color_name</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">rgb</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;红色RGB:&quot;</span><span class="p">,</span> <span class="n">get_color_rgb</span><span class="p">(</span><span class="s2">&quot;RED&quot;</span><span class="p">))</span>  <span class="c1"># (255, 0, 0)</span>
+</pre></div>
+</div>
+</section>
+<section id="id17">
+<h3>4. 枚举替代方案<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在没有enum模块时使用元组作为枚举</span>
+<span class="n">STATUS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;PENDING&quot;</span><span class="p">,</span> <span class="s2">&quot;等待中&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;PROCESSING&quot;</span><span class="p">,</span> <span class="s2">&quot;处理中&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;COMPLETED&quot;</span><span class="p">,</span> <span class="s2">&quot;已完成&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">,</span> <span class="s2">&quot;失败&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_status_display</span><span class="p">(</span><span class="n">status_code</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;获取状态显示文本&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">code</span><span class="p">,</span> <span class="n">display</span> <span class="ow">in</span> <span class="n">STATUS</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="n">status_code</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">display</span>
+    <span class="k">return</span> <span class="s2">&quot;未知状态&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;处理中:&quot;</span><span class="p">,</span> <span class="n">get_status_display</span><span class="p">(</span><span class="s2">&quot;PROCESSING&quot;</span><span class="p">))</span>  <span class="c1"># 处理中</span>
+</pre></div>
+</div>
+</section>
+<section id="id18">
+<h3>性能比较<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+</section>
+<section id="id19">
+<h3>1. 创建和访问性能<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">performance_comparison</span><span class="p">():</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">1000000</span>
+
+    <span class="c1"># 创建性能</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">list_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+    <span class="n">list_creation</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">tuple_data</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="n">tuple_creation</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+    <span class="c1"># 内存使用</span>
+    <span class="n">list_memory</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">list_data</span><span class="p">)</span>
+    <span class="n">tuple_memory</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">tuple_data</span><span class="p">)</span>
+
+    <span class="c1"># 访问性能</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">list_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">list_access</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">tuple_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">tuple_access</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;创建时间 - 列表: </span><span class="si">{</span><span class="n">list_creation</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">s, 元组: </span><span class="si">{</span><span class="n">tuple_creation</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;内存使用 - 列表: </span><span class="si">{</span><span class="n">list_memory</span><span class="si">}</span><span class="s2"> bytes, 元组: </span><span class="si">{</span><span class="n">tuple_memory</span><span class="si">}</span><span class="s2"> bytes&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;访问时间 - 列表: </span><span class="si">{</span><span class="n">list_access</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">s, 元组: </span><span class="si">{</span><span class="n">tuple_access</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+
+<span class="n">performance_comparison</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id20">
+<h3>最佳实践<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+</section>
+<section id="id21">
+<h3>1. 何时使用元组<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 适合使用元组的场景：</span>
+
+<span class="c1"># 1. 数据记录 - 不可变的属性集合</span>
+<span class="n">person</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;Engineer&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. 函数返回多个值</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_coordinates</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mf">20.3</span>
+
+<span class="c1"># 3. 字典键</span>
+<span class="n">locations</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">(</span><span class="mf">40.7128</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">):</span> <span class="s2">&quot;New York&quot;</span><span class="p">,</span>
+    <span class="p">(</span><span class="mf">51.5074</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">):</span> <span class="s2">&quot;London&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># 4. 保护数据不被修改</span>
+<span class="n">CONSTANTS</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3.14159</span><span class="p">,</span> <span class="mf">2.71828</span><span class="p">,</span> <span class="mf">1.41421</span><span class="p">)</span>
+
+<span class="c1"># 5. 性能敏感的场景</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">process_chunk</span><span class="p">(</span><span class="n">data_tuple</span><span class="p">):</span>
+    <span class="c1"># 元组的处理通常比列表快</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data_tuple</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id22">
+<h3>2. 元组与列表的选择指南<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">选择元组的情况：</span>
+<span class="sd">- 数据不应该被修改</span>
+<span class="sd">- 需要作为字典键使用</span>
+<span class="sd">- 需要哈希支持</span>
+<span class="sd">- 性能是关键因素</span>
+<span class="sd">- 数据是天然不可变的（如坐标、配置）</span>
+
+<span class="sd">选择列表的情况：</span>
+<span class="sd">- 数据需要频繁修改</span>
+<span class="sd">- 需要动态添加/删除元素</span>
+<span class="sd">- 需要使用列表特有的方法</span>
+<span class="sd">- 数据顺序可能改变</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># 示例：坐标系统使用元组，待办事项使用列表</span>
+<span class="n">coordinates</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>  <span class="c1"># 列表包含元组</span>
+<span class="n">todo_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;买菜&quot;</span><span class="p">,</span> <span class="s2">&quot;做饭&quot;</span><span class="p">,</span> <span class="s2">&quot;打扫&quot;</span><span class="p">]</span>     <span class="c1"># 列表，内容会变化</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id23">
+<h2>总结<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h2>
+<p>元组是 Python 中重要的不可变序列：</p>
+<p>不可变性：数据安全、线程安全、可哈希</p>
+<p>性能优势：创建和访问通常比列表快</p>
+<p>解包特性：方便的多变量赋值和函数返回</p>
+<p>适用场景：配置数据、坐标、字典键、函数多返回值</p>
+<p>理解元组的特性和适用场景，能够帮助你在合适的场合选择最合适的数据结构，写出更高效、更安全的代码</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="String.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">String</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, fajknli
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Tuple</a><ul>
+<li><a class="reference internal" href="#id1">元组基础</a><ul>
+<li><a class="reference internal" href="#id2">1. 创建元组</a></li>
+<li><a class="reference internal" href="#id3">2. 元组的基本特性</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">元组操作和方法</a><ul>
+<li><a class="reference internal" href="#id5">1. 元组方法（有限的几个）</a></li>
+<li><a class="reference internal" href="#id6">2. 元组运算</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">元组的不可变性深入理解</a><ul>
+<li><a class="reference internal" href="#vs">1. 浅不可变 vs 深不可变</a></li>
+<li><a class="reference internal" href="#id8">2. 不可变性的优势</a></li>
+<li><a class="reference internal" href="#tuple-unpacking">元组解包（Tuple Unpacking）</a></li>
+<li><a class="reference internal" href="#id9">1. 基本解包</a></li>
+<li><a class="reference internal" href="#id10">2. 高级解包技巧</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">元组与函数的配合</a><ul>
+<li><a class="reference internal" href="#id12">1. 函数返回多个值</a></li>
+<li><a class="reference internal" href="#args">2. \*args 参数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13">实际应用场景</a><ul>
+<li><a class="reference internal" href="#id14">1. 数据库记录</a></li>
+<li><a class="reference internal" href="#id15">2. 坐标和几何计算</a></li>
+<li><a class="reference internal" href="#id16">3. 配置信息</a></li>
+<li><a class="reference internal" href="#id17">4. 枚举替代方案</a></li>
+<li><a class="reference internal" href="#id18">性能比较</a></li>
+<li><a class="reference internal" href="#id19">1. 创建和访问性能</a></li>
+<li><a class="reference internal" href="#id20">最佳实践</a></li>
+<li><a class="reference internal" href="#id21">1. 何时使用元组</a></li>
+<li><a class="reference internal" href="#id22">2. 元组与列表的选择指南</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id23">总结</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=29a6c3e3"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>
