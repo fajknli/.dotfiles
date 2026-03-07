@@ -35,6 +35,7 @@ fajknli.files
     Programing/Perl/index
     Programing/JavaScript/index
     Programing/Haskell/index
+    Programing/SQL/index
 
 .. toctree::
     :maxdepth: 4

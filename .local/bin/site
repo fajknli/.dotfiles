@@ -15,6 +15,8 @@ mygithub|https://github.com/fajknli
 mygitee|https://gitee.com/
 unixchad|https://github.com/gnuunixchad
 mcwiki|https://zh.minecraft.wiki/?search=
+minecraft-office|https://www.minecraft.net/
+minecraft-skin|https://www.minecraftskins.com/
 archwiki|https://wiki.archlinux.org/index.php?search=
 archstatus|https://status.archlinux.org/
 niriconfigration|https://yalter.github.io/niri/Configuration%3A-Introduction.html
@@ -46,6 +48,7 @@ freemovie-ole|http://olevod.com/
 minecraft-tool-mc-utils|https://mc-utils.vercel.app/
 xfxcloud|https://home.xfx.life/
 sphinx|https://www.sphinx-doc.org/en/master/usage/quickstart.html
+debian-basics|https://www.debian.club/en/basics/first-boot
 "
 
 if ! command -v wmenu >/dev/null 2>&1; then

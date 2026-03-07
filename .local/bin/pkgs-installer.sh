@@ -46,6 +46,7 @@ speedtest-cli \
 "
 # 系统工具
 system_utilities="\
+sqlite \
 lsb-release \
 cronie \
 sysstat \
