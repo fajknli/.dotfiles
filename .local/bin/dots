@@ -114,7 +114,7 @@ if ! eval "$DOTFILES_CMD commit -m \"$message\""; then
     exit 1
 fi
 
-if eval "$DOTFILES_CMD push origin main"; then
+if eval "$DOTFILES_CMD push -f origin main"; then
     printf "\033[32m✓ .dotfiles 推送成功\033[0m\n"
     notify-send -u low ".dotfiles Sync" "✓ 推送成功"                    # mako notice
 else
