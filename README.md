@@ -46,3 +46,4 @@ Check the file `.dotfile/hooks/pre-commit`
 
 More alias at `.bash_alias`
 
+hahaha
