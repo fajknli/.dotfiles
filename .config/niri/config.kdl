@@ -327,7 +327,7 @@ binds {
     Alt+P { spawn "sh" "-c" "$HOME/.local/bin/pdf"; }
     Alt+E { spawn "sh" "-c" "$HOME/.local/bin/clipbd"; }
     Alt+Q { spawn "sh" "-c" "$HOME/.local/bin/calculator"; }
-    Alt+W { spawn "sh" "-c" "$HOME/.local/bin/weather"; }
+    Alt+O { spawn "sh" "-c" "$HOME/.local/bin/weather"; }
     Alt+H { spawn "sh" "-c" "$HOME/.local/bin/tools-tip"; }
     Alt+T { spawn "sh" "-c" "$HOME/.local/bin/translate"; }
     Alt+Y { spawn "makoctl" "dismiss" "-a"; }
