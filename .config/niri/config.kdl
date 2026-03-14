@@ -64,7 +64,7 @@ hotkey-overlay {
 window-rule {
     match app-id="zenity" title="Translate"
     open-floating true
-    default-floating-position x=2245 y=1275
+    default-floating-position x=0 y=0
 }
 // floating foot
 window-rule {
@@ -160,8 +160,8 @@ input {
 output "DP-3" {
     // 打开niri msg outputs,查看屏幕支持的刷新率
     //mode "2560x1600@240.000"
-    //mode "2560x1440@179.999"
-    mode "1920x1080@100.000"
+    mode "2560x1440@179.999"
+    //mode "1920x1080@100.000"
     // Screen scaling (1.5 = 150%)
     //scale 3
     //scale 2
@@ -232,9 +232,9 @@ layout {
     }
 }
 
-// animations
+// animations 动画
 animations {
-    off
+    //off
     slowdown 1.5
 }
 
@@ -338,7 +338,7 @@ binds {
 
     // Audio controls
     XF86AudioRaiseVolume {
-    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume-up.sh"; }
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/v%olume-up.sh"; }
     XF86AudioLowerVolume {
     spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume-down.sh"; }
     XF86AudioMute {

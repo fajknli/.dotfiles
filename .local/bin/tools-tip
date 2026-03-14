@@ -14,5 +14,7 @@ fi
 
 TOOL_TIP=$(cat "$TARGET_DIR/$TOOL")
 
-notify-send "$TOOL_TIP"
+#notify-send "$TOOL_TIP"
+
+rofi -e "$TOOL_TIP"
 

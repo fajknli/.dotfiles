@@ -2,7 +2,7 @@
 font=Noto 12
 width=550
 height=1200
-max-visible=100
+max-visible=5
 margin=10
 padding=10,5
 border-size=2

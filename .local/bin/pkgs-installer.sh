@@ -124,6 +124,7 @@ asciinema \
 
 # 图形界面应用
 gui_application="\
+rofi \
 alacritty \
 tk \
 mako \
@@ -156,7 +157,6 @@ swaybg \
 swayidle \
 sway-contrib \
 niri \
-wofi \
 fuzzel \
 grim \
 slurp \
