@@ -1,3 +1,39 @@
+# 日常推送（已关联远程仓库）
+# 1. 查看修改状态
+git status
+
+# 2. 添加修改的文件
+git add .                    # 添加所有修改
+# 或
+git add 文件名               # 添加指定文件
+
+# 3. 提交到本地仓库
+git commit -m "描述你的修改"
+
+# 4. 推送到远程仓库
+git push
+
+----------------------------------------------
+
+# 首次推送（新仓库关联远程）
+# 1. 初始化仓库（如果是新目录）
+git init
+
+# 2. 添加远程仓库地址
+git remote add origin https://github.com/用户名/仓库名.git
+# 或 SSH 方式
+git remote add origin git@github.com:用户名/仓库名.git
+
+# 3. 查看远程仓库（确认添加成功）
+git remote -v
+
+# 4. 首次推送并设置上游分支
+git push -u origin main      # 主分支叫 main
+# 或
+git push -u origin master    # 老项目可能是 master
+
+----------------------------------------------
+
 # 简洁状态
 git status -sb
 
@@ -15,3 +51,4 @@ git checkout -- path/to/file
 
 # 清理本地已合并分支
 git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
+

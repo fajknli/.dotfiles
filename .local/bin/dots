@@ -47,6 +47,7 @@ set -- \
     "$HOME/.config/waybar" \
     "$HOME/.config/zellij" \
     "$HOME/.config/zathura" \
+    "$HOME/.config/rofi" \
     "$HOME/.local/lib" \
     "$HOME/.local/bin" \
     "$HOME/.local/share/fcitx5" \

@@ -1,0 +1,46 @@
+configuration {
+    display-text: "Tip";
+    font: "Noto 9";
+    lines: 15;
+    width: 60%;
+    
+    /* 位置 */
+    location: 3;
+    offset: "-20x-50";
+    
+    /* 关键：启用换行 */
+    wrap: true;
+    wrap-width: 60;
+    
+    /* 禁用不需要的功能 */
+    disable-history: true;
+    show-icons: false;
+    modi: "run";
+}
+
+window {
+    background-color: #1f2032ff;
+    border-color: #89b4fa;
+    border: 2px;
+    /* border-radius: 8px; */
+    
+    /* 固定尺寸，防止撑爆 */
+    width: 600px;
+    height: 900px;
+    padding: 5;
+}
+
+textbox {
+    background-color: #1f2032ff;
+    text-color: #b6c0dbff;
+    padding: 5px;
+    
+    /* 启用滚动 */
+    scrollbar: true;
+}
+scrollbar {
+    width:        4px ;
+    border:       0;
+    handle-width: 8px ;
+    padding:      0;
+}

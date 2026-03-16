@@ -28,6 +28,7 @@ sway=$(find "$HOME"/.config/sway -type f)
 zellij=$(find "$HOME"/.config/zellij -type f)
 bash=$(find . -maxdepth 1 -type f -name "$HOME/.bash_*" \
     -exec find {} \;)
+rofi=$(find "$HOME"/.config/rofi -type f)
 
 file_list="
 $bin
@@ -51,6 +52,7 @@ $nvim
 $waybar
 $qutebrowser
 $bash
+$rofi
 $HOME/.bashrc
 $HOME/.bash_aliases
 $HOME/.bash_exports
