@@ -192,6 +192,8 @@ settings:
     global: '#c6c9d5'
   colors.webpage.darkmode.enabled:
     global: false
+  content.javascript.clipboard:
+    https://chat.qwen.ai: access-paste
   downloads.remove_finished:
     global: 10
   tabs.position:
