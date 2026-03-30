@@ -75,13 +75,17 @@ firejail \
 docker \
 "
 
+# Ai
+ai="\
+llama.cpp \
+rocm-hip-sdk \
+"
+
 # 命令行工具
 cli_tools="\
 npm \
+aerc \
 pkgfile \
-ollama \
-ollama-rocm \
-ollama-docs \
 amdgpu_top \
 colordiff \
 glow \
@@ -202,6 +206,7 @@ layer-shell-qt \
 python_libraries="\
 pypinyin \
 mypy \
+python-pipx \
 python-polars \
 python-orjson \
 python-faker \
@@ -254,4 +259,5 @@ $cli_tools\
 $system_utilities\
 $network_tools\
 $fonts_localization\
+$ai\
 

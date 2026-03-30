@@ -191,9 +191,190 @@
 <h2>Ai 使用<a class="headerlink" href="#ai" title="Link to this heading">¶</a></h2>
 <section id="llama-cpp">
 <h3>1. llama.cpp 使用<a class="headerlink" href="#llama-cpp" title="Link to this heading">¶</a></h3>
+<p>llama.cpp 是由 Georgi Gerganov 创建的开源 C/C++ 实现，最初是为了在 CPU 上高效运行 Meta 的 LLaMA 模型而开发的。它的核心目标是让大型语言模型能够在消费级硬件（甚至普通笔记本电脑）上运行，无需昂贵的 GPU。</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>特性</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>纯 C/C++ 实现</strong></p></td>
+<td><p>零依赖，高度可移植，支持多种平台</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>量化支持</strong></p></td>
+<td><p>支持 INT4/INT5/INT8/FP16 等量化格式，大幅减少内存占用</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CPU 优先</strong></p></td>
+<td><p>针对 ARM NEON、AVX、AVX2、AVX512 等指令集优化</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>GPU 加速</strong></p></td>
+<td><p>也支持 CUDA、Metal、Vulkan、OpenCL、SYCL 等后端</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>跨平台</strong></p></td>
+<td><p>Windows、macOS、Linux、iOS、Android、WebAssembly</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>多种模型格式</strong></p></td>
+<td><p>支持 GGUF 格式，兼容 LLaMA、Mistral、Gemma、Qwen 等众多模型</p></td>
+</tr>
+</tbody>
+</table>
+<p>技术亮点</p>
 <ol class="arabic simple">
-<li><p>安装</p></li>
+<li><p>GGUF 格式</p></li>
 </ol>
+<ul class="simple">
+<li><p>项目推出了 GGUF（GGML Universal Format）模型格式</p></li>
+<li><p>这是 GGML 的继任者，支持更丰富的元数据和更好的扩展性</p></li>
+<li><p>社区有大量预转换的 GGUF 模型可供下载</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>量化技术</p></li>
+</ol>
+<ul class="simple">
+<li><p>7B 模型从 13GB 压缩到 ~4GB，可在 8GB 内存设备运行</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>推理优化</p></li>
+</ol>
+<ul class="simple">
+<li><p>KV Cache 优化：减少内存重复分配</p></li>
+<li><p>批处理推理：支持并发请求处理</p></li>
+<li><p>投机解码（Speculative Decoding）：用小模型草稿加速大模型生成</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>2. 安装<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p><cite>git clone –depth 1 https://github.com/ggml-org/llama.cpp.git</cite></p>
+<p>源码安装是为了启用ROCm</p>
+<p>需要安装好 <cite>rocm-hip-sdk</cite> , <cite>hipblas</cite></p>
+<p>克隆好仓库后 <cite>cd llama.cpp</cite> 然后设置环境变量 <cite>export HIPCXX=”#(hipconfig -l)/clang”</cite> , <cite>export HIP_PATH=”$(hipconfig -R)”</cite></p>
+<p>然后再进行CMake的配置</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HIPCXX</span><span class="o">=</span><span class="s2">&quot;$HIPCXX&quot;</span> <span class="n">HIP_PATH</span><span class="o">=</span><span class="s2">&quot;$HIP_PATH&quot;</span> <span class="n">cmake</span> <span class="o">-</span><span class="n">S</span> <span class="o">.</span> <span class="o">-</span><span class="n">B</span> <span class="n">build</span> <span class="o">-</span><span class="n">DGGML_HIP</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DGPU_TARGETS</span><span class="o">=</span><span class="n">gfx1103</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="o">-</span><span class="n">DLLAMA_NATIVE</span><span class="o">=</span><span class="n">ON</span>
+</pre></div>
+</div>
+<p>然后再编译</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cmake --build build --config Release -j$(nproc)
+</pre></div>
+</div>
+<p>然后再验证llama-cli是否启用了ROCm</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ldd</span> <span class="n">build</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">llama</span><span class="o">-</span><span class="n">cli</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">E</span> <span class="s2">&quot;(hip|roc|amd)&quot;</span>
+</pre></div>
+</div>
+<p>再创建相关系统命令</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ln</span> <span class="o">-</span><span class="n">sf</span> <span class="o">~/</span><span class="n">dotfiles</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">llama</span><span class="o">.</span><span class="n">cpp</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">llama</span><span class="o">-</span><span class="n">cli</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">llama</span><span class="o">-</span><span class="n">cli</span>
+
+<span class="n">sudo</span> <span class="n">ln</span> <span class="o">-</span><span class="n">sf</span> <span class="o">~/</span><span class="n">dotfiles</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">llama</span><span class="o">.</span><span class="n">cpp</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">llama</span><span class="o">-</span><span class="n">server</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">llama</span><span class="o">-</span><span class="n">server</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>3. 使用<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">llama</span><span class="o">-</span><span class="n">server</span>   <span class="o">-</span><span class="n">m</span> <span class="o">.</span><span class="n">cache</span><span class="o">/</span><span class="n">llama</span><span class="o">.</span><span class="n">cpp</span><span class="o">/</span><span class="n">Jackrong_Qwen3</span><span class="mf">.5</span><span class="o">-</span><span class="mi">27</span><span class="n">B</span><span class="o">-</span><span class="n">Claude</span><span class="o">-</span><span class="mf">4.6</span><span class="o">-</span><span class="n">Opus</span><span class="o">-</span><span class="n">Reasoning</span><span class="o">-</span><span class="n">Distilled</span><span class="o">-</span><span class="n">v2</span><span class="o">-</span><span class="n">GGUF_Qwen3</span><span class="mf">.5</span><span class="o">-</span><span class="mi">27</span><span class="n">B</span><span class="o">.</span><span class="n">Q5_K_M</span><span class="o">.</span><span class="n">gguf</span>   <span class="o">--</span><span class="n">mmproj</span> <span class="o">.</span><span class="n">cache</span><span class="o">/</span><span class="n">llama</span><span class="o">.</span><span class="n">cpp</span><span class="o">/</span><span class="n">Jackrong_Qwen3</span><span class="mf">.5</span><span class="o">-</span><span class="mi">27</span><span class="n">B</span><span class="o">-</span><span class="n">Claude</span><span class="o">-</span><span class="mf">4.6</span><span class="o">-</span><span class="n">Opus</span><span class="o">-</span><span class="n">Reasoning</span><span class="o">-</span><span class="n">Distilled</span><span class="o">-</span><span class="n">v2</span><span class="o">-</span><span class="n">GGUF_mmproj</span><span class="o">-</span><span class="n">BF16</span><span class="o">.</span><span class="n">gguf</span>   <span class="o">-</span><span class="n">ngl</span> <span class="mi">99</span>   <span class="o">-</span><span class="n">c</span> <span class="mi">2048</span>   <span class="o">-</span><span class="n">b</span> <span class="mi">256</span>   <span class="o">-</span><span class="n">t</span> <span class="mi">6</span>   <span class="o">--</span><span class="n">temp</span> <span class="mf">0.7</span>   <span class="o">--</span><span class="n">host</span> <span class="mf">127.0.0.1</span>   <span class="o">--</span><span class="n">port</span> <span class="mi">8080</span>
+</pre></div>
+</div>
+</section>
+<section id="n-convert-hf-to-gguf-py">
+<h3>n. convert_hf_to_gguf.py 的使用<a class="headerlink" href="#n-convert-hf-to-gguf-py" title="Link to this heading">¶</a></h3>
+<p>convert_hf_to_gguf.py 是 llama.cpp 项目中的核心工具脚本，用于将 Hugging Face 格式的模型转换为 llama.cpp 专用的 GGUF 格式。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 通过项目里的venv里的库，来支持命令的完成</span>
+
+<span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> <span class="n">convert_hf_to_gguf</span><span class="o">.</span><span class="n">py</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">fajknli</span><span class="o">/.</span><span class="n">cache</span><span class="o">/</span><span class="n">huggingface</span><span class="o">/</span><span class="n">hub</span><span class="o">/</span><span class="n">models</span><span class="o">--</span><span class="n">intfloat</span><span class="o">--</span><span class="n">multilingual</span><span class="o">-</span><span class="n">e5</span><span class="o">-</span><span class="n">large</span><span class="o">/</span><span class="n">snapshots</span><span class="o">/</span><span class="mi">0</span><span class="n">dc5580a448e4284468b8909bae50fa925907bc5</span> <span class="o">--</span><span class="n">outfile</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">fajknli</span><span class="o">/.</span><span class="n">cache</span><span class="o">/</span><span class="n">llama</span><span class="o">.</span><span class="n">cpp</span><span class="o">/</span><span class="n">e5</span><span class="o">-</span><span class="n">large</span><span class="o">-</span><span class="n">Q8_0</span><span class="o">.</span><span class="n">gguf</span> <span class="o">--</span><span class="n">outtype</span> <span class="n">q8_0</span>
+
+<span class="n">这个命令的前提是需要python的venv坏境下安装依赖</span>
+
+<span class="c1"># 这个命令就是在项目里的venv里安装对应的库</span>
+<span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">pip</span> <span class="n">install</span> <span class="n">sentencepiece</span> <span class="n">transformers</span> <span class="n">torch</span> <span class="n">protobuf</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="nix">
+<h2>Nix 使用<a class="headerlink" href="#nix" title="Link to this heading">¶</a></h2>
+<p>用来装一些包</p>
+<p>单用户安装(普通用户): <cite>sh &lt;(curl –proto ‘=https’ –tlsv1.2 -L https://nixos.org/nix/install) –no-daemon</cite></p>
+<ol class="arabic simple">
+<li><p>基础使用</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载环境变量（当前终端生效，写入.bash_profile,得重启系统）</span>
+<span class="o">.</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">fajknli</span><span class="o">/.</span><span class="n">nix</span><span class="o">-</span><span class="n">profile</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">nix</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="c1"># 验证安装</span>
+<span class="n">nix</span> <span class="o">--</span><span class="n">version</span>
+<span class="c1"># 输出：nix (Nix) 2.34.2</span>
+
+<span class="c1"># 查看 nix-channel 状态</span>
+<span class="n">nix</span><span class="o">-</span><span class="n">channel</span> <span class="o">--</span><span class="nb">list</span>
+<span class="c1"># 应该显示：nixpkgs https://nixos.org/channels/nixpkgs-unstable</span>
+</pre></div>
+</div>
+<section id="id4">
+<h3>2. 下载软件并使用<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nix</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="n">experimental</span><span class="o">-</span><span class="n">features</span> <span class="s1">&#39;nix-command flakes&#39;</span>   <span class="n">shell</span> <span class="n">nixpkgs</span><span class="c1">#legacyPackages.x86_64-linux.lesspass-cli   --command lesspass -s github.com -l yourname</span>
+</pre></div>
+</div>
+<section id="extra">
+<h4>1. –extra… -启用新语法<a class="headerlink" href="#extra" title="Link to this heading">¶</a></h4>
+<p># 作用：临时启用两个实验性功能</p>
+<ul class="simple">
+<li><p>nix-command  → 启用新式命令 (nix shell / nix build / nix search)</p></li>
+<li><p>flakes       → 启用 Flake 语法 (nixpkgs#pkg 这种 # 引用方式)</p></li>
+</ul>
+<p># 为什么需要？</p>
+<p>你的 Nix 2.34.2 默认禁用这些功能，需要手动开启</p>
+<p># 永久启用方法（写在 ~/.config/nix/nix.conf）：</p>
+<p>experimental-features = nix-command flakes</p>
+</section>
+<section id="shell">
+<h4>2. shell -子命令 创建临时坏境<a class="headerlink" href="#shell" title="Link to this heading">¶</a></h4>
+<p># 作用：启动一个「临时 shell 环境」，里面包含指定的包</p>
+<p># 特点：</p>
+<ul class="simple">
+<li><p>环境退出后自动清理，不污染系统</p></li>
+<li><p>类似 Docker 容器，但更轻量</p></li>
+<li><p>适合「试用一个工具」或「运行一次命令」</p></li>
+</ul>
+<p># 对比其他子命令：</p>
+<p>nix-shell -p pkg     # 旧式写法（功能类似）</p>
+<p>nix-env -iA pkg      # 永久安装到用户环境</p>
+<p>nix run nixpkgs#pkg  # 直接运行包的主程序</p>
+</section>
+<section id="nixpkgs-lesspass-cli-flake">
+<h4>3. nixpkgs#lesspass-cli — 包引用（Flake 语法）<a class="headerlink" href="#nixpkgs-lesspass-cli-flake" title="Link to this heading">¶</a></h4>
+<p># 格式：[registry/]flake#attribute.path</p>
+<p># 拆解：</p>
+<ul class="simple">
+<li><p>nixpkgs          → 包集名称（来自 nix registry）</p></li>
+<li><p>#                → 分隔符，前面是源，后面是属性路径</p></li>
+<li><p>lesspass-cli     → 包在 nixpkgs 中的属性名</p></li>
+</ul>
+<p># 等价写法：</p>
+<p>nixpkgs#legacyPackages.x86_64-linux.lesspass-cli  # 完整路径</p>
+<p>nixpkgs#python310Packages.lesspass4lesspass        # 如果在 python 子集</p>
+<p># 查找包名的方法：</p>
+<p>nix search nixpkgs lesspass          # 搜索</p>
+<p>nix-locate lesspass                  # 快速定位（需 nix-index）</p>
+<p>nix-env -qaP ‘<em>lesspass</em>’           # 旧式搜索</p>
+</section>
+<section id="command-lesspass">
+<h4>4. –command lesspass — 指定要运行的程序<a class="headerlink" href="#command-lesspass" title="Link to this heading">¶</a></h4>
+<p># 作用：在临时环境中执行 <cite>lesspass</cite> 这个命令</p>
+<p># 为什么需要？</p>
+<ul class="simple">
+<li><p>shell 默认启动交互式子 shell</p></li>
+<li><p>–command 让它执行完指定命令就退出</p></li>
+</ul>
+<p># 等价写法：</p>
+<ul class="simple">
+<li><p>–run “lesspass -s github.com -l yourname”  # 用 –run 也可以</p></li>
+</ul>
+<p># 省略 –command 的效果：</p>
+<p># 会进入一个包含 lesspass 的交互式 shell，需要手动输入 lesspass …</p>
+</section>
+<section id="s-github-com-l-yourname-lesspass">
+<h4>5. -s github.com -l yourname — 传递给 lesspass 的参数<a class="headerlink" href="#s-github-com-l-yourname-lesspass" title="Link to this heading">¶</a></h4>
+<p>lesspass 自己的选项参数</p>
+</section>
 </section>
 </section>
 </section>
@@ -235,6 +416,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#aur">5. AUR仓库使用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ai">Ai 使用</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#llama-cpp">1. llama.cpp 使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">2. 安装</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">3. 使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#n-convert-hf-to-gguf-py">n. convert_hf_to_gguf.py 的使用</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#nix">Nix 使用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">2. 下载软件并使用</a></li>
 </ul>
 </li>
 </ul>

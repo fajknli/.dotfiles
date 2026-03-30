@@ -164,6 +164,216 @@ Ai 使用
 1. llama.cpp 使用
 ------------------
 
-1. 安装
+llama.cpp 是由 Georgi Gerganov 创建的开源 C/C++ 实现，最初是为了在 CPU 上高效运行 Meta 的 LLaMA 模型而开发的。它的核心目标是让大型语言模型能够在消费级硬件（甚至普通笔记本电脑）上运行，无需昂贵的 GPU。
+
+=================   ===========================================================
+特性                说明                                          
+=================   ===========================================================
+**纯 C/C++ 实现**   零依赖，高度可移植，支持多种平台                             
+**量化支持**        支持 INT4/INT5/INT8/FP16 等量化格式，大幅减少内存占用        
+**CPU 优先**        针对 ARM NEON、AVX、AVX2、AVX512 等指令集优化           
+**GPU 加速**        也支持 CUDA、Metal、Vulkan、OpenCL、SYCL 等后端        
+**跨平台**          Windows、macOS、Linux、iOS、Android、WebAssembly  
+**多种模型格式**    支持 GGUF 格式，兼容 LLaMA、Mistral、Gemma、Qwen 等众多模型 
+=================   ===========================================================
+
+技术亮点
+
+1. GGUF 格式
+
+- 项目推出了 GGUF（GGML Universal Format）模型格式
+- 这是 GGML 的继任者，支持更丰富的元数据和更好的扩展性
+- 社区有大量预转换的 GGUF 模型可供下载
+
+2. 量化技术
+
+- 7B 模型从 13GB 压缩到 ~4GB，可在 8GB 内存设备运行
+
+3. 推理优化
+
+- KV Cache 优化：减少内存重复分配
+- 批处理推理：支持并发请求处理
+- 投机解码（Speculative Decoding）：用小模型草稿加速大模型生成
+
+2. 安装
+--------------------
+
+`git clone --depth 1 https://github.com/ggml-org/llama.cpp.git`
+
+源码安装是为了启用ROCm
+
+需要安装好 `rocm-hip-sdk` , `hipblas`
+
+克隆好仓库后 `cd llama.cpp` 然后设置环境变量 `export HIPCXX="#(hipconfig -l)/clang"` , `export HIP_PATH="$(hipconfig -R)"`
+
+然后再进行CMake的配置
+
+::
+
+    HIPCXX="$HIPCXX" HIP_PATH="$HIP_PATH" cmake -S . -B build -DGGML_HIP=ON -DGPU_TARGETS=gfx1103 -DCMAKE_BUILD_TYPE=Release -DLLAMA_NATIVE=ON
+
+然后再编译
+
+::
+
+    cmake --build build --config Release -j$(nproc)
+
+然后再验证llama-cli是否启用了ROCm
+
+::
+
+    ldd build/bin/llama-cli | grep -i -E "(hip|roc|amd)"
+
+再创建相关系统命令
+
+::
+
+    sudo ln -sf ~/dotfiles/tools/llama.cpp/build/bin/llama-cli /usr/local/bin/llama-cli
+
+    sudo ln -sf ~/dotfiles/tools/llama.cpp/build/bin/llama-server /usr/local/bin/llama-server
 
 
+3. 使用
+-----------------
+
+::
+
+    llama-server -m .cache/llama.cpp/Jackrong_Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-GGUF_Qwen3.5-27B.Q5_K_M.gguf --mmproj .cache/llama.cpp/Jackrong_Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-v2-GGUF_mmproj-BF16.gguf -ngl 99 -c 2048 -b 256 -t 6 --temp 0.7 --host 127.0.0.1 --port 8080
+
+
+
+
+n. convert_hf_to_gguf.py 的使用
+--------------------------------
+
+convert_hf_to_gguf.py 是 llama.cpp 项目中的核心工具脚本，用于将 Hugging Face 格式的模型转换为 llama.cpp 专用的 GGUF 格式。
+
+::
+
+    # 通过项目里的venv里的库，来支持命令的完成
+
+    venv/bin/python convert_hf_to_gguf.py /home/fajknli/.cache/huggingface/hub/models--intfloat--multilingual-e5-large/snapshots/0dc5580a448e4284468b8909bae50fa925907bc5 --outfile /home/fajknli/.cache/llama.cpp/e5-large-Q8_0.gguf --outtype q8_0
+
+    这个命令的前提是需要python的venv坏境下安装依赖
+
+    # 这个命令就是在项目里的venv里安装对应的库
+    venv/bin/pip install sentencepiece transformers torch protobuf
+
+
+Nix 使用
+=========
+
+用来装一些包
+
+单用户安装(普通用户): `sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --no-daemon` 
+
+1. 基础使用
+
+::
+
+    # 加载环境变量（当前终端生效，写入.bash_profile,得重启系统）
+    . /home/fajknli/.nix-profile/etc/profile.d/nix.sh
+
+    # 验证安装
+    nix --version
+    # 输出：nix (Nix) 2.34.2
+
+    # 查看 nix-channel 状态
+    nix-channel --list
+    # 应该显示：nixpkgs https://nixos.org/channels/nixpkgs-unstable
+
+2. 下载软件并使用
+-------------------
+
+::
+
+    nix --extra-experimental-features 'nix-command flakes'   shell nixpkgs#legacyPackages.x86_64-linux.lesspass-cli   --command lesspass -s github.com -l yourname
+
+
+1. --extra... -启用新语法
+'''''''''''''''''''''''''''''''
+
+# 作用：临时启用两个实验性功能
+
+- nix-command  → 启用新式命令 (nix shell / nix build / nix search)
+- flakes       → 启用 Flake 语法 (nixpkgs#pkg 这种 # 引用方式)
+
+# 为什么需要？
+
+你的 Nix 2.34.2 默认禁用这些功能，需要手动开启
+
+# 永久启用方法（写在 ~/.config/nix/nix.conf）：
+
+experimental-features = nix-command flakes
+
+2. shell -子命令 创建临时坏境
+'''''''''''''''''''''''''''''''
+
+# 作用：启动一个「临时 shell 环境」，里面包含指定的包
+
+# 特点：
+
+- 环境退出后自动清理，不污染系统
+  
+- 类似 Docker 容器，但更轻量
+  
+- 适合「试用一个工具」或「运行一次命令」
+
+# 对比其他子命令：
+
+nix-shell -p pkg     # 旧式写法（功能类似）
+
+nix-env -iA pkg      # 永久安装到用户环境
+
+nix run nixpkgs#pkg  # 直接运行包的主程序
+
+3. nixpkgs#lesspass-cli — 包引用（Flake 语法）
+'''''''''''''''''''''''''''''''''''''''''''''''
+
+# 格式：[registry/]flake#attribute.path
+
+# 拆解：
+
+• nixpkgs          → 包集名称（来自 nix registry）
+
+• #                → 分隔符，前面是源，后面是属性路径
+
+• lesspass-cli     → 包在 nixpkgs 中的属性名
+
+# 等价写法：
+
+nixpkgs#legacyPackages.x86_64-linux.lesspass-cli  # 完整路径
+
+nixpkgs#python310Packages.lesspass4lesspass        # 如果在 python 子集
+
+# 查找包名的方法：
+
+nix search nixpkgs lesspass          # 搜索
+
+nix-locate lesspass                  # 快速定位（需 nix-index）
+
+nix-env -qaP '*lesspass*'           # 旧式搜索
+
+4. --command lesspass — 指定要运行的程序
+'''''''''''''''''''''''''''''''''''''''''
+
+# 作用：在临时环境中执行 `lesspass` 这个命令
+
+# 为什么需要？
+
+- shell 默认启动交互式子 shell
+
+- --command 让它执行完指定命令就退出
+
+# 等价写法：
+
+- --run "lesspass -s github.com -l yourname"  # 用 --run 也可以
+
+# 省略 --command 的效果：
+
+# 会进入一个包含 lesspass 的交互式 shell，需要手动输入 lesspass ...
+
+5. -s github.com -l yourname — 传递给 lesspass 的参数
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+lesspass 自己的选项参数
