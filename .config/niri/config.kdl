@@ -12,6 +12,7 @@ environment {
     GDK_BACKEND "wayland"
     MOZ_ENABLE_WAYLAND "1"
     //DISPLAY null  // 明确禁用 X11
+    DISPLAY ":0"  // 明确禁用 X11
     XMODIFIERS "@im=fcitx"
     //GTK_IM_MODULE "fcitx"
     //QT_IM_MODULE "fcitx"
