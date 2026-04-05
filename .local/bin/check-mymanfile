@@ -12,7 +12,7 @@ if [ ! -d "$HOME"/.local/share/man ]; then
     done
 fi
 
-# This for Bash
+# This for Bash.
 # [ ! -d "$HOME/.local/share/man" ] && mkdir -p "$HOME"/.local/share/man/man{1..9}
 
 man_dir=$(find "$HOME"/.local/share/man -mindepth 1 -type d | \
