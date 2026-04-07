@@ -1,0 +1,152 @@
+#!/bin/sh
+
+# volume.sh - 统一音量控制脚本（队列版）
+# 用法: volume.sh up|down|mute
+
+STEP=5
+MAX_VOLUME=100
+MIN_VOLUME=0
+NOTIFY_TIMEOUT=1000
+LOCK_FILE="/tmp/volume.lock"
+
+# 缓存音量值
+CACHE_VAL="/tmp/volume_val"
+
+# 检查依赖
+if ! command -v wpctl >/dev/null 2>&1; then
+    notify-send -t 2000 "音量控制" "未找到 wpctl 命令"
+    exit 1
+fi
+
+# 检查参数
+if [ "$1" != "up" ] && [ "$1" != "down" ] && [ "$1" != "mute" ]; then
+    notify-send -t 2000 "音量控制" "用法: volume.sh {up|down|mute}"
+    exit 1
+fi
+
+# 获取当前音量（使用缓存或实时）
+get_current_volume() {
+    if [ -f "$CACHE_VAL" ] && [ $(($(date +%s) - $(stat -c %Y "$CACHE_VAL" 2>/dev/null || echo 0))) -lt 2 ]; then
+        cat "$CACHE_VAL"
+    else
+        val=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | awk '{printf "%d", $2 * 100}')
+        [ -n "$val" ] && echo "$val" > "$CACHE_VAL"
+        echo "${val:-50}"
+    fi
+}
+
+# 获取静音状态
+get_mute_status() {
+    if wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q "MUTED"; then
+        echo "muted"
+    else
+        echo "unmuted"
+    fi
+}
+
+# 创建进度条
+create_bar() {
+    value="$1"
+    width=10
+    filled=$((value * width / 100))
+    empty=$((width - filled))
+
+    if [ "$filled" -eq 0 ] && [ "$value" -gt 0 ]; then
+        filled=1
+        empty=$((width - 1))
+    fi
+
+    bar=""
+    i=1
+    while [ "$i" -le "$filled" ]; do
+        bar="${bar}█"
+        i=$((i + 1))
+    done
+    while [ "$i" -le 10 ]; do
+        bar="${bar}░"
+        i=$((i + 1))
+    done
+
+    echo "$bar"
+}
+
+# 处理静音
+if [ "$1" = "mute" ]; then
+    # 获取当前状态
+    current_mute=$(get_mute_status)
+    current_vol=$(get_current_volume)
+    bar=$(create_bar "$current_vol")
+    
+    # 立即更新缓存
+    if [ "$current_mute" = "muted" ]; then
+        echo "unmuted" > "$CACHE_MUTE"
+        notify-send -t "$NOTIFY_TIMEOUT" -u low "音量控制" "已取消静音\n当前音量: ${current_vol}%\n${bar}"
+    else
+        echo "muted" > "$CACHE_MUTE"
+        notify-send -t "$NOTIFY_TIMEOUT" -u low "音量控制" "已静音\n当前音量: ${current_vol}%\n${bar}"
+    fi
+    
+    # 后台执行实际切换
+    (
+        while ! mkdir "$LOCK_FILE" 2>/dev/null; do
+            sleep 0.05
+        done
+        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+        rmdir "$LOCK_FILE"
+    ) &
+    
+    exit 0
+fi
+
+# 处理音量和减少
+current=$(get_current_volume)
+
+case "$1" in
+    up)
+        new=$((current + STEP))
+        [ "$new" -gt "$MAX_VOLUME" ] && new="$MAX_VOLUME"
+        MSG="音量已增加"
+        CMD="wpctl set-volume @DEFAULT_AUDIO_SINK@ ${STEP}%+"
+        ;;
+    down)
+        new=$((current - STEP))
+        [ "$new" -lt "$MIN_VOLUME" ] && new="$MIN_VOLUME"
+        MSG="音量已减少"
+        CMD="wpctl set-volume @DEFAULT_AUDIO_SINK@ ${STEP}%-"
+        ;;
+esac
+
+# 边界检查
+if [ "$new" -eq "$current" ]; then
+    if [ "$1" = "up" ]; then
+        notify-send -t 1000 -u low "音量控制" "已达上限 ${MAX_VOLUME}%"
+    else
+        notify-send -t 1000 -u low "音量控制" "已达下限 ${MIN_VOLUME}%"
+    fi
+    exit 0
+fi
+
+# 立即更新缓存并发送通知
+echo "$new" > "$CACHE_VAL"
+bar=$(create_bar "$new")
+notify-send -t "$NOTIFY_TIMEOUT" -u low "音量控制" "${MSG}: ${new}%\n${bar}"
+
+# 如果静音中，先取消静音
+if [ "$(get_mute_status)" = "muted" ]; then
+    (
+        while ! mkdir "$LOCK_FILE" 2>/dev/null; do
+            sleep 0.05
+        done
+        wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
+        rmdir "$LOCK_FILE"
+    ) &
+fi
+
+# 后台执行实际音量调节
+(
+    while ! mkdir "$LOCK_FILE" 2>/dev/null; do
+        sleep 0.05
+    done
+    eval "$CMD"
+    rmdir "$LOCK_FILE"
+) &

@@ -2,3 +2,6 @@ date +'%Y-%m-%d %H:%M:%S' # 输出时间
 tr -dc 'A-Za-z0-9' < /dev/urandom | head -c 32 # 生成随机密码
 fc-cache -fv # 刷新字体
 cat /etc/shells # 查看系统上有哪些shell
+sudo du -sh /* 2>/dev/null | sort -hr | head -20  # 查看根目录下最大的20个文件夹
+sudo du -sh /home/fajknli/* 2>/dev/null | sort -hr | head -20 # 查看~下最大的文件夹
+sudo du -sh /home/fajknli/.[!.]* 2>/dev/null | sort -hr | head -20 # 查看~下最大的隐藏文件夹

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Author:       fajknli
-# Emial         fajknli@gmail.com
+# Email         fajknli@gmail.com
 # Created Time: 2025-09-10 00:14
 # Filename:     pkgs-installer.sh
 
@@ -27,7 +27,6 @@ fcitx5-pinyin-zhwiki \
 # 网络工具
 network_tools="\
 networkmanager \
-iwd \
 ntp \
 bind \
 socat \
@@ -46,6 +45,7 @@ speedtest-cli \
 "
 # 系统工具
 system_utilities="\
+ddcutil \
 sqlite \
 lsb-release \
 cronie \
@@ -72,7 +72,6 @@ arch-wiki-docs \
 arch-wiki-lite \
 arch-wiki-docs-zh-cn \
 firejail \
-docker \
 "
 
 # Ai
@@ -83,6 +82,7 @@ rocm-hip-sdk \
 
 # 命令行工具
 cli_tools="\
+iw \
 npm \
 aerc \
 pkgfile \
@@ -137,6 +137,7 @@ gimp \
 remmina \
 waybar \
 mpv \
+mpv-mpris \
 obs-studio \
 newsflash \
 element-desktop \
@@ -194,10 +195,8 @@ glfw \
 vulkan-radeon \
 "
 
-# GTK/Qt 主题与支持 (GTK/Qt Themes & Support)
-gtk_qt_support="\
-materia-gtk-theme \
-adapta-gtk-theme \
+# Qt
+qt="\
 qt5-declarative \
 layer-shell-qt \
 "
@@ -245,12 +244,24 @@ crictl \
 documentation_dictionary="\
 sdcv \
 "
+# 图标
+icon_theme="\
+papirus-icon-theme \
+"
+#gtk 主题
+gtk_theme="\
+adapta-gtk-theme \
+"
+# cursor-theme
+cursor_theme="\
+breeze-cursors \
+"
 
 sudo pacman -Syu --noconfirm --needed --color auto \
 $documentation_dictionary\
 $server_tools\
 $python_libraries\
-$gtk_qt_support\
+$qt\
 $graphics_drivers_libraries\
 $audio_bluetooth\
 $wayland_wm\
@@ -260,4 +271,7 @@ $system_utilities\
 $network_tools\
 $fonts_localization\
 $ai\
+$icon_theme\
+$gtk_theme\
+$cursor_theme\
 

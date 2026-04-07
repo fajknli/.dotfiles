@@ -1,0 +1,98 @@
+#!/bin/sh
+
+# brightness.sh - 亮度控制（队列版）
+# 用法: brightness.sh up|down
+
+STEP=5
+MAX_BRIGHTNESS=80
+MIN_BRIGHTNESS=10
+NOTIFY_TIMEOUT=1000
+LOCK_FILE="/tmp/brightness.lock"
+
+# 缓存总线号
+CACHE_BUS="/tmp/brightness_bus"
+if [ -f "$CACHE_BUS" ]; then
+    BUS_NUMBER=$(cat "$CACHE_BUS")
+else
+    BUS_NUMBER=$(ddcutil detect 2>/dev/null | grep -A1 "I2C bus:" | head -1 | grep -oP '/dev/i2c-\K\d+')
+    echo "$BUS_NUMBER" > "$CACHE_BUS"
+fi
+
+if [ -z "$BUS_NUMBER" ]; then
+    notify-send -t 2000 "亮度控制" "未检测到显示器"
+    exit 1
+fi
+
+# 检查参数
+if [ "$1" != "up" ] && [ "$1" != "down" ]; then
+    notify-send -t 2000 "亮度控制" "用法: brightness.sh {up|down}"
+    exit 1
+fi
+
+# 读取当前缓存亮度
+CACHE_VAL="/tmp/brightness_val"
+if [ -f "$CACHE_VAL" ]; then
+    current=$(cat "$CACHE_VAL")
+else
+    # 首次运行，获取真实亮度
+    current=$(ddcutil --bus "$BUS_NUMBER" getvcp 10 2>/dev/null | grep -oP 'current value =\s*\K\d+' | head -1)
+    [ -z "$current" ] && current=50
+    echo "$current" > "$CACHE_VAL"
+fi
+
+# 计算新亮度
+case "$1" in
+    up)
+        new=$((current + STEP))
+        [ "$new" -gt "$MAX_BRIGHTNESS" ] && new="$MAX_BRIGHTNESS"
+        MSG="亮度已增加"
+        ;;
+    down)
+        new=$((current - STEP))
+        [ "$new" -lt "$MIN_BRIGHTNESS" ] && new="$MIN_BRIGHTNESS"
+        MSG="亮度已减少"
+        ;;
+esac
+
+# 如果已达边界
+if [ "$new" -eq "$current" ]; then
+    if [ "$1" = "up" ]; then
+        notify-send -t 1000 -u low "亮度控制" "已达上限 ${MAX_BRIGHTNESS}%"
+    else
+        notify-send -t 1000 -u low "亮度控制" "已达下限 ${MIN_BRIGHTNESS}%"
+    fi
+    exit 0
+fi
+
+# 立即更新缓存（让下次调用基于新值）
+echo "$new" > "$CACHE_VAL"
+
+# 进度条（立即显示）
+filled=$((new / 10))
+bar=""
+i=1
+while [ "$i" -le "$filled" ]; do
+    bar="${bar}█"
+    i=$((i + 1))
+done
+while [ "$i" -le 10 ]; do
+    bar="${bar}░"
+    i=$((i + 1))
+done
+
+# 立即发送通知
+notify-send -t "$NOTIFY_TIMEOUT" -u low "亮度控制" "${MSG}: ${new}%\n${bar}"
+
+# 将实际调亮度的任务加入队列（避免并发）
+(
+    # 等待锁
+    while ! mkdir "$LOCK_FILE" 2>/dev/null; do
+        sleep 0.1
+    done
+    
+    # 执行实际亮度调节
+    ddcutil --bus "$BUS_NUMBER" setvcp 10 "$new" >/dev/null 2>&1
+    
+    # 释放锁
+    rmdir "$LOCK_FILE"
+) &

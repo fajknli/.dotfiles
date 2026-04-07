@@ -6,8 +6,9 @@
 # Filename:     network-check.sh
 
 
-source "$HOME"/.local/lib/shell/network/determine_global_network_connectivity.sh
-source "$HOME"/.local/lib/shell/network/determine_cn_network_connectivity.sh
+# source "$HOME"/.local/lib/shell/network/determine_global_network_connectivity.sh
+# source "$HOME"/.local/lib/shell/network/determine_cn_network_connectivity.sh
+source "$HOME"/.local/lib/shell/network/network
 
 if is_cn_network; then
     printf '\033[1;32mYou are in CN network\033[0m\n'

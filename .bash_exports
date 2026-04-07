@@ -4,7 +4,7 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 # GTK / Flatpak
-export GTK_THEME=Adwaita:dark
+#export GTK_THEME=Adwaita:dark
 #export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/home/a6dg2uv/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
 
 # Rust 镜像
@@ -15,7 +15,7 @@ export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 export INPUTRC="$HOME/.inputrc"
 
 # Java Home
-export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 export PATH=$JAVA_HOME/bin:$PATH
 
 # 禁用历史记录临时文件
@@ -56,10 +56,3 @@ export LC_ALL=en_US.UTF-8
 # export LC_ALL=zh_CN.UTF-8
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
 export XDG_CURRENT_DESKTOP=wlr
-
-
-# Replace YOUR_PROJECT_ID with your actual Google Cloud Project ID
-# Using the standard variable:
-export GOOGLE_CLOUD_PROJECT="idyllic-unity-477316-q1"
-# Or, using the fallback variable:
-#export GOOGLE_CLOUD_PROJECT_ID="YOUR_PROJECT_ID"

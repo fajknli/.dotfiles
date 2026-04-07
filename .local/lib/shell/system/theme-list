@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Author:       fajknli
+# Email:        fajknli@gmail.com
+# Created Time: 2026-04-07 22:23
+
+
+# 检查 GTK 主题
+echo "=== GTK 主题 ==="
+ls /usr/share/themes/ 2>/dev/null | head -20
+
+# 检查图标主题
+echo ""
+echo "=== 图标主题 ==="
+ls /usr/share/icons/ 2>/dev/null | head -20
+
+# 检查光标主题
+echo ""
+echo "=== 光标主题 ==="
+ls /usr/share/icons/ 2>/dev/null | while read dir; do
+    [ -d "/usr/share/icons/$dir/cursors" ] && echo "$dir"
+done | head -10
+
+# 检查用户本地主题
+echo ""
+echo "=== 用户本地主题 ==="
+ls ~/.themes/ 2>/dev/null || echo "(无)"
+ls ~/.icons/ 2>/dev/null || echo "(无)"

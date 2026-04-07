@@ -1,0 +1,87 @@
+#!/bin/sh
+# ~/.local/lib/shell/network/network
+
+# 检测国内网络（参考你的思路：ping 国内 IP）
+is_cn() {
+    timeout=2
+    for target in 223.5.5.5 119.29.29.29 163.com; do
+        if ping -c 1 -W "$timeout" "$target" >/dev/null 2>&1; then
+            return 0
+        fi
+    done
+    # 备用 curl
+    if command -v curl >/dev/null 2>&1; then
+        if curl -s --max-time "$timeout" "http://163.com" >/dev/null 2>&1; then
+            return 0
+        fi
+    fi
+    return 1
+}
+
+# 检测国际网络（参考你的思路：curl 检测 google.com）
+is_global() {
+    if ! command -v curl >/dev/null 2>&1; then
+        return 1
+    fi
+    
+    case $(curl -o /dev/null -s --connect-timeout 5 -w "%{http_code}" https://google.com 2>/dev/null) in
+        200|301|302)
+            return 0
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
+# 兼容旧函数名
+is_cn_network() {
+    is_cn "$@"
+}
+
+is_global_network() {
+    is_global "$@"
+}
+
+# 判断是否需要代理（国内通 + 国际不通）
+need_proxy() {
+    is_cn && ! is_global
+}
+
+# 网络状态
+network_status() {
+    if is_cn && is_global; then
+        echo "全通"
+        return 0
+    elif is_cn && ! is_global; then
+        echo "内网通，外网不通"
+        return 1
+    elif ! is_cn && is_global; then
+        echo "内网不通，外网通"
+        return 2
+    else
+        echo "网络故障"
+        return 3
+    fi
+}
+
+# 直接执行时
+if [ "${0##*/}" = "network" ]; then
+    case "$1" in
+        --cn)
+            is_cn && echo "国内通" || echo "国内不通"
+            ;;
+        --global)
+            is_global && echo "国际通" || echo "国际不通"
+            ;;
+        --proxy)
+            need_proxy && echo "需要代理" || echo "不需要代理"
+            ;;
+        --status)
+            network_status
+            ;;
+        *)
+            echo "网络状态: $(network_status)"
+            ;;
+    esac
+fi

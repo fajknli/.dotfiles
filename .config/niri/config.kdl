@@ -8,6 +8,8 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 // environment variables
 environment {
+    //应用找到 dconf 服务的关键,zenity暗色模式
+    DBUS_SESSION_BUS_ADDRESS "unix:path=/run/user/1000/bus"
     QT_QPA_PLATFORM "wayland"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
     GDK_BACKEND "wayland"
@@ -26,7 +28,7 @@ environment {
 // cursor setting
 cursor {
     xcursor-theme "breeze_cursors"
-    xcursor-size 12
+    xcursor-size 22
     hide-when-typing
     hide-after-inactive-ms 1000
 }
@@ -314,7 +316,7 @@ binds {
     // Screenshots
     Ctrl+Alt+Shift+P { screenshot; }
     Ctrl+Alt+Shift+S { screenshot-screen; } // 整个屏幕截图
-    Ctrl+Alt+S { screenshot-window; }       // 当前column 截图
+    Ctrl+Alt+s { screenshot-window; }       // 当前column 截图
 
     // Application launchers
     Mod+Return { spawn "foot"; }
@@ -333,6 +335,7 @@ binds {
     Alt+H { spawn "sh" "-c" "$HOME/.local/bin/tools-tip"; }
     Alt+T { spawn "sh" "-c" "$HOME/.local/bin/translate"; }
     Alt+Y { spawn "makoctl" "dismiss" "-a"; }
+    Alt+R { spawn "sh" "-c" "$HOME/.local/bin/qnote"; }
 
     // System controls
     Ctrl+Shift+Space { spawn "swaylock" "-f" "-c" "151622"; }
@@ -340,23 +343,23 @@ binds {
 
     // Audio controls
     XF86AudioRaiseVolume {
-    spawn "sh" "-c" "$HOME/.local/lib/shell/system/v%olume-up.sh"; }
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume up"; }
     XF86AudioLowerVolume {
-    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume-down.sh"; }
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume down"; }
     XF86AudioMute {
-    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume-mute.sh"; }
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume mute"; }
     Ctrl+Alt+0 {
-    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume-up.sh"; }
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume up"; }
     Ctrl+Alt+9 {
-    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume-down.sh"; }
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume down"; }
     Ctrl+Alt+8 {
-    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume-mute.sh"; }
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/volume mute"; }
 
     // 屏幕亮度
     Ctrl+Alt+Shift+0 {
-    spawn "sh" "-c" "$HOME/.local/lib/shell/system/brightness-up.sh"; }
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/brightness up"; }
     Ctrl+Alt+Shift+9 {
-    spawn "sh" "-c" "$HOME/.local/lib/shell/system/brightness-down.sh"; }
+    spawn "sh" "-c" "$HOME/.local/lib/shell/system/brightness down"; }
 
     //录制视频
     Ctrl+Alt+Shift+6 {
@@ -365,9 +368,10 @@ binds {
     spawn "sh" "-c" "$HOME/.local/lib/shell/utils/record-screen.sh stop"; }
 
     // 系统信息
-    Ctrl+Alt+Shift+I { spawn "sh" "-c" "$HOME/.local/lib/shell/system/system-status.sh"; }
+    Ctrl+Alt+Shift+I { spawn "sh" "-c" "$HOME/.local/lib/shell/system/status"; }
 
     // mc 游戏中文输入实现
     Shift+Return {
     spawn "sh" "-c" "$HOME/.local/lib/shell/utils/minecraft-input.sh"; }
+
 }

@@ -20,12 +20,6 @@ if [ -f ~/.bash_prompt ]; then
     source ~/.bash_prompt
 fi
 
-# 自动启动 Zellij
-# eval "$(zellij setup --generate-auto-start bash)"
-# 自动启动 zoxide,智能化现代cd
-# eval "$(zoxide init --cmd cd bash)"
-wl-paste --watch cliphist store &
-
 # Bash 模式
 set -o emacs
 
@@ -36,8 +30,4 @@ set -o emacs
 # 禁用历史记录临时文件
 shopt -s histappend
 # 确保历史记录立即写入，而不是生成临时文件
-PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"

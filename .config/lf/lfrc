@@ -2,7 +2,6 @@ source ~/.config/lf/cmds
 source ~/.config/lf/maps
 
 # previewer
-set sixel
 #set preview true
 #set previewer chafa -f symbols {}
 #set previewer ~/.config/lf/filepreviewer
@@ -18,7 +17,9 @@ set hidden true
 set ratios 1:2:4
 
 # set directory at first and dotfile at last
-set reverse true
+set dirfirst true
+# 反向
+#set reverse true
 
 set ifs "\n"
 

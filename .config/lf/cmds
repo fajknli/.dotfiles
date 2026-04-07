@@ -38,8 +38,21 @@ cmd trash ${{
 # 对于文本文件，nvim可以多标签打开多个文件
 cmd open &{{
     case $(file --mime-type -Lb $f) in
-        text/*) lf -remote "send $id \$$EDITOR -p \$fx";;
-        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+        text/*)
+            nvim -p $fx
+            ;;
+        image/*)
+            imv $f > /dev/null 2>&1 &
+            ;;
+        application/pdf)
+            zathura $f > /dev/null 2>&1 &
+            ;;
+        video/*|audio/*)
+            mpv $f > /dev/null 2>&1 &
+            ;;
+        *)
+            xdg-open "$f" > /dev/null 2>&1 &
+            ;;
     esac
 }}
 
@@ -76,11 +89,9 @@ cmd extract ${{
 
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
-    set -f
-    mkdir $1
-    cp -r $fx $1
-    tar czf $1.tar.gz $fx
-    rm -rf $1
+    output="${f%.*}"
+    tar czf "$output.tar.gz" $fx
+    lf -remote "send $id echo '已压缩为: $output.tar.gz'"
 }}
 
 # compress current file or selected files with zip
@@ -98,8 +109,8 @@ cmd zip ${{
 cmd bulk-rename ${{
     old="$(mktemp)"
     new="$(mktemp)"
-    if [ -n "$fs" ]; then
-        fs="$(basename -a -- $fs)"
+    if [ -n "$fx" ]; then
+        fs="$(basename -a -- $fx)"
     else
         fs="$(ls)"
     fi
@@ -140,8 +151,86 @@ cmd nvim-tabs ${{
     nvim -p $fx
 }}
 
-cmd on-quit ${{
-    if [ -n "$PWD" ]; then
-        echo "cd \"$PWD\""
+# 收集当前目录的所有文本文件内容
+cmd collect &{{
+    current_dir="$PWD"
+    dir_name="$(basename "$current_dir")"
+    
+    # ========== 头部信息 ==========
+    content=""
+    content+="========================================"$'\n'
+    content+="[目录] $current_dir"$'\n'
+    content+="[时间] $(date '+%Y-%m-%d %H:%M:%S') | [系统] $(uname -o) | [用户] $(whoami)@$(hostname)"$'\n'
+    content+="[说明] 以下文件用于配置 $dir_name，请分析并提供建议"$'\n'
+    content+="========================================"$'\n\n'
+    
+    # ========== 文件树 ==========
+    content+="[文件结构]"$'\n'
+    content+="----------------------------------------"$'\n'
+    
+    file_list=$(find "$current_dir" -maxdepth 2 -type f 2>/dev/null | grep -vE '/\.git/|/node_modules/|/\.cache/|/target/|/dist/|/build/|\.log$|\.tmp$|\.swp$|~$' | sort)
+    
+    if [ -n "$file_list" ]; then
+        content+="$(echo "$file_list" | sed "s|^$current_dir/||")"$'\n'
+    else
+        content+="(空目录)"$'\n'
     fi
+    
+    content+=$'\n'"========================================"$'\n\n'
+    
+    # ========== 文件内容 ==========
+    content+="[文件内容]"$'\n'
+    content+="========================================"$'\n\n'
+    
+    file_count=0
+    skip_count=0
+    skip_reasons=""
+    
+    while read -r file; do
+        [ -f "$file" ] || continue
+        
+        rel_path="${file#$current_dir/}"
+        size=$(stat -c%s "$file" 2>/dev/null || stat -f%z "$file" 2>/dev/null)
+        size_human=$(numfmt --to=iec "$size" 2>/dev/null || echo "${size}B")
+        
+        # 检查大小
+        if [ "$size" -gt 1048576 ]; then
+            skip_count=$((skip_count + 1))
+            skip_reasons+="  - $rel_path (跳过原因: 超过1MB, 实际$size_human)"$'\n'
+            continue
+        fi
+        
+        # 检查文件类型
+        file_type="$(file -b "$file" 2>/dev/null)"
+        
+        if echo "$file_type" | grep -qiE 'text|empty|ascii|utf-?8|json|yaml|xml|toml|kdl|ini|conf|script|source|markdown|config|data'; then
+            # 提取扩展名作为语言标记
+            ext="${rel_path##*.}"
+            [ "$ext" = "$rel_path" ] && ext="txt"
+            
+            content+="-- $rel_path -- $size_human -- $file_type --"$'\n'
+            content+="[$ext]"$'\n'
+            content+="$(cat "$file" 2>/dev/null)"$'\n'
+            content+=$'\n'
+            file_count=$((file_count + 1))
+        else
+            skip_count=$((skip_count + 1))
+            skip_reasons+="  - $rel_path (跳过原因: 二进制文件, 类型: $file_type)"$'\n'
+        fi
+    done <<< "$file_list"
+    
+    # ========== 统计 ==========
+    content+="========================================"$'\n'
+    content+="[统计] 已收集: $file_count 个文件, 已跳过: $skip_count 个文件"$'\n'
+    
+    if [ -n "$skip_reasons" ]; then
+        content+=$'\n'"[跳过详情]"$'\n'"$skip_reasons"
+    fi
+    
+    content+="========================================"$'\n'
+    
+    # 复制
+    echo "$content" | wl-copy 2>/dev/null && \
+        lf -remote "send $id echo '已复制 $file_count 个文件的内容,可作为AI的prompt'" || \
+        lf -remote "send $id echo '复制失败'"
 }}

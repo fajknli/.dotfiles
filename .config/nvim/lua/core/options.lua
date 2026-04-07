@@ -1,6 +1,5 @@
 -- options 
 -- 使用 vim.opt 统一设置
-vim.opt.relativenumber = true      -- 等同于 vim.wo.relativenumber
 vim.opt.mouse = 'a'                -- 在所有模式下启用鼠标支持
 vim.opt.scrolloff = 8              -- 保持光标上下始终有 8 行上下文
 vim.opt.cmdheight = 1              -- 设置命令行的高度为 1
@@ -87,7 +86,6 @@ vim.opt.smartindent = true    -- 智能缩进（比 autoindent 更智能）
 -- vim.o.smarttab = true      -- 主要用于 C 语言，通常不需要单独设置
 
 -- 文本格式（优化版）
-vim.opt.wrap = true           -- 启用自动换行
 vim.opt.linebreak = true      -- 在单词边界换行（而非字符边界）
 vim.opt.breakindent = true    -- 建议添加：换行后保持缩进
 vim.opt.showbreak = "↳ "      -- 建议添加：换行标识符号

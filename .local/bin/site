@@ -1,86 +1,103 @@
 #!/bin/sh
 
+: "${BROWSER:=qutebrowser}"
+
+# URL 编码函数
+url_encode() {
+    printf '%s' "$1" | od -An -tx1 | tr ' ' '%' | tr -d '\n'
+}
+
+# ============================================
+# 站点列表 - 按分类整理
+# ============================================
+
 site_lists="
-mynote|file:///home/fajknli/Documents/Notes/notes_rst/build/html/index.html
-wikipedia|https://zh.wikipedia.org/wiki/
-deepseek|https://chat.deepseek.com/
-qwenai|https://chat.qwen.ai/
-gemini|https://deepmind.google/models/gemini/
-kimiai|https://www.kimi.com/
-yuanbaoai|https://yuanbao.tencent.com/chat/
-claudeai|https://claude.ai/chat/
-chatgptai|https://chatgpt.com/
+ai-deepseek|https://chat.deepseek.com/
+ai-qwen|https://chat.qwen.ai/
+ai-gemini|https://gemini.google.com/
+ai-kimi|https://www.kimi.com/
+ai-yuanbao|https://yuanbao.tencent.com/chat/
+ai-doubao|https://www.doubao.com/chat/
+ai-xinghuo|https://xinghuo.xfyun.cn/
+ai-zhipu|https://chatglm.cn/main/alltoolsdetail?lang=zh
+ai-yiyan|https://yiyan.baidu.com/
+ai-mita|https://metaso.cn/
+ai-claude|https://claude.ai/chat/
+ai-chatgpt|https://chatgpt.com/
+ai-huggingface|https://huggingface.co/
+ai-ollama|https://ollama.com/search
+
+github|https://github.com/fajknli
+gitee|https://gitee.com/
 nvim|https://neovim.io
-dockerdoc|https://docs.docker.com
-mygithub|https://github.com/fajknli
-mygitee|https://gitee.com/
-unixchad|https://github.com/gnuunixchad
-mcwiki|https://zh.minecraft.wiki/?search=
-minecraft-office|https://www.minecraft.net/
-minecraft-skin|https://www.minecraftskins.com/
-archwiki|https://wiki.archlinux.org/index.php?search=
-archstatus|https://status.archlinux.org/
-niriconfigration|https://yalter.github.io/niri/Configuration%3A-Introduction.html
+docker|https://docs.docker.com
+sphinx|https://www.sphinx-doc.org/en/master/usage/quickstart.html
 color|https://colorhexa.com
 lesspass|https://www.lesspass.com/
-huggingface|https://huggingface.co/
-ollama|https://ollama.com/search
-stardict|https://web.archive.org/web/20200702000038/http://download.huzheng.org/
-achiveorg|https://web.archive.org/
+
+archwiki|https://wiki.archlinux.org/index.php?search=
+debian|https://www.debian.club/en/basics/first-boot
 fedoradoc|https://docs.fedoraproject.org/en-US/docs/
+mcwiki|https://zh.minecraft.wiki/
+minecraft-tool|https://mc-utils.vercel.app/
+chunkbase|https://www.chunkbase.com/
+seedmap|https://mcseedmap.net/
+techmc|http://techmc.wiki/
+niri|https://yalter.github.io/niri/Configuration%3A-Introduction.html
+
+mynote|file:///home/fajknli/Documents/Notes/notes_rst/build/html/index.html
 feishu|https://www.feishu.cn/
+aliyun|https://cn.aliyun.com/
+xfxcloud|https://home.xfx.life/
+haihaiyun|https://cloud.sea-studio.top/
+outlook|https://outlook.live.com/mail/
+
 youtube|https://youtube.com/
 bilibili|https://www.bilibili.com/
 douyin|https://www.douyin.com/
-chunkbase|https://www.chunkbase.com/
-seedmap|https://mcseedmap.net/
-wyyyy|https://music.163.com/
-wyyyyapi|https://163api.qijieya.cn/
-mindustry|https://mindustrygame.github.io/
-haihaiyun|https://cloud.sea-studio.top/
-aliyun|https://cn.aliyun.com/
-outlook|https://outlook.live.com/mail/
-techmc|http://techmc.wiki/#/
+
+music163|https://music.163.com/
+music163-api|https://163api.qijieya.cn/
+
+minecraft|https://www.minecraft.net/
+minecraft-skin|https://www.minecraftskins.com/
 modrinth|https://modrinth.com/
 fabric|https://fabricmc.net/use/installer/
-freemovie-55|http://wcvod.com/
-freemovie-ddys|https://ddys.mov/
-freemovie-dyyy|https://www.yys02.cc/
-freemovee-cupfox|https://www.cupfox.in/
-freemovie-ole|http://olevod.com/
-minecraft-tool-mc-utils|https://mc-utils.vercel.app/
-xfxcloud|https://home.xfx.life/
-sphinx|https://www.sphinx-doc.org/en/master/usage/quickstart.html
-debian-basics|https://www.debian.club/en/basics/first-boot
+mindustry|https://mindustrygame.github.io/
+
+unixchad|https://github.com/gnuunixchad
+archive|https://web.archive.org/
+stardict|https://web.archive.org/web/20200702000038/http://download.huzheng.org/
+archstatus|https://status.archlinux.org/
+wikipedia|https://zh.wikipedia.org/wiki/
+
+terminal-color|https://terminal.sexy/
+crontable|https://crontab.guru/
+free-toolbox|https://fmhy.net/
+free-movie|https://yinghezhinan.com/
 "
 
 if ! command -v wmenu >/dev/null 2>&1; then
-    echo "wmenu is not install!" >&2
+    echo "wmenu is not installed!" >&2
     notify-send -u critical "There is no [wmenu]"
     exit 1
 elif ! command -v qutebrowser >/dev/null 2>&1; then
-    echo "firefox is not install!" >&2
-    notify-send -u critical "There is no [firefox]"
+    echo "qutebrowser is not installed!" >&2
+    notify-send -u critical "There is no [qutebrowser]"
     exit 1
 fi
 
 choice="$(printf '%s' "$site_lists" | grep -v '^$' | wmenu -i -l 15 -f "0xProto Nerd Font Regular 12" -N "#1f2032" -n "#a9b5d5" -S "#a0d0a0" -s "#151622")"
 
-# Here,the $choice is only matched once and then it will quit the case sentence
-# so don't worry about twice match in case
 if [ -n "$choice" ]; then
     case "$choice" in
         *"|"*)
-            site="$(printf '%s' "$choice" | awk -F '|' '{print $2}')"
-            #qutebrowser "$site"
-            $BROWSER "$site"
+            site="${choice#*|}"
+            "$BROWSER" "$site"
             ;;
         *)
-    #        encoded_query="$(printf '%s' "$choice" | sed -e 's/%/%25/g' -e 's/ /%20/g' -e 's/?/%3F/g' -e 's/&/%26/g' -e 's/=/%3D/g')"
-    #        it is not working
-            #qutebrowser "https://cn.bing.com/search?q=$choice"
-            $BROWSER "https://cn.bing.com/search?q=$choice"
+            encoded_query="$(url_encode "$choice")"
+            "$BROWSER" "https://cn.bing.com/search?q=$encoded_query"
             ;;
     esac
 fi
-#fi

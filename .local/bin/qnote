@@ -1,0 +1,24 @@
+#!/bin/sh
+# ~/.local/bin/qnote - 快速笔记
+
+NOTE_FILE="$HOME/Notes/all.md"
+
+# 确保目录存在
+mkdir -p "$(dirname "$NOTE_FILE")"
+
+# 输入笔记
+note=$(zenity --entry \
+    --title="快速笔记" \
+    --text="📝 内容:" \
+    --width=600)
+
+# 如果有内容，追加到文件
+if [ -n "$note" ]; then
+    {
+        echo ""
+        echo ""
+        echo "## $(date '+%Y-%m-%d %H:%M:%S')"
+        echo "$note"
+    } >> "$NOTE_FILE"
+    notify-send -u low "✓ 笔记已保存" "$note"
+fi

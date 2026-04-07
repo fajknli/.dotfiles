@@ -48,6 +48,7 @@ set -- \
     "$HOME/.config/zellij" \
     "$HOME/.config/zathura" \
     "$HOME/.config/rofi" \
+    "$HOME/.config/dconf" \
     "$HOME/.local/lib" \
     "$HOME/.local/bin" \
     "$HOME/.local/share/fcitx5" \
@@ -127,7 +128,7 @@ fi
 
 # creat a directory for USB diver
 # you can easily copy this to USB diver for backup the file
-mkdir -p dotfiles
+mkdir -p "$HOME"/dotfiles
 if [ -d "$HOME"/dotfiles ]; then
     rm -rf "$HOME"/dotfiles
     mkdir -p dotfiles

@@ -1,0 +1,145 @@
+#!/bin/sh
+
+# status.sh - 系统状态收集脚本
+
+# 获取系统信息
+TIME=$(date "+%Y-%m-%d %H:%M:%S")
+UPTIME=$(uptime -p | sed 's/up //')
+HOSTNAME=$(hostname)
+USER=$(whoami)
+OS_INFO=$(grep PRETTY_NAME /etc/os-release | cut -d= -f2 | tr -d '"')
+KERNEL=$(uname -r)
+SHELL_NAME=$(basename "$SHELL")
+DESKTOP=$(echo "$XDG_CURRENT_DESKTOP" 2>/dev/null || echo "unknown")
+SESSION_TYPE=$(echo "$XDG_SESSION_TYPE" 2>/dev/null || echo "unknown")
+
+# CPU 信息
+CPU_MODEL=$(grep 'model name' /proc/cpuinfo | head -1 | cut -d: -f2 | sed 's/^[ \t]*//;s/(R)//g;s/@.*//;s/ *$//')
+CPU_CORES=$(grep -c ^processor /proc/cpuinfo)
+CPU_LOAD=$(awk '{printf "%.2f / %.2f / %.2f", $1, $2, $3}' /proc/loadavg)
+
+# CPU 温度
+CPU_TEMP="N/A"
+for zone in /sys/class/thermal/thermal_zone*/temp; do
+    if [ -f "$zone" ]; then
+        CPU_TEMP=$(awk '{printf "%.0f", $1/1000}' "$zone")°C
+        break
+    fi
+done
+if [ "$CPU_TEMP" = "N/A" ] && command -v sensors >/dev/null 2>&1; then
+    CPU_TEMP=$(sensors 2>/dev/null | grep -i "Tctl" | awk '{print $2}' | tr -d '+°C' | head -1)°C
+fi
+
+# GPU 信息
+GPU_INFO=$(lspci 2>/dev/null | grep -i vga | head -1 | cut -d: -f3 | sed 's/^[ \t]*//' || echo "N/A")
+
+# 内存信息
+MEMORY=$(free -h | awk '/Mem:/ {printf "%.1fG / %.1fG (%.0f%%)", $3, $2, $3/$2*100}')
+
+# 磁盘信息
+ROOT_DISK=$(df -h / | awk 'NR==2 {printf "%s / %s (%s)", $3, $2, $5}')
+HOME_DISK=$(df -h /home 2>/dev/null | awk 'NR==2 {printf "%s / %s (%s)", $3, $2, $5}' || echo "N/A")
+
+# 亮度
+BRIGHTNESS="N/A"
+BUS_NUMBER=$(ddcutil detect 2>/dev/null | grep -A1 "I2C bus:" | head -1 | grep -oP '/dev/i2c-\K\d+')
+if [ -n "$BUS_NUMBER" ]; then
+    BRIGHTNESS=$(ddcutil --bus="$BUS_NUMBER" getvcp 10 2>/dev/null | awk '/current value =/ {print $9}' | tr -d ',')%
+fi
+
+# 音量
+if command -v wpctl >/dev/null 2>&1; then
+    VOLUME=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | awk '{printf "%d", $2 * 100}')%
+    MUTE=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q "MUTED" && echo "静音" || echo "未静音")
+else
+    VOLUME="N/A"
+    MUTE="N/A"
+fi
+
+# 网络信息
+IP_ADDR=$(ip route get 1 2>/dev/null | awk '{print $7; exit}' || echo "N/A")
+GATEWAY=$(ip route get 1 2>/dev/null | awk '{print $3; exit}' || echo "N/A")
+DNS=$(grep -m1 '^nameserver' /etc/resolv.conf 2>/dev/null | awk '{print $2}' || echo "N/A")
+
+# 电池信息
+BATTERY="N/A"
+for bat in /sys/class/power_supply/BAT*; do
+    if [ -f "$bat/capacity" ]; then
+        CAP=$(cat "$bat/capacity")
+        STATUS=$(cat "$bat/status" 2>/dev/null)
+        BATTERY="${CAP}% (${STATUS})"
+        break
+    fi
+done
+
+# 最近登录
+LAST_LOGIN=$(last -n 1 -R 2>/dev/null | head -1 | awk '{print $1, $4, $5, $6}' || echo "N/A")
+
+# 包数量
+if command -v pacman >/dev/null 2>&1; then
+    PAC_COUNT=$(pacman -Q 2>/dev/null | wc -l)
+    AUR_COUNT=$(pacman -Qm 2>/dev/null | wc -l)
+else
+    PACKAGES="N/A"
+fi
+
+# 构建完整输出
+OUTPUT="
+[系统信息]
+时间: ${TIME}
+主机: ${HOSTNAME}
+用户: ${USER}
+系统: ${OS_INFO}
+内核: ${KERNEL}
+Shell: ${SHELL_NAME}
+桌面: ${DESKTOP}
+会话类型: ${SESSION_TYPE}
+运行时间: ${UPTIME}
+
+[硬件信息]
+CPU: ${CPU_MODEL}
+核心数: ${CPU_CORES}
+CPU温度: ${CPU_TEMP}
+CPU负载: ${CPU_LOAD}
+GPU: ${GPU_INFO}
+
+[资源使用]
+内存: ${MEMORY}
+根分区: ${ROOT_DISK}
+家目录: ${HOME_DISK}
+
+[设备设置]
+音量: ${VOLUME} (${MUTE})
+亮度: ${BRIGHTNESS}
+
+[网络信息]
+IP地址: ${IP_ADDR}
+网关: ${GATEWAY}
+DNS: ${DNS}
+
+[其他]
+电池: ${BATTERY}
+软件包: 官方: ${PAC_COUNT} AUR: ${AUR_COUNT}
+最近登录: ${LAST_LOGIN}
+"
+
+# 终端输出
+echo "$OUTPUT"
+
+# 发送通知（单个，完整内容）
+# 使用 <span> 标签可以缩小字体，同时通知框会自动调整大小
+notify-send "系统状态报告" "$OUTPUT"
+
+# 复制到剪贴板
+if command -v wl-copy >/dev/null 2>&1; then
+    echo "$OUTPUT" | wl-copy
+    echo ""
+    echo "已复制到剪贴板"
+elif command -v xclip >/dev/null 2>&1; then
+    echo "$OUTPUT" | xclip -selection clipboard
+    echo ""
+    echo "已复制到剪贴板"
+else
+    echo ""
+    echo "警告: 未找到剪贴板工具"
+fi
