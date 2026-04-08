@@ -63,47 +63,185 @@ cmd open &{{
 cmd extract ${{
     set -f
     case $f in
-        # 现有格式
-        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) mkdir -p "${f%.tar.*}" && tar -xjvf $f -C "${f%.tar.*}";;
-        *.tar.gz|*.tgz) mkdir -p "${f%.tar.*}" && tar -xzvf $f -C "${f%.tar.*}";;
-        *.tar.xz|*.txz) mkdir -p "${f%.tar.*}" && tar -xJvf $f -C "${f%.tar.*}";;
-        *.tar.zst|*.tzst) mkdir -p "${f%.tar.*}" && tar --zstd -xvf $f -C "${f%.tar.*}";;
-        *.zip) unzip -d "${f%.zip}" "$f";;
-        *.rar) mkdir -p "${f%.rar}" && unrar x "$f" "${f%.rar}";;
-        *.7z) 7z x "$f" -o"${f%.7z}";;
-        
-        # 新增格式
-        *.tar) mkdir -p "${f%.tar}" && tar -xvf "$f" -C "${f%.tar}";;
-        *.gz) gunzip -k "$f";;
-        *.bz2) bunzip2 -k "$f";;
-        *.xz) unxz -k "$f";;
-        *.zst) unzstd -k "$f";;
-        
-        # 特殊格式
-        *.deb) mkdir -p "${f%.deb}" && ar x "$f" --output="${f%.deb}";;
-        *.rpm) mkdir -p "${f%.rpm}" && rpm2cpio "$f" | cpio -idmv -D "${f%.rpm}";;
-        
-        *) echo "不支持的文件格式: $f";;
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) 
+            tar -xjvf "$f" ;;
+        *.tar.gz|*.tgz) 
+            tar -xzvf "$f" ;;
+        *.tar.xz|*.txz) 
+            tar -xJvf "$f" ;;
+        *.tar.zst|*.tzst) 
+            tar --zstd -xvf "$f" ;;
+        *.tar) 
+            tar -xvf "$f" ;;
+        *.zip) 
+            unzip "$f" ;;
+        *.rar) 
+            unrar x "$f" ;;
+        *.7z) 
+            7z x "$f" ;;
+        *.gz) 
+            gunzip -k "$f" ;;
+        *.bz2) 
+            bunzip2 -k "$f" ;;
+        *.xz) 
+            unxz -k "$f" ;;
+        *.zst) 
+            unzstd -k "$f" ;;
+        *.deb) 
+            mkdir -p "${f%.deb}" && ar x "$f" --output="${f%.deb}" ;;
+        *.rpm) 
+            mkdir -p "${f%.rpm}" && rpm2cpio "$f" | cpio -idmv -D "${f%.rpm}" ;;
+        *) 
+            echo "不支持的文件格式: $f" ;;
     esac
+    lf -remote "send $id reload"
 }}
 
-# compress current file or selected files with tar and gunzip
+# 打包选中的文件/目录为 tar.gz
 cmd tar ${{
-    output="${f%.*}"
-    tar czf "$output.tar.gz" $fx
-    lf -remote "send $id echo '已压缩为: $output.tar.gz'"
+    if [ -n "$fx" ]; then
+        # 获取当前工作目录
+        current_dir="$PWD"
+        
+        # 将选中的文件转换为相对路径
+        rel_files=""
+        for file in $fx; do
+            # 去掉当前目录前缀，得到相对路径
+            rel_file="${file#$current_dir/}"
+            [ "$rel_file" = "$file" ] && rel_file=$(basename "$file")
+            rel_files="$rel_files $rel_file"
+        done
+        
+        # 获取第一个文件的文件名（不含扩展名）作为包名
+        first_file="${fx%% *}"
+        basename=$(basename "$first_file")
+        base="${basename%.*}"
+        [ "$base" = "$basename" ] && base="$basename"
+        [ -z "$base" ] && base="archive"
+        
+        # 使用相对路径打包
+        cd "$current_dir"
+        tar czf "$base.tar.gz" $rel_files
+        lf -remote "send $id echo \"已打包: $base.tar.gz\""
+    else
+        dirname=$(basename "$PWD")
+        tar czf "$dirname.tar.gz" -- * 2>/dev/null
+        lf -remote "send $id echo \"已打包整个目录: $dirname.tar.gz\""
+    fi
 }}
 
-# compress current file or selected files with zip
+# 打包为 zip
 cmd zip ${{
-    set -f
-    mkdir $1
-    cp -r $fx $1
-    zip -r $1.zip $1
-    rm -rf $1
+    if [ -n "$fx" ]; then
+        current_dir="$PWD"
+        
+        # 转换为相对路径
+        rel_files=""
+        for file in $fx; do
+            rel_file="${file#$current_dir/}"
+            [ "$rel_file" = "$file" ] && rel_file=$(basename "$file")
+            rel_files="$rel_files $rel_file"
+        done
+        
+        first_file="${fx%% *}"
+        basename=$(basename "$first_file")
+        base="${basename%.*}"
+        [ "$base" = "$basename" ] && base="$basename"
+        [ -z "$base" ] && base="archive"
+        
+        cd "$current_dir"
+        zip -r "$base.zip" $rel_files
+        lf -remote "send $id echo \"已打包: $base.zip\""
+    else
+        dirname=$(basename "$PWD")
+        zip -r "$dirname.zip" -- * 2>/dev/null
+        lf -remote "send $id echo \"已打包整个目录: $dirname.zip\""
+    fi
 }}
 
-# You can define a command to rename multiple files at the same time using your text editor to change the names.
+# 打包为 tar.xz
+cmd tarxz ${{
+    if [ -n "$fx" ]; then
+        current_dir="$PWD"
+        
+        rel_files=""
+        for file in $fx; do
+            rel_file="${file#$current_dir/}"
+            [ "$rel_file" = "$file" ] && rel_file=$(basename "$file")
+            rel_files="$rel_files $rel_file"
+        done
+        
+        first_file="${fx%% *}"
+        basename=$(basename "$first_file")
+        base="${basename%.*}"
+        [ "$base" = "$basename" ] && base="$basename"
+        [ -z "$base" ] && base="archive"
+        
+        cd "$current_dir"
+        tar cJf "$base.tar.xz" $rel_files
+        lf -remote "send $id echo \"已打包: $base.tar.xz\""
+    else
+        dirname=$(basename "$PWD")
+        tar cJf "$dirname.tar.xz" -- * 2>/dev/null
+        lf -remote "send $id echo \"已打包整个目录: $dirname.tar.xz\""
+    fi
+}}
+
+# 打包为 tar（无压缩）
+cmd taronly ${{
+    if [ -n "$fx" ]; then
+        current_dir="$PWD"
+        
+        rel_files=""
+        for file in $fx; do
+            rel_file="${file#$current_dir/}"
+            [ "$rel_file" = "$file" ] && rel_file=$(basename "$file")
+            rel_files="$rel_files $rel_file"
+        done
+        
+        first_file="${fx%% *}"
+        basename=$(basename "$first_file")
+        base="${basename%.*}"
+        [ "$base" = "$basename" ] && base="$basename"
+        [ -z "$base" ] && base="archive"
+        
+        cd "$current_dir"
+        tar cf "$base.tar" $rel_files
+        lf -remote "send $id echo \"已打包: $base.tar\""
+    else
+        dirname=$(basename "$PWD")
+        tar cf "$dirname.tar" -- * 2>/dev/null
+        lf -remote "send $id echo \"已打包整个目录: $dirname.tar\""
+    fi
+}}
+
+# 打包为 7z
+cmd sevenzip ${{
+    if [ -n "$fx" ]; then
+        current_dir="$PWD"
+        
+        rel_files=""
+        for file in $fx; do
+            rel_file="${file#$current_dir/}"
+            [ "$rel_file" = "$file" ] && rel_file=$(basename "$file")
+            rel_files="$rel_files $rel_file"
+        done
+        
+        first_file="${fx%% *}"
+        basename=$(basename "$first_file")
+        base="${basename%.*}"
+        [ "$base" = "$basename" ] && base="$basename"
+        [ -z "$base" ] && base="archive"
+        
+        cd "$current_dir"
+        7z a "$base.7z" $rel_files > /dev/null
+        lf -remote "send $id echo \"已打包: $base.7z\""
+    else
+        dirname=$(basename "$PWD")
+        7z a "$dirname.7z" -- * > /dev/null 2>&1
+        lf -remote "send $id echo \"已打包整个目录: $dirname.7z\""
+    fi
+}}
 
 # 多选文件/目录换名
 cmd bulk-rename ${{

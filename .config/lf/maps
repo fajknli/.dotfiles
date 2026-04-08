@@ -55,3 +55,9 @@ map <c-y> collect
 
 # 刷新
 map <c-r> reload
+
+# 打包相关快捷键
+map t tar       # 打包为 tar.gz
+map T tarxz     # 打包为 tar.xz (更高压缩)
+map z zip       # 打包为 zip
+map Z sevenzip  # 打包为 7z (最高压缩)
