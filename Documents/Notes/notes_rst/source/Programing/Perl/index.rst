@@ -1,8 +1,0 @@
-Perl
-#######################
-
-.. toctree::
-   :titlesonly:
-   :glob:
-
-   *

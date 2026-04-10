@@ -28,6 +28,7 @@ alias cfg="cd ~/.config"
 alias cmc="cd ~/.local/share/PrismLauncher/"
 alias mkcd='mkdir $1 && cd $1'
 alias ckalias='vim ~/.bash_aliases'
+alias gjwd='cd ~/Documents/Notes && mkdocs serve --open'
 
 alias vAstatus='systemctl status dae'
 

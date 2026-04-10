@@ -2,11 +2,6 @@
 
 # Bash feature 'pipefail'
 # set -euo pipefail
-
-#!/bin/sh
-
-# Bash feature 'pipefail'
-# set -euo pipefail
 set -eu
 
 # 出现参数解析问题,使用eval(硬编码避免风险)
@@ -128,19 +123,20 @@ fi
 
 # creat a directory for USB diver
 # you can easily copy this to USB diver for backup the file
-mkdir -p "$HOME"/dotfiles
-if [ -d "$HOME"/dotfiles ]; then
-    rm -rf "$HOME"/dotfiles
-    mkdir -p dotfiles
-    for item in "$@"; do
-        if [ -f "$item" ]; then
-            cp "$item" "$HOME"/dotfiles
-            echo "cped FILE ${item}"
-        fi
 
-        if [ -d "$item" ]; then
-            cp -r "$item" "$HOME"/dotfiles
-            echo "cped DIRECTORY ${item}"
-        fi
-    done
-fi
+# mkdir -p "$HOME"/dotfiles
+# if [ -d "$HOME"/dotfiles ]; then
+#     rm -rf "$HOME"/dotfiles
+#     mkdir -p dotfiles
+#     for item in "$@"; do
+#         if [ -f "$item" ]; then
+#             cp "$item" "$HOME"/dotfiles
+#             echo "cped FILE ${item}"
+#         fi
+# 
+#         if [ -d "$item" ]; then
+#             cp -r "$item" "$HOME"/dotfiles
+#             echo "cped DIRECTORY ${item}"
+#         fi
+#     done
+# fi

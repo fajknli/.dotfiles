@@ -1,0 +1,23 @@
+# 系统管理命令
+
+- [crontab](crontab.md) - 定时任务
+- [dd](dd.md) - 数据复制与转换
+- [df](df.md) - 磁盘空间使用
+- [du](du.md) - 目录磁盘使用量
+- [fdisk](fdisk.md) - 磁盘分区工具
+- [free](free.md) - 内存使用情况
+- [fstab](fstab.md) - 文件系统挂载配置
+- [hostnamectl](hostnamectl.md) - 主机名管理
+- [kill](kill.md) - 终止进程
+- [last](last.md) - 登录历史记录
+- [localectl](localectl.md) - 区域和键盘布局
+- [lsblk](lsblk.md) - 列出块设备
+- [mkfs](mkfs.md) - 创建文件系统
+- [mount](mount.md) - 挂载文件系统
+- [ps](ps.md) - 查看进程状态
+- [timedatectl](timedatectl.md) - 系统时间管理
+- [uname](uname.md) - 查看系统信息
+- [uptime](uptime.md) - 系统运行时间
+- [user-group](user-group.md) - 用户和组管理
+- [w](w.md) - 查看登录用户及活动
+- [who](who.md) - 显示登录用户信息

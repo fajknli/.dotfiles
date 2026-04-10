@@ -1,8 +1,0 @@
-Awk
-#######################
-
-.. toctree::
-   :titlesonly:
-   :glob:
-
-   *

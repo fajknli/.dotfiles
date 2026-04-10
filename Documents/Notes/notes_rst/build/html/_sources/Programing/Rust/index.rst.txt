@@ -1,8 +1,0 @@
-Rust
-#######################
-
-.. toctree::
-   :titlesonly:
-   :glob:
-
-   *

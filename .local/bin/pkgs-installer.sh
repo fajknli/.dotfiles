@@ -43,9 +43,11 @@ rsync \
 dae \
 speedtest-cli \
 "
+
 # 系统工具
 system_utilities="\
 ddcutil \
+dmidecode \
 sqlite \
 lsb-release \
 cronie \
@@ -68,16 +70,13 @@ iputils \
 coreutils \
 mtr \
 base-devel \
-arch-wiki-docs \
 arch-wiki-lite \
-arch-wiki-docs-zh-cn \
 firejail \
 "
 
 # Ai
 ai="\
 llama.cpp \
-rocm-hip-sdk \
 "
 
 # 命令行工具
@@ -102,16 +101,13 @@ zip \
 7zip \
 exfat-utils \
 tree \
-make \
 shellcheck \
 xh \
 rustup \
-gcc \
 yt-dlp \
 unrar \
 zoxide \
 wev \
-neomutt \
 imagemagick \
 chafa \
 fd \
@@ -201,8 +197,11 @@ qt5-declarative \
 layer-shell-qt \
 "
 
-# Python 库 (Python Libraries)
+# Python 库
 python_libraries="\
+mkdocs \
+mkdocs-material \
+mkdocs-material-extensions \
 pypinyin \
 mypy \
 python-pipx \
@@ -219,16 +218,9 @@ python-tqdm \
 python-click \
 python-emoji \
 python-pillow \
-python-sphinx \
-python-sphinx-lv2-theme \
-python-sphinx-furo \
-python-sphinx-autobuild \
-python-sphinx-alabaster-theme \
-python-guzzle-sphinx-theme \
-python-sphinx_rtd_theme \
 "
 
-# 服务器工具 (Server Tools)
+# 服务器工具
 server_tools="\
 redis \
 nginx \
@@ -240,38 +232,117 @@ cri-o \
 crictl \
 "
 
-# 文档与词典 (Documentation & Dictionary)
+# 文档与词典
 documentation_dictionary="\
 sdcv \
 "
+
 # 图标
 icon_theme="\
 papirus-icon-theme \
 "
-#gtk 主题
+
+# gtk 主题
 gtk_theme="\
 adapta-gtk-theme \
 "
+
 # cursor-theme
 cursor_theme="\
 breeze-cursors \
 "
 
-sudo pacman -Syu --noconfirm --needed --color auto \
-$documentation_dictionary\
-$server_tools\
-$python_libraries\
-$qt\
-$graphics_drivers_libraries\
-$audio_bluetooth\
-$wayland_wm\
-$gui_application\
-$cli_tools\
-$system_utilities\
-$network_tools\
-$fonts_localization\
-$ai\
-$icon_theme\
-$gtk_theme\
-$cursor_theme\
+# 清理函数
+clean_system() {
+    echo "=== 清理 pacman 缓存 ==="
+    sudo pacman -Sc
 
+    echo ""
+    echo "=== 删除孤儿包 ==="
+    orphans=$(pacman -Qdtq 2>/dev/null)
+    if [ -n "$orphans" ]; then
+        echo "发现孤儿包:"
+        echo "$orphans"
+        echo ""
+        printf "是否删除这些孤儿包？(y/N): "
+        read answer
+        case "$answer" in
+            y|Y|yes|YES)
+                sudo pacman -Rns $orphans
+                ;;
+            *)
+                echo "跳过删除孤儿包"
+                ;;
+        esac
+    else
+        echo "没有孤儿包"
+    fi
+
+    echo ""
+    echo "=== 清理 journal 日志 ==="
+    sudo journalctl --vacuum-size=200M
+
+    echo ""
+    echo "=== 清理家目录缓存 ==="
+    rm -rf ~/.cache/* 2>/dev/null
+    echo "完成"
+
+    echo ""
+    echo "=== 磁盘使用情况 ==="
+    df -h /
+}
+
+# 安装函数
+install_packages() {
+    sudo pacman -Syu --noconfirm --needed --color auto \
+        $documentation_dictionary \
+        $server_tools \
+        $python_libraries \
+        $qt \
+        $graphics_drivers_libraries \
+        $audio_bluetooth \
+        $wayland_wm \
+        $gui_application \
+        $cli_tools \
+        $system_utilities \
+        $network_tools \
+        $fonts_localization \
+        $ai \
+        $icon_theme \
+        $gtk_theme \
+        $cursor_theme
+}
+
+# 帮助信息
+usage() {
+    cat << EOF
+用法: $0 [选项]
+
+选项:
+    install     安装/更新软件包（默认）
+    clean       清理系统（缓存、孤儿包、日志）
+    -h, --help  显示帮助
+
+示例:
+    $0          安装软件包
+    $0 clean    清理系统
+EOF
+}
+
+# 主逻辑
+case "$1" in
+    clean)
+        clean_system
+        ;;
+    -h|--help)
+        usage
+        ;;
+    install|"")
+        install_packages
+        ;;
+    *)
+        echo "未知选项: $1"
+        usage
+        exit 1
+        ;;
+esac

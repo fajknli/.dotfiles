@@ -1,8 +1,0 @@
-SQL
-#######################
-
-.. toctree::
-   :titlesonly:
-   :glob:
-
-   *

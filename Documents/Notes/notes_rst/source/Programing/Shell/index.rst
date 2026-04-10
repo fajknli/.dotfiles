@@ -1,8 +1,0 @@
-Shell
-#######################
-
-.. toctree::
-   :titlesonly:
-   :glob:
-
-   *

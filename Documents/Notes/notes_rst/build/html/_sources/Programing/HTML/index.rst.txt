@@ -1,8 +1,0 @@
-HTML
-#######################
-
-.. toctree::
-   :titlesonly:
-   :glob:
-
-   *

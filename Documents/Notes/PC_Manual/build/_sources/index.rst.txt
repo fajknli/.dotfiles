@@ -1,8 +1,0 @@
-PC Manual documentation
-=======================
-
-.. toctree::
-   :maxdepth: 4
-   :caption: Contents:
-
-   Overview/index

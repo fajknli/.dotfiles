@@ -1,8 +1,0 @@
-JavaScript
-#######################
-
-.. toctree::
-   :titlesonly:
-   :glob:
-
-   *

@@ -1,8 +1,0 @@
-Distributions
-#############################
-
-.. toctree::
-   :titlesonly:
-   :glob:
-
-   *

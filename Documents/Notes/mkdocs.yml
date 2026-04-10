@@ -1,0 +1,223 @@
+site_name: fajknli 笔记
+site_url: https://fajknli.github.io/notes
+site_author: fajknli
+site_description: 个人学习笔记
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换深色模式
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换浅色模式
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - footnotes
+  - tables
+  - def_list
+  - md_in_html
+
+plugins:
+  - search
+  - tags:
+      tags_file: .meta/tags.md
+
+nav:
+  - 首页: index.md
+
+  - Linux:
+      - linux/index.md
+      - 系统安装:
+          - Arch Linux: linux/distributions-setup/archlinux.md
+      - 网络配置:
+          - DNS 工具: linux/networking/dns-tools.md
+          - 代理设置: linux/networking/proxy.md
+      - 内核管理:
+          - 模块管理: linux/kernel/module-management.md
+      - 包管理:
+          - Arch AUR: linux/package-management/arch-aur.md
+          - Nix: linux/package-management/nix.md
+      - 命令:
+          - 文件与文本:
+              - find: linux/commands/file-text/find.md
+              - grep: linux/commands/file-text/grep.md
+              - sed: linux/commands/file-text/sed.md
+              - awk: linux/commands/file-text/awk.md
+              - tar: linux/commands/file-text/tar.md
+              - ln: linux/commands/file-text/ln.md
+              - chmod: linux/commands/file-text/chmod.md
+              - chown: linux/commands/file-text/chown.md
+          - 系统管理:
+              - df: linux/commands/system/df.md
+              - du: linux/commands/system/du.md
+              - lsblk: linux/commands/system/lsblk.md
+              - fdisk: linux/commands/system/fdisk.md
+              - mkfs: linux/commands/system/mkfs.md
+              - fstab: linux/commands/system/fstab.md
+              - mount: linux/commands/system/mount.md
+              - dd: linux/commands/system/dd.md
+              - kill: linux/commands/system/kill.md
+              - ps: linux/commands/system/ps.md
+              - free: linux/commands/system/free.md
+              - uptime: linux/commands/system/uptime.md
+              - w: linux/commands/system/w.md
+              - who: linux/commands/system/who.md
+              - last: linux/commands/system/last.md
+              - uname: linux/commands/system/uname.md
+              - hostnamectl: linux/commands/system/hostnamectl.md
+              - timedatectl: linux/commands/system/timedatectl.md
+              - localectl: linux/commands/system/localectl.md
+              - crontab: linux/commands/system/crontab.md
+              - user-group: linux/commands/system/user-group.md
+          - 网络:
+              - ip: linux/commands/network/ip.md
+              - ping: linux/commands/network/ping.md
+              - ss: linux/commands/network/ss.md
+              - traceroute: linux/commands/network/traceroute.md
+              - nslookup: linux/commands/network/nslookup.md
+              - dig: linux/commands/network/dig.md
+              - host: linux/commands/network/host.md
+              - scp: linux/commands/network/scp.md
+              - ssh: linux/commands/network/ssh.md
+              - rsync: linux/commands/network/rsync.md
+              - curl: linux/commands/network/curl.md
+              - iwd: linux/commands/network/iwd.md
+              - nmcli: linux/commands/network/nmcli.md
+              - wpa_cli: linux/commands/network/wpa_cli.md
+          - 进程与服务:
+              - systemctl: linux/commands/process/systemctl.md
+              - journalctl: linux/commands/process/journalctl.md
+              - top: linux/commands/process/top.md
+              - systemd-analyze: linux/commands/process/systemd-analyze.md
+              - systemd-service: linux/commands/process/systemd-service.md
+          - 硬件:
+              - lscpu: linux/commands/hardware/lscpu.md
+              - lspci: linux/commands/hardware/lspci.md
+              - lsusb: linux/commands/hardware/lsusb.md
+              - dmidecode: linux/commands/hardware/dmidecode.md
+          - 包管理:
+              - pacman: linux/commands/package/pacman.md
+          - 开发工具:
+              - git: linux/commands/dev-tools/git.md
+              - make: linux/commands/dev-tools/make.md
+              - ffmpeg: linux/commands/dev-tools/ffmpeg.md
+              - jq: linux/commands/dev-tools/jq.md
+          - Shell 脚本:
+              - 测试表达式: linux/commands/shell/shell-test.md
+              - 实用技巧: linux/commands/shell/shell-tips.md
+
+  - 编程:
+      - programming/index.md
+      - Python:
+          - programming/python/index.md
+          - 学习路线: programming/python/learning-path.md
+          - 基础语法:
+              - 数据类型: programming/python/basics/data-types.md
+              - 控制流: programming/python/basics/control-flow.md
+              - 函数: programming/python/basics/functions.md
+              - 异常处理: programming/python/basics/exceptions.md
+              - 文件操作: programming/python/basics/file-io.md
+              - 模块与包: programming/python/basics/modules-packages.md
+          - 面向对象:
+              - 继承: programming/python/oop/inheritance.md
+              - 装饰器: programming/python/oop/decorator.md
+              - 魔法方法: programming/python/oop/magic-methods.md
+          - 高级特性:
+              - 迭代器与生成器: programming/python/advanced/iterators-generators.md
+              - 上下文管理器: programming/python/advanced/context-managers.md
+          - 标准库: programming/python/standard-library.md
+          - 第三方库: programming/python/third-party-libraries.md
+      - SQL:
+          - programming/sql/index.md
+          - 学习路线: programming/sql/learning-path.md
+          - 基础查询: programming/sql/basics.md
+          - 数据操作: programming/sql/dml.md
+          - 数据定义: programming/sql/ddl.md
+          - 函数: programming/sql/functions.md
+          - 聚合与分组: programming/sql/aggregation.md
+          - 表连接: programming/sql/joins.md
+          - 公用表表达式: programming/sql/cte.md
+          - 执行计划: programming/sql/explain.md
+      - Shell:
+          - programming/shell/index.md
+          - 学习路线: programming/shell/learning-path.md
+          - 基础语法: programming/shell/basics.md
+          - 控制流: programming/shell/control-flow.md
+          - 函数: programming/shell/functions.md
+          - 变量与参数: programming/shell/variables-params.md
+          - 重定向与管道: programming/shell/redirection.md
+          - 文本处理: programming/shell/text-processing.md
+          - 调试与最佳实践: programming/shell/debugging.md
+      - Web:
+          - HTTP 状态码: programming/web/http-status-codes.md
+
+  - 工具:
+      - tools/index.md
+      - 终端:
+          - fzf: tools/terminal/fzf.md
+          - ripgrep: tools/terminal/ripgrep.md
+          - tldr: tools/terminal/tldr.md
+          - man: tools/terminal/man.md
+          - 快捷键: tools/terminal/terminal-shortcuts.md
+      - Neovim:
+          - 基础设置: tools/neovim/basic-settings.md
+          - 命令: tools/neovim/commands.md
+          - 快捷键: tools/neovim/shortcuts.md
+      - 浏览器:
+          - Qutebrowser: tools/browser/qutebrowser.md
+      - 文件管理器:
+          - Lf: tools/file-manager/lf.md
+      - 窗口管理器:
+          - Niri: tools/window-manager/niri.md
+      - 代理:
+          - Dae: tools/proxy/dae.md
+
+  - AI:
+      - ai/index.md
+      - Llama.c使用指南: ai/llama-cpp.md
+      - Prompts: ai/prompts.md
+
+  - 参考:
+      - reference/index.md
+      - ANSI 颜色代码: reference/ansi-codes.md
+      - Markdown 速查表: reference/md-cheatsheet.md
+      - reST 速查表: reference/rst-cheatsheet.md
+
+  - 归档:
+      - 一行命令: archive/one-liners.md
