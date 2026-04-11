@@ -3,6 +3,9 @@ if [ -d "$HOME/.local/bin" ]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # GTK / Flatpak
 #export GTK_THEME=Adwaita:dark
 #export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/home/a6dg2uv/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"

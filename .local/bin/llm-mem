@@ -1,0 +1,27 @@
+#!/bin/sh
+# ~/.local/bin/llm-mem
+
+# 保存当前终端设置
+STTY_SAVE=$(stty -g 2>/dev/null)
+
+# 确保退出时恢复
+trap 'stty $STTY_SAVE 2>/dev/null' EXIT INT TERM
+
+MODEL_DIR="$HOME/Public/ai/models"
+
+MODEL=$(find "$MODEL_DIR" -type f -name "*.gguf" 2>/dev/null | grep -v "mmproj" | \
+    wmenu -p "Select GGUF Model" -M "#a0d0a0" -m "#151622" -i -l 15 \
+    -f "0xProto Nerd Font Regular 12" -N "#1f2032" -n "#a9b5d5" \
+    -S "#a0d0a0" -s "#151622")
+
+[ -z "$MODEL" ] && exit 0
+
+# 🔥 添加 GPU 层数参数
+GPU_LAYERS=${GPU_LAYERS:-20}  # 默认 20 层，可通过环境变量覆盖
+
+source ~/Project/Python/palacelite/venv/bin/activate
+python ~/.local/bin/chat_with_memory.py --model "$MODEL" --gpu-layers "$GPU_LAYERS"
+
+
+# 退出时恢复终端
+stty sane 2>/dev/null

@@ -3,7 +3,7 @@
 # Created Time:  2025-04-16 11:32
 # Modify Time:  2025-06-30 01:25
 
-source "$HOME"/.local/lib/shell/network/determine_global_network_connectivity.sh
+source "$HOME"/.local/lib/shell/network/network
 state="$(systemctl is-active dae.service)"
 
 if [ "$state" = "active" ]; then
