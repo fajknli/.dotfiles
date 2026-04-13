@@ -2,7 +2,7 @@
 # Author:        fajknli
 # Created Time:  2025-06-30 01:36
 
-source "$HOME"/.local/lib/shell/network/determine_global_network_connectivity.sh
+source "$HOME"/.local/lib/shell/network/network
 
 sudo systemctl stop dae
 
