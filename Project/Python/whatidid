@@ -1,0 +1,119 @@
+# Wing 管理
+palacelite wing add <name> [-t project|person]
+palacelite wing list
+palacelite wing remove <name> [--force]
+
+# Room 管理
+palacelite room add <wing> <name>
+palacelite room list [wing]
+palacelite room remove <wing> <name> [--force]
+
+# 移动记忆
+palacelite move -i <id> -w <wing> -r <room>
+palacelite move -i <id1> -i <id2> -w <wing> -r <room>
+
+----------
+
+## [Unreleased]
+
+### Added
+
+**CLI 空间管理命令**
+- `palacelite wing add <名称> [-t project|person]` - 添加 Wing
+- `palacelite wing list` - 列出所有 Wing
+- `palacelite wing remove <名称> [--force]` - 删除 Wing（需先迁移记忆或强制删除）
+- `palacelite room add <wing> <名称>` - 添加 Room
+- `palacelite room list [wing]` - 列出 Room
+- `palacelite room remove <wing> <名称> [--force]` - 删除 Room
+
+**CLI 记忆移动命令**
+- `palacelite move -i <id> [-w wing] [-r room]` - 移动单条记忆
+- `palacelite move -i <id1> -i <id2> [-w wing] [-r room]` - 移动范围内记忆
+- 智能默认值：无目标时移至 `unsorted/general`，只给 Wing 时提示使用 `general`，只给 Room 时提示使用 `unsorted`
+- Room 不存在时可交互创建
+
+**对话内空间管理命令**
+- `/wings` (`/w`) - 列出所有 Wing，高亮当前 Wing
+- `/wing add <名称> [类型]` - 添加 Wing
+- `/wing remove <名称>` - 提示迁移，引导至 CLI
+- `/rooms [wing]` (`/r`) - 列出 Room，高亮当前 Room
+- `/room add <名称>` - 在当前 Wing 添加 Room
+- `/room remove <名称>` - 提示迁移，引导至 CLI
+
+**对话内记忆移动命令**
+- `/move <id> [wing]/[room]` (`/mv`) - 移动单条记忆
+- `/move <id1> <id2> [wing]/[room]` - 移动范围内记忆
+- 默认目标 `unsorted/general`
+
+**对话内目录切换**
+- `/cd` - 查看当前位置
+- `/cd [wing]/[room]` - 切换到指定 Room
+- `/cd [room]` - 在当前 Wing 下切换 Room
+- 切换后显示目标 Room 的记忆数
+
+**系统初始化**
+- 首次运行自动创建默认 Wings：`work`, `life`, `tech`, `unsorted`
+- 每个 Wing 自动创建默认 Room：`general`
+- 系统保护：`unsorted` Wing 和 `general` Room 不可删除
+
+**对话体验优化**
+- 启动时显示当前 Wing 的 Room 数和当前 Room 的记忆数
+- `/help` 按功能分组显示（记忆操作/空间管理/系统）
+- 命令别名：`/ls` (`/list`), `/w` (`/wings`), `/r` (`/rooms`), `/mv` (`/move`), `/q` (`/quit`)
+- CLI 默认 Wing/Room 改为 `unsorted/general`
+
+### Changed
+- 检索评分加入关键词匹配加成，精确术语搜索效果提升
+- Distiller prompt 优化，技术参数（数字、阈值、专有名词）原样保留
+- Distiller max_tokens 从 256 调整为 512
+- 对话回应原则明确：情绪共情优先，减少不必要追问
+
+### Fixed
+- 修复精确术语纯向量检索无法匹配的问题
+- 修复 Distiller 对技术参数过度压缩的问题
+- 修复 AI 频繁以问题结尾的问题
+
+------------
+## [Unreleased]
+
+### Added
+
+**CLI 命令增强**
+- `list -l <数量>` - 显示指定数量的记忆，带序号和时间
+- `list -a` - 显示所有记忆
+- `list-ids -l <数量>` - 紧凑显示记忆ID列表，便于复制移动
+- `move-all -fw <wing> -fr <room> -tw <wing> -tr <room>` - 批量移动整个 Wing 或 Room 的记忆
+
+**对话内命令**
+- `/wings` (`/w`) - 列出所有 Wing，高亮当前 Wing
+- `/wing add <名称> [类型]` - 添加 Wing
+- `/wing remove <名称>` - 提示迁移，引导至 CLI
+- `/rooms [wing]` (`/r`) - 列出 Room，高亮当前 Room
+- `/room add <名称>` - 在当前 Wing 添加 Room
+- `/room remove <名称>` - 提示迁移，引导至 CLI
+- `/cd` - 查看当前位置
+- `/cd [wing]/[room]` - 切换 Room
+- `/cd [room]` - 在当前 Wing 下切换 Room
+- `/move <id> [id2] [wing]/[room]` (`/mv`) - 移动记忆
+- 命令别名：`/ls`、`/w`、`/r`、`/mv`、`/q`
+
+**系统初始化**
+- 首次运行自动创建默认 Wings：`work`、`life`、`tech`、`unsorted`
+- 每个 Wing 自动创建默认 Room：`general`
+- `unsorted` Wing 和 `general` Room 受保护不可删除
+
+**启动信息**
+- 对话启动时显示完整模型配置（对话模型、提炼模型、管理模型、检索模型）
+- 显示当前 Wing 的 Room 数和当前 Room 的记忆数
+
+### Changed
+- CLI 默认 Wing/Room 改为 `unsorted/general`
+- `/help` 按功能分组显示
+- `/list` 显示格式优化
+- 移动命令支持智能默认值和交互确认
+
+### Fixed
+- 修复 `move-all` 批量移动时数据库锁问题
+- 修复精确术语检索不到的问题
+
+------------

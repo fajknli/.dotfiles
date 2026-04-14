@@ -37,6 +37,7 @@ set -- \
     "$HOME/.config/mako" \
     "$HOME/.config/mc" \
     "$HOME/.config/nvim" \
+    "$HOME/.config/cliphist" \
     "$HOME/.config/qutebrowser" \
     "$HOME/.config/sway" \
     "$HOME/.config/waybar" \
