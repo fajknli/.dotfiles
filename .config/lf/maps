@@ -50,8 +50,8 @@ map .pwd cp_path
 
 map <c-t> nvim-tabs
 
-# 按 ctrl+y (yank/collect) 收集当前目录
-map <c-y> collect
+# 复制已选
+map <c-y> :collect
 
 # 刷新
 map <c-r> reload
@@ -61,3 +61,4 @@ map <c-r> reload
 # map T tarxz     # 打包为 tar.xz (更高压缩)
 # map z zip       # 打包为 zip
 # map Z sevenzip  # 打包为 7z (最高压缩)
+

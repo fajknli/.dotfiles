@@ -29,6 +29,7 @@ ai-ollama|https://ollama.com/search
 
 github|https://github.com/fajknli
 gitee|https://gitee.com/
+readme|https://markdownviewer.pages.dev/
 nvim|https://neovim.io
 docker|https://docs.docker.com
 sphinx|https://www.sphinx-doc.org/en/master/usage/quickstart.html

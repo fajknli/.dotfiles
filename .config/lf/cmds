@@ -7,35 +7,20 @@ cmd delete ${{
     [ "$ans" = "y" ] && rm -rf $fx
 }}
 
-#cmd premission ${{
-#    case $(stat -c "%a" "$f") in
-#        644) chmod 755 "$f" ;;
-#        755) chmod 600 "$f" ;;
-#        600) chmod 644 "$f" ;;
-#        *) chmod 644 "$f" ;;
-#    esac
-#}}
-
-
 # move current file or selected files to trash folder
-# (also see 'man mv' for backup/overwrite options)
 cmd trash ${{
-    mkdir -p "$HOME"/.trash &>/dev/null
-    name=$(basename $f)
-    echo "$name"
-    if [ -e "$HOME"/.trash/"$name" ]; then 
-      [ -n "$name" ] && rm -rf "$HOME"/.trash/"$name"
+    mkdir -p "$HOME/.trash" 2>/dev/null
+    if [ -n "$fx" ]; then
+        for item in $fx; do
+            mv -- "$item" "$HOME/.trash/" 2>/dev/null
+        done
+        lf -remote "send $id echo \"已移动到回收站\""
     else
-      IFS="$(printf '\n\t')"; mv -- "$fx" "$HOME"/.trash/
+        lf -remote "send $id echo \"没有选中任何文件\""
     fi
 }}
 
-
 # define a custom 'open' command
-# This command is called when current file is not a directory. You may want to
-# use either file extensions and/or mime types here. Below uses an editor for
-# text files and a file opener for the rest.
-# 对于文本文件，nvim可以多标签打开多个文件
 cmd open &{{
     case $(file --mime-type -Lb $f) in
         text/*)
@@ -56,10 +41,7 @@ cmd open &{{
     esac
 }}
 
-
 # extract the current file with the right command
-# (xkcd link: https://xkcd.com/1168/)
-
 cmd extract ${{
     set -f
     case $f in
@@ -97,31 +79,23 @@ cmd extract ${{
     lf -remote "send $id reload"
 }}
 
-# 打包选中的文件/目录为 tar.gz
+# 打包函数复用
 cmd tar ${{
+    current_dir="$PWD"
     if [ -n "$fx" ]; then
-        # 获取当前工作目录
-        current_dir="$PWD"
-        
-        # 将选中的文件转换为相对路径
         rel_files=""
         for file in $fx; do
-            # 去掉当前目录前缀，得到相对路径
             rel_file="${file#$current_dir/}"
             [ "$rel_file" = "$file" ] && rel_file=$(basename "$file")
-            rel_files="$rel_files $rel_file"
+            rel_files="$rel_files \"$rel_file\""
         done
-        
-        # 获取第一个文件的文件名（不含扩展名）作为包名
         first_file="${fx%% *}"
         basename=$(basename "$first_file")
         base="${basename%.*}"
         [ "$base" = "$basename" ] && base="$basename"
         [ -z "$base" ] && base="archive"
-        
-        # 使用相对路径打包
         cd "$current_dir"
-        tar czf "$base.tar.gz" $rel_files
+        eval tar czf "$base.tar.gz" $rel_files
         lf -remote "send $id echo \"已打包: $base.tar.gz\""
     else
         dirname=$(basename "$PWD")
@@ -130,27 +104,22 @@ cmd tar ${{
     fi
 }}
 
-# 打包为 zip
 cmd zip ${{
+    current_dir="$PWD"
     if [ -n "$fx" ]; then
-        current_dir="$PWD"
-        
-        # 转换为相对路径
         rel_files=""
         for file in $fx; do
             rel_file="${file#$current_dir/}"
             [ "$rel_file" = "$file" ] && rel_file=$(basename "$file")
-            rel_files="$rel_files $rel_file"
+            rel_files="$rel_files \"$rel_file\""
         done
-        
         first_file="${fx%% *}"
         basename=$(basename "$first_file")
         base="${basename%.*}"
         [ "$base" = "$basename" ] && base="$basename"
         [ -z "$base" ] && base="archive"
-        
         cd "$current_dir"
-        zip -r "$base.zip" $rel_files
+        eval zip -r "$base.zip" $rel_files
         lf -remote "send $id echo \"已打包: $base.zip\""
     else
         dirname=$(basename "$PWD")
@@ -159,26 +128,22 @@ cmd zip ${{
     fi
 }}
 
-# 打包为 tar.xz
 cmd tarxz ${{
+    current_dir="$PWD"
     if [ -n "$fx" ]; then
-        current_dir="$PWD"
-        
         rel_files=""
         for file in $fx; do
             rel_file="${file#$current_dir/}"
             [ "$rel_file" = "$file" ] && rel_file=$(basename "$file")
-            rel_files="$rel_files $rel_file"
+            rel_files="$rel_files \"$rel_file\""
         done
-        
         first_file="${fx%% *}"
         basename=$(basename "$first_file")
         base="${basename%.*}"
         [ "$base" = "$basename" ] && base="$basename"
         [ -z "$base" ] && base="archive"
-        
         cd "$current_dir"
-        tar cJf "$base.tar.xz" $rel_files
+        eval tar cJf "$base.tar.xz" $rel_files
         lf -remote "send $id echo \"已打包: $base.tar.xz\""
     else
         dirname=$(basename "$PWD")
@@ -187,26 +152,22 @@ cmd tarxz ${{
     fi
 }}
 
-# 打包为 tar（无压缩）
 cmd taronly ${{
+    current_dir="$PWD"
     if [ -n "$fx" ]; then
-        current_dir="$PWD"
-        
         rel_files=""
         for file in $fx; do
             rel_file="${file#$current_dir/}"
             [ "$rel_file" = "$file" ] && rel_file=$(basename "$file")
-            rel_files="$rel_files $rel_file"
+            rel_files="$rel_files \"$rel_file\""
         done
-        
         first_file="${fx%% *}"
         basename=$(basename "$first_file")
         base="${basename%.*}"
         [ "$base" = "$basename" ] && base="$basename"
         [ -z "$base" ] && base="archive"
-        
         cd "$current_dir"
-        tar cf "$base.tar" $rel_files
+        eval tar cf "$base.tar" $rel_files
         lf -remote "send $id echo \"已打包: $base.tar\""
     else
         dirname=$(basename "$PWD")
@@ -215,26 +176,22 @@ cmd taronly ${{
     fi
 }}
 
-# 打包为 7z
 cmd sevenzip ${{
+    current_dir="$PWD"
     if [ -n "$fx" ]; then
-        current_dir="$PWD"
-        
         rel_files=""
         for file in $fx; do
             rel_file="${file#$current_dir/}"
             [ "$rel_file" = "$file" ] && rel_file=$(basename "$file")
-            rel_files="$rel_files $rel_file"
+            rel_files="$rel_files \"$rel_file\""
         done
-        
         first_file="${fx%% *}"
         basename=$(basename "$first_file")
         base="${basename%.*}"
         [ "$base" = "$basename" ] && base="$basename"
         [ -z "$base" ] && base="archive"
-        
         cd "$current_dir"
-        7z a "$base.7z" $rel_files > /dev/null
+        eval 7z a "$base.7z" $rel_files > /dev/null
         lf -remote "send $id echo \"已打包: $base.7z\""
     else
         dirname=$(basename "$PWD")
@@ -254,7 +211,7 @@ cmd bulk-rename ${{
     fi
     printf '%s\n' "$fs" > "$old"
     printf '%s\n' "$fs" > "$new"
-    $EDITOR "$new"
+    ${EDITOR:-nvim} "$new"
     [ "$(wc -l < "$new")" -ne "$(wc -l < "$old")" ] && exit
     paste "$old" "$new" | while IFS= read -r names; do
         src="$(printf '%s' "$names" | cut -f1)"
@@ -268,7 +225,7 @@ cmd bulk-rename ${{
     lf -remote "send $id unselect"
 }}
 
-# 循环设置指导权限
+# 循环设置权限
 cmd permisson ${{
     case $(stat -c "%a" "$f") in
     644) chmod 755 "$f";;
@@ -283,42 +240,58 @@ cmd permisson ${{
 
 cmd cp_path ${{
     pwd | wl-copy
+    lf -remote "send $id echo \"已复制路径: $PWD\""
 }}
 
 cmd nvim-tabs ${{
     nvim -p $fx
 }}
 
-# 收集当前目录的所有文本文件内容
+# 收集选中的文件/目录内容（优化版）
 cmd collect &{{
-    current_dir="$PWD"
-    dir_name="$(basename "$current_dir")"
-    
-    # ========== 头部信息 ==========
-    content=""
-    content+="========================================"$'\n'
-    content+="[目录] $current_dir"$'\n'
-    content+="[时间] $(date '+%Y-%m-%d %H:%M:%S') | [系统] $(uname -o) | [用户] $(whoami)@$(hostname)"$'\n'
-    content+="[说明] 以下文件用于配置 $dir_name，请分析并提供建议"$'\n'
-    content+="========================================"$'\n\n'
-    
-    # ========== 文件树 ==========
-    content+="[文件结构]"$'\n'
-    content+="----------------------------------------"$'\n'
-    
-    file_list=$(find "$current_dir" -maxdepth 2 -type f 2>/dev/null | grep -vE '/\.git/|/node_modules/|/\.cache/|/target/|/dist/|/build/|\.log$|\.tmp$|\.swp$|~$' | sort)
-    
-    if [ -n "$file_list" ]; then
-        content+="$(echo "$file_list" | sed "s|^$current_dir/||")"$'\n'
-    else
-        content+="(空目录)"$'\n'
+    if [ -z "$fx" ]; then
+        lf -remote "send $id echo '没有选中任何文件，请先选中文件'"
+        exit
     fi
     
-    content+=$'\n'"========================================"$'\n\n'
+    current_dir="$PWD"
+    tmp_file="/tmp/lf_collect_$$.tmp"
+    > "$tmp_file"
     
-    # ========== 文件内容 ==========
-    content+="[文件内容]"$'\n'
-    content+="========================================"$'\n\n'
+    # 收集所有文件（处理目录递归）
+    for item in $fx; do
+        if [ -d "$item" ]; then
+            find "$item" -type f 2>/dev/null | grep -vE '/\.git/|/node_modules/|/\.cache/|/target/|/dist/|/build/|\.log$|\.tmp$|\.swp$|~$' >> "$tmp_file"
+        else
+            echo "$item" >> "$tmp_file"
+        fi
+    done
+    
+    selected_files=$(sort -u "$tmp_file" | grep -v '^$')
+    rm -f "$tmp_file"
+    
+    if [ -z "$selected_files" ]; then
+        lf -remote "send $id echo '选中的目录中没有文本文件'"
+        exit
+    fi
+    
+    # 构建输出内容
+    content=""
+    content+="========================================\n"
+    content+="[目录] $current_dir\n"
+    content+="[时间] $(date '+%Y-%m-%d %H:%M:%S') | [系统] $(uname -o) | [用户] $(whoami)@$(hostname)\n"
+    content+="[说明] 以下为选中的文件，请分析并提供建议\n"
+    content+="========================================\n\n"
+    
+    content+="[选中的文件]\n"
+    content+="----------------------------------------\n"
+    while read -r file; do
+        content+="  ${file#$current_dir/}\n"
+    done <<< "$selected_files"
+    content+="\n========================================\n\n"
+    
+    content+="[文件内容]\n"
+    content+="========================================\n\n"
     
     file_count=0
     skip_count=0
@@ -331,44 +304,42 @@ cmd collect &{{
         size=$(stat -c%s "$file" 2>/dev/null || stat -f%z "$file" 2>/dev/null)
         size_human=$(numfmt --to=iec "$size" 2>/dev/null || echo "${size}B")
         
-        # 检查大小
         if [ "$size" -gt 1048576 ]; then
             skip_count=$((skip_count + 1))
-            skip_reasons+="  - $rel_path (跳过原因: 超过1MB, 实际$size_human)"$'\n'
+            skip_reasons+="  - $rel_path (超过1MB: $size_human)\n"
             continue
         fi
         
-        # 检查文件类型
         file_type="$(file -b "$file" 2>/dev/null)"
         
         if echo "$file_type" | grep -qiE 'text|empty|ascii|utf-?8|json|yaml|xml|toml|kdl|ini|conf|script|source|markdown|config|data'; then
-            # 提取扩展名作为语言标记
             ext="${rel_path##*.}"
             [ "$ext" = "$rel_path" ] && ext="txt"
             
-            content+="-- $rel_path -- $size_human -- $file_type --"$'\n'
-            content+="[$ext]"$'\n'
-            content+="$(cat "$file" 2>/dev/null)"$'\n'
-            content+=$'\n'
+            content+="-- $rel_path -- $size_human -- $file_type --\n"
+            content+="\`\`\`$ext\n"
+            content+="$(cat "$file" 2>/dev/null)\n"
+            content+="\`\`\`\n\n"
             file_count=$((file_count + 1))
         else
             skip_count=$((skip_count + 1))
-            skip_reasons+="  - $rel_path (跳过原因: 二进制文件, 类型: $file_type)"$'\n'
+            skip_reasons+="  - $rel_path (二进制: $file_type)\n"
         fi
-    done <<< "$file_list"
+    done <<< "$selected_files"
     
-    # ========== 统计 ==========
-    content+="========================================"$'\n'
-    content+="[统计] 已收集: $file_count 个文件, 已跳过: $skip_count 个文件"$'\n'
+    content+="========================================\n"
+    content+="[统计] 已收集: $file_count 个文件, 已跳过: $skip_count 个文件\n"
     
     if [ -n "$skip_reasons" ]; then
-        content+=$'\n'"[跳过详情]"$'\n'"$skip_reasons"
+        content+="\n[跳过详情]\n$skip_reasons"
     fi
     
-    content+="========================================"$'\n'
+    content+="========================================\n"
     
-    # 复制
-    echo "$content" | wl-copy 2>/dev/null && \
-        lf -remote "send $id echo '已复制 $file_count 个文件的内容,可作为AI的prompt'" || \
-        lf -remote "send $id echo '复制失败'"
+    echo -e "$content" | wl-copy 2>/dev/null
+    if [ $? -eq 0 ]; then
+        lf -remote "send $id echo \"已复制 $file_count 个选中文件的内容\""
+    else
+        lf -remote "send $id echo \"复制失败\""
+    fi
 }}
