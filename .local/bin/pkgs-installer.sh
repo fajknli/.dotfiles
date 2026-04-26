@@ -47,6 +47,7 @@ speedtest-cli \
 # 系统工具
 system_utilities="\
 ddcutil \
+gdisk \
 dmidecode \
 sqlite \
 lsb-release \
