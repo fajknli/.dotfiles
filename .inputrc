@@ -18,3 +18,4 @@ set convert-meta off
 
 # 禁用终端铃声
 set bell-style none
+set enable-bracketed-paste off

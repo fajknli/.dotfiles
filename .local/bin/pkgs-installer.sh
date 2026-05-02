@@ -22,6 +22,8 @@ fcitx5-chinese-addons \
 fcitx5-configtool \
 fcitx5-gtk \
 fcitx5-pinyin-zhwiki \
+freetype2 \
+ttf-liberation \
 "
 
 # 网络工具
@@ -75,6 +77,18 @@ arch-wiki-lite \
 firejail \
 "
 
+# Game
+game="\
+steam \
+mesa \
+vulkan-radeon \
+lib32-mesa \
+lib32-vulkan-radeon \
+vulkan-tools \
+gamescope \
+mangohud \
+"
+
 # Ai
 ai="\
 llama.cpp \
@@ -125,6 +139,7 @@ asciinema \
 
 # 图形界面应用
 gui_application="\
+dolphin \
 rofi \
 alacritty \
 tk \
@@ -168,6 +183,7 @@ cliphist \
 swayimg \
 xdg-desktop-portal-wlr \
 xdg-desktop-portal-gtk \
+xdg-desktop-portal-kde \
 xdg-desktop-portal-gnome \
 lemurs \
 wmenu \
@@ -189,7 +205,6 @@ graphics_drivers_libraries="\
 intel-media-driver \
 libva-utils \
 glfw \
-vulkan-radeon \
 "
 
 # Qt
